@@ -652,97 +652,165 @@
 
     <div class="container">
         <div class="spectra-visual">
-            <p class="spectra-lead">
-                Physics sees a compound as four discrete contributions.
-                Machine learning sees it as one continuous probability.
-                Both describe the same interaction — from different angles.
-            </p>
 
-            <svg class="spectra-svg" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMid meet">
-                <defs>
-                    <linearGradient id="mlCurveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.1"/>
-                        <stop offset="50%" stop-color="#93c5fd" stop-opacity="0.4"/>
-                        <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.1"/>
-                    </linearGradient>
-                    <radialGradient id="agreementGlow" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.9"/>
-                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
+            <div class="spectra-header">
+                <p class="spectra-kicker">Physics and machine learning — together</p>
+                <h3 class="spectra-title">Two methods. Each one covers what the other <span class="accent">misses</span>.</h3>
+            </div>
 
-                <!-- baseline -->
-                <line x1="80" y1="200" x2="920" y2="200" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+            <div class="spectra-columns">
 
-                <!-- ML curve (broad, flowing) -->
-                <path class="ml-curve" d="M 80 160
-                         C 200 130, 300 90, 500 90
-                         C 700 90, 800 130, 920 160"
-                      fill="none" stroke="url(#mlCurveGrad)" stroke-width="3"/>
+                <!-- Physics column -->
+                <div class="spectra-col spectra-col-physics">
+                    <div class="spectra-col-head">
+                        <span class="spectra-col-tag">Physics</span>
+                        <span class="spectra-col-sub">can score anything — cannot learn</span>
+                    </div>
+                    <div class="spectra-col-body">
+                        <p>
+                            Every candidate gets a physical score. Lennard-Jones for
+                            contacts. Coulomb for electrostatics. Solvation for how
+                            the pocket reshapes. Entropy for what the ligand loses
+                            when it binds. The number is real and the physics is
+                            inspectable — but the equations are fixed.
+                        </p>
+                        <p class="spectra-col-limit">
+                            Physics cannot get better at what it does. It does not
+                            learn from the compounds it gets wrong.
+                        </p>
+                    </div>
+                </div>
 
-                <!-- ML curve glow (second layer) -->
-                <path class="ml-curve-glow" d="M 80 160
-                         C 200 130, 300 90, 500 90
-                         C 700 90, 800 130, 920 160"
-                      fill="none" stroke="#60a5fa" stroke-width="8" opacity="0.08" filter="blur(4px)"/>
+                <!-- ML column -->
+                <div class="spectra-col spectra-col-ml">
+                    <div class="spectra-col-head">
+                        <span class="spectra-col-tag">Machine learning</span>
+                        <span class="spectra-col-sub">can learn anything — cannot explain it</span>
+                    </div>
+                    <div class="spectra-col-body">
+                        <p>
+                            The same complex is read as a feature vector. The
+                            classifier discovers which combinations of features
+                            separate binders from non-binders — patterns no one
+                            hand-coded, thresholds no one set. Trained on labeled
+                            data, it finds what physics alone would miss.
+                        </p>
+                        <p class="spectra-col-limit">
+                            ML cannot justify its decisions. When it disagrees
+                            with physics, nobody can say which one is right.
+                        </p>
+                    </div>
+                </div>
 
-                <!-- Physics peaks (4 spikes) -->
-                <g stroke="#4ade80" stroke-width="2" fill="none">
-                    <!-- peak 1: ΔG_LJ -->
-                    <path class="phys-peak" data-idx="0"
-                          d="M 190 200 L 200 110 L 210 200"
-                          style="opacity: 0"/>
-                    <!-- peak 2: ΔG_elec -->
-                    <path class="phys-peak" data-idx="1"
-                          d="M 390 200 L 400 90 L 410 200"
-                          style="opacity: 0"/>
-                    <!-- peak 3: ΔG_solv -->
-                    <path class="phys-peak" data-idx="2"
-                          d="M 590 200 L 600 130 L 610 200"
-                          style="opacity: 0"/>
-                    <!-- peak 4: ΔG_entropy -->
-                    <path class="phys-peak" data-idx="3"
-                          d="M 790 200 L 800 145 L 810 200"
-                          style="opacity: 0"/>
-                </g>
+            </div>
 
-                <!-- Peak labels -->
-                <g font-family="ui-monospace, monospace" font-size="11" fill="#a7f3d0" text-anchor="middle">
-                    <text class="phys-label" data-idx="0" x="200" y="95">ΔG_LJ</text>
-                    <text class="phys-label" data-idx="1" x="400" y="75">ΔG_elec</text>
-                    <text class="phys-label" data-idx="2" x="600" y="115">ΔG_solv</text>
-                    <text class="phys-label" data-idx="3" x="800" y="130">ΔG_entropy</text>
-                </g>
+            <!-- Divergence visual -->
+            <div class="spectra-visual-wrap">
 
-                <!-- Agreement glow points where peaks touch the ML curve -->
-                <g class="agreement-points" style="opacity: 0">
-                    <circle cx="200" cy="127" r="12" fill="url(#agreementGlow)"/>
-                    <circle cx="400" cy="100" r="14" fill="url(#agreementGlow)"/>
-                    <circle cx="600" cy="112" r="12" fill="url(#agreementGlow)"/>
-                    <circle cx="800" cy="132" r="11" fill="url(#agreementGlow)"/>
-                </g>
+                <svg class="spectra-svg" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="mlCurveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%"   stop-color="#60a5fa" stop-opacity="0.15"/>
+                            <stop offset="50%"  stop-color="#93c5fd" stop-opacity="0.55"/>
+                            <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.15"/>
+                        </linearGradient>
+                        <radialGradient id="agreeGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#a7f3d0" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                        </radialGradient>
+                        <radialGradient id="divergeGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#fbbf24" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
 
-                <!-- traveling particle on the ML curve -->
-                <circle class="ml-particle" r="3" fill="#ffffff" opacity="0.6">
-                    <animateMotion dur="8s" repeatCount="indefinite"
-                        path="M 80 160 C 200 130, 300 90, 500 90 C 700 90, 800 130, 920 160"/>
-                </circle>
+                    <!-- baseline -->
+                    <line x1="60" y1="200" x2="940" y2="200" stroke="rgba(148,163,184,0.15)" stroke-width="1"/>
 
-                <!-- Score readout -->
-                <g class="score-readout" style="opacity: 0">
-                    <text x="920" y="105" text-anchor="end"
-                          font-family="Georgia, serif" font-size="11" font-style="italic" fill="#64748b">combined</text>
-                    <text x="920" y="135" text-anchor="end"
-                          font-family="Georgia, serif" font-size="32" font-weight="500" fill="#f1f5f9">−8.72</text>
-                    <line x1="760" y1="150" x2="920" y2="150" stroke="rgba(74,222,128,0.4)" stroke-width="1"/>
-                </g>
-            </svg>
+                    <!-- ML curve -->
+                    <path class="ml-curve-glow"
+                          d="M 60 170 C 180 130, 320 80, 500 80 C 680 80, 820 130, 940 170"
+                          fill="none" stroke="#60a5fa" stroke-width="10" opacity="0.07" filter="blur(5px)"/>
+                    <path class="ml-curve"
+                          d="M 60 170 C 180 130, 320 80, 500 80 C 680 80, 820 130, 940 170"
+                          fill="none" stroke="url(#mlCurveGrad)" stroke-width="3"/>
+
+                    <!-- Physics peaks — aligned to ML curve at x=200,400,800 -->
+                    <g class="phys-peaks" stroke="#4ade80" stroke-width="2" fill="none">
+                        <path class="phys-peak" data-idx="0" d="M 190 200 L 200 132 L 210 200" style="opacity: 0"/>
+                        <path class="phys-peak" data-idx="1" d="M 390 200 L 400 100 L 410 200" style="opacity: 0"/>
+                        <path class="phys-peak" data-idx="2" d="M 590 200 L 600 155 L 610 200" style="opacity: 0"/>
+                        <path class="phys-peak" data-idx="3" d="M 790 200 L 800 132 L 810 200" style="opacity: 0"/>
+                    </g>
+
+                    <!-- Peak labels -->
+                    <g font-family="ui-monospace, monospace" font-size="11" fill="#a7f3d0" text-anchor="middle">
+                        <text class="phys-label" data-idx="0" x="200" y="118">ΔG_LJ</text>
+                        <text class="phys-label" data-idx="1" x="400" y="86">ΔG_elec</text>
+                        <text class="phys-label" data-idx="2" x="600" y="141">ΔG_solv</text>
+                        <text class="phys-label" data-idx="3" x="800" y="118">ΔG_entropy</text>
+                    </g>
+
+                    <!-- AGREEMENT points: peaks 1, 2, 4 sit inside ML curve -->
+                    <g class="agree-points" style="opacity: 0">
+                        <circle cx="200" cy="132" r="11" fill="url(#agreeGlow)"/>
+                        <circle cx="400" cy="100" r="13" fill="url(#agreeGlow)"/>
+                        <circle cx="800" cy="132" r="11" fill="url(#agreeGlow)"/>
+                    </g>
+
+                    <!-- DIVERGENCE point: peak 3 at x=600 sits ABOVE the ML curve, which is low there -->
+                    <g class="diverge-point" style="opacity: 0">
+                        <circle cx="600" cy="155" r="14" fill="url(#divergeGlow)"/>
+                        <circle cx="600" cy="155" r="4" fill="#fbbf24">
+                            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <!-- small flag label -->
+                        <text x="600" y="182" text-anchor="middle"
+                              font-family="ui-monospace, monospace"
+                              font-size="9"
+                              fill="#fbbf24"
+                              opacity="0.9">worth inspecting</text>
+                    </g>
+
+                    <!-- traveling particle -->
+                    <circle class="ml-particle" r="3" fill="#ffffff" opacity="0.5">
+                        <animateMotion dur="9s" repeatCount="indefinite"
+                            path="M 60 170 C 180 130, 320 80, 500 80 C 680 80, 820 130, 940 170"/>
+                    </circle>
+
+                    <!-- score readout -->
+                    <g class="score-readout" style="opacity: 0">
+                        <line x1="800" y1="60" x2="940" y2="60" stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
+                        <text x="940" y="42" text-anchor="end"
+                              font-family="Georgia, serif" font-size="10" font-style="italic"
+                              fill="#64748b">combined</text>
+                        <text x="940" y="82" text-anchor="end"
+                              font-family="Georgia, serif" font-size="30" font-weight="500"
+                              fill="#f1f5f9">−8.72</text>
+                    </g>
+                </svg>
+
+                <div class="spectra-legend">
+                    <span class="legend-agree">
+                        <span class="legend-dot legend-dot-green"></span>
+                        Agreement — physics confirms the classifier's confidence
+                    </span>
+                    <span class="legend-diverge">
+                        <span class="legend-dot legend-dot-amber"></span>
+                        Divergence — flagged, not promoted
+                    </span>
+                </div>
+
+            </div>
 
             <p class="spectra-foot">
-                Where the peaks land inside the curve, confidence rises.
-                Where they fall outside, it drops. The combined score is not
-                the average. It is the agreement.
+                When the two methods agree, the score is trusted.
+                When they diverge, the compound is flagged — because
+                a disagreement between a physical calculation and a
+                learned judgment is not noise. It is information.
             </p>
+
         </div>
     </div>
 </section>
