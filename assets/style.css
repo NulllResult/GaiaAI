@@ -5350,28 +5350,80 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     #capabilities .tile-field { grid-template-columns: 1fr; }
 }
 
+
 /* ============================================================
-   MATH — spectra visual (physics peaks + ML curve)
+   MATH — physics + ML spectra
    ============================================================ */
 .spectra-visual {
-    margin-top: 88px;
-    padding-top: 48px;
+    margin-top: 96px;
+    padding-top: 56px;
     border-top: 1px solid rgba(148,163,184,0.15);
 }
-.spectra-lead,
-.spectra-foot {
-    font-size: 0.98rem;
+.spectra-header { margin-bottom: 48px; max-width: 720px; }
+.spectra-kicker {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #4ade80;
+    margin: 0 0 16px;
+}
+.spectra-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: #f1f5f9;
+    margin: 0;
+}
+.spectra-title .accent { color: #4ade80; font-style: italic; }
+
+.spectra-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 64px;
+}
+.spectra-col {
+    padding: 28px 0 0;
+    border-top: 1px solid rgba(148,163,184,0.15);
+}
+.spectra-col-physics { border-top-color: rgba(74,222,128,0.35); }
+.spectra-col-ml      { border-top-color: rgba(96,165,250,0.35); }
+.spectra-col-head { margin-bottom: 20px; }
+.spectra-col-tag {
+    display: block;
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.spectra-col-physics .spectra-col-tag { color: #a7f3d0; }
+.spectra-col-ml      .spectra-col-tag { color: #93c5fd; }
+.spectra-col-sub {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #94a3b8;
+}
+.spectra-col-body p {
+    font-size: 0.95rem;
     line-height: 1.75;
     color: #94a3b8;
+    margin: 0 0 16px;
     font-weight: 300;
-    max-width: 620px;
 }
-.spectra-lead {
-    margin: 0 0 40px;
+.spectra-col-limit {
+    padding-top: 16px;
+    border-top: 1px dashed rgba(148,163,184,0.15);
+    color: #64748b !important;
+    font-size: 0.88rem !important;
+    font-style: italic;
 }
-.spectra-foot {
-    margin: 40px 0 0;
-}
+
+.spectra-visual-wrap { margin: 24px 0 48px; }
 .spectra-svg {
     width: 100%;
     height: auto;
@@ -5380,11 +5432,7 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     overflow: visible;
 }
 
-/* ML curve: soft breathing animation */
-.ml-curve {
-    animation: mlBreath 6s ease-in-out infinite;
-}
-.ml-curve-glow {
+.ml-curve, .ml-curve-glow {
     animation: mlBreath 6s ease-in-out infinite;
 }
 @keyframes mlBreath {
@@ -5392,47 +5440,62 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     50%      { opacity: 1;   }
 }
 
-/* Physics peaks: revealed on scroll */
-.phys-peak {
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    transform-origin: bottom center;
-    transform-box: fill-box;
-}
-.phys-label {
-    transition: opacity 0.4s ease;
-}
-.spectra-visual.visible .phys-peak {
-    opacity: 1 !important;
-}
-.spectra-visual.visible .phys-peak[data-idx="0"] { transition-delay: 0.1s; }
-.spectra-visual.visible .phys-peak[data-idx="1"] { transition-delay: 0.35s; }
-.spectra-visual.visible .phys-peak[data-idx="2"] { transition-delay: 0.60s; }
-.spectra-visual.visible .phys-peak[data-idx="3"] { transition-delay: 0.85s; }
-.spectra-visual.visible .phys-label[data-idx="0"] { transition-delay: 0.1s; }
-.spectra-visual.visible .phys-label[data-idx="1"] { transition-delay: 0.35s; }
-.spectra-visual.visible .phys-label[data-idx="2"] { transition-delay: 0.60s; }
-.spectra-visual.visible .phys-label[data-idx="3"] { transition-delay: 0.85s; }
+.phys-peak, .phys-label { transition: opacity 0.6s ease; }
+.phys-label { opacity: 0; }
+.spectra-visual.visible .phys-peak[data-idx="0"]  { opacity: 1 !important; transition-delay: 0.15s; }
+.spectra-visual.visible .phys-peak[data-idx="1"]  { opacity: 1 !important; transition-delay: 0.40s; }
+.spectra-visual.visible .phys-peak[data-idx="2"]  { opacity: 1 !important; transition-delay: 0.65s; }
+.spectra-visual.visible .phys-peak[data-idx="3"]  { opacity: 1 !important; transition-delay: 0.90s; }
+.spectra-visual.visible .phys-label[data-idx="0"] { opacity: 1 !important; transition-delay: 0.15s; }
+.spectra-visual.visible .phys-label[data-idx="1"] { opacity: 1 !important; transition-delay: 0.40s; }
+.spectra-visual.visible .phys-label[data-idx="2"] { opacity: 1 !important; transition-delay: 0.65s; }
+.spectra-visual.visible .phys-label[data-idx="3"] { opacity: 1 !important; transition-delay: 0.90s; }
 
-/* Agreement glow: fires after peaks settle */
-.agreement-points {
-    transition: opacity 0.8s ease 1.2s;
+.agree-points  { transition: opacity 0.8s ease 1.3s; }
+.diverge-point { transition: opacity 0.8s ease 1.8s; }
+.score-readout { transition: opacity 0.8s ease 2.4s; }
+.spectra-visual.visible .agree-points  { opacity: 1 !important; }
+.spectra-visual.visible .diverge-point { opacity: 1 !important; }
+.spectra-visual.visible .score-readout { opacity: 1 !important; }
+
+.spectra-legend {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
 }
-.spectra-visual.visible .agreement-points {
-    opacity: 1 !important;
+.spectra-legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    text-transform: uppercase;
+}
+.legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.legend-dot-green { background: #4ade80; box-shadow: 0 0 10px rgba(74,222,128,0.7); }
+.legend-dot-amber { background: #fbbf24; box-shadow: 0 0 10px rgba(251,191,36,0.7); }
+
+.spectra-foot {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #94a3b8;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 300;
 }
 
-/* Score readout: fades in last */
-.score-readout {
-    transition: opacity 0.8s ease 1.8s;
-}
-.spectra-visual.visible .score-readout {
-    opacity: 1 !important;
-}
-
-/* Peak labels and score: hidden until visible class is added by JS */
-.phys-label {
-    opacity: 0;
-}
-.spectra-visual.visible .phys-label {
-    opacity: 1 !important;
+@media (max-width: 780px) {
+    .spectra-columns { grid-template-columns: 1fr; gap: 32px; }
+    .spectra-title { font-size: 1.35rem; }
+    .spectra-legend { gap: 20px; }
+    .spectra-legend > span { font-size: 0.65rem; }
 }
