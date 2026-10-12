@@ -1564,49 +1564,49 @@
             </div>
 
             <!-- Tiles (periodic-table-inspired) -->
-            <div class="tile" data-name="Genome scanning" data-desc="Reads raw sequence at single-base resolution. Windows are classified by structural signature — GC composition, entropy, codon bias, PhyloP conservation — into coding, conserved, regulatory, or silent. Output: a full annotation track per chromosome." style="--x: 6%;  --y: 8%;  --r: -3deg; --d: 0s;">
+            <div class="tile" data-name="How does it read the genome?" data-desc="Reads raw sequence at single-base resolution. Windows are classified by structural signature — GC composition, entropy, codon bias, PhyloP conservation — into coding, conserved, regulatory, or silent. Output: a full annotation track per chromosome." style="--x: 6%;  --y: 8%;  --r: -3deg; --d: 0s;">
                 <span class="tile-sym">GS</span>
                 <span class="tile-num">01</span>
                 <span class="tile-name">Genome<br>Scanning</span>
             </div>
 
-            <div class="tile" data-name="Variant mapping" data-desc="Each variant is projected onto its gene, transcript, and codon context. Population frequencies, functional impact, and pathway membership are attached — building the base layer that every downstream query reads from." style="--x: 28%; --y: 20%; --r: 4deg; --d: -0.5s;">
+            <div class="tile" data-name="What happens to variants?" data-desc="Each variant is projected onto its gene, transcript, and codon context. Population frequencies, functional impact, and pathway membership are attached — building the base layer that every downstream query reads from." style="--x: 28%; --y: 20%; --r: 4deg; --d: -0.5s;">
                 <span class="tile-sym">VM</span>
                 <span class="tile-num">02</span>
                 <span class="tile-name">Variant<br>Mapping</span>
             </div>
 
-            <div class="tile" data-name="Knowledge graph" data-desc="A directed graph of variants, genes, pathways, diseases, and compounds. Every new paper or database adds nodes and edges. Queries traverse the graph for causal and associative paths — the graph is the reasoning substrate." style="--x: 50%; --y: 6%; --r: -2deg; --d: -1s;">
+            <div class="tile" data-name="How does the graph grow?" data-desc="A directed graph of variants, genes, pathways, diseases, and compounds. Every new paper or database adds nodes and edges. Queries traverse the graph for causal and associative paths — the graph is the reasoning substrate." style="--x: 50%; --y: 6%; --r: -2deg; --d: -1s;">
                 <span class="tile-sym">KG</span>
                 <span class="tile-num">03</span>
                 <span class="tile-name">Knowledge<br>Graph</span>
             </div>
 
-            <div class="tile" data-name="Compound libraries" data-desc="Curated sets of small molecules and natural products, deduplicated and standardized to canonical SMILES with stereochemistry. Each compound is indexed by scaffold, target class, and known bioactivity." style="--x: 72%; --y: 18%; --r: 5deg; --d: -1.5s;">
+            <div class="tile" data-name="Where do compounds come from?" data-desc="Curated sets of small molecules and natural products, deduplicated and standardized to canonical SMILES with stereochemistry. Each compound is indexed by scaffold, target class, and known bioactivity." style="--x: 72%; --y: 18%; --r: 5deg; --d: -1.5s;">
                 <span class="tile-sym">CL</span>
                 <span class="tile-num">04</span>
                 <span class="tile-name">Compound<br>Libraries</span>
             </div>
 
-            <div class="tile" data-name="Interaction scoring" data-desc="Multiple scoring functions are combined — Lennard-Jones, electrostatics, solvation, entropy, quantum correction — into one ranking via z-scored weights learned from labeled data. The result is a single affinity score with an uncertainty band." style="--x: 10%; --y: 58%; --r: 6deg; --d: -2s;">
+            <div class="tile" data-name="How are interactions scored?" data-desc="Multiple scoring functions are combined — Lennard-Jones, electrostatics, solvation, entropy, quantum correction — into one ranking via z-scored weights learned from labeled data. The result is a single affinity score with an uncertainty band." style="--x: 10%; --y: 58%; --r: 6deg; --d: -2s;">
                 <span class="tile-sym">IS</span>
                 <span class="tile-num">05</span>
                 <span class="tile-name">Interaction<br>Scoring</span>
             </div>
 
-            <div class="tile" data-name="Symptom mapping" data-desc="Patient symptom clusters are projected onto the graph and matched to gene drivers with known clinical associations. The output is a ranked list of likely causal genes — a diagnosis-side mirror of the standard variant → phenotype flow." style="--x: 32%; --y: 68%; --r: -4deg; --d: -2.5s;">
+            <div class="tile" data-name="How does it read symptoms?" data-desc="Patient symptom clusters are projected onto the graph and matched to gene drivers with known clinical associations. The output is a ranked list of likely causal genes — a diagnosis-side mirror of the standard variant → phenotype flow." style="--x: 32%; --y: 68%; --r: -4deg; --d: -2.5s;">
                 <span class="tile-sym">SM</span>
                 <span class="tile-num">06</span>
                 <span class="tile-name">Symptom<br>Mapping</span>
             </div>
 
-            <div class="tile" data-name="Signal reactivation" data-desc="Silenced or downregulated pathways are identified via differential expression and methylation signatures. Compounds that re-express those pathways are ranked by predicted restoration strength — the reversal mechanism, not just the suppression." style="--x: 54%; --y: 54%; --r: 3deg; --d: -3s;">
+            <div class="tile" data-name="What does signal reactivation mean?" data-desc="Silenced or downregulated pathways are identified via differential expression and methylation signatures. Compounds that re-express those pathways are ranked by predicted restoration strength — the reversal mechanism, not just the suppression." style="--x: 54%; --y: 54%; --r: 3deg; --d: -3s;">
                 <span class="tile-sym">SR</span>
                 <span class="tile-num">07</span>
                 <span class="tile-name">Signal<br>Reactivation</span>
             </div>
 
-            <div class="tile" data-name="Open datasets" data-desc="Every intermediate output is archived with a permanent identifier — training sets, model weights, benchmark results, and derived features. The full pipeline is reproducible from public sources with no hidden dependencies." style="--x: 76%; --y: 62%; --r: -5deg; --d: -3.5s;">
+            <div class="tile" data-name="Is everything public?" data-desc="Every intermediate output is archived with a permanent identifier — training sets, model weights, benchmark results, and derived features. The full pipeline is reproducible from public sources with no hidden dependencies." style="--x: 76%; --y: 62%; --r: -5deg; --d: -3.5s;">
                 <span class="tile-sym">OD</span>
                 <span class="tile-num">08</span>
                 <span class="tile-name">Open<br>Datasets</span>
