@@ -5349,3 +5349,90 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 @media (max-width: 520px) {
     #capabilities .tile-field { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   MATH — spectra visual (physics peaks + ML curve)
+   ============================================================ */
+.spectra-visual {
+    margin-top: 88px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(148,163,184,0.15);
+}
+.spectra-lead,
+.spectra-foot {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #94a3b8;
+    font-weight: 300;
+    max-width: 620px;
+}
+.spectra-lead {
+    margin: 0 0 40px;
+}
+.spectra-foot {
+    margin: 40px 0 0;
+}
+.spectra-svg {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    display: block;
+    overflow: visible;
+}
+
+/* ML curve: soft breathing animation */
+.ml-curve {
+    animation: mlBreath 6s ease-in-out infinite;
+}
+.ml-curve-glow {
+    animation: mlBreath 6s ease-in-out infinite;
+}
+@keyframes mlBreath {
+    0%, 100% { opacity: 0.7; }
+    50%      { opacity: 1;   }
+}
+
+/* Physics peaks: revealed on scroll */
+.phys-peak {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform-origin: bottom center;
+    transform-box: fill-box;
+}
+.phys-label {
+    transition: opacity 0.4s ease;
+}
+.spectra-visual.visible .phys-peak {
+    opacity: 1 !important;
+}
+.spectra-visual.visible .phys-peak[data-idx="0"] { transition-delay: 0.1s; }
+.spectra-visual.visible .phys-peak[data-idx="1"] { transition-delay: 0.35s; }
+.spectra-visual.visible .phys-peak[data-idx="2"] { transition-delay: 0.60s; }
+.spectra-visual.visible .phys-peak[data-idx="3"] { transition-delay: 0.85s; }
+.spectra-visual.visible .phys-label[data-idx="0"] { transition-delay: 0.1s; }
+.spectra-visual.visible .phys-label[data-idx="1"] { transition-delay: 0.35s; }
+.spectra-visual.visible .phys-label[data-idx="2"] { transition-delay: 0.60s; }
+.spectra-visual.visible .phys-label[data-idx="3"] { transition-delay: 0.85s; }
+
+/* Agreement glow: fires after peaks settle */
+.agreement-points {
+    transition: opacity 0.8s ease 1.2s;
+}
+.spectra-visual.visible .agreement-points {
+    opacity: 1 !important;
+}
+
+/* Score readout: fades in last */
+.score-readout {
+    transition: opacity 0.8s ease 1.8s;
+}
+.spectra-visual.visible .score-readout {
+    opacity: 1 !important;
+}
+
+/* Peak labels and score: hidden until visible class is added by JS */
+.phys-label {
+    opacity: 0;
+}
+.spectra-visual.visible .phys-label {
+    opacity: 1 !important;
+}
