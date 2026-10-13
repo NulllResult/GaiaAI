@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=29">
+<link rel="stylesheet" href="assets/style.css?v=30">
 </head>
 <body>
 
@@ -2117,6 +2117,39 @@
             </table>
             <div class="note">
                 → next: combine top 3 into a protocol, simulate outcomes at                30 / 90 / 180 / 365 days, generate full evidence report.
+            </div>
+        </div>
+
+        <div class="sample-output">
+            <div class="sample-output-header">
+                <div class="dot-row"><span></span><span></span><span></span></div>
+                <div class="title">sample output — damage reversal over 365 days</div>
+            </div>
+            <div class="sample-output-subtitle">Ankylosing Spondylitis · full pipeline simulation</div>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Day 0</th>
+                    <th>Day 30</th>
+                    <th>Day 90</th>
+                    <th>Day 180</th>
+                    <th>Day 365</th>
+                </tr>
+                <tr><td>Inflammation</td>         <td>8.5</td><td>5.2</td><td>2.1</td><td>0.9</td><td class="score">0.4</td></tr>
+                <tr><td>Synovial hyperplasia</td>  <td>7.5</td><td>4.8</td><td>2.0</td><td>1.1</td><td class="score">0.7</td></tr>
+                <tr><td>Cartilage damage</td>      <td>6.0</td><td>3.9</td><td>1.9</td><td>1.6</td><td class="score">1.6</td></tr>
+                <tr><td>Bone erosion</td>          <td>5.5</td><td>3.6</td><td>1.8</td><td>2.6</td><td class="score">2.8</td></tr>
+                <tr><td>Enthesitis</td>            <td>8.0</td><td>4.9</td><td>1.7</td><td>0.7</td><td class="score">0.5</td></tr>
+                <tr><td>Fibrosis</td>              <td>4.0</td><td>2.4</td><td>1.4</td><td>1.4</td><td class="score">1.4</td></tr>
+                <tr><td>Senescent cells</td>       <td>7.0</td><td>3.9</td><td>1.4</td><td>0.7</td><td class="score">0.6</td></tr>
+                <tr><td>DNA repair</td>            <td>3.0</td><td>3.2</td><td>3.4</td><td>5.9</td><td class="score">7.7</td></tr>
+                <tr><td>Joint function</td>        <td>4.0</td><td>3.5</td><td>3.6</td><td>6.6</td><td class="score">8.8</td></tr>
+            </table>
+            <div class="note">
+                → overall damage reversal <span class="hl">78.9%</span> · joint function restored to <span class="hl">8.8 / 10</span> · senescent cells <span class="hl">90%</span> cleared · DNA repair deficit <span class="hl">90%</span> recovered
+            </div>
+            <div class="note fine">
+                bone erosion plateaus rather than fully reversing — the model is honest about what cannot be undone
             </div>
         </div>
     </div>

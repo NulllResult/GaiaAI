@@ -6009,3 +6009,36 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 .ticker-track,
 .sources-inline,
 .scan-flow-wrap { display: none !important; }
+
+/* ============================================================
+   Second sample output — AS reversal table
+   ============================================================ */
+.sample-output-subtitle {
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(167,243,208,0.55);
+    margin-bottom: 18px;
+    margin-top: 4px;
+}
+.sample-output + .sample-output {
+    margin-top: 40px;
+}
+.sample-output table td:first-child {
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--fg);
+}
+.note.fine {
+    font-size: 0.78rem;
+    color: rgba(167,243,208,0.45);
+    font-style: italic;
+    margin-top: 10px;
+    padding-left: 2px;
+}
+.note .hl {
+    color: #4ade80;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
