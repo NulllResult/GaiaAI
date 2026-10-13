@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body>
 
@@ -551,77 +551,48 @@
             Two methods. Each covers what the other misses.
         </p>
 
-        <div class="mlp-grid">
+        <div class="evidence-grid">
 
-            <!-- PHYSICS -->
-            <div class="mlp-col mlp-physics">
-                <div class="mlp-kicker">Physics</div>
-                <h3>Can score anything. Cannot learn.</h3>
-                <p class="mlp-desc">
-                    Every candidate gets a physical score. Lennard-Jones for contacts.
-                    Coulomb for electrostatics. Solvation for how the pocket reshapes.
-                    Entropy for what the ligand loses when it binds.
-                </p>
-                <div class="mlp-terms">
-                    <span class="mlp-term">ΔG<sub>LJ</sub></span>
-                    <span class="mlp-term">ΔG<sub>elec</sub></span>
-                    <span class="mlp-term">ΔG<sub>solv</sub></span>
-                    <span class="mlp-term">ΔG<sub>entropy</sub></span>
-                </div>
-                <p class="mlp-foot">
-                    The number is real. The physics is inspectable.
-                    But the equations are fixed — they do not learn from what they get wrong.
-                </p>
+            <div class="evidence-card">
+                <span class="tag">Physics</span>
+                <h3>Can score anything.<br>Cannot learn.</h3>
+                <p>Every candidate gets a physical score. Lennard-Jones for contacts. Coulomb for electrostatics. Solvation for how the pocket reshapes. Entropy for what the ligand loses when it binds.</p>
+                <ul>
+                    <li><strong>ΔG<sub>LJ</sub></strong> — Lennard-Jones contacts</li>
+                    <li><strong>ΔG<sub>elec</sub></strong> — Coulomb electrostatics</li>
+                    <li><strong>ΔG<sub>solv</sub></strong> — solvation, pocket reshaping</li>
+                    <li><strong>ΔG<sub>entropy</sub></strong> — ligand entropy loss</li>
+                </ul>
             </div>
 
-            <!-- CENTER MARKER -->
-            <div class="mlp-center">
-                <div class="mlp-pulse"></div>
-                <div class="mlp-pulse"></div>
-                <div class="mlp-pulse"></div>
-            </div>
-
-            <!-- ML -->
-            <div class="mlp-col mlp-ml">
-                <div class="mlp-kicker">Machine learning</div>
-                <h3>Can learn anything. Cannot explain it.</h3>
-                <p class="mlp-desc">
-                    The same complex is read as a feature vector. The classifier
-                    discovers which combinations separate binders from non-binders —
-                    patterns no one hand-coded, thresholds no one set.
-                </p>
-                <div class="mlp-vector">
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
-                </div>
-                <p class="mlp-foot">
-                    It finds what physics alone would miss — but it cannot
-                    justify its decisions. When it disagrees with physics,
-                    nobody can say which one is right.
-                </p>
+            <div class="evidence-card">
+                <span class="tag">Machine learning</span>
+                <h3>Can learn anything.<br>Cannot explain it.</h3>
+                <p>The same complex is read as a feature vector. The classifier discovers which combinations separate binders from non-binders — patterns no one hand-coded, thresholds no one set.</p>
+                <ul>
+                    <li><strong>Trained</strong> on labeled sequence and structure</li>
+                    <li><strong>Discovers</strong> thresholds, not set by hand</li>
+                    <li><strong>Finds</strong> what physics alone would miss</li>
+                    <li><strong>Cannot</strong> justify its decisions</li>
+                </ul>
             </div>
 
         </div>
 
-        <div class="mlp-bottom">
-            <div class="mlp-split">
-                <span class="mlp-split-label">When they agree</span>
-                <span class="mlp-split-value mlp-agree">trusted</span>
+        <div class="evidence-grid" style="margin-top: 24px; grid-template-columns: 1fr 1fr;">
+
+            <div class="evidence-card" style="border-color: rgba(74,222,128,0.4);">
+                <span class="tag" style="color: #4ade80; border-color: rgba(74,222,128,0.4); background: rgba(74,222,128,0.08);">When they agree</span>
+                <h3>The score is <span class="accent">trusted</span>.</h3>
+                <p>A physical calculation and a learned judgment arriving at the same answer means the compound is worth looking at. Neither method dominates — they confirm each other.</p>
             </div>
-            <div class="mlp-split">
-                <span class="mlp-split-label">When they diverge</span>
-                <span class="mlp-split-value mlp-diverge">flagged — not promoted</span>
+
+            <div class="evidence-card" style="border-color: rgba(251,191,36,0.4);">
+                <span class="tag" style="color: #fbbf24; border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.08);">When they diverge</span>
+                <h3>The compound is <span style="color: #fbbf24;">flagged</span>.</h3>
+                <p>A disagreement between a physical calculation and a learned judgment is not noise. It is information — the compound is held back, not promoted.</p>
             </div>
-            <p class="mlp-coda">
-                A disagreement between a physical calculation and a learned judgment
-                is not noise. It is information.
-            </p>
+
         </div>
     </div>
 </section>
