@@ -546,54 +546,171 @@
 
 <section id="ml-physics">
     <div class="container">
-        <h2>Physics and <span class="accent">machine learning</span></h2>
-        <p class="lead">
-            Two methods. Each covers what the other misses.
+
+        <div class="pipe-header">
+            <p class="pipe-kicker">Eight physics methods &middot; four learned components</p>
+            <h2 class="pipe-title">Most of them do not work.<br>The score is what <span class="accent">survives</span>.</h2>
+        </div>
+
+        <svg class="pipe-svg" viewBox="0 0 1400 560" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="pipeStrong" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0.95"/>
+                </linearGradient>
+                <linearGradient id="pipeWeak" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"   stop-color="#475569" stop-opacity="0.08"/>
+                    <stop offset="100%" stop-color="#64748b" stop-opacity="0.35"/>
+                </linearGradient>
+                <linearGradient id="pipeML" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"   stop-color="#60a5fa" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#93c5fd" stop-opacity="0.95"/>
+                </linearGradient>
+                <radialGradient id="pipePulse" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3"/>
+                </filter>
+            </defs>
+
+            <!-- ===========================================
+                 PHYSICS — left side
+                 =========================================== -->
+
+            <!-- 3 strong strands -->
+            <g filter="url(#softBlur)" opacity="0.22">
+                <path d="M 300 110 C 420 110, 560 280, 700 280" fill="none" stroke="#4ade80" stroke-width="8"/>
+                <path d="M 300 200 C 420 200, 560 280, 700 280" fill="none" stroke="#4ade80" stroke-width="8"/>
+                <path d="M 300 290 C 420 290, 560 280, 700 280" fill="none" stroke="#4ade80" stroke-width="8"/>
+            </g>
+            <g fill="none" stroke="url(#pipeStrong)" stroke-width="3" stroke-linecap="round">
+                <path d="M 300 110 C 420 110, 560 280, 700 280"/>
+                <path d="M 300 200 C 420 200, 560 280, 700 280"/>
+                <path d="M 300 290 C 420 290, 560 280, 700 280"/>
+            </g>
+
+            <!-- 5 weak strands (dashed, fading) -->
+            <g fill="none" stroke="url(#pipeWeak)" stroke-width="1.4" stroke-dasharray="3 6" stroke-linecap="round">
+                <path d="M 300 360 C 420 360, 560 280, 700 280"/>
+                <path d="M 300 415 C 420 415, 560 280, 700 280"/>
+                <path d="M 300 460 C 420 460, 560 280, 700 280"/>
+                <path d="M 300 500 C 420 500, 560 280, 700 280"/>
+                <path d="M 300 530 C 420 530, 560 280, 700 280"/>
+            </g>
+
+            <!-- Physics labels -->
+            <g font-family="ui-monospace, monospace" font-size="13" text-anchor="end">
+                <text x="285" y="114" fill="#a7f3d0" font-weight="500">entropy</text>
+                <text x="285" y="204" fill="#a7f3d0" font-weight="500">sasa</text>
+                <text x="285" y="294" fill="#a7f3d0" font-weight="500">gb</text>
+                <text x="285" y="364" fill="#475569">mmgbsa</text>
+                <text x="285" y="419" fill="#475569">fep</text>
+                <text x="285" y="464" fill="#475569">qm</text>
+                <text x="285" y="504" fill="#475569">water</text>
+                <text x="285" y="534" fill="#475569">mm</text>
+            </g>
+
+            <!-- Signal indicators -->
+            <g>
+                <circle cx="296" cy="110" r="4" fill="#4ade80"/>
+                <circle cx="296" cy="200" r="4" fill="#4ade80"/>
+                <circle cx="296" cy="290" r="4" fill="#4ade80"/>
+                <circle cx="296" cy="360" r="2.5" fill="#475569"/>
+                <circle cx="296" cy="415" r="2.5" fill="#475569"/>
+                <circle cx="296" cy="460" r="2.5" fill="#475569"/>
+                <circle cx="296" cy="500" r="2.5" fill="#475569"/>
+                <circle cx="296" cy="530" r="2.5" fill="#475569"/>
+            </g>
+
+            <!-- Physics section label -->
+            <text x="40" y="52" font-family="ui-monospace, monospace" font-size="10"
+                  letter-spacing="0.25em" fill="#4ade80">PHYSICS</text>
+
+            <!-- ===========================================
+                 ML — right side
+                 =========================================== -->
+
+            <g filter="url(#softBlur)" opacity="0.22">
+                <path d="M 1100 140 C 980 140, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
+                <path d="M 1100 230 C 980 230, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
+                <path d="M 1100 330 C 980 330, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
+                <path d="M 1100 420 C 980 420, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
+            </g>
+            <g fill="none" stroke="url(#pipeML)" stroke-width="3" stroke-linecap="round">
+                <path d="M 1100 140 C 980 140, 840 280, 700 280"/>
+                <path d="M 1100 230 C 980 230, 840 280, 700 280"/>
+                <path d="M 1100 330 C 980 330, 840 280, 700 280"/>
+                <path d="M 1100 420 C 980 420, 840 280, 700 280"/>
+            </g>
+
+            <g font-family="ui-monospace, monospace" font-size="13" text-anchor="start">
+                <text x="1115" y="144" fill="#93c5fd" font-weight="500">feature vector</text>
+                <text x="1115" y="234" fill="#93c5fd" font-weight="500">classifier</text>
+                <text x="1115" y="334" fill="#93c5fd" font-weight="500">link prediction</text>
+                <text x="1115" y="424" fill="#93c5fd" font-weight="500">z-scored weights</text>
+            </g>
+
+            <g>
+                <circle cx="1104" cy="140" r="4" fill="#60a5fa"/>
+                <circle cx="1104" cy="230" r="4" fill="#60a5fa"/>
+                <circle cx="1104" cy="330" r="4" fill="#60a5fa"/>
+                <circle cx="1104" cy="420" r="4" fill="#60a5fa"/>
+            </g>
+
+            <text x="1330" y="52" text-anchor="end"
+                  font-family="ui-monospace, monospace" font-size="10"
+                  letter-spacing="0.25em" fill="#60a5fa">LEARNED</text>
+
+            <!-- ===========================================
+                 CONVERGENCE
+                 =========================================== -->
+
+            <circle cx="700" cy="280" r="26" fill="url(#pipePulse)">
+                <animate attributeName="r" values="26;40;26" dur="3.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.7;0.15;0.7" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="700" cy="280" r="6" fill="#ffffff"/>
+
+            <!-- ===========================================
+                 OUTPUT — right edge
+                 =========================================== -->
+
+            <g filter="url(#softBlur)" opacity="0.3">
+                <path d="M 740 280 L 1240 280" stroke="#4ade80" stroke-width="10" fill="none"/>
+            </g>
+            <path d="M 740 280 L 1240 280" stroke="#4ade80" stroke-width="3.5"
+                  fill="none" stroke-linecap="round"/>
+
+            <circle r="5" fill="#ffffff" opacity="0.85">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 740 280 L 1240 280"/>
+            </circle>
+
+            <!-- Score -->
+            <text x="1240" y="255" text-anchor="end"
+                  font-family="Georgia, serif" font-size="11" font-style="italic"
+                  fill="#64748b">combined</text>
+            <text x="1240" y="310" text-anchor="end"
+                  font-family="Georgia, serif" font-size="52" font-weight="500"
+                  fill="#f1f5f9">−8.72</text>
+
+            <!-- Convergence label under the pulse -->
+            <text x="700" y="340" text-anchor="middle"
+                  font-family="ui-monospace, monospace" font-size="10"
+                  letter-spacing="0.2em" fill="#64748b">Z-SCORED</text>
+            <text x="700" y="356" text-anchor="middle"
+                  font-family="ui-monospace, monospace" font-size="10"
+                  letter-spacing="0.2em" fill="#64748b">COMBINATION</text>
+
+        </svg>
+
+        <p class="pipe-foot">
+            Three methods carry real signal. The other nine are tested, weighted,
+            and mostly fade. The score does not hide any of them — it reports
+            what survived.
         </p>
 
-        <div class="evidence-grid">
-
-            <div class="evidence-card">
-                <span class="tag">Physics</span>
-                <h3>Can score anything.<br>Cannot learn.</h3>
-                <p>Every candidate gets a physical score. Lennard-Jones for contacts. Coulomb for electrostatics. Solvation for how the pocket reshapes. Entropy for what the ligand loses when it binds.</p>
-                <ul>
-                    <li><strong>ΔG<sub>LJ</sub></strong> — Lennard-Jones contacts</li>
-                    <li><strong>ΔG<sub>elec</sub></strong> — Coulomb electrostatics</li>
-                    <li><strong>ΔG<sub>solv</sub></strong> — solvation, pocket reshaping</li>
-                    <li><strong>ΔG<sub>entropy</sub></strong> — ligand entropy loss</li>
-                </ul>
-            </div>
-
-            <div class="evidence-card">
-                <span class="tag">Machine learning</span>
-                <h3>Can learn anything.<br>Cannot explain it.</h3>
-                <p>The same complex is read as a feature vector. The classifier discovers which combinations separate binders from non-binders — patterns no one hand-coded, thresholds no one set.</p>
-                <ul>
-                    <li><strong>Trained</strong> on labeled sequence and structure</li>
-                    <li><strong>Discovers</strong> thresholds, not set by hand</li>
-                    <li><strong>Finds</strong> what physics alone would miss</li>
-                    <li><strong>Cannot</strong> justify its decisions</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="evidence-grid" style="margin-top: 24px; grid-template-columns: 1fr 1fr;">
-
-            <div class="evidence-card" style="border-color: rgba(74,222,128,0.4);">
-                <span class="tag" style="color: #4ade80; border-color: rgba(74,222,128,0.4); background: rgba(74,222,128,0.08);">When they agree</span>
-                <h3>The score is <span class="accent">trusted</span>.</h3>
-                <p>A physical calculation and a learned judgment arriving at the same answer means the compound is worth looking at. Neither method dominates — they confirm each other.</p>
-            </div>
-
-            <div class="evidence-card" style="border-color: rgba(251,191,36,0.4);">
-                <span class="tag" style="color: #fbbf24; border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.08);">When they diverge</span>
-                <h3>The compound is <span style="color: #fbbf24;">flagged</span>.</h3>
-                <p>A disagreement between a physical calculation and a learned judgment is not noise. It is information — the compound is held back, not promoted.</p>
-            </div>
-
-        </div>
     </div>
 </section>
 
@@ -1764,7 +1881,7 @@ sections.forEach(s => sectionObserver.observe(s));
 
 /* Spectra visual reveal */
 (function() {
-    var el = document.querySelector('.spectra-visual');
+    var el = document.querySelector('.pipe-svg');
     if (!el) return;
     var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
