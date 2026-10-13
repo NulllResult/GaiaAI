@@ -5816,3 +5816,95 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     text-overflow: ellipsis !important;
     letter-spacing: 0.04em !important;
 }
+
+/* ============================================================
+   STATS — one row, bigger, prettier
+   ============================================================ */
+.stats {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    align-items: stretch !important;
+    margin-top: 42px !important;
+    padding: 4px 0 !important;
+    border-top: 1px solid rgba(74,222,128,0.12);
+    border-bottom: 1px solid rgba(74,222,128,0.12);
+    background:
+        linear-gradient(180deg,
+            rgba(74,222,128,0.03) 0%,
+            rgba(74,222,128,0.005) 100%);
+}
+.stats .stat {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding: 22px 10px !important;
+    text-align: center !important;
+    position: relative;
+    transition: background 0.3s ease;
+}
+.stats .stat + .stat::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 22%;
+    width: 1px; height: 56%;
+    background: linear-gradient(180deg,
+        transparent,
+        rgba(74,222,128,0.28),
+        transparent);
+}
+.stats .stat:hover {
+    background: rgba(74,222,128,0.04);
+}
+.stats .num {
+    font-size: clamp(1.4rem, 2.6vw, 2.15rem) !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: #4ade80 !important;
+    text-shadow: 0 0 18px rgba(74,222,128,0.35);
+}
+.stats .label {
+    display: block;
+    margin-top: 8px;
+    font-size: clamp(0.6rem, 1vw, 0.72rem) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: rgba(167,243,208,0.65) !important;
+    font-weight: 500 !important;
+}
+/* On very small screens, shrink further but keep one row */
+@media (max-width: 540px) {
+    .stats .stat { padding: 16px 4px !important; }
+    .stats .num { font-size: 1.05rem !important; letter-spacing: -0.03em !important; }
+    .stats .label { font-size: 0.5rem !important; letter-spacing: 0.08em !important; }
+}
+
+/* ============================================================
+   Hero molecule (replaces old hero-logo styling)
+   ============================================================ */
+.hero-molecule {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 22px rgba(74,222,128,0.25));
+    animation: molFloat 6s ease-in-out infinite;
+}
+@keyframes molFloat {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+.hero-molecule svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+/* hide old hero-logo in case any rules still target it */
+.hero-logo { display: none !important; }
