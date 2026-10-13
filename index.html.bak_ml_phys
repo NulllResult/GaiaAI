@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=3">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body>
 
@@ -544,272 +544,54 @@
     </div>
 </section>
 
-<section id="math">
-<div class="container">
-  <h2>The math <span class="accent">underneath</span></h2>
-
-  <p class="lead">
-    Sequence is raw potential. Meaning emerges only when a pattern
-    is applied in a context. We wrote the math that reads both —
-    not assembled from other people's tools, but derived from the
-    structure of the genome itself.
-  </p>
-
-  <div class="math-narrative">
-
-    <h3>Boundaries are <span class="accent">where biology shifts</span></h3>
-    <p>
-      The genome isn't uniform. Composition drifts, structure loosens,
-      conservation fades. A boundary is placed wherever those shifts
-      align — and the same logic runs at three scales at once.
-    </p>
-
-    <div class="equation-stack">
-      <div class="equation-row">
-        <div class="equation-label">FINE</div>
-        <div class="equation-body">Δ&thinsp;GC &gt; τ<sub>fine</sub> &nbsp;∧&nbsp; Δ&thinsp;H4 &gt; τ<sub>fine</sub></div>
-        <div class="equation-note">local composition shift</div>
-      </div>
-      <div class="equation-row">
-        <div class="equation-label">MEDIUM</div>
-        <div class="equation-body">∇&thinsp;CpG<sub>O/E</sub> &gt; τ<sub>mid</sub></div>
-        <div class="equation-note">island-scale structure change</div>
-      </div>
-      <div class="equation-row">
-        <div class="equation-label">COARSE</div>
-        <div class="equation-body">Δ&thinsp;PhyloP &gt; τ<sub>coarse</sub></div>
-        <div class="equation-note">evolutionary signal break</div>
-      </div>
-    </div>
-
-    <h3>Every segment earns a <span class="accent">signature</span></h3>
-    <p>
-      Between boundaries, each region is described not by a label but
-      by a fingerprint — its composition, its reading frame, its skew,
-      its conservation across deep time. The classifier is not told
-      what to look for. It discovers which combinations of features
-      separate one kind of region from another, and holds that
-      separation across chromosomes and species.
-    </p>
-
-    <div class="feature-ribbon">
-      <span>Composition</span>
-      <span>Structure</span>
-      <span>Frame</span>
-      <span>Skew</span>
-      <span>Conservation</span>
-      <span>Context</span>
-    </div>
-
-    <p class="math-close">
-      No thresholds are hand-set. No rules are hard-coded. The
-      boundaries, the features, and the decision surface are all
-      discovered from labeled sequence — and every equation is
-      written from scratch.
-    </p>
-
-  </div>
-</div>
-
-<style>
-.equation-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin: 28px 0 44px;
-}
-.equation-row {
-  display: grid;
-  grid-template-columns: 90px 1fr 220px;
-  align-items: baseline;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(148,163,184,0.12);
-}
-.equation-label {
-  font-family: monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  color: #64748b;
-}
-.equation-body {
-  font-family: 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 1.15rem;
-  color: #e2e8f0;
-}
-.equation-note {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  text-align: right;
-}
-.math-close {
-  margin-top: 40px;
-  font-style: italic;
-  color: #a7f3d0;
-}
-</style>
-
+<section id="ml-physics">
     <div class="container">
-        <div class="spectra-visual">
+        <h2>Physics and <span class="accent">machine learning</span></h2>
+        <p class="lead">
+            Two methods. Each covers what the other misses.
+        </p>
 
-            <div class="spectra-header">
-                <p class="spectra-kicker">Physics and machine learning — together</p>
-                <h3 class="spectra-title">Two methods. Each one covers what the other <span class="accent">misses</span>.</h3>
+        <div class="evidence-grid">
+
+            <div class="evidence-card">
+                <span class="tag">Physics</span>
+                <h3>Can score anything.<br>Cannot learn.</h3>
+                <p>Every candidate gets a physical score. Lennard-Jones for contacts. Coulomb for electrostatics. Solvation for how the pocket reshapes. Entropy for what the ligand loses when it binds.</p>
+                <ul>
+                    <li><strong>ΔG<sub>LJ</sub></strong> — Lennard-Jones contacts</li>
+                    <li><strong>ΔG<sub>elec</sub></strong> — Coulomb electrostatics</li>
+                    <li><strong>ΔG<sub>solv</sub></strong> — solvation, pocket reshaping</li>
+                    <li><strong>ΔG<sub>entropy</sub></strong> — ligand entropy loss</li>
+                </ul>
             </div>
 
-            <div class="spectra-columns">
-
-                <!-- Physics column -->
-                <div class="spectra-col spectra-col-physics">
-                    <div class="spectra-col-head">
-                        <span class="spectra-col-tag">Physics</span>
-                        <span class="spectra-col-sub">can score anything — cannot learn</span>
-                    </div>
-                    <div class="spectra-col-body">
-                        <p>
-                            Every candidate gets a physical score. Lennard-Jones for
-                            contacts. Coulomb for electrostatics. Solvation for how
-                            the pocket reshapes. Entropy for what the ligand loses
-                            when it binds. The number is real and the physics is
-                            inspectable — but the equations are fixed.
-                        </p>
-                        <p class="spectra-col-limit">
-                            Physics cannot get better at what it does. It does not
-                            learn from the compounds it gets wrong.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- ML column -->
-                <div class="spectra-col spectra-col-ml">
-                    <div class="spectra-col-head">
-                        <span class="spectra-col-tag">Machine learning</span>
-                        <span class="spectra-col-sub">can learn anything — cannot explain it</span>
-                    </div>
-                    <div class="spectra-col-body">
-                        <p>
-                            The same complex is read as a feature vector. The
-                            classifier discovers which combinations of features
-                            separate binders from non-binders — patterns no one
-                            hand-coded, thresholds no one set. Trained on labeled
-                            data, it finds what physics alone would miss.
-                        </p>
-                        <p class="spectra-col-limit">
-                            ML cannot justify its decisions. When it disagrees
-                            with physics, nobody can say which one is right.
-                        </p>
-                    </div>
-                </div>
-
+            <div class="evidence-card">
+                <span class="tag">Machine learning</span>
+                <h3>Can learn anything.<br>Cannot explain it.</h3>
+                <p>The same complex is read as a feature vector. The classifier discovers which combinations separate binders from non-binders — patterns no one hand-coded, thresholds no one set.</p>
+                <ul>
+                    <li><strong>Trained</strong> on labeled sequence and structure</li>
+                    <li><strong>Discovers</strong> thresholds, not set by hand</li>
+                    <li><strong>Finds</strong> what physics alone would miss</li>
+                    <li><strong>Cannot</strong> justify its decisions</li>
+                </ul>
             </div>
 
-            <!-- Divergence visual -->
-            <div class="spectra-visual-wrap">
+        </div>
 
-                <svg class="spectra-svg" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid meet">
-                    <defs>
-                        <linearGradient id="mlCurveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%"   stop-color="#60a5fa" stop-opacity="0.15"/>
-                            <stop offset="50%"  stop-color="#93c5fd" stop-opacity="0.55"/>
-                            <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.15"/>
-                        </linearGradient>
-                        <radialGradient id="agreeGlow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%"   stop-color="#a7f3d0" stop-opacity="0.9"/>
-                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
-                        </radialGradient>
-                        <radialGradient id="divergeGlow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%"   stop-color="#fbbf24" stop-opacity="0.9"/>
-                            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-                        </radialGradient>
-                    </defs>
+        <div class="evidence-grid" style="margin-top: 24px; grid-template-columns: 1fr 1fr;">
 
-                    <!-- baseline -->
-                    <line x1="60" y1="200" x2="940" y2="200" stroke="rgba(148,163,184,0.15)" stroke-width="1"/>
-
-                    <!-- ML curve -->
-                    <path class="ml-curve-glow"
-                          d="M 60 170 C 180 130, 320 80, 500 80 C 680 80, 820 130, 940 170"
-                          fill="none" stroke="#60a5fa" stroke-width="10" opacity="0.07" filter="blur(5px)"/>
-                    <path class="ml-curve"
-                          d="M 60 170 C 180 130, 320 80, 500 80 C 680 80, 820 130, 940 170"
-                          fill="none" stroke="url(#mlCurveGrad)" stroke-width="3"/>
-
-                    <!-- Physics peaks — aligned to ML curve at x=200,400,800 -->
-                    <g class="phys-peaks" stroke="#4ade80" stroke-width="2" fill="none">
-                        <path class="phys-peak" data-idx="0" d="M 190 200 L 200 132 L 210 200" style="opacity: 0"/>
-                        <path class="phys-peak" data-idx="1" d="M 390 200 L 400 100 L 410 200" style="opacity: 0"/>
-                        <path class="phys-peak" data-idx="2" d="M 590 200 L 600 155 L 610 200" style="opacity: 0"/>
-                        <path class="phys-peak" data-idx="3" d="M 790 200 L 800 132 L 810 200" style="opacity: 0"/>
-                    </g>
-
-                    <!-- Peak labels -->
-                    <g font-family="ui-monospace, monospace" font-size="11" fill="#a7f3d0" text-anchor="middle">
-                        <text class="phys-label" data-idx="0" x="200" y="118">ΔG_LJ</text>
-                        <text class="phys-label" data-idx="1" x="400" y="86">ΔG_elec</text>
-                        <text class="phys-label" data-idx="2" x="600" y="141">ΔG_solv</text>
-                        <text class="phys-label" data-idx="3" x="800" y="118">ΔG_entropy</text>
-                    </g>
-
-                    <!-- AGREEMENT points: peaks 1, 2, 4 sit inside ML curve -->
-                    <g class="agree-points" style="opacity: 0">
-                        <circle cx="200" cy="132" r="11" fill="url(#agreeGlow)"/>
-                        <circle cx="400" cy="100" r="13" fill="url(#agreeGlow)"/>
-                        <circle cx="800" cy="132" r="11" fill="url(#agreeGlow)"/>
-                    </g>
-
-                    <!-- DIVERGENCE point: peak 3 at x=600 sits ABOVE the ML curve, which is low there -->
-                    <g class="diverge-point" style="opacity: 0">
-                        <circle cx="600" cy="155" r="14" fill="url(#divergeGlow)"/>
-                        <circle cx="600" cy="155" r="4" fill="#fbbf24">
-                            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <!-- small flag label -->
-                        <text x="600" y="182" text-anchor="middle"
-                              font-family="ui-monospace, monospace"
-                              font-size="9"
-                              fill="#fbbf24"
-                              opacity="0.9">worth inspecting</text>
-                    </g>
-
-                    <!-- traveling particle -->
-                    <circle class="ml-particle" r="3" fill="#ffffff" opacity="0.5">
-                        <animateMotion dur="9s" repeatCount="indefinite"
-                            path="M 60 170 C 180 130, 320 80, 500 80 C 680 80, 820 130, 940 170"/>
-                    </circle>
-
-                    <!-- score readout -->
-                    <g class="score-readout" style="opacity: 0">
-                        <line x1="800" y1="60" x2="940" y2="60" stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
-                        <text x="940" y="42" text-anchor="end"
-                              font-family="Georgia, serif" font-size="10" font-style="italic"
-                              fill="#64748b">combined</text>
-                        <text x="940" y="82" text-anchor="end"
-                              font-family="Georgia, serif" font-size="30" font-weight="500"
-                              fill="#f1f5f9">−8.72</text>
-                    </g>
-                </svg>
-
-                <div class="spectra-legend">
-                    <span class="legend-agree">
-                        <span class="legend-dot legend-dot-green"></span>
-                        Agreement — physics confirms the classifier's confidence
-                    </span>
-                    <span class="legend-diverge">
-                        <span class="legend-dot legend-dot-amber"></span>
-                        Divergence — flagged, not promoted
-                    </span>
-                </div>
-
+            <div class="evidence-card" style="border-color: rgba(74,222,128,0.4);">
+                <span class="tag" style="color: #4ade80; border-color: rgba(74,222,128,0.4); background: rgba(74,222,128,0.08);">When they agree</span>
+                <h3>The score is <span class="accent">trusted</span>.</h3>
+                <p>A physical calculation and a learned judgment arriving at the same answer means the compound is worth looking at. Neither method dominates — they confirm each other.</p>
             </div>
 
-            <p class="spectra-foot">
-                When the two methods agree, the score is trusted.
-                When they diverge, the compound is flagged — because
-                a disagreement between a physical calculation and a
-                learned judgment is not noise. It is information.
-            </p>
+            <div class="evidence-card" style="border-color: rgba(251,191,36,0.4);">
+                <span class="tag" style="color: #fbbf24; border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.08);">When they diverge</span>
+                <h3>The compound is <span style="color: #fbbf24;">flagged</span>.</h3>
+                <p>A disagreement between a physical calculation and a learned judgment is not noise. It is information — the compound is held back, not promoted.</p>
+            </div>
 
         </div>
     </div>

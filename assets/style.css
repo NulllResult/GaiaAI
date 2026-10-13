@@ -5501,3 +5501,34 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 }
 
 
+
+/* ============================================================
+   ML + PHYSICS — animated diagram
+   ============================================================ */
+#ml-physics .mlp-diagram {
+    margin-top: 56px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#ml-physics .mlp-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 40px rgba(74,222,128,0.05));
+}
+#ml-physics .phys-side rect,
+#ml-physics .ml-side rect {
+    transition: fill 0.3s ease;
+}
+
+@media (max-width: 780px) {
+    #ml-physics .mlp-svg {
+        /* Keep the whole SVG readable at small sizes */
+        min-width: 700px;
+        max-height: 500px;
+    }
+    #ml-physics .mlp-diagram {
+        overflow-x: auto;
+    }
+}
