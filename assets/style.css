@@ -5751,3 +5751,28 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 }
 
 #what-gaia-is { border-top: none !important; }
+
+/* ============================================================
+   FIX 6 — floating math inside What GAIA is
+   ============================================================ */
+#what-gaia-is {
+    position: relative;
+    overflow: hidden;
+}
+#what-gaia-is .eq-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.55;
+    z-index: 1;
+}
+#what-gaia-is .container-narrow {
+    position: relative;
+    z-index: 2;
+}
+#what-gaia-is .eq {
+    font-size: 0.75rem;
+    opacity: 0.28;
+}
+#what-gaia-is .eq.med  { font-size: 0.85rem; opacity: 0.32; }
+#what-gaia-is .eq.large { font-size: 1rem; opacity: 0.36; }
