@@ -6052,3 +6052,32 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 .hero-helix .rung,
 .hero-helix .orbit,
 .hero-helix .core { display: none !important; }
+
+/* ============================================================
+   Hero molecule icon (replaces helix attempts)
+   ============================================================ */
+.hero-molecule {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 12px rgba(74,222,128,0.25));
+}
+.hero-molecule svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* kill every hero-helix rule from earlier attempts */
+.hero-helix,
+.hero-helix svg,
+.hero-helix .ring,
+.hero-helix .spinner,
+.hero-helix .strand,
+.hero-helix .rung,
+.hero-helix .orbit,
+.hero-helix .core,
+.hero-helix .hero-helix-spin { display: none !important; }
