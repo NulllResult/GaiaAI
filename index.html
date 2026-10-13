@@ -176,9 +176,7 @@
             the system discovers its own patterns.
         </p>
         <p style="color: var(--fg-dim); font-size: 1.05rem; line-height: 1.8;">
-            And once a disease is mapped, GAIA goes further than managing it —
-            it finds the compounds that reawaken the repair pathways the
-            disease has silenced.
+            And once a disease is mapped, GAIA goes further than managing it — it finds the compounds that reawaken the repair pathways the disease has silenced.
         </p>
     </div>
 </section>
@@ -1852,9 +1850,6 @@
     </div>
 </section>
 
-
-</section>
-
 <section id="capabilities">
     <div class="container">
         <h2>What it <span class="accent">does</span></h2>
@@ -2029,50 +2024,7 @@
 })();
 </script>
 
-<script>
-(function(){
-    var detail = document.getElementById('tileDetail');
-    if (!detail) return;
-    document.querySelectorAll('.tile').forEach(function(t){
-        t.addEventListener('mouseenter', function(){
-            detail.querySelector('h3').textContent = t.dataset.name || '';
-            detail.querySelector('p').textContent  = t.dataset.desc || '';
-        });
-        t.addEventListener('click', function(){
-            detail.querySelector('h3').textContent = t.dataset.name || '';
-            detail.querySelector('p').textContent  = t.dataset.desc || '';
-        });
-    });
-})();
-</script>
 
-<script>
-(function() {
-    var detail = document.getElementById('elementDetail');
-    if (!detail) return;
-
-    var cells = document.querySelectorAll('.pt-cell');
-    var data = [
-        {sym:'GS', name:'Genome scanning',  desc:'Every window of a chromosome classified by its structural signature. Coding regions, conserved patterns, regulatory signals — all identified from raw sequence.'},
-        {sym:'VM', name:'Variant mapping',  desc:'Population variation placed in context. Each variant tied to gene, pathway, and any known associations. The base layer of the knowledge graph.'},
-        {sym:'KG', name:'Knowledge graph',  desc:'A growing network of variants, genes, pathways, diseases, and compounds. Every new source adds edges. The graph learns as the field publishes.'},
-        {sym:'CL', name:'Compound libraries', desc:'Multiple curated libraries of small molecules and natural products. Thousands upon thousands of candidates ready to be screened against any target.'},
-        {sym:'IS', name:'Interaction scoring', desc:'Multiple scoring approaches combined into one ranking. Physical, chemical, and contextual evidence rolled into a single number.'},
-        {sym:'PD', name:'Protocol design', desc:'Simulated multi-compound protocols across time. Predicted outcomes, risks, and safety margins — all in one plan.'},
-        {sym:'LP', name:'Link prediction', desc:'A trained classifier that predicts missing links in the graph. Improves automatically as the graph grows.'},
-        {sym:'OD', name:'Open datasets', desc:'Every stage archived publicly with permanent identifiers. The full pipeline, reproducible from raw public sources.'}
-    ];
-
-    cells.forEach(function(cell, i) {
-        cell.addEventListener('mouseenter', function() {
-            if (data[i]) {
-                detail.querySelector('h3').textContent = data[i].name;
-                detail.querySelector('p').textContent = data[i].desc;
-            }
-        });
-    });
-})();
-</script>
 
 <section>
     <div class="container">
@@ -2157,7 +2109,7 @@
         <div class="footer-links">
             <a href="https://github.com/ObviousSatire/GaiaAI">Source on GitHub</a>
             <a href="https://zenodo.org/communities/gaiaai" target="_blank" rel="noopener">Open datasets</a>
-            <a href="#learning">How it learns</a>
+            <a href="#ml-physics">How it learns</a>
         </div>
         <p>Built with C++17 and Python stdlib. No external dependencies.</p>
     </div>
