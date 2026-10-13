@@ -547,197 +547,275 @@
 <section id="ml-physics">
     <div class="container">
 
-        <p class="mp-kicker">Physics and machine learning</p>
-        <h2 class="mp-title">Most of it does not work. The score is what <span class="accent">survives</span>.</h2>
-        <p class="mp-lead">
-            Eight physics methods. Four learned components. Twelve inputs,
-            three carry real signal, and the score does not hide any of them.
-        </p>
+        <div class="spectra-visual">
 
-        <div class="mp-canvas">
-            <svg viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid meet">
+            <div class="spectra-header">
+                <p class="spectra-kicker">Physics and machine learning — together</p>
+                <h3 class="spectra-title">Two methods. Each one covers what the other <span class="accent">misses</span>.</h3>
+            </div>
 
-                <!-- faint background halo -->
-                <ellipse cx="600" cy="360" rx="520" ry="300" fill="#4ade80" opacity="0.025"/>
+            <div class="spectra-columns">
 
-                <!-- ============================================
-                     EDGES — from each method node to the central convergence
-                     ============================================ -->
+                <div class="spectra-col spectra-col-physics">
+                    <div class="spectra-col-head">
+                        <span class="spectra-col-tag">Physics</span>
+                        <span class="spectra-col-sub">can score anything — cannot learn</span>
+                    </div>
+                    <div class="spectra-col-body">
+                        <p>
+                            Every candidate gets a physical score. Lennard-Jones
+                            for contacts, Coulomb for electrostatics, solvation
+                            for how the pocket reshapes, entropy for what the
+                            ligand loses when it binds. The number is real and
+                            the physics is inspectable — but the equations are
+                            fixed.
+                        </p>
+                        <p class="spectra-col-limit">
+                            Physics cannot get better at what it does.
+                            It does not learn from the compounds it gets wrong.
+                        </p>
+                    </div>
+                </div>
 
-                <!-- dim edges (weak methods) -->
-                <g stroke="#334155" stroke-width="0.8" fill="none" opacity="0.4">
-                    <path d="M 180 200 Q 400 320 600 360"/>
-                    <path d="M 180 300 Q 400 340 600 360"/>
-                    <path d="M 180 400 Q 400 380 600 360"/>
-                    <path d="M 180 500 Q 400 420 600 360"/>
-                    <path d="M 180 600 Q 400 460 600 360"/>
-                </g>
+                <div class="spectra-col spectra-col-ml">
+                    <div class="spectra-col-head">
+                        <span class="spectra-col-tag">Machine learning</span>
+                        <span class="spectra-col-sub">can learn anything — cannot explain it</span>
+                    </div>
+                    <div class="spectra-col-body">
+                        <p>
+                            The same complex is read as a feature vector. The
+                            classifier discovers which combinations of features
+                            separate binders from non-binders — patterns no one
+                            hand-coded, thresholds no one set. Trained on
+                            labeled data, it finds what physics alone would miss.
+                        </p>
+                        <p class="spectra-col-limit">
+                            ML cannot justify its decisions. When it disagrees
+                            with physics, nobody can say which one is right.
+                        </p>
+                    </div>
+                </div>
 
-                <!-- strong edges (entropy, sasa, gb) -->
-                <g stroke="#4ade80" stroke-width="1.6" fill="none" opacity="0.75">
-                    <path d="M 220 140 Q 420 260 600 360"/>
-                    <path d="M 220 240 Q 420 300 600 360"/>
-                    <path d="M 220 340 Q 420 350 600 360"/>
-                </g>
+            </div>
 
-                <!-- ML edges (blue) -->
-                <g stroke="#60a5fa" stroke-width="1.4" fill="none" opacity="0.7">
-                    <path d="M 980 160 Q 800 260 600 360"/>
-                    <path d="M 980 280 Q 800 320 600 360"/>
-                    <path d="M 980 400 Q 800 380 600 360"/>
-                    <path d="M 980 520 Q 800 440 600 360"/>
-                </g>
+            <div class="spectra-visual-wrap">
+                <svg class="spectra-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="mlBaseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%"   stop-color="#60a5fa" stop-opacity="0.05"/>
+                            <stop offset="50%"  stop-color="#93c5fd" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.05"/>
+                        </linearGradient>
+                        <radialGradient id="agreeGlow2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#a7f3d0" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                        </radialGradient>
+                        <radialGradient id="divergeGlow2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#fbbf24" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                        </radialGradient>
+                        <radialGradient id="scoreHalo2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.18"/>
+                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
 
-                <!-- output line: central node to score -->
-                <g filter="url(#outGlow)">
-                    <path d="M 660 400 Q 800 500 1000 560" stroke="#4ade80" stroke-width="6" fill="none" opacity="0.35"/>
-                </g>
-                <path d="M 660 400 Q 800 500 1000 560" stroke="#4ade80" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <!-- faint reference grid -->
+                    <g stroke="rgba(148,163,184,0.06)" stroke-width="1">
+                        <line x1="120" y1="60"  x2="120" y2="320"/>
+                        <line x1="360" y1="60"  x2="360" y2="320"/>
+                        <line x1="600" y1="60"  x2="600" y2="320"/>
+                        <line x1="840" y1="60"  x2="840" y2="320"/>
+                        <line x1="1080" y1="60" x2="1080" y2="320"/>
+                    </g>
 
-                <!-- traveling particles on the strong edges -->
-                <g fill="#ffffff">
-                    <circle r="3" opacity="0.9">
-                        <animateMotion dur="4s" repeatCount="indefinite"
-                            path="M 220 140 Q 420 260 600 360"/>
+                    <!-- baseline -->
+                    <line x1="80" y1="300" x2="1120" y2="300"
+                          stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+                    <text x="80" y="316" font-family="ui-monospace, monospace"
+                          font-size="9" letter-spacing="0.18em" fill="#475569">BASELINE</text>
+
+                    <!-- y-axis labels -->
+                    <text x="60" y="90"  font-family="ui-monospace, monospace"
+                          font-size="9" letter-spacing="0.18em" fill="#475569"
+                          text-anchor="end" transform="rotate(-90 60 90)">PROBABILITY</text>
+                    <text x="60" y="280" font-family="ui-monospace, monospace"
+                          font-size="9" letter-spacing="0.18em" fill="#475569"
+                          text-anchor="end" transform="rotate(-90 60 280)">ENERGY</text>
+
+                    <!-- ML curve — three overlapping layers -->
+                    <!-- layer 1: primary broad probability -->
+                    <path class="ml-base"
+                          d="M 100 260 C 260 200, 400 120, 600 120 C 800 120, 940 200, 1100 260"
+                          fill="none" stroke="url(#mlBaseGrad)" stroke-width="10" opacity="0.35" filter="blur(6px)"/>
+                    <path class="ml-base"
+                          d="M 100 260 C 260 200, 400 120, 600 120 C 800 120, 940 200, 1100 260"
+                          fill="none" stroke="url(#mlBaseGrad)" stroke-width="3"/>
+
+                    <!-- layer 2: high-frequency ripple -->
+                    <path class="ml-ripple"
+                          d="M 100 270 C 180 250, 260 230, 340 210
+                             C 420 190, 480 150, 560 140
+                             C 640 130, 700 150, 780 170
+                             C 860 190, 940 220, 1020 240
+                             C 1060 250, 1100 260, 1140 262"
+                          fill="none" stroke="#93c5fd" stroke-width="1.4"
+                          opacity="0.55" stroke-dasharray="2 3"/>
+
+                    <!-- layer 3: envelope for link prediction -->
+                    <path class="ml-envelope"
+                          d="M 100 290 C 300 250, 500 180, 600 180 C 700 180, 900 250, 1100 290"
+                          fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.35"/>
+
+                    <!-- ============================================
+                         PHYSICS PEAKS — 9 total
+                         ============================================ -->
+
+                    <!-- 3 strong peaks (entropy, sasa, gb) -->
+                    <g stroke="#4ade80" stroke-width="2.2" fill="none">
+                        <path class="peak bright" data-idx="0" d="M 190 300 L 200 150 L 210 300" style="opacity:0"/>
+                        <path class="peak bright" data-idx="1" d="M 390 300 L 400 130 L 410 300" style="opacity:0"/>
+                        <path class="peak bright" data-idx="2" d="M 790 300 L 800 165 L 810 300" style="opacity:0"/>
+                    </g>
+
+                    <!-- labels for strong peaks -->
+                    <g font-family="ui-monospace, monospace" font-size="10"
+                       fill="#a7f3d0" text-anchor="middle">
+                        <text class="peak-label" data-idx="0" x="200" y="136" style="opacity:0">entropy</text>
+                        <text class="peak-label" data-idx="1" x="400" y="116" style="opacity:0">sasa</text>
+                        <text class="peak-label" data-idx="2" x="800" y="151" style="opacity:0">gb</text>
+                    </g>
+
+                    <!-- 5 weak peaks (mmgbsa, fep, qm, water, mm) -->
+                    <g stroke="#475569" stroke-width="1.4" fill="none" stroke-dasharray="2 3">
+                        <path class="peak dim" data-idx="3" d="M 275 300 L 282 230 L 289 300" style="opacity:0"/>
+                        <path class="peak dim" data-idx="4" d="M 515 300 L 522 220 L 529 300" style="opacity:0"/>
+                        <path class="peak dim" data-idx="5" d="M 640 300 L 647 240 L 654 300" style="opacity:0"/>
+                        <path class="peak dim" data-idx="6" d="M 900 300 L 907 225 L 914 300" style="opacity:0"/>
+                        <path class="peak dim" data-idx="7" d="M 1025 300 L 1032 235 L 1039 300" style="opacity:0"/>
+                    </g>
+
+                    <!-- labels for weak peaks (faint) -->
+                    <g font-family="ui-monospace, monospace" font-size="9"
+                       fill="#475569" text-anchor="middle" opacity="0.6">
+                        <text class="peak-label-dim" x="282" y="220">mmgbsa</text>
+                        <text class="peak-label-dim" x="522" y="210">fep</text>
+                        <text class="peak-label-dim" x="647" y="230">qm</text>
+                        <text class="peak-label-dim" x="907" y="215">water</text>
+                        <text class="peak-label-dim" x="1032" y="225">mm</text>
+                    </g>
+
+                    <!-- signal dots above each strong peak -->
+                    <g fill="#4ade80">
+                        <circle class="peak-dot" data-idx="0" cx="200" cy="150" r="4" style="opacity:0"/>
+                        <circle class="peak-dot" data-idx="1" cx="400" cy="130" r="4" style="opacity:0"/>
+                        <circle class="peak-dot" data-idx="2" cx="800" cy="165" r="4" style="opacity:0"/>
+                    </g>
+
+                    <!-- ============================================
+                         AGREEMENT & DIVERGENCE
+                         ============================================ -->
+
+                    <!-- agreement glow at bright peaks × ML curve -->
+                    <g class="agree-points" style="opacity:0">
+                        <circle cx="200" cy="150" r="14" fill="url(#agreeGlow2)"/>
+                        <circle cx="400" cy="130" r="16" fill="url(#agreeGlow2)"/>
+                        <circle cx="800" cy="165" r="14" fill="url(#agreeGlow2)"/>
+                    </g>
+
+                    <!-- divergence at x=647 where 'qm' peak sits far above the low ML curve there -->
+                    <g class="diverge-point" style="opacity:0">
+                        <circle cx="647" cy="240" r="15" fill="url(#divergeGlow2)"/>
+                        <circle cx="647" cy="240" r="4" fill="#fbbf24">
+                            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="647" y="270" text-anchor="middle"
+                              font-family="ui-monospace, monospace"
+                              font-size="9" fill="#fbbf24"
+                              opacity="0.9">worth inspecting</text>
+                    </g>
+
+                    <!-- ============================================
+                         TRAVELING PARTICLES
+                         ============================================ -->
+
+                    <!-- 3 on the ML curve at different phases -->
+                    <circle r="3.5" fill="#ffffff" opacity="0.7">
+                        <animateMotion dur="10s" repeatCount="indefinite"
+                            path="M 100 260 C 260 200, 400 120, 600 120 C 800 120, 940 200, 1100 260"/>
                     </circle>
-                    <circle r="3" opacity="0.9">
-                        <animateMotion dur="4s" repeatCount="indefinite" begin="-1.3s"
-                            path="M 220 240 Q 420 300 600 360"/>
+                    <circle r="3.5" fill="#93c5fd" opacity="0.7">
+                        <animateMotion dur="10s" repeatCount="indefinite" begin="-3.3s"
+                            path="M 100 260 C 260 200, 400 120, 600 120 C 800 120, 940 200, 1100 260"/>
                     </circle>
-                    <circle r="3" opacity="0.9">
-                        <animateMotion dur="4s" repeatCount="indefinite" begin="-2.6s"
-                            path="M 220 340 Q 420 350 600 360"/>
+                    <circle r="3.5" fill="#60a5fa" opacity="0.7">
+                        <animateMotion dur="10s" repeatCount="indefinite" begin="-6.6s"
+                            path="M 100 260 C 260 200, 400 120, 600 120 C 800 120, 940 200, 1100 260"/>
                     </circle>
-                </g>
 
-                <!-- particles on the ML edges -->
-                <g fill="#93c5fd">
-                    <circle r="2.5" opacity="0.85">
-                        <animateMotion dur="5s" repeatCount="indefinite"
-                            path="M 980 160 Q 800 260 600 360"/>
+                    <!-- 2 sliding up the bright peaks periodically -->
+                    <circle r="2.5" fill="#a7f3d0" opacity="0.9">
+                        <animateMotion dur="3s" repeatCount="indefinite"
+                            path="M 200 300 L 200 150 L 200 300"/>
                     </circle>
-                    <circle r="2.5" opacity="0.85">
-                        <animateMotion dur="5s" repeatCount="indefinite" begin="-1.25s"
-                            path="M 980 280 Q 800 320 600 360"/>
+                    <circle r="2.5" fill="#a7f3d0" opacity="0.9">
+                        <animateMotion dur="3s" repeatCount="indefinite" begin="-1.5s"
+                            path="M 800 300 L 800 165 L 800 300"/>
                     </circle>
-                    <circle r="2.5" opacity="0.85">
-                        <animateMotion dur="5s" repeatCount="indefinite" begin="-2.5s"
-                            path="M 980 400 Q 800 380 600 360"/>
-                    </circle>
-                    <circle r="2.5" opacity="0.85">
-                        <animateMotion dur="5s" repeatCount="indefinite" begin="-3.75s"
-                            path="M 980 520 Q 800 440 600 360"/>
-                    </circle>
-                </g>
 
-                <!-- particle on the output -->
-                <circle r="4" fill="#ffffff" opacity="0.9">
-                    <animateMotion dur="2.8s" repeatCount="indefinite"
-                        path="M 660 400 Q 800 500 1000 560"/>
-                </circle>
+                    <!-- ============================================
+                         SCORE READOUT
+                         ============================================ -->
 
-                <!-- ============================================
-                     NODES
-                     ============================================ -->
+                    <g class="score-readout" style="opacity:0">
+                        <!-- soft halo behind the score -->
+                        <circle cx="1140" cy="120" r="80" fill="url(#scoreHalo2)"/>
 
-                <!-- 5 dim physics nodes (mmgbsa, fep, qm, water, mm) -->
-                <g>
-                    <circle cx="180" cy="200" r="5" fill="#334155" opacity="0.6"/>
-                    <circle cx="180" cy="300" r="5" fill="#334155" opacity="0.6"/>
-                    <circle cx="180" cy="400" r="5" fill="#334155" opacity="0.6"/>
-                    <circle cx="180" cy="500" r="5" fill="#334155" opacity="0.6"/>
-                    <circle cx="180" cy="600" r="5" fill="#334155" opacity="0.6"/>
-                </g>
+                        <line x1="1020" y1="80" x2="1160" y2="80"
+                              stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
+                        <text x="1160" y="62" text-anchor="end"
+                              font-family="Georgia, serif" font-size="10"
+                              font-style="italic" fill="#64748b">combined score</text>
+                        <text x="1160" y="118" text-anchor="end"
+                              font-family="Georgia, serif" font-size="44"
+                              font-weight="500" fill="#f1f5f9">−8.72</text>
+                        <text x="1160" y="140" text-anchor="end"
+                              font-family="ui-monospace, monospace"
+                              font-size="10" fill="#4ade80" opacity="0.75">σ = 0.72</text>
+                    </g>
 
-                <!-- 3 bright physics nodes -->
-                <g>
-                    <circle cx="220" cy="140" r="10" fill="#4ade80">
-                        <animate attributeName="r" values="10;13;10" dur="3.6s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="220" cy="240" r="10" fill="#4ade80">
-                        <animate attributeName="r" values="10;13;10" dur="3.6s" begin="-1.2s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="220" cy="340" r="10" fill="#4ade80">
-                        <animate attributeName="r" values="10;13;10" dur="3.6s" begin="-2.4s" repeatCount="indefinite"/>
-                    </circle>
-                </g>
+                    <!-- side labels -->
+                    <text x="30" y="40" font-family="ui-monospace, monospace"
+                          font-size="10" letter-spacing="0.28em"
+                          fill="#4ade80" opacity="0.9">PHYSICS</text>
+                    <text x="1170" y="40" text-anchor="end"
+                          font-family="ui-monospace, monospace"
+                          font-size="10" letter-spacing="0.28em"
+                          fill="#60a5fa" opacity="0.9">LEARNED</text>
+                </svg>
 
-                <!-- 4 ML nodes -->
-                <g>
-                    <circle cx="980" cy="160" r="8" fill="#60a5fa"/>
-                    <circle cx="980" cy="280" r="8" fill="#60a5fa"/>
-                    <circle cx="980" cy="400" r="8" fill="#60a5fa"/>
-                    <circle cx="980" cy="520" r="8" fill="#60a5fa"/>
-                </g>
+                <div class="spectra-legend">
+                    <span class="legend-agree">
+                        <span class="legend-dot legend-dot-green"></span>
+                        Agreement — physics confirms the classifier's confidence
+                    </span>
+                    <span class="legend-diverge">
+                        <span class="legend-dot legend-dot-amber"></span>
+                        Divergence — flagged, not promoted
+                    </span>
+                </div>
+            </div>
 
-                <!-- ============================================
-                     CENTRAL CONVERGENCE NODE
-                     ============================================ -->
+            <p class="spectra-foot">
+                When the two methods agree, the score is trusted. When they
+                diverge, the compound is flagged — because a disagreement
+                between a physical calculation and a learned judgment is
+                not noise. It is information.
+            </p>
 
-                <circle cx="600" cy="360" r="34" fill="#4ade80" opacity="0.15"/>
-                <circle cx="600" cy="360" r="22" fill="#4ade80" opacity="0.25">
-                    <animate attributeName="r" values="22;30;22" dur="4s" repeatCount="indefinite"/>
-                    <animate attributeName="opacity" values="0.25;0.1;0.25" dur="4s" repeatCount="indefinite"/>
-                </circle>
-                <circle cx="600" cy="360" r="12" fill="#0e1a14" stroke="#a7f3d0" stroke-width="2"/>
-                <circle cx="600" cy="360" r="5" fill="#ffffff"/>
-
-                <!-- ============================================
-                     LABELS — floating, not stacked
-                     ============================================ -->
-
-                <g font-family="ui-monospace, monospace" font-size="12" text-anchor="end" fill="#a7f3d0">
-                    <text x="200" y="135">entropy</text>
-                    <text x="200" y="235">sasa</text>
-                    <text x="200" y="335">gb</text>
-                </g>
-
-                <g font-family="ui-monospace, monospace" font-size="11" text-anchor="end" fill="#475569">
-                    <text x="165" y="195">mmgbsa</text>
-                    <text x="165" y="295">fep</text>
-                    <text x="165" y="395">qm</text>
-                    <text x="165" y="495">water</text>
-                    <text x="165" y="595">mm</text>
-                </g>
-
-                <g font-family="ui-monospace, monospace" font-size="12" text-anchor="start" fill="#93c5fd">
-                    <text x="1000" y="164">feature vector</text>
-                    <text x="1000" y="284">classifier</text>
-                    <text x="1000" y="404">link prediction</text>
-                    <text x="1000" y="524">z-scored weights</text>
-                </g>
-
-                <!-- labels for the two sides -->
-                <text x="30" y="52" font-family="ui-monospace, monospace" font-size="10"
-                      letter-spacing="0.28em" fill="#4ade80" opacity="0.9">PHYSICS</text>
-                <text x="1170" y="52" text-anchor="end"
-                      font-family="ui-monospace, monospace" font-size="10"
-                      letter-spacing="0.28em" fill="#60a5fa" opacity="0.9">LEARNED</text>
-
-                <!-- ============================================
-                     SCORE — bottom right
-                     ============================================ -->
-
-                <text x="1030" y="612" text-anchor="end"
-                      font-family="Georgia, serif" font-size="11" font-style="italic"
-                      fill="#64748b">combined score</text>
-                <text x="1040" y="672" text-anchor="end"
-                      font-family="Georgia, serif" font-size="56" font-weight="500"
-                      fill="#f1f5f9">−8.72</text>
-
-                <defs>
-                    <filter id="outGlow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="6"/>
-                    </filter>
-                </defs>
-
-            </svg>
         </div>
-
-        <p class="mp-foot">
-            Three methods carry real signal. The other nine are tested,
-            weighted, and mostly fade. The score reports what survived.
-        </p>
 
     </div>
 </section>
@@ -1909,7 +1987,7 @@ sections.forEach(s => sectionObserver.observe(s));
 
 /* Spectra visual reveal */
 (function() {
-    var el = document.querySelector('.pipe-svg');
+    var el = document.querySelector('.spectra-visual');
     if (!el) return;
     var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
