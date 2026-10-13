@@ -547,168 +547,196 @@
 <section id="ml-physics">
     <div class="container">
 
-        <div class="pipe-header">
-            <p class="pipe-kicker">Eight physics methods &middot; four learned components</p>
-            <h2 class="pipe-title">Most of them do not work.<br>The score is what <span class="accent">survives</span>.</h2>
+        <p class="mp-kicker">Physics and machine learning</p>
+        <h2 class="mp-title">Most of it does not work. The score is what <span class="accent">survives</span>.</h2>
+        <p class="mp-lead">
+            Eight physics methods. Four learned components. Twelve inputs,
+            three carry real signal, and the score does not hide any of them.
+        </p>
+
+        <div class="mp-canvas">
+            <svg viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid meet">
+
+                <!-- faint background halo -->
+                <ellipse cx="600" cy="360" rx="520" ry="300" fill="#4ade80" opacity="0.025"/>
+
+                <!-- ============================================
+                     EDGES — from each method node to the central convergence
+                     ============================================ -->
+
+                <!-- dim edges (weak methods) -->
+                <g stroke="#334155" stroke-width="0.8" fill="none" opacity="0.4">
+                    <path d="M 180 200 Q 400 320 600 360"/>
+                    <path d="M 180 300 Q 400 340 600 360"/>
+                    <path d="M 180 400 Q 400 380 600 360"/>
+                    <path d="M 180 500 Q 400 420 600 360"/>
+                    <path d="M 180 600 Q 400 460 600 360"/>
+                </g>
+
+                <!-- strong edges (entropy, sasa, gb) -->
+                <g stroke="#4ade80" stroke-width="1.6" fill="none" opacity="0.75">
+                    <path d="M 220 140 Q 420 260 600 360"/>
+                    <path d="M 220 240 Q 420 300 600 360"/>
+                    <path d="M 220 340 Q 420 350 600 360"/>
+                </g>
+
+                <!-- ML edges (blue) -->
+                <g stroke="#60a5fa" stroke-width="1.4" fill="none" opacity="0.7">
+                    <path d="M 980 160 Q 800 260 600 360"/>
+                    <path d="M 980 280 Q 800 320 600 360"/>
+                    <path d="M 980 400 Q 800 380 600 360"/>
+                    <path d="M 980 520 Q 800 440 600 360"/>
+                </g>
+
+                <!-- output line: central node to score -->
+                <g filter="url(#outGlow)">
+                    <path d="M 660 400 Q 800 500 1000 560" stroke="#4ade80" stroke-width="6" fill="none" opacity="0.35"/>
+                </g>
+                <path d="M 660 400 Q 800 500 1000 560" stroke="#4ade80" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                <!-- traveling particles on the strong edges -->
+                <g fill="#ffffff">
+                    <circle r="3" opacity="0.9">
+                        <animateMotion dur="4s" repeatCount="indefinite"
+                            path="M 220 140 Q 420 260 600 360"/>
+                    </circle>
+                    <circle r="3" opacity="0.9">
+                        <animateMotion dur="4s" repeatCount="indefinite" begin="-1.3s"
+                            path="M 220 240 Q 420 300 600 360"/>
+                    </circle>
+                    <circle r="3" opacity="0.9">
+                        <animateMotion dur="4s" repeatCount="indefinite" begin="-2.6s"
+                            path="M 220 340 Q 420 350 600 360"/>
+                    </circle>
+                </g>
+
+                <!-- particles on the ML edges -->
+                <g fill="#93c5fd">
+                    <circle r="2.5" opacity="0.85">
+                        <animateMotion dur="5s" repeatCount="indefinite"
+                            path="M 980 160 Q 800 260 600 360"/>
+                    </circle>
+                    <circle r="2.5" opacity="0.85">
+                        <animateMotion dur="5s" repeatCount="indefinite" begin="-1.25s"
+                            path="M 980 280 Q 800 320 600 360"/>
+                    </circle>
+                    <circle r="2.5" opacity="0.85">
+                        <animateMotion dur="5s" repeatCount="indefinite" begin="-2.5s"
+                            path="M 980 400 Q 800 380 600 360"/>
+                    </circle>
+                    <circle r="2.5" opacity="0.85">
+                        <animateMotion dur="5s" repeatCount="indefinite" begin="-3.75s"
+                            path="M 980 520 Q 800 440 600 360"/>
+                    </circle>
+                </g>
+
+                <!-- particle on the output -->
+                <circle r="4" fill="#ffffff" opacity="0.9">
+                    <animateMotion dur="2.8s" repeatCount="indefinite"
+                        path="M 660 400 Q 800 500 1000 560"/>
+                </circle>
+
+                <!-- ============================================
+                     NODES
+                     ============================================ -->
+
+                <!-- 5 dim physics nodes (mmgbsa, fep, qm, water, mm) -->
+                <g>
+                    <circle cx="180" cy="200" r="5" fill="#334155" opacity="0.6"/>
+                    <circle cx="180" cy="300" r="5" fill="#334155" opacity="0.6"/>
+                    <circle cx="180" cy="400" r="5" fill="#334155" opacity="0.6"/>
+                    <circle cx="180" cy="500" r="5" fill="#334155" opacity="0.6"/>
+                    <circle cx="180" cy="600" r="5" fill="#334155" opacity="0.6"/>
+                </g>
+
+                <!-- 3 bright physics nodes -->
+                <g>
+                    <circle cx="220" cy="140" r="10" fill="#4ade80">
+                        <animate attributeName="r" values="10;13;10" dur="3.6s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="220" cy="240" r="10" fill="#4ade80">
+                        <animate attributeName="r" values="10;13;10" dur="3.6s" begin="-1.2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="220" cy="340" r="10" fill="#4ade80">
+                        <animate attributeName="r" values="10;13;10" dur="3.6s" begin="-2.4s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+
+                <!-- 4 ML nodes -->
+                <g>
+                    <circle cx="980" cy="160" r="8" fill="#60a5fa"/>
+                    <circle cx="980" cy="280" r="8" fill="#60a5fa"/>
+                    <circle cx="980" cy="400" r="8" fill="#60a5fa"/>
+                    <circle cx="980" cy="520" r="8" fill="#60a5fa"/>
+                </g>
+
+                <!-- ============================================
+                     CENTRAL CONVERGENCE NODE
+                     ============================================ -->
+
+                <circle cx="600" cy="360" r="34" fill="#4ade80" opacity="0.15"/>
+                <circle cx="600" cy="360" r="22" fill="#4ade80" opacity="0.25">
+                    <animate attributeName="r" values="22;30;22" dur="4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.25;0.1;0.25" dur="4s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="600" cy="360" r="12" fill="#0e1a14" stroke="#a7f3d0" stroke-width="2"/>
+                <circle cx="600" cy="360" r="5" fill="#ffffff"/>
+
+                <!-- ============================================
+                     LABELS — floating, not stacked
+                     ============================================ -->
+
+                <g font-family="ui-monospace, monospace" font-size="12" text-anchor="end" fill="#a7f3d0">
+                    <text x="200" y="135">entropy</text>
+                    <text x="200" y="235">sasa</text>
+                    <text x="200" y="335">gb</text>
+                </g>
+
+                <g font-family="ui-monospace, monospace" font-size="11" text-anchor="end" fill="#475569">
+                    <text x="165" y="195">mmgbsa</text>
+                    <text x="165" y="295">fep</text>
+                    <text x="165" y="395">qm</text>
+                    <text x="165" y="495">water</text>
+                    <text x="165" y="595">mm</text>
+                </g>
+
+                <g font-family="ui-monospace, monospace" font-size="12" text-anchor="start" fill="#93c5fd">
+                    <text x="1000" y="164">feature vector</text>
+                    <text x="1000" y="284">classifier</text>
+                    <text x="1000" y="404">link prediction</text>
+                    <text x="1000" y="524">z-scored weights</text>
+                </g>
+
+                <!-- labels for the two sides -->
+                <text x="30" y="52" font-family="ui-monospace, monospace" font-size="10"
+                      letter-spacing="0.28em" fill="#4ade80" opacity="0.9">PHYSICS</text>
+                <text x="1170" y="52" text-anchor="end"
+                      font-family="ui-monospace, monospace" font-size="10"
+                      letter-spacing="0.28em" fill="#60a5fa" opacity="0.9">LEARNED</text>
+
+                <!-- ============================================
+                     SCORE — bottom right
+                     ============================================ -->
+
+                <text x="1030" y="612" text-anchor="end"
+                      font-family="Georgia, serif" font-size="11" font-style="italic"
+                      fill="#64748b">combined score</text>
+                <text x="1040" y="672" text-anchor="end"
+                      font-family="Georgia, serif" font-size="56" font-weight="500"
+                      fill="#f1f5f9">−8.72</text>
+
+                <defs>
+                    <filter id="outGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="6"/>
+                    </filter>
+                </defs>
+
+            </svg>
         </div>
 
-        <svg class="pipe-svg" viewBox="0 0 1400 560" preserveAspectRatio="xMidYMid meet">
-            <defs>
-                <linearGradient id="pipeStrong" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.2"/>
-                    <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0.95"/>
-                </linearGradient>
-                <linearGradient id="pipeWeak" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%"   stop-color="#475569" stop-opacity="0.08"/>
-                    <stop offset="100%" stop-color="#64748b" stop-opacity="0.35"/>
-                </linearGradient>
-                <linearGradient id="pipeML" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%"   stop-color="#60a5fa" stop-opacity="0.2"/>
-                    <stop offset="100%" stop-color="#93c5fd" stop-opacity="0.95"/>
-                </linearGradient>
-                <radialGradient id="pipePulse" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
-                </radialGradient>
-                <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="3"/>
-                </filter>
-            </defs>
-
-            <!-- ===========================================
-                 PHYSICS — left side
-                 =========================================== -->
-
-            <!-- 3 strong strands -->
-            <g filter="url(#softBlur)" opacity="0.22">
-                <path d="M 300 110 C 420 110, 560 280, 700 280" fill="none" stroke="#4ade80" stroke-width="8"/>
-                <path d="M 300 200 C 420 200, 560 280, 700 280" fill="none" stroke="#4ade80" stroke-width="8"/>
-                <path d="M 300 290 C 420 290, 560 280, 700 280" fill="none" stroke="#4ade80" stroke-width="8"/>
-            </g>
-            <g fill="none" stroke="url(#pipeStrong)" stroke-width="3" stroke-linecap="round">
-                <path d="M 300 110 C 420 110, 560 280, 700 280"/>
-                <path d="M 300 200 C 420 200, 560 280, 700 280"/>
-                <path d="M 300 290 C 420 290, 560 280, 700 280"/>
-            </g>
-
-            <!-- 5 weak strands (dashed, fading) -->
-            <g fill="none" stroke="url(#pipeWeak)" stroke-width="1.4" stroke-dasharray="3 6" stroke-linecap="round">
-                <path d="M 300 360 C 420 360, 560 280, 700 280"/>
-                <path d="M 300 415 C 420 415, 560 280, 700 280"/>
-                <path d="M 300 460 C 420 460, 560 280, 700 280"/>
-                <path d="M 300 500 C 420 500, 560 280, 700 280"/>
-                <path d="M 300 530 C 420 530, 560 280, 700 280"/>
-            </g>
-
-            <!-- Physics labels -->
-            <g font-family="ui-monospace, monospace" font-size="13" text-anchor="end">
-                <text x="285" y="114" fill="#a7f3d0" font-weight="500">entropy</text>
-                <text x="285" y="204" fill="#a7f3d0" font-weight="500">sasa</text>
-                <text x="285" y="294" fill="#a7f3d0" font-weight="500">gb</text>
-                <text x="285" y="364" fill="#475569">mmgbsa</text>
-                <text x="285" y="419" fill="#475569">fep</text>
-                <text x="285" y="464" fill="#475569">qm</text>
-                <text x="285" y="504" fill="#475569">water</text>
-                <text x="285" y="534" fill="#475569">mm</text>
-            </g>
-
-            <!-- Signal indicators -->
-            <g>
-                <circle cx="296" cy="110" r="4" fill="#4ade80"/>
-                <circle cx="296" cy="200" r="4" fill="#4ade80"/>
-                <circle cx="296" cy="290" r="4" fill="#4ade80"/>
-                <circle cx="296" cy="360" r="2.5" fill="#475569"/>
-                <circle cx="296" cy="415" r="2.5" fill="#475569"/>
-                <circle cx="296" cy="460" r="2.5" fill="#475569"/>
-                <circle cx="296" cy="500" r="2.5" fill="#475569"/>
-                <circle cx="296" cy="530" r="2.5" fill="#475569"/>
-            </g>
-
-            <!-- Physics section label -->
-            <text x="40" y="52" font-family="ui-monospace, monospace" font-size="10"
-                  letter-spacing="0.25em" fill="#4ade80">PHYSICS</text>
-
-            <!-- ===========================================
-                 ML — right side
-                 =========================================== -->
-
-            <g filter="url(#softBlur)" opacity="0.22">
-                <path d="M 1100 140 C 980 140, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
-                <path d="M 1100 230 C 980 230, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
-                <path d="M 1100 330 C 980 330, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
-                <path d="M 1100 420 C 980 420, 840 280, 700 280" fill="none" stroke="#60a5fa" stroke-width="8"/>
-            </g>
-            <g fill="none" stroke="url(#pipeML)" stroke-width="3" stroke-linecap="round">
-                <path d="M 1100 140 C 980 140, 840 280, 700 280"/>
-                <path d="M 1100 230 C 980 230, 840 280, 700 280"/>
-                <path d="M 1100 330 C 980 330, 840 280, 700 280"/>
-                <path d="M 1100 420 C 980 420, 840 280, 700 280"/>
-            </g>
-
-            <g font-family="ui-monospace, monospace" font-size="13" text-anchor="start">
-                <text x="1115" y="144" fill="#93c5fd" font-weight="500">feature vector</text>
-                <text x="1115" y="234" fill="#93c5fd" font-weight="500">classifier</text>
-                <text x="1115" y="334" fill="#93c5fd" font-weight="500">link prediction</text>
-                <text x="1115" y="424" fill="#93c5fd" font-weight="500">z-scored weights</text>
-            </g>
-
-            <g>
-                <circle cx="1104" cy="140" r="4" fill="#60a5fa"/>
-                <circle cx="1104" cy="230" r="4" fill="#60a5fa"/>
-                <circle cx="1104" cy="330" r="4" fill="#60a5fa"/>
-                <circle cx="1104" cy="420" r="4" fill="#60a5fa"/>
-            </g>
-
-            <text x="1330" y="52" text-anchor="end"
-                  font-family="ui-monospace, monospace" font-size="10"
-                  letter-spacing="0.25em" fill="#60a5fa">LEARNED</text>
-
-            <!-- ===========================================
-                 CONVERGENCE
-                 =========================================== -->
-
-            <circle cx="700" cy="280" r="26" fill="url(#pipePulse)">
-                <animate attributeName="r" values="26;40;26" dur="3.5s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="0.7;0.15;0.7" dur="3.5s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="700" cy="280" r="6" fill="#ffffff"/>
-
-            <!-- ===========================================
-                 OUTPUT — right edge
-                 =========================================== -->
-
-            <g filter="url(#softBlur)" opacity="0.3">
-                <path d="M 740 280 L 1240 280" stroke="#4ade80" stroke-width="10" fill="none"/>
-            </g>
-            <path d="M 740 280 L 1240 280" stroke="#4ade80" stroke-width="3.5"
-                  fill="none" stroke-linecap="round"/>
-
-            <circle r="5" fill="#ffffff" opacity="0.85">
-                <animateMotion dur="3s" repeatCount="indefinite" path="M 740 280 L 1240 280"/>
-            </circle>
-
-            <!-- Score -->
-            <text x="1240" y="255" text-anchor="end"
-                  font-family="Georgia, serif" font-size="11" font-style="italic"
-                  fill="#64748b">combined</text>
-            <text x="1240" y="310" text-anchor="end"
-                  font-family="Georgia, serif" font-size="52" font-weight="500"
-                  fill="#f1f5f9">−8.72</text>
-
-            <!-- Convergence label under the pulse -->
-            <text x="700" y="340" text-anchor="middle"
-                  font-family="ui-monospace, monospace" font-size="10"
-                  letter-spacing="0.2em" fill="#64748b">Z-SCORED</text>
-            <text x="700" y="356" text-anchor="middle"
-                  font-family="ui-monospace, monospace" font-size="10"
-                  letter-spacing="0.2em" fill="#64748b">COMBINATION</text>
-
-        </svg>
-
-        <p class="pipe-foot">
-            Three methods carry real signal. The other nine are tested, weighted,
-            and mostly fade. The score does not hide any of them — it reports
-            what survived.
+        <p class="mp-foot">
+            Three methods carry real signal. The other nine are tested,
+            weighted, and mostly fade. The score reports what survived.
         </p>
 
     </div>
