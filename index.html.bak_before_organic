@@ -197,138 +197,25 @@
 <div class="learn-stage">
   <div class="learn-visual">
     <div class="learn-visual">
-                    <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-                        <defs>
-                            <linearGradient id="strandA" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#a7f3d0"/>
-                                <stop offset="50%" stop-color="#4ade80"/>
-                                <stop offset="100%" stop-color="#34d399"/>
-                            </linearGradient>
-                            <linearGradient id="strandB" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#93c5fd"/>
-                                <stop offset="50%" stop-color="#60a5fa"/>
-                                <stop offset="100%" stop-color="#a7f3d0"/>
-                            </linearGradient>
-                            <radialGradient id="helixGlow3" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.16"/>
-                                <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
-                            </radialGradient>
-                        </defs>
-
-                        <!-- ambient glow -->
-                        <circle cx="200" cy="200" r="170" fill="url(#helixGlow3)"/>
-
-                        <!-- outer rotating ring -->
-                        <g>
-                            <animateTransform attributeName="transform" type="rotate"
-                                from="0 200 200" to="360 200 200" dur="48s" repeatCount="indefinite"/>
-                            <circle cx="200" cy="200" r="165" fill="none"
-                                    stroke="#4ade80" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.35"/>
-                            <circle cx="200" cy="35" r="2.5" fill="#a7f3d0"/>
-                            <circle cx="365" cy="200" r="2" fill="#93c5fd"/>
-                            <circle cx="200" cy="365" r="2.5" fill="#4ade80"/>
-                            <circle cx="35" cy="200" r="2" fill="#60a5fa"/>
-                        </g>
-
-                        <!-- second rotating ring, opposite direction -->
-                        <g>
-                            <animateTransform attributeName="transform" type="rotate"
-                                from="360 200 200" to="0 200 200" dur="72s" repeatCount="indefinite"/>
-                            <circle cx="200" cy="200" r="150" fill="none"
-                                    stroke="#93c5fd" stroke-width="0.4" stroke-dasharray="1 6" opacity="0.3"/>
-                        </g>
-
-                        <!-- Strand A — vertical sine wave -->
-                        <path d="M 155 30
-                                 C 245 90  245 150  155 200
-                                 C  65 250   65 310  155 370"
-                              fill="none" stroke="url(#strandA)" stroke-width="3.5" stroke-linecap="round">
-                            <animate attributeName="stroke-dasharray" values="0 900;900 0" dur="7s" repeatCount="indefinite"/>
-                        </path>
-
-                        <!-- Strand B — opposite sine wave -->
-                        <path d="M 245 30
-                                 C 155 90  155 150  245 200
-                                 C 335 250  335 310  245 370"
-                              fill="none" stroke="url(#strandB)" stroke-width="3.5" stroke-linecap="round">
-                            <animate attributeName="stroke-dasharray" values="0 900;900 0" dur="7s" begin="-3.5s" repeatCount="indefinite"/>
-                        </path>
-
-                        <!-- 10 base pairs, each pulsing in sequence -->
-                        <g stroke-linecap="round">
-                            <line x1="172" y1="60"  x2="228" y2="60"  stroke="#a7f3d0" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="0s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="188" y1="95"  x2="212" y2="95"  stroke="#60a5fa" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-0.3s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="196" y1="130" x2="204" y2="130" stroke="#4ade80" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-0.6s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="199" y1="165" x2="201" y2="165" stroke="#93c5fd" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-0.9s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="200" y1="200" x2="200" y2="200" stroke="#a7f3d0" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-1.2s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="199" y1="235" x2="201" y2="235" stroke="#60a5fa" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-1.5s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="196" y1="270" x2="204" y2="270" stroke="#4ade80" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-1.8s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="188" y1="305" x2="212" y2="305" stroke="#93c5fd" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-2.1s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="172" y1="340" x2="228" y2="340" stroke="#a7f3d0" stroke-width="2.5">
-                                <animate attributeName="opacity" values="0.25;1;0.25" dur="3s" begin="-2.4s" repeatCount="indefinite"/>
-                            </line>
-                        </g>
-
-                        <!-- base letters -->
-                        <g font-family="monospace" font-size="11" opacity="0.85">
-                            <text x="155" y="58" fill="#a7f3d0">A</text>
-                            <text x="235" y="58" fill="#a7f3d0">T</text>
-                            <text x="175" y="93" fill="#60a5fa">G</text>
-                            <text x="218" y="93" fill="#60a5fa">C</text>
-                            <text x="180" y="128" fill="#4ade80">T</text>
-                            <text x="215" y="128" fill="#4ade80">A</text>
-                            <text x="178" y="268" fill="#4ade80">C</text>
-                            <text x="218" y="268" fill="#4ade80">G</text>
-                            <text x="175" y="303" fill="#93c5fd">A</text>
-                            <text x="218" y="303" fill="#93c5fd">T</text>
-                            <text x="155" y="338" fill="#a7f3d0">G</text>
-                            <text x="235" y="338" fill="#a7f3d0">C</text>
-                        </g>
-
-                        <!-- scanning bar sweeping top → bottom → top -->
-                        <rect x="135" y="30" width="130" height="4" rx="2"
-                              fill="url(#strandA)" opacity="0.75">
-                            <animate attributeName="y" values="30;365;30" dur="6s" repeatCount="indefinite"/>
-                        </rect>
-
-                        <!-- drifting particles around the helix -->
-                        <g fill="#a7f3d0" opacity="0.55">
-                            <circle cx="80"  cy="120" r="1.6">
-                                <animate attributeName="opacity" values="0.2;0.8;0.2" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="320" cy="160" r="1.4">
-                                <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3.6s" begin="-1s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="95"  cy="290" r="1.6">
-                                <animate attributeName="opacity" values="0.2;0.8;0.2" dur="4.4s" begin="-2s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="305" cy="250" r="1.4">
-                                <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3.8s" begin="-1.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="60"  cy="200" r="1.2">
-                                <animate attributeName="opacity" values="0.2;0.8;0.2" dur="5s" begin="-0.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="340" cy="200" r="1.2">
-                                <animate attributeName="opacity" values="0.2;0.8;0.2" dur="4.6s" begin="-2.5s" repeatCount="indefinite"/>
-                            </circle>
-                        </g>
-                    </svg>
+                    <div class="helix-wrap">
+                        <div class="helix">
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                        </div>
+                        <div class="scan-sweep"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                    </div>
                 </div>
   </div>
   <div class="learn-copy">
@@ -657,111 +544,269 @@
     </div>
 </section>
 
-<section id="math">
-<div class="container">
-  <h2>The math <span class="accent">underneath</span></h2>
+<section id="ml-physics">
+    <div class="container">
+        <h2>Physics and <span class="accent">machine learning</span></h2>
+        <p class="lead">
+            Two methods. Each one covers what the other misses.
+        </p>
 
-  <p class="lead">
-    Sequence is raw potential. Meaning emerges only when a pattern
-    is applied in a context. We wrote the math that reads both —
-    not assembled from other people's tools, but derived from the
-    structure of the genome itself.
-  </p>
+        <div class="mlp-diagram">
+            <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" class="mlp-svg">
 
-  <div class="math-narrative">
+                <defs>
+                    <linearGradient id="physicsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#34d399" stop-opacity="0.15"/>
+                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.05"/>
+                    </linearGradient>
+                    <linearGradient id="mlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.15"/>
+                        <stop offset="100%" stop-color="#93c5fd" stop-opacity="0.05"/>
+                    </linearGradient>
+                    <radialGradient id="mergeGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0"/>
+                    </radialGradient>
+                    <filter id="softGlowM">
+                        <feGaussianBlur stdDeviation="4"/>
+                    </filter>
+                </defs>
 
-    <h3>Boundaries are <span class="accent">where biology shifts</span></h3>
-    <p>
-      The genome isn't uniform. Composition drifts, structure loosens,
-      conservation fades. A boundary is placed wherever those shifts
-      align — and the same logic runs at three scales at once.
-    </p>
+                <!-- ══════ LEFT: PHYSICS ══════ -->
+                <g class="phys-side">
+                    <rect x="40" y="60" width="420" height="420" rx="18"
+                          fill="url(#physicsGrad)" stroke="rgba(74,222,128,0.3)" stroke-width="1.2"/>
 
-    <div class="equation-stack">
-      <div class="equation-row">
-        <div class="equation-label">FINE</div>
-        <div class="equation-body">Δ&thinsp;GC &gt; τ<sub>fine</sub> &nbsp;∧&nbsp; Δ&thinsp;H4 &gt; τ<sub>fine</sub></div>
-        <div class="equation-note">local composition shift</div>
-      </div>
-      <div class="equation-row">
-        <div class="equation-label">MEDIUM</div>
-        <div class="equation-body">∇&thinsp;CpG<sub>O/E</sub> &gt; τ<sub>mid</sub></div>
-        <div class="equation-note">island-scale structure change</div>
-      </div>
-      <div class="equation-row">
-        <div class="equation-label">COARSE</div>
-        <div class="equation-body">Δ&thinsp;PhyloP &gt; τ<sub>coarse</sub></div>
-        <div class="equation-note">evolutionary signal break</div>
-      </div>
+                    <text x="250" y="100" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="14"
+                          fill="#4ade80" letter-spacing="3" font-weight="600">PHYSICS</text>
+
+                    <text x="250" y="125" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="15"
+                          fill="#a7f3d0" font-style="italic">can score anything</text>
+                    <text x="250" y="147" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="13"
+                          fill="#64748b" font-style="italic">cannot learn</text>
+
+                    <!-- 4 physics terms as animated molecular bonds -->
+                    <g class="phys-terms">
+                        <!-- ΔG_LJ -->
+                        <g>
+                            <rect x="80" y="180" width="160" height="52" rx="8"
+                                  fill="#0e1a14" stroke="#4ade80" stroke-width="1.2"/>
+                            <text x="160" y="212" text-anchor="middle"
+                                  font-family="ui-monospace, monospace" font-size="14"
+                                  fill="#a7f3d0">ΔG_LJ</text>
+                            <circle r="3" fill="#4ade80">
+                                <animateMotion dur="4s" repeatCount="indefinite"
+                                    path="M 240 206 L 300 206"/>
+                            </circle>
+                        </g>
+                        <!-- ΔG_elec -->
+                        <g>
+                            <rect x="240" y="180" width="180" height="52" rx="8"
+                                  fill="#0e1a14" stroke="#4ade80" stroke-width="1.2"/>
+                            <text x="330" y="212" text-anchor="middle"
+                                  font-family="ui-monospace, monospace" font-size="14"
+                                  fill="#a7f3d0">ΔG_elec</text>
+                        </g>
+                        <!-- ΔG_solv -->
+                        <g>
+                            <rect x="80" y="260" width="160" height="52" rx="8"
+                                  fill="#0e1a14" stroke="#4ade80" stroke-width="1.2"/>
+                            <text x="160" y="292" text-anchor="middle"
+                                  font-family="ui-monospace, monospace" font-size="14"
+                                  fill="#a7f3d0">ΔG_solv</text>
+                        </g>
+                        <!-- ΔG_entropy -->
+                        <g>
+                            <rect x="240" y="260" width="180" height="52" rx="8"
+                                  fill="#0e1a14" stroke="#4ade80" stroke-width="1.2"/>
+                            <text x="330" y="292" text-anchor="middle"
+                                  font-family="ui-monospace, monospace" font-size="14"
+                                  fill="#a7f3d0">ΔG_entropy</text>
+                        </g>
+                    </g>
+
+                    <!-- Animated bond between terms -->
+                    <g fill="none" stroke="#4ade80" stroke-width="0.8" opacity="0.5">
+                        <line x1="240" y1="206" x2="240" y2="286"/>
+                        <line x1="160" y1="232" x2="160" y2="260"/>
+                    </g>
+
+                    <!-- Summation symbol -->
+                    <text x="250" y="360" text-anchor="middle"
+                          font-family="Times New Roman, serif" font-size="48"
+                          font-style="italic" fill="#4ade80" opacity="0.7">Σ</text>
+
+                    <!-- Total score -->
+                    <g>
+                        <rect x="140" y="390" width="220" height="60" rx="12"
+                              fill="#0e1a14" stroke="#4ade80" stroke-width="1.6">
+                            <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                        </rect>
+                        <text x="250" y="425" text-anchor="middle"
+                              font-family="Georgia, serif" font-size="16"
+                              fill="#f1f5f9" font-style="italic">total score</text>
+                        <text x="250" y="443" text-anchor="middle"
+                              font-family="ui-monospace, monospace" font-size="10"
+                              fill="#64748b" letter-spacing="2">INSPECTABLE</text>
+                    </g>
+                </g>
+
+                <!-- ══════ RIGHT: ML ══════ -->
+                <g class="ml-side">
+                    <rect x="540" y="60" width="420" height="420" rx="18"
+                          fill="url(#mlGrad)" stroke="rgba(96,165,250,0.3)" stroke-width="1.2"/>
+
+                    <text x="750" y="100" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="14"
+                          fill="#60a5fa" letter-spacing="3" font-weight="600">MACHINE LEARNING</text>
+
+                    <text x="750" y="125" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="15"
+                          fill="#93c5fd" font-style="italic">can learn anything</text>
+                    <text x="750" y="147" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="13"
+                          fill="#64748b" font-style="italic">cannot explain it</text>
+
+                    <!-- Feature vector as a grid that pulses -->
+                    <g class="ml-features">
+                        <g>
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                            <rect x="580" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="614" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.5"/>
+                            <rect x="648" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.7"/>
+                            <rect x="682" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.4"/>
+                            <rect x="716" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.8"/>
+                            <rect x="750" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.5"/>
+                            <rect x="784" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="818" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.7"/>
+                            <rect x="852" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.5"/>
+                            <rect x="886" y="180" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.6"/>
+                        </g>
+                        <g>
+                            <animate attributeName="opacity" values="1;0.4;1" dur="3s" repeatCount="indefinite"/>
+                            <rect x="580" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.5"/>
+                            <rect x="614" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.7"/>
+                            <rect x="648" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.4"/>
+                            <rect x="682" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.8"/>
+                            <rect x="716" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.5"/>
+                            <rect x="750" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.7"/>
+                            <rect x="784" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.4"/>
+                            <rect x="818" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.6"/>
+                            <rect x="852" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.5"/>
+                            <rect x="886" y="214" width="24" height="24" rx="4" fill="#93c5fd" opacity="0.8"/>
+                        </g>
+                        <g>
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                            <rect x="580" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.7"/>
+                            <rect x="614" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.4"/>
+                            <rect x="648" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.8"/>
+                            <rect x="682" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.5"/>
+                            <rect x="716" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="750" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.4"/>
+                            <rect x="784" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.8"/>
+                            <rect x="818" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="852" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.7"/>
+                            <rect x="886" y="248" width="24" height="24" rx="4" fill="#60a5fa" opacity="0.5"/>
+                        </g>
+                    </g>
+
+                    <!-- Arrow from features to classifier -->
+                    <g stroke="#93c5fd" stroke-width="1.4" fill="none" opacity="0.6">
+                        <path d="M 750 285 L 750 310">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                        </path>
+                    </g>
+
+                    <!-- Classifier box -->
+                    <rect x="620" y="315" width="260" height="60" rx="12"
+                          fill="#0e1a14" stroke="#60a5fa" stroke-width="1.6">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                    </rect>
+                    <text x="750" y="340" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="14"
+                          fill="#f1f5f9" font-style="italic">classifier</text>
+                    <text x="750" y="358" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="10"
+                          fill="#64748b" letter-spacing="2">NOT INSPECTABLE</text>
+
+                    <!-- Output score -->
+                    <g>
+                        <rect x="660" y="390" width="180" height="60" rx="12"
+                              fill="#0e1a14" stroke="#60a5fa" stroke-width="1.2"/>
+                        <text x="750" y="425" text-anchor="middle"
+                              font-family="Georgia, serif" font-size="16"
+                              fill="#f1f5f9" font-style="italic">predicted bind</text>
+                        <text x="750" y="443" text-anchor="middle"
+                              font-family="ui-monospace, monospace" font-size="10"
+                              fill="#64748b" letter-spacing="2">LEARNED</text>
+                    </g>
+                </g>
+
+                <!-- ══════ CENTER: MERGE ══════ -->
+                <g class="merge-side">
+                    <circle cx="500" cy="270" r="90" fill="url(#mergeGlow)"/>
+
+                    <!-- Agreement pulse rings -->
+                    <circle cx="500" cy="270" r="40" fill="none" stroke="#a7f3d0" stroke-width="1.2" opacity="0.7">
+                        <animate attributeName="r" values="40;80" dur="3s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.7;0" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="500" cy="270" r="40" fill="none" stroke="#a7f3d0" stroke-width="1.2" opacity="0.7">
+                        <animate attributeName="r" values="40;80" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.7;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                    </circle>
+
+                    <!-- Center circle -->
+                    <circle cx="500" cy="270" r="42" fill="#0e1a14" stroke="#a7f3d0" stroke-width="1.8"/>
+                    <text x="500" y="262" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="11"
+                          fill="#a7f3d0" letter-spacing="2">COMBINED</text>
+                    <text x="500" y="288" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="24"
+                          fill="#f1f5f9" font-weight="600">−8.72</text>
+
+                    <!-- Left arrow into center -->
+                    <line x1="440" y1="270" x2="458" y2="270"
+                          stroke="#4ade80" stroke-width="2" opacity="0.7"/>
+                    <!-- Right arrow into center -->
+                    <line x1="558" y1="270" x2="542" y2="270"
+                          stroke="#60a5fa" stroke-width="2" opacity="0.7"/>
+
+                    <!-- Agreement label -->
+                    <text x="500" y="200" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="10"
+                          fill="#a7f3d0" letter-spacing="3">AGREEMENT</text>
+                    <text x="500" y="356" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="10"
+                          fill="#a7f3d0" letter-spacing="3">TRUSTED</text>
+                </g>
+
+                <!-- ══════ BOTTOM: DIVERGENCE ══════ -->
+                <g class="divergence">
+                    <rect x="200" y="500" width="600" height="100" rx="14"
+                          fill="#0e1a14" stroke="rgba(251,191,36,0.35)" stroke-width="1.2"
+                          stroke-dasharray="4 4">
+                        <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="4s" repeatCount="indefinite"/>
+                    </rect>
+                    <text x="500" y="528" text-anchor="middle"
+                          font-family="ui-monospace, monospace" font-size="11"
+                          fill="#fbbf24" letter-spacing="3">DIVERGENCE</text>
+                    <text x="500" y="552" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="14"
+                          fill="#f1f5f9" font-style="italic">flagged, not promoted</text>
+                    <text x="500" y="576" text-anchor="middle"
+                          font-family="Georgia, serif" font-size="12"
+                          fill="#94a3b8" font-style="italic">
+                        A disagreement is not noise. It is information.
+                    </text>
+                </g>
+
+            </svg>
+        </div>
     </div>
-
-    <h3>Every segment earns a <span class="accent">signature</span></h3>
-    <p>
-      Between boundaries, each region is described not by a label but
-      by a fingerprint — its composition, its reading frame, its skew,
-      its conservation across deep time. The classifier is not told
-      what to look for. It discovers which combinations of features
-      separate one kind of region from another, and holds that
-      separation across chromosomes and species.
-    </p>
-
-    <div class="feature-ribbon">
-      <span>Composition</span>
-      <span>Structure</span>
-      <span>Frame</span>
-      <span>Skew</span>
-      <span>Conservation</span>
-      <span>Context</span>
-    </div>
-
-    <p class="math-close">
-      No thresholds are hand-set. No rules are hard-coded. The
-      boundaries, the features, and the decision surface are all
-      discovered from labeled sequence — and every equation is
-      written from scratch.
-    </p>
-
-  </div>
-</div>
-
-<style>
-.equation-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin: 28px 0 44px;
-}
-.equation-row {
-  display: grid;
-  grid-template-columns: 90px 1fr 220px;
-  align-items: baseline;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(148,163,184,0.12);
-}
-.equation-label {
-  font-family: monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  color: #64748b;
-}
-.equation-body {
-  font-family: 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 1.15rem;
-  color: #e2e8f0;
-}
-.equation-note {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  text-align: right;
-}
-.math-close {
-  margin-top: 40px;
-  font-style: italic;
-  color: #a7f3d0;
-}
-</style>
 </section>
 
 <section id="evidence">
@@ -1010,23 +1055,65 @@
             <div class="cross-grid">
 
                 <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <path d="M32 56 L32 20"/>
+                            <path d="M32 20 L18 8"/>
+                            <path d="M32 20 L46 8"/>
+                            <path d="M32 36 L20 26"/>
+                            <path d="M32 36 L44 26"/>
+                            <circle cx="18" cy="8" r="3" class="icon-dot" fill="#a7f3d0" stroke="none"/>
+                            <circle cx="46" cy="8" r="3" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-0.5s"/>
+                            <circle cx="20" cy="26" r="2.6" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-1s"/>
+                            <circle cx="44" cy="26" r="2.6" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-1.5s"/>
+                            <circle cx="32" cy="56" r="3" class="icon-dot" fill="#34d399" stroke="none" style="animation-delay:-2s"/>
+                        </svg>
+                    </div>
                     <div class="cross-title">Cross-species</div>
                     <div class="cross-desc">A pattern that holds across evolutionary distance is a pattern worth trusting.</div>
                 </div>
 
                 <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#a7f3d0" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <ellipse cx="32" cy="42" rx="14" ry="11" class="icon-pulse"/>
+                            <circle cx="20" cy="24" r="5"/>
+                            <circle cx="30" cy="19" r="5"/>
+                            <circle cx="40" cy="20" r="5"/>
+                            <circle cx="48" cy="28" r="4.5"/>
+                        </svg>
+                    </div>
                     <div class="cross-title">Animal models</div>
-                    <div class="cross-desc">Predictions checked against real physiological responses in living systems.</div>
+                    <div class="cross-desc">Nothing reaches a human until it holds in a living organism first.</div>
                 </div>
 
                 <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <circle cx="32" cy="16" r="6" class="icon-pulse"/>
+                            <path d="M32 24 L32 44"/>
+                            <path d="M18 32 L46 32"/>
+                            <path d="M32 44 L22 58"/>
+                            <path d="M32 44 L42 58"/>
+                            <circle cx="32" cy="16" r="2" class="icon-dot" fill="#a7f3d0" stroke="none"/>
+                        </svg>
+                    </div>
                     <div class="cross-title">Human trials</div>
-                    <div class="cross-desc">The strongest check. Dosing, outcomes, adverse events, timing.</div>
+                    <div class="cross-desc">The final check. If a protocol works in people, everything beneath it was correct.</div>
                 </div>
 
                 <div class="cross-item">
-                    <div class="cross-title">Held-out</div>
-                    <div class="cross-desc">Tested on data the model has never seen. If it only works on training data, it doesn't work.</div>
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#a7f3d0" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <path d="M14 14 L50 14 L38 32 L38 50 L26 50 L26 32 Z" class="icon-pulse"/>
+                            <circle cx="20" cy="22" r="2" class="icon-dot" fill="#4ade80" stroke="none"/>
+                            <circle cx="32" cy="24" r="2" class="icon-dot" fill="#4ade80" stroke="none" style="animation-delay:-0.4s"/>
+                            <circle cx="44" cy="22" r="2" class="icon-dot" fill="#4ade80" stroke="none" style="animation-delay:-0.8s"/>
+                            <circle cx="32" cy="44" r="2.4" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-1.2s"/>
+                        </svg>
+                    </div>
+                    <div class="cross-title">Held-out first</div>
+                    <div class="cross-desc">Nothing reaches a mouse until it passes on data the model has never seen.</div>
                 </div>
 
             </div>
@@ -1537,51 +1624,175 @@
     <div class="container">
         <h2>What it <span class="accent">does</span></h2>
         <p class="lead">
-            Eight components. Each one is its own tile — pick one to read its role.
+            Eight components. Each one is its own tile — hover or tap one to read its role.
         </p>
 
         <div class="tile-field">
-            <div class="tile" data-name="Genome scanning" data-desc="Every window of a chromosome classified by its structural signature. Coding regions, conserved patterns, regulatory signals — all identified from raw sequence." style="--x: 8%; --y: 10%; --r: -3deg; --d: 0s;">
+
+            <!-- Scattered chemistry background layer -->
+            <div class="chem-scatter" aria-hidden="true">
+                <!-- Erlenmeyer flask (small) -->
+                <div class="chem-mini" style="top: 8%; left: 4%; animation-delay: 0s;">
+                    <svg viewBox="0 0 40 50" width="40" height="50" fill="none" stroke="#4ade80" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 15 6 L 15 20 L 4 45 Q 3 48 7 48 L 33 48 Q 37 48 36 45 L 25 20 L 25 6 Z"/>
+                        <line x1="13" y1="6" x2="27" y2="6"/>
+                    </svg>
+                </div>
+                <!-- Round-bottom flask -->
+                <div class="chem-mini" style="top: 20%; right: 5%; animation-delay: -2s;">
+                    <svg viewBox="0 0 40 50" width="40" height="50" fill="none" stroke="#60a5fa" stroke-width="0.9" stroke-linejoin="round">
+                        <circle cx="20" cy="32" r="14"/>
+                        <line x1="16" y1="10" x2="16" y2="20"/>
+                        <line x1="24" y1="10" x2="24" y2="20"/>
+                        <line x1="14" y1="10" x2="26" y2="10"/>
+                    </svg>
+                </div>
+                <!-- Test tube (single) -->
+                <div class="chem-mini" style="top: 48%; left: 6%; animation-delay: -4s;">
+                    <svg viewBox="0 0 20 50" width="20" height="50" fill="none" stroke="#a7f3d0" stroke-width="0.9" stroke-linejoin="round">
+                        <rect x="6" y="4" width="8" height="40" rx="4"/>
+                        <line x1="3" y1="4" x2="17" y2="4"/>
+                    </svg>
+                </div>
+                <!-- Beaker -->
+                <div class="chem-mini" style="bottom: 10%; left: 8%; animation-delay: -6s;">
+                    <svg viewBox="0 0 40 46" width="40" height="46" fill="none" stroke="#34d399" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 7 5 L 7 38 Q 7 41 10 41 L 30 41 Q 33 41 33 38 L 33 5"/>
+                        <line x1="5" y1="5" x2="35" y2="5"/>
+                    </svg>
+                </div>
+                <!-- Bunsen burner (tiny) -->
+                <div class="chem-mini" style="bottom: 20%; right: 6%; animation-delay: -3s;">
+                    <svg viewBox="0 0 30 50" width="30" height="50" fill="none" stroke="#fbbf24" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 10 40 L 20 40 L 17 30 L 13 30 Z"/>
+                        <line x1="7" y1="40" x2="23" y2="40"/>
+                        <line x1="15" y1="30" x2="15" y2="22"/>
+                        <path d="M 11 16 Q 15 4 19 16 Q 15 14 11 16 Z"/>
+                    </svg>
+                </div>
+                <!-- Benzene ring -->
+                <div class="chem-mini" style="top: 68%; left: 4%; animation-delay: -5s;">
+                    <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#4ade80" stroke-width="0.9" stroke-linejoin="round">
+                        <polygon points="20,4 34,12 34,28 20,36 6,28 6,12"/>
+                        <circle cx="20" cy="20" r="7" stroke-dasharray="2 3"/>
+                    </svg>
+                </div>
+                <!-- Droplet -->
+                <div class="chem-mini" style="top: 32%; left: 48%; animation-delay: -7s;">
+                    <svg viewBox="0 0 20 30" width="20" height="30" fill="none" stroke="#93c5fd" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 10 3 Q 18 14 18 21 A 8 8 0 0 1 2 21 Q 2 14 10 3 Z"/>
+                    </svg>
+                </div>
+                <!-- Pipette -->
+                <div class="chem-mini" style="top: 60%; right: 8%; animation-delay: -8s;">
+                    <svg viewBox="0 0 14 60" width="14" height="60" fill="none" stroke="#a7f3d0" stroke-width="0.9" stroke-linejoin="round">
+                        <rect x="4" y="4" width="6" height="30" rx="1"/>
+                        <line x1="7" y1="34" x2="7" y2="54"/>
+                    </svg>
+                </div>
+                <!-- Molecule (three atoms) -->
+                <div class="chem-mini" style="top: 82%; right: 20%; animation-delay: -9s;">
+                    <svg viewBox="0 0 40 30" width="40" height="30" fill="none" stroke="#4ade80" stroke-width="0.9">
+                        <circle cx="10" cy="15" r="5"/>
+                        <circle cx="30" cy="10" r="4"/>
+                        <circle cx="28" cy="24" r="4"/>
+                        <line x1="14" y1="14" x2="26" y2="11"/>
+                        <line x1="13" y1="17" x2="25" y2="22"/>
+                    </svg>
+                </div>
+                <!-- Hexagon molecule -->
+                <div class="chem-mini" style="top: 14%; left: 44%; animation-delay: -10s;">
+                    <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#60a5fa" stroke-width="0.9" stroke-linejoin="round">
+                        <polygon points="20,4 34,12 34,28 20,36 6,28 6,12"/>
+                        <circle cx="20" cy="4" r="2" fill="#60a5fa" stroke="none"/>
+                        <circle cx="34" cy="12" r="2" fill="#60a5fa" stroke="none"/>
+                        <circle cx="6" cy="28" r="2" fill="#60a5fa" stroke="none"/>
+                    </svg>
+                </div>
+                <!-- Test tube rack (tiny) -->
+                <div class="chem-mini" style="bottom: 6%; right: 30%; animation-delay: -11s;">
+                    <svg viewBox="0 0 50 40" width="50" height="40" fill="none" stroke="#34d399" stroke-width="0.9" stroke-linejoin="round">
+                        <rect x="6" y="10" width="38" height="3"/>
+                        <rect x="10" y="13" width="2" height="22"/>
+                        <rect x="38" y="13" width="2" height="22"/>
+                        <rect x="16" y="6" width="6" height="26" rx="3"/>
+                        <rect x="28" y="6" width="6" height="26" rx="3"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Tiles (periodic-table-inspired) -->
+            <div class="tile" data-name="How does it read the genome?" data-desc="Reads raw sequence at single-base resolution. Windows are classified by structural signature — GC composition, entropy, codon bias, PhyloP conservation — into coding, conserved, regulatory, or silent. Output: a full annotation track per chromosome." style="--x: 6%;  --y: 8%;  --r: -3deg; --d: 0s;">
                 <span class="tile-sym">GS</span>
+                <span class="tile-num">01</span>
                 <span class="tile-name">Genome<br>Scanning</span>
             </div>
-            <div class="tile" data-name="Variant mapping" data-desc="Population variation placed in context. Each variant tied to gene, pathway, and any known associations. The base layer of the knowledge graph." style="--x: 30%; --y: 22%; --r: 4deg; --d: -0.5s;">
+
+            <div class="tile" data-name="What happens to variants?" data-desc="Each variant is projected onto its gene, transcript, and codon context. Population frequencies, functional impact, and pathway membership are attached — building the base layer that every downstream query reads from." style="--x: 28%; --y: 20%; --r: 4deg; --d: -0.5s;">
                 <span class="tile-sym">VM</span>
+                <span class="tile-num">02</span>
                 <span class="tile-name">Variant<br>Mapping</span>
             </div>
-            <div class="tile" data-name="Knowledge graph" data-desc="A growing network of variants, genes, pathways, diseases, and compounds. Every new source adds edges. The graph learns as the field publishes." style="--x: 52%; --y: 6%; --r: -2deg; --d: -1s;">
+
+            <div class="tile" data-name="How does the graph grow?" data-desc="A directed graph of variants, genes, pathways, diseases, and compounds. Every new paper or database adds nodes and edges. Queries traverse the graph for causal and associative paths — the graph is the reasoning substrate." style="--x: 50%; --y: 6%; --r: -2deg; --d: -1s;">
                 <span class="tile-sym">KG</span>
+                <span class="tile-num">03</span>
                 <span class="tile-name">Knowledge<br>Graph</span>
             </div>
-            <div class="tile" data-name="Compound libraries" data-desc="Multiple curated libraries of small molecules and natural products. Thousands upon thousands of candidates ready to be screened against any target." style="--x: 74%; --y: 20%; --r: 5deg; --d: -1.5s;">
+
+            <div class="tile" data-name="Where do compounds come from?" data-desc="Curated sets of small molecules and natural products, deduplicated and standardized to canonical SMILES with stereochemistry. Each compound is indexed by scaffold, target class, and known bioactivity." style="--x: 72%; --y: 18%; --r: 5deg; --d: -1.5s;">
                 <span class="tile-sym">CL</span>
+                <span class="tile-num">04</span>
                 <span class="tile-name">Compound<br>Libraries</span>
             </div>
-            <div class="tile" data-name="Interaction scoring" data-desc="Multiple scoring approaches combined into one ranking. Physical, chemical, and contextual evidence rolled into a single number." style="--x: 12%; --y: 58%; --r: 6deg; --d: -2s;">
+
+            <div class="tile" data-name="How are interactions scored?" data-desc="Multiple scoring functions are combined — Lennard-Jones, electrostatics, solvation, entropy, quantum correction — into one ranking via z-scored weights learned from labeled data. The result is a single affinity score with an uncertainty band." style="--x: 10%; --y: 58%; --r: 6deg; --d: -2s;">
                 <span class="tile-sym">IS</span>
+                <span class="tile-num">05</span>
                 <span class="tile-name">Interaction<br>Scoring</span>
             </div>
-            <div class="tile" data-name="Symptom mapping" data-desc="Patient symptoms are mapped back to the gene drivers most likely producing them. Instead of starting with a variant and asking what it does, GAIA reads the symptom pattern and finds what could be causing it." style="--x: 34%; --y: 68%; --r: -4deg; --d: -2.5s;">
+
+            <div class="tile" data-name="How does it read symptoms?" data-desc="Patient symptom clusters are projected onto the graph and matched to gene drivers with known clinical associations. The output is a ranked list of likely causal genes — a diagnosis-side mirror of the standard variant → phenotype flow." style="--x: 32%; --y: 68%; --r: -4deg; --d: -2.5s;">
                 <span class="tile-sym">SM</span>
+                <span class="tile-num">06</span>
                 <span class="tile-name">Symptom<br>Mapping</span>
             </div>
-            <div class="tile" data-name="Signal reactivation" data-desc="Diseases silence the pathways that would repair the damage. GAIA identifies compounds that reawaken those dormant signals — the difference between suppressing a disease and reversing it." style="--x: 56%; --y: 54%; --r: 3deg; --d: -3s;">
+
+            <div class="tile" data-name="What does signal reactivation mean?" data-desc="Silenced or downregulated pathways are identified via differential expression and methylation signatures. Compounds that re-express those pathways are ranked by predicted restoration strength — the reversal mechanism, not just the suppression." style="--x: 54%; --y: 54%; --r: 3deg; --d: -3s;">
                 <span class="tile-sym">SR</span>
+                <span class="tile-num">07</span>
                 <span class="tile-name">Signal<br>Reactivation</span>
             </div>
 
-            <div class="tile" data-name="Open datasets" data-desc="Every stage archived publicly with permanent identifiers. The full pipeline, reproducible from raw public sources." style="--x: 78%; --y: 60%; --r: -5deg; --d: -3.5s;">
+            <div class="tile" data-name="Is everything public?" data-desc="Every intermediate output is archived with a permanent identifier — training sets, model weights, benchmark results, and derived features. The full pipeline is reproducible from public sources with no hidden dependencies." style="--x: 76%; --y: 62%; --r: -5deg; --d: -3.5s;">
                 <span class="tile-sym">OD</span>
+                <span class="tile-num">08</span>
                 <span class="tile-name">Open<br>Datasets</span>
             </div>
+
         </div>
 
         <div class="tile-detail" id="tileDetail">
             <h3>Genome scanning</h3>
-            <p>Every window of a chromosome classified by its structural signature. Coding regions, conserved patterns, regulatory signals — all identified from raw sequence.</p>
+            <p>Reads raw sequence at single-base resolution. Windows are classified by structural signature — GC composition, entropy, codon bias, PhyloP conservation — into coding, conserved, regulatory, or silent. Output: a full annotation track per chromosome.</p>
         </div>
     </div>
 </section>
+
+<script>
+(function(){
+    var detail = document.getElementById('tileDetail');
+    if (!detail) return;
+    document.querySelectorAll('.tile').forEach(function(t){
+        var update = function(){
+            detail.querySelector('h3').textContent = t.dataset.name || '';
+            detail.querySelector('p').textContent  = t.dataset.desc || '';
+        };
+        t.addEventListener('mouseenter', update);
+        t.addEventListener('click', update);
+    });
+})();
+</script>
 
 <script>
 (function(){
@@ -1762,6 +1973,22 @@ const sectionObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 sections.forEach(s => sectionObserver.observe(s));
+
+/* Spectra visual reveal */
+(function() {
+    var el = document.querySelector('.spectra-visual');
+    if (!el) return;
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.25 });
+    obs.observe(el);
+})();
+
 </script>
 
 </body>
