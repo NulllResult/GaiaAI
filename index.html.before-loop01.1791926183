@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIA — Self-Learning Platform for Disease Research</title>
+<meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
+<link rel="stylesheet" href="assets/style.css?v=27">
+</head>
+<body>
+
+<div class="hero">
+    <svg class="hero-bg" viewBox="0 0 1800 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <linearGradient id="helixGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.7"/>
+                <stop offset="33%" stop-color="#4ade80" stop-opacity="0.7"/>
+                <stop offset="66%" stop-color="#34d399" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.7"/>
+            </linearGradient>
+            <radialGradient id="cellGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+            </radialGradient>
+        </defs>
+        <circle class="cell-pulse" cx="200" cy="150" r="80" fill="url(#cellGlow)"/>
+        <circle class="cell-pulse" cx="1600" cy="700" r="120" fill="url(#cellGlow)"/>
+        <circle class="cell-pulse" cx="1200" cy="200" r="60" fill="url(#cellGlow)"/>
+        <g class="vine-sway" opacity="0.4">
+            <path d="M100,900 Q150,700 80,500 Q140,300 100,100" stroke="#4ade80" stroke-width="1.5" fill="none"/>
+        </g>
+        <g class="vine-sway" opacity="0.35">
+            <path d="M1700,900 Q1650,700 1720,500 Q1660,300 1700,100" stroke="#34d399" stroke-width="1.5" fill="none"/>
+        </g>
+        <g class="helix-flow" transform="translate(900, 450)">
+            <path d="M-1200,0 Q-600,-220 0,0 T1200,0" stroke="url(#helixGrad)" stroke-width="1.8" fill="none"/>
+            <path d="M-1200,0 Q-600,220 0,0 T1200,0" stroke="url(#helixGrad)" stroke-width="1.8" fill="none"/>
+        </g>
+        <g>
+            <circle class="particle" cx="200" cy="200" r="3" fill="#4ade80"/>
+            <circle class="particle" cx="500" cy="680" r="2.5" fill="#a7f3d0"/>
+            <circle class="particle" cx="1400" cy="180" r="3" fill="#34d399"/>
+            <circle class="particle" cx="1650" cy="580" r="2.5" fill="#60a5fa"/>
+            <circle class="particle" cx="900" cy="100" r="3" fill="#4ade80"/>
+            <circle class="particle" cx="300" cy="500" r="2.5" fill="#a7f3d0"/>
+            <circle class="particle" cx="1500" cy="420" r="3" fill="#4ade80"/>
+            <circle class="particle" cx="700" cy="780" r="2.5" fill="#60a5fa"/>
+        </g>
+            <text class="float-label" x="150" y="120" style="font-family: monospace; font-size: 11px; fill: #4ade80; opacity: 0.25;">ATCG</text>
+        <text class="float-label" x="1450" y="180" style="font-family: monospace; font-size: 10px; fill: #60a5fa; opacity: 0.2;">exon</text>
+        <text class="float-label" x="350" y="620" style="font-family: monospace; font-size: 10px; fill: #a7f3d0; opacity: 0.2;">intron</text>
+        <text class="float-label" x="1250" y="720" style="font-family: monospace; font-size: 11px; fill: #34d399; opacity: 0.25;">GC 0.62</text>
+        <text class="float-label" x="750" y="780" style="font-family: monospace; font-size: 10px; fill: #4ade80; opacity: 0.2;">D = 1.16</text>
+        <text class="float-label" x="1050" y="140" style="font-family: monospace; font-size: 10px; fill: #60a5fa; opacity: 0.2;">chr6</text>
+        <text class="float-label" x="550" y="200" style="font-family: monospace; font-size: 9px; fill: #a7f3d0; opacity: 0.2;">HLA-B</text>
+        <text class="float-label" x="1600" y="500" style="font-family: monospace; font-size: 10px; fill: #34d399; opacity: 0.2;">variant</text>
+        <text class="float-label" x="250" y="400" style="font-family: monospace; font-size: 9px; fill: #4ade80; opacity: 0.2;">fractal</text>
+</svg>
+
+    <div class="eq-layer" aria-hidden="true">
+        <span class="eq small"  style="top: 8%;  left: 5%;">
+            H <span class="op">=</span> <span class="op">−</span> Σ <span class="v">p</span><sub>i</sub> <span class="f">log</span><sub>2</sub> <span class="v">p</span><sub>i</sub>
+        </span>
+        <span class="eq med"    style="top: 15%; left: 72%;">
+            D <span class="op">=</span> <span class="f">lim</span><sub>ε→0</sub> <span class="f">log</span> N(ε) <span class="op">/</span> <span class="f">log</span>(1/ε)
+        </span>
+        <span class="eq small"  style="top: 22%; left: 30%;">
+            E <span class="op">~</span> c · n<sup><span class="v">H</span></sup>
+        </span>
+        <span class="eq"        style="top: 30%; left: 82%;">
+            <span class="v">P</span>(c | x)
+        </span>
+        <span class="eq med"    style="top: 38%; left: 8%;">
+            E <span class="op">=</span> 4ε[ (σ/r)<sup><span class="n">12</span></sup> <span class="op">−</span> (σ/r)<sup><span class="n">6</span></sup> ]
+        </span>
+        <span class="eq small"  style="top: 44%; left: 60%;">
+            w<sub>t+1</sub> <span class="op">=</span> w<sub>t</sub> <span class="op">−</span> η ∇L(w<sub>t</sub>)
+        </span>
+        <span class="eq large"  style="top: 52%; left: 20%;">
+            <span class="v">F</span><sub>1</sub> <span class="op">=</span> <span class="n">2</span> · P · R <span class="op">/</span> (P + R)
+        </span>
+        <span class="eq med"    style="top: 60%; left: 78%;">
+            E <span class="op">=</span> <span class="n">332</span> · q<sub>i</sub> q<sub>j</sub> · e<sup>−κr</sup> <span class="op">/</span> r
+        </span>
+        <span class="eq small"  style="top: 68%; left: 4%;">
+            χ<sub>i</sub> <span class="op">←</span> χ<sub>i</sub> <span class="op">+</span> η q<sub>i</sub> <span class="op">+</span> Σ γ<sub>ij</sub> q<sub>j</sub>
+        </span>
+        <span class="eq"        style="top: 76%; left: 55%;">
+            ΔG <span class="op">=</span> ⟨G⟩<sub>bound</sub> <span class="op">−</span> ⟨G⟩<sub>free</sub>
+        </span>
+        <span class="eq small"  style="top: 84%; left: 28%;">
+            λ ∈ [<span class="n">0</span>, <span class="n">1</span>]
+        </span>
+        <span class="eq med"    style="top: 90%; left: 74%;">
+            ∂E/∂t <span class="op">→</span> <span class="n">0</span>
+        </span>
+        <span class="eq small"  style="top: 12%; left: 45%;">
+            ∫ p(x) dx <span class="op">=</span> <span class="n">1</span>
+        </span>
+        <span class="eq"        style="top: 65%; left: 40%;">
+            <span class="op">∇</span>·F <span class="op">=</span> <span class="n">0</span>
+        </span>
+        <span class="eq small"  style="top: 48%; left: 88%;">
+            Σ<sub>i</sub> q<sub>i</sub> <span class="op">=</span> <span class="n">0</span>
+        </span>
+        <span class="eq med"    style="top: 3%; left: 55%;">
+            ⟨S⟩ <span class="op">=</span> <span class="op">−</span>k<sub>B</sub> Σ p<sub>i</sub> ln p<sub>i</sub>
+        </span>
+    </div>
+
+    <div class="container hero-content">
+        <div class="hero-molecule" aria-hidden="true">
+            <svg viewBox="0 0 140 140" width="130" height="130">
+                <defs>
+                    <linearGradient id="molBond" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%"   stop-color="#a7f3d0"/>
+                        <stop offset="50%"  stop-color="#4ade80"/>
+                        <stop offset="100%" stop-color="#34d399"/>
+                    </linearGradient>
+                    <radialGradient id="atomCore" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="#ffffff"/>
+                        <stop offset="45%"  stop-color="#a7f3d0"/>
+                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="molHalo" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+
+                <!-- outer halo breathing -->
+                <circle cx="70" cy="70" r="56" fill="url(#molHalo)">
+                    <animate attributeName="r" values="52;60;52" dur="4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/>
+                </circle>
+
+                <!-- rotating outer orbit ring with electrons -->
+                <g>
+                    <animateTransform attributeName="transform" type="rotate" from="0 70 70" to="360 70 70" dur="18s" repeatCount="indefinite"/>
+                    <ellipse cx="70" cy="70" rx="58" ry="24" fill="none" stroke="#4ade80" stroke-width="0.6" opacity="0.35"/>
+                    <circle cx="128" cy="70" r="3" fill="#a7f3d0">
+                        <animate attributeName="r" values="2.5;3.5;2.5" dur="1.6s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+                <g>
+                    <animateTransform attributeName="transform" type="rotate" from="360 70 70" to="0 70 70" dur="24s" repeatCount="indefinite"/>
+                    <ellipse cx="70" cy="70" rx="24" ry="58" fill="none" stroke="#60a5fa" stroke-width="0.6" opacity="0.3"/>
+                    <circle cx="70" cy="12" r="2.6" fill="#60a5fa">
+                        <animate attributeName="r" values="2.2;3.2;2.2" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+
+                <!-- the molecule: benzene ring + 3 substituents -->
+                <g stroke="url(#molBond)" stroke-width="2.2" stroke-linecap="round" fill="none">
+                    <!-- ring -->
+                    <polygon points="70,34 101,52 101,88 70,106 39,88 39,52" stroke-linejoin="round"/>
+                    <!-- substituents -->
+                    <line x1="70" y1="34" x2="70" y2="18"/>
+                    <line x1="101" y1="88" x2="115" y2="96"/>
+                    <line x1="39" y1="88" x2="25" y2="96"/>
+                </g>
+
+                <!-- aromatic inner circle (dashed, pulsing) -->
+                <circle cx="70" cy="70" r="14" fill="none" stroke="#a7f3d0" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.75">
+                    <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                    <animateTransform attributeName="transform" type="rotate" from="0 70 70" to="360 70 70" dur="14s" repeatCount="indefinite"/>
+                </circle>
+
+                <!-- vertex atoms (carbon nodes) with staggered pulse -->
+                <g fill="#4ade80">
+                    <circle cx="70"  cy="34"  r="3"><animate attributeName="r" values="2.6;3.6;2.6" dur="2s" begin="0s"    repeatCount="indefinite"/></circle>
+                    <circle cx="101" cy="52"  r="3"><animate attributeName="r" values="2.6;3.6;2.6" dur="2s" begin="0.3s"  repeatCount="indefinite"/></circle>
+                    <circle cx="101" cy="88"  r="3"><animate attributeName="r" values="2.6;3.6;2.6" dur="2s" begin="0.6s"  repeatCount="indefinite"/></circle>
+                    <circle cx="70"  cy="106" r="3"><animate attributeName="r" values="2.6;3.6;2.6" dur="2s" begin="0.9s"  repeatCount="indefinite"/></circle>
+                    <circle cx="39"  cy="88"  r="3"><animate attributeName="r" values="2.6;3.6;2.6" dur="2s" begin="1.2s"  repeatCount="indefinite"/></circle>
+                    <circle cx="39"  cy="52"  r="3"><animate attributeName="r" values="2.6;3.6;2.6" dur="2s" begin="1.5s"  repeatCount="indefinite"/></circle>
+                </g>
+
+                <!-- substituent end atoms (different colors) -->
+                <circle cx="70" cy="18" r="4" fill="#a7f3d0">
+                    <animate attributeName="r" values="3.4;5;3.4" dur="2.4s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="115" cy="96" r="4" fill="#34d399">
+                    <animate attributeName="r" values="3.4;5;3.4" dur="2.4s" begin="-0.8s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="25" cy="96" r="4" fill="#60a5fa">
+                    <animate attributeName="r" values="3.4;5;3.4" dur="2.4s" begin="-1.6s" repeatCount="indefinite"/>
+                </circle>
+
+                <!-- center glow pulse -->
+                <circle cx="70" cy="70" r="10" fill="url(#atomCore)">
+                    <animate attributeName="r" values="8;13;8" dur="3s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <h1>GAIA</h1>
+        <p class="tagline">
+            A <strong>self-learning</strong> platform for disease research.
+            It reads the genome, reads the web, and grows into something
+            that knows more tomorrow than it did today.
+        </p>
+
+        <p class="tagline-proof" style="font-size: 0.95rem; color: var(--fg-dim); margin-top: -8px; margin-bottom: 28px; font-family: ui-monospace, monospace; letter-spacing: 0.02em;">
+            In simulation: Ankylosing Spondylitis BASDAI 6.9 &rarr; 1.0 in 12 months. Clinical remission.
+        </p>
+
+        <div class="hero-cta">
+            <a href="#learning" class="btn btn-primary">How it learns →</a>
+            <a href="https://github.com/ObviousSatire/GaiaAI" class="btn">View source</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="num static">1.08B</div>
+                <div class="label">Variants mapped</div>
+            </div>
+            <div class="stat">
+                <div class="num" data-count="25000000" data-format="m">0</div>
+                <div class="label">Compounds indexed</div>
+            </div>
+            <div class="stat">
+                <div class="num" data-count="500" data-format="plus">0</div>
+                <div class="label">Curated sources</div>
+            </div>
+            <div class="stat">
+                <div class="num static">C++17</div>
+                <div class="label">stdlib only &middot; no deps</div>
+            </div>
+            <div class="stat">
+                <div class="num static">1 TB+</div>
+                <div class="label">Knowledge base</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="what-gaia-is">
+    <div class="eq-layer" aria-hidden="true">
+        <span class="eq small"  style="top: 8%;  left: 5%;">
+            H <span class="op">=</span> <span class="op">−</span> Σ <span class="v">p</span><sub>i</sub> <span class="f">log</span><sub>2</sub> <span class="v">p</span><sub>i</sub>
+        </span>
+        <span class="eq med"    style="top: 15%; left: 72%;">
+            D <span class="op">=</span> <span class="f">lim</span><sub>ε→0</sub> <span class="f">log</span> N(ε) <span class="op">/</span> <span class="f">log</span>(1/ε)
+        </span>
+        <span class="eq small"  style="top: 22%; left: 30%;">
+            E <span class="op">~</span> c · n<sup><span class="v">H</span></sup>
+        </span>
+        <span class="eq"        style="top: 30%; left: 82%;">
+            <span class="v">P</span>(c | x)
+        </span>
+        <span class="eq med"    style="top: 38%; left: 8%;">
+            E <span class="op">=</span> 4ε[ (σ/r)<sup><span class="n">12</span></sup> <span class="op">−</span> (σ/r)<sup><span class="n">6</span></sup> ]
+        </span>
+        <span class="eq small"  style="top: 44%; left: 60%;">
+            w<sub>t+1</sub> <span class="op">=</span> w<sub>t</sub> <span class="op">−</span> η ∇L(w<sub>t</sub>)
+        </span>
+        <span class="eq large"  style="top: 52%; left: 20%;">
+            <span class="v">F</span><sub>1</sub> <span class="op">=</span> <span class="n">2</span> · P · R <span class="op">/</span> (P + R)
+        </span>
+        <span class="eq med"    style="top: 60%; left: 78%;">
+            E <span class="op">=</span> <span class="n">332</span> · q<sub>i</sub> q<sub>j</sub> · e<sup>−κr</sup> <span class="op">/</span> r
+        </span>
+        <span class="eq small"  style="top: 68%; left: 4%;">
+            χ<sub>i</sub> <span class="op">←</span> χ<sub>i</sub> <span class="op">+</span> η q<sub>i</sub> <span class="op">+</span> Σ γ<sub>ij</sub> q<sub>j</sub>
+        </span>
+        <span class="eq"        style="top: 76%; left: 55%;">
+            ΔG <span class="op">=</span> ⟨G⟩<sub>bound</sub> <span class="op">−</span> ⟨G⟩<sub>free</sub>
+        </span>
+        <span class="eq small"  style="top: 84%; left: 28%;">
+            λ ∈ [<span class="n">0</span>, <span class="n">1</span>]
+        </span>
+        <span class="eq med"    style="top: 90%; left: 74%;">
+            ∂E/∂t <span class="op">→</span> <span class="n">0</span>
+        </span>
+        <span class="eq small"  style="top: 12%; left: 45%;">
+            ∫ p(x) dx <span class="op">=</span> <span class="n">1</span>
+        </span>
+        <span class="eq"        style="top: 65%; left: 40%;">
+            <span class="op">∇</span>·F <span class="op">=</span> <span class="n">0</span>
+        </span>
+        <span class="eq small"  style="top: 48%; left: 88%;">
+            Σ<sub>i</sub> q<sub>i</sub> <span class="op">=</span> <span class="n">0</span>
+        </span>
+        <span class="eq med"    style="top: 3%; left: 55%;">
+            ⟨S⟩ <span class="op">=</span> <span class="op">−</span>k<sub>B</sub> Σ p<sub>i</sub> ln p<sub>i</sub>
+        </span>
+    </div>
+    <div class="container-narrow">
+        <svg class="divider-leaf" width="60" height="24" viewBox="0 0 60 24">
+            <line x1="6" y1="12" x2="54" y2="12" stroke="#4ade80" stroke-width="0.8" opacity="0.4"/>
+            <line x1="6" y1="4" x2="6" y2="20" stroke="#a7f3d0" stroke-width="1.2"/>
+            <line x1="18" y1="6" x2="18" y2="18" stroke="#a7f3d0" stroke-width="1" opacity="0.7"/>
+            <line x1="30" y1="2" x2="30" y2="22" stroke="#4ade80" stroke-width="1.6"/>
+            <line x1="42" y1="6" x2="42" y2="18" stroke="#a7f3d0" stroke-width="1" opacity="0.7"/>
+            <line x1="54" y1="4" x2="54" y2="20" stroke="#a7f3d0" stroke-width="1.2"/>
+            <circle cx="30" cy="12" r="2.4" fill="#4ade80"/>
+        </svg>
+        <h2>What <span class="accent">GAIA</span> is</h2>
+        <p class="lead">
+            GAIA is a computational system that reads raw genomes, maps
+            the variants it finds, and asks one question: what is this
+            sequence actually doing? It does not wait for a hypothesis.
+            It derives one from the data.
+        </p>
+        <p class="secondary">
+            The result is a protocol &mdash; a specific set of compounds,
+            at specific doses, for a specific person. Not a list of
+            targets. A treatment plan.
+        </p>
+    </div>
+</section>
+
+<section id="learning">
+    <div class="container">
+        <h2>How it <span class="accent">learns</span></h2>
+        <p class="lead">
+            Three loops, running continuously. Each one improves the system
+            without anyone telling it what to look for.
+        </p>
+
+        <div class="learn-flow">
+
+            <!-- Stage 1: DNA scanning -->
+<div class="learn-stage">
+  <div class="learn-visual">
+                    <div class="helix-wrap">
+                        <div class="helix">
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                            <div class="rung"></div><div class="rung"></div><div class="rung"></div>
+                        </div>
+                        <div class="scan-sweep"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                        <div class="base-pair"></div>
+                    </div>
+                </div>
+  <div class="learn-copy">
+    <span class="stage-badge">Loop 01</span>
+    <h3>Reading <span class="accent">raw sequence</span></h3>
+    <p>
+                                Every region is read for what it can hold. The
+                                system finds the sites a natural compound can
+                                reach on its own — and the ones that require
+                                a covalent bond to stay anchored.
+                            </p>
+    <ul>
+      <li><strong>Scan</strong> the genome for what can be targeted</li>
+      <li><strong>Read</strong> each site — reversible or covalent</li>
+      <li><strong>Mark</strong> what a natural compound can hold on its own</li>
+      <li><strong>Flag</strong> what only a refined molecule could reach</li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="learn-stage reverse">
+                <div class="learn-visual">
+                    <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <radialGradient id="synergyGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.22"/>
+                                <stop offset="60%" stop-color="#4ade80" stop-opacity="0.06"/>
+                                <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="cpdGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+                                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                            </radialGradient>
+                        </defs>
+
+                        <circle cx="200" cy="200" r="170" fill="url(#synergyGlow)"/>
+
+                        <!-- Central target — layered circles pulsing -->
+                        <circle cx="200" cy="200" r="32" fill="#0e1a14" stroke="#4ade80" stroke-width="2"/>
+                        <circle cx="200" cy="200" r="46" fill="none" stroke="#4ade80" stroke-width="0.8" opacity="0.5">
+                            <animate attributeName="r" values="46;62;46" dur="3.6s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.5;0;0.5" dur="3.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="200" cy="200" r="62" fill="none" stroke="#4ade80" stroke-width="0.5" opacity="0.3">
+                            <animate attributeName="r" values="62;82;62" dur="3.6s" begin="-1.8s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.3;0;0.3" dur="3.6s" begin="-1.8s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Target label -->
+                        <text x="200" y="205" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ade80" font-weight="bold">target</text>
+
+                        <!-- Compound 1 — top-left, hexagonal organic shape -->
+                        <g>
+                            <polygon points="88,72 108,84 108,108 88,120 68,108 68,84"
+                                     fill="#0e1a14" stroke="#a7f3d0" stroke-width="1.6">
+                                <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                            </polygon>
+                            <text x="88" y="100" text-anchor="middle" font-family="monospace" font-size="8" fill="#a7f3d0">cpd 1</text>
+                            <line x1="108" y1="108" x2="170" y2="172" stroke="#a7f3d0" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+                        </g>
+
+                        <!-- Compound 2 — top-right, hexagonal shape -->
+                        <g>
+                            <polygon points="312,72 332,84 332,108 312,120 292,108 292,84"
+                                     fill="#0e1a14" stroke="#93c5fd" stroke-width="1.6">
+                                <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" begin="-1s" repeatCount="indefinite"/>
+                            </polygon>
+                            <text x="312" y="100" text-anchor="middle" font-family="monospace" font-size="8" fill="#93c5fd">cpd 2</text>
+                            <line x1="292" y1="108" x2="230" y2="172" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+                        </g>
+
+                        <!-- Compound 3 — bottom, hexagonal shape -->
+                        <g>
+                            <polygon points="200,300 220,312 220,336 200,348 180,336 180,312"
+                                     fill="#0e1a14" stroke="#60a5fa" stroke-width="1.6">
+                                <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" begin="-2s" repeatCount="indefinite"/>
+                            </polygon>
+                            <text x="200" y="328" text-anchor="middle" font-family="monospace" font-size="8" fill="#60a5fa">cpd 3</text>
+                            <line x1="200" y1="300" x2="200" y2="236" stroke="#60a5fa" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+                        </g>
+
+                        <!-- Flowing particles into the target (3 streams) -->
+                        <circle r="3" fill="#a7f3d0">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" path="M 88 96 L 200 200"/>
+                            <animate attributeName="opacity" values="1;1;0" dur="2.4s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="3" fill="#93c5fd">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" begin="-0.8s" path="M 312 96 L 200 200"/>
+                            <animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="-0.8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="3" fill="#60a5fa">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" begin="-1.6s" path="M 200 324 L 200 200"/>
+                            <animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="-1.6s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Echo particles (fainter, offset) -->
+                        <circle r="1.8" fill="#a7f3d0" opacity="0.5">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" begin="-0.4s" path="M 88 96 L 200 200"/>
+                        </circle>
+                        <circle r="1.8" fill="#93c5fd" opacity="0.5">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" begin="-1.2s" path="M 312 96 L 200 200"/>
+                        </circle>
+                        <circle r="1.8" fill="#60a5fa" opacity="0.5">
+                            <animateMotion dur="2.4s" repeatCount="indefinite" begin="-2.0s" path="M 200 324 L 200 200"/>
+                        </circle>
+
+                        <!-- Synergy label -->
+                        <text x="200" y="42" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80" opacity="0.8" letter-spacing="3">SYNERGY</text>
+
+                        <!-- Outer ring of faint pulses -->
+                        <circle cx="200" cy="200" r="140" fill="none" stroke="#a7f3d0" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.3">
+                            <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="40s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="learn-copy">
+                    <span class="stage-badge">Loop 02</span>
+                    <h3>Combining <span class="accent">what fits</span></h3>
+                    <p>
+                        Natural compounds are mapped to what they can reach.
+                        When two or more hit the same pathway from different
+                        angles, they act together — molecular synergy, not
+                        single-agent suppression.
+                    </p>
+                    <ul>
+                        <li><strong>Match</strong> each natural compound to the sites it reaches</li>
+                        <li><strong>Combine</strong> compounds that converge on the same pathway</li>
+                        <li><strong>Reserve</strong> covalent binding for what must stay anchored</li>
+                        <li><strong>Refine</strong> a molecule only when nature falls short</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 3: Continuous loop -->
+            <div class="learn-stage">
+                <div class="learn-visual">
+                    <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <radialGradient id="deliverGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.22"/>
+                                <stop offset="60%" stop-color="#a7f3d0" stop-opacity="0.06"/>
+                                <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0"/>
+                            </radialGradient>
+                            <linearGradient id="capsuleGradA" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#4ade80"/>
+                                <stop offset="50%" stop-color="#a7f3d0"/>
+                                <stop offset="100%" stop-color="#93c5fd"/>
+                            </linearGradient>
+                        </defs>
+
+                        <circle cx="200" cy="200" r="170" fill="url(#deliverGlow)"/>
+
+                        <!-- Outer orbit ring with rotating dots -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="45s" repeatCount="indefinite"/>
+                            <circle cx="200" cy="200" r="150" fill="none" stroke="#a7f3d0" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.4"/>
+                            <circle cx="200" cy="50" r="2.5" fill="#4ade80"/>
+                            <circle cx="350" cy="200" r="2" fill="#93c5fd"/>
+                            <circle cx="200" cy="350" r="2.5" fill="#a7f3d0"/>
+                            <circle cx="50" cy="200" r="2" fill="#60a5fa"/>
+                        </g>
+
+                        <!-- Central capsule — larger -->
+                        <g transform="translate(200 200)">
+                            <rect x="-70" y="-26" width="140" height="52" rx="26"
+                                  fill="#0e1a14" stroke="url(#capsuleGradA)" stroke-width="2"/>
+                            <line x1="0" y1="-26" x2="0" y2="26" stroke="#a7f3d0" stroke-width="1" opacity="0.7"/>
+                            <rect x="-66" y="-22" width="132" height="44" rx="22"
+                                  fill="#4ade80" opacity="0.08"/>
+
+                            <!-- Two pulses traveling through -->
+                            <circle r="3" fill="#ffffff" opacity="0.9">
+                                <animate attributeName="cx" values="-58;58" dur="2.6s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle r="3" fill="#93c5fd" opacity="0.9">
+                                <animate attributeName="cx" values="-58;58" dur="2.6s" begin="-1.3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin="-1.3s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+
+                        <!-- Top label -->
+                        <text x="200" y="40" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7f3d0" opacity="0.8" letter-spacing="3">FORM + ROUTE</text>
+
+                        <!-- 4 delivery icons at cardinal points -->
+                        <!-- Top: pill (two-tone split) -->
+                        <g transform="translate(200 95)">
+                            <ellipse cx="0" cy="0" rx="24" ry="11" fill="#0e1a14" stroke="#4ade80" stroke-width="1.4"/>
+                            <line x1="-24" y1="0" x2="24" y2="0" stroke="#4ade80" stroke-width="0.8"/>
+                            <path d="M -24 0 A 24 11 0 0 1 24 0" fill="#4ade80" opacity="0.15"/>
+                            <text x="0" y="30" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ade80" opacity="0.8">pill</text>
+                        </g>
+
+                        <!-- Bottom: capsule split -->
+                        <g transform="translate(200 305)">
+                            <rect x="-24" y="-11" width="48" height="22" rx="11" fill="#0e1a14" stroke="#a7f3d0" stroke-width="1.4"/>
+                            <line x1="0" y1="-11" x2="0" y2="11" stroke="#a7f3d0" stroke-width="0.8"/>
+                            <path d="M -24 0 A 24 11 0 0 0 24 0" fill="#a7f3d0" opacity="0.15"/>
+                            <text x="0" y="30" text-anchor="middle" font-family="monospace" font-size="8" fill="#a7f3d0" opacity="0.8">capsule</text>
+                        </g>
+
+                        <!-- Left: liquid droplet with shine -->
+                        <g transform="translate(78 200)">
+                            <path d="M 0 -22 Q 16 -4 16 8 A 16 16 0 0 1 -16 8 Q -16 -4 0 -22 Z"
+                                  fill="#0e1a14" stroke="#93c5fd" stroke-width="1.4"/>
+                            <path d="M -6 -6 Q -2 -12 0 -14" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+                            <text x="0" y="38" text-anchor="middle" font-family="monospace" font-size="8" fill="#93c5fd" opacity="0.8">liquid</text>
+                        </g>
+
+                        <!-- Right: syringe -->
+                        <g transform="translate(322 200)">
+                            <rect x="-22" y="-7" width="34" height="14" rx="2" fill="#0e1a14" stroke="#60a5fa" stroke-width="1.4"/>
+                            <line x1="12" y1="0" x2="28" y2="0" stroke="#60a5fa" stroke-width="1.4"/>
+                            <line x1="-22" y1="-10" x2="-22" y2="10" stroke="#60a5fa" stroke-width="1.4"/>
+                            <line x1="-30" y1="0" x2="-22" y2="0" stroke="#60a5fa" stroke-width="1.4"/>
+                            <text x="0" y="34" text-anchor="middle" font-family="monospace" font-size="8" fill="#60a5fa" opacity="0.8">inject</text>
+                        </g>
+
+                        <!-- Faint delivery paths (arcs connecting icons to capsule) -->
+                        <g stroke="#4ade80" stroke-width="0.5" stroke-dasharray="2 4" fill="none" opacity="0.3">
+                            <path d="M 200 130 Q 200 165 200 174"/>
+                            <path d="M 200 270 Q 200 235 200 226"/>
+                            <path d="M 115 200 Q 150 200 130 200"/>
+                            <path d="M 285 200 Q 250 200 270 200"/>
+                        </g>
+
+                        <!-- Small flowing particles along the arcs -->
+                        <circle r="1.8" fill="#4ade80">
+                            <animateMotion dur="2s" repeatCount="indefinite" path="M 200 130 Q 200 165 200 174"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="1.8" fill="#a7f3d0">
+                            <animateMotion dur="2s" repeatCount="indefinite" begin="-0.7s" path="M 200 270 Q 200 235 200 226"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2s" begin="-0.7s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="1.8" fill="#93c5fd">
+                            <animateMotion dur="2s" repeatCount="indefinite" begin="-1.3s" path="M 115 200 Q 150 200 130 200"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2s" begin="-1.3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="1.8" fill="#60a5fa">
+                            <animateMotion dur="2s" repeatCount="indefinite" begin="-1.6s" path="M 285 200 Q 250 200 270 200"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2s" begin="-1.6s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="learn-copy">
+                    <span class="stage-badge">Loop 03</span>
+                    <h3>Delivering <span class="accent">the plan</span></h3>
+                    <p>
+                        A protocol is only as good as its delivery. GAIA
+                        chooses the form — pill, capsule, liquid, injection —
+                        and builds the full plan around it: what to take,
+                        when, and for how long.
+                    </p>
+                    <ul>
+                        <li><strong>Choose</strong> the form — oral, capsule, liquid, injection</li>
+                        <li><strong>Formulate</strong> for stability, absorption, and shelf life</li>
+                        <li><strong>Set</strong> dose, timing, and escalation rules</li>
+                        <li><strong>Deliver</strong> the plan — what, when, and how</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="math">
+    <div class="container">
+        <h2>The math <span class="accent">underneath</span></h2>
+        <p class="lead">
+            Sequence is raw potential. Meaning emerges only when a pattern
+            is applied in a context. We wrote the math that reads both —
+            not assembled from other people's tools, but derived from the
+            structure of the genome itself.
+        </p>
+
+        <div class="math-narrative">
+
+            <h3>Boundaries are <span class="accent">where biology shifts</span></h3>
+            <p>
+                The genome isn't uniform. Composition drifts, structure loosens,
+                conservation fades. A boundary is placed wherever those shifts
+                align — and the same logic runs at three scales at once.
+            </p>
+
+            <div class="equation-stack">
+                <div class="equation-row">
+                    <div class="equation-label">FINE</div>
+                    <div class="equation-body">&Delta;&thinsp;GC &gt; &tau;<sub>fine</sub> &nbsp;&and;&nbsp; &Delta;&thinsp;H4 &gt; &tau;<sub>fine</sub></div>
+                    <div class="equation-note">local composition shift</div>
+                </div>
+                <div class="equation-row">
+                    <div class="equation-label">MEDIUM</div>
+                    <div class="equation-body">&nabla;&thinsp;CpG<sub>O/E</sub> &gt; &tau;<sub>mid</sub></div>
+                    <div class="equation-note">island-scale structure change</div>
+                </div>
+                <div class="equation-row">
+                    <div class="equation-label">COARSE</div>
+                    <div class="equation-body">&Delta;&thinsp;PhyloP &gt; &tau;<sub>coarse</sub></div>
+                    <div class="equation-note">evolutionary signal break</div>
+                </div>
+            </div>
+
+            <h3>Every segment earns a <span class="accent">signature</span></h3>
+            <p>
+                Between boundaries, each region is described not by a label but
+                by a fingerprint — its composition, its reading frame, its skew,
+                its conservation across deep time. The classifier is not told
+                what to look for. It discovers which combinations of features
+                separate one kind of region from another, and holds that
+                separation across chromosomes and species.
+            </p>
+
+            <div class="feature-ribbon">
+                <span>Composition</span>
+                <span>Structure</span>
+                <span>Frame</span>
+                <span>Skew</span>
+                <span>Conservation</span>
+                <span>Context</span>
+            </div>
+
+            <p class="math-close">
+                No threshold is chosen. The boundaries, the features, and the decision surface are all discovered from labeled sequence — and every equation is written from scratch.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+<section id="ml-physics">
+    <div class="container">
+
+        <div class="spectra-visual">
+
+            <div class="spectra-header">
+                <p class="spectra-kicker">Physics and machine learning — together</p>
+                <h3 class="spectra-title">Two methods. Each one covers what the other <span class="accent">misses</span>.</h3>
+            </div>
+
+            <div class="spectra-columns">
+
+                <div class="spectra-col spectra-col-physics">
+                    <div class="spectra-col-head">
+                        <span class="spectra-col-tag">Physics</span>
+                        <span class="spectra-col-sub">can score anything — cannot learn</span>
+                    </div>
+                    <div class="spectra-col-body">
+                        <p>
+                            Every candidate gets a physical score. Lennard-Jones
+                            for contacts, Coulomb for electrostatics, solvation
+                            for how the pocket reshapes, entropy for what the
+                            ligand loses when it binds. The number is real and
+                            the physics is inspectable — but the equations are
+                            fixed.
+                        </p>
+                        <p class="spectra-col-limit">
+                            Physics cannot get better at what it does.
+                            It does not learn from the compounds it gets wrong.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="spectra-col spectra-col-ml">
+                    <div class="spectra-col-head">
+                        <span class="spectra-col-tag">Machine learning</span>
+                        <span class="spectra-col-sub">can learn anything — cannot explain it</span>
+                    </div>
+                    <div class="spectra-col-body">
+                        <p>
+                            The same complex is read as a feature vector. The
+                            classifier discovers which combinations of features
+                            separate binders from non-binders — patterns no one
+                            hand-coded, thresholds no one set. Trained on
+                            labeled data, it finds what physics alone would miss.
+                        </p>
+                        <p class="spectra-col-limit">
+                            ML cannot justify its decisions. When it disagrees
+                            with physics, nobody can say which one is right.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="spectra-visual-wrap">
+                <svg class="spectra-svg" viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="mlBaseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%"   stop-color="#60a5fa" stop-opacity="0.05"/>
+                            <stop offset="50%"  stop-color="#93c5fd" stop-opacity="0.45"/>
+                            <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.05"/>
+                        </linearGradient>
+                        <linearGradient id="curveHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
+                            <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.35"/>
+                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                        </linearGradient>
+                        <radialGradient id="agreeGlow2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#a7f3d0" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                        </radialGradient>
+                        <radialGradient id="divergeGlow2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#fbbf24" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                        </radialGradient>
+                        <radialGradient id="scoreHalo2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.22"/>
+                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                        </radialGradient>
+                        <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+                            <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
+                        </radialGradient>
+                        <linearGradient id="peakBright" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.1"/>
+                            <stop offset="100%" stop-color="#a7f3d0" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="peakDim" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%"   stop-color="#334155" stop-opacity="0.1"/>
+                            <stop offset="100%" stop-color="#64748b" stop-opacity="0.6"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- soft background field -->
+                    <ellipse cx="600" cy="220" rx="580" ry="180" fill="#4ade80" opacity="0.02"/>
+                    <ellipse cx="600" cy="220" rx="420" ry="120" fill="#60a5fa" opacity="0.025"/>
+
+                    <!-- ambient dust particles drifting slowly across the canvas -->
+                    <g fill="#a7f3d0" opacity="0.35">
+                        <circle cx="80" cy="80" r="1.2">
+                            <animate attributeName="cy" values="80;70;80" dur="11s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="7s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="220" cy="340" r="1.1">
+                            <animate attributeName="cy" values="340;330;340" dur="13s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.55;0.2" dur="8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="370" cy="70" r="1.3">
+                            <animate attributeName="cy" values="70;60;70" dur="12s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="6.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="510" cy="360" r="1.1">
+                            <animate attributeName="cy" values="360;350;360" dur="14s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.15;0.5;0.15" dur="9s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="640" cy="60" r="1.2">
+                            <animate attributeName="cy" values="60;50;60" dur="10s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="7.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="780" cy="355" r="1.1">
+                            <animate attributeName="cy" values="355;345;355" dur="12.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.55;0.2" dur="8.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="920" cy="75" r="1.3">
+                            <animate attributeName="cy" values="75;65;75" dur="11.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="7s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="1050" cy="350" r="1.2">
+                            <animate attributeName="cy" values="350;340;350" dur="13.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.55;0.2" dur="8s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+
+                    <!-- reference grid, five vertical rules with slow pulse -->
+                    <g stroke="rgba(148,163,184,0.07)" stroke-width="1">
+                        <line x1="120" y1="60"  x2="120" y2="360">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="9s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="360" y1="60"  x2="360" y2="360">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="9s" begin="-1.8s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="600" y1="60"  x2="600" y2="360">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="9s" begin="-3.6s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="840" y1="60"  x2="840" y2="360">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="9s" begin="-5.4s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="1080" y1="60" x2="1080" y2="360">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="9s" begin="-7.2s" repeatCount="indefinite"/>
+                        </line>
+                    </g>
+
+                    <!-- baseline -->
+                    <line x1="80" y1="340" x2="1120" y2="340"
+                          stroke="rgba(148,163,184,0.25)" stroke-width="1"/>
+                    <text x="80" y="358" font-family="ui-monospace, monospace"
+                          font-size="9" letter-spacing="0.18em" fill="#475569">BASELINE</text>
+
+                    <!-- y-axis labels -->
+                    <text x="55" y="100" font-family="ui-monospace, monospace"
+                          font-size="9" letter-spacing="0.18em" fill="#475569"
+                          text-anchor="end" transform="rotate(-90 55 100)">PROBABILITY</text>
+                    <text x="55" y="320" font-family="ui-monospace, monospace"
+                          font-size="9" letter-spacing="0.18em" fill="#475569"
+                          text-anchor="end" transform="rotate(-90 55 320)">ENERGY</text>
+
+                    <!-- ============================================
+                         ML CURVE — 4 layered strands with highlight
+                         ============================================ -->
+
+                    <!-- layer 1: soft diffuse glow -->
+                    <g>
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; 0 -4; 0 0; 0 4; 0 0" dur="8s" repeatCount="indefinite"/>
+                        <path d="M 100 300 C 260 220, 400 130, 600 130 C 800 130, 940 220, 1100 300"
+                              fill="none" stroke="#60a5fa" stroke-width="24"
+                              opacity="0.08" filter="blur(14px)"/>
+                    </g>
+
+                    <!-- layer 2: base solid with inner highlight -->
+                    <g>
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; 0 -3; 0 0; 0 3; 0 0" dur="8s" repeatCount="indefinite"/>
+                        <path d="M 100 300 C 260 220, 400 130, 600 130 C 800 130, 940 220, 1100 300"
+                              fill="none" stroke="url(#mlBaseGrad)" stroke-width="8"
+                              opacity="0.4" filter="blur(4px)"/>
+                        <path d="M 100 300 C 260 220, 400 130, 600 130 C 800 130, 940 220, 1100 300"
+                              fill="none" stroke="url(#mlBaseGrad)" stroke-width="3"/>
+                        <!-- thin white highlight along the top edge -->
+                        <path d="M 100 297 C 260 217, 400 127, 600 127 C 800 127, 940 217, 1100 297"
+                              fill="none" stroke="url(#curveHighlight)" stroke-width="0.8" opacity="0.5"/>
+                    </g>
+
+                    <!-- layer 3: ripple scrolls continuously -->
+                    <g>
+                        <path d="M 100 312 C 180 292, 260 272, 340 252
+                                 C 420 232, 480 192, 560 182
+                                 C 640 172, 700 192, 780 212
+                                 C 860 232, 940 262, 1020 282
+                                 C 1060 292, 1100 302, 1140 304"
+                              fill="none" stroke="#93c5fd" stroke-width="1.3"
+                              opacity="0.5" stroke-dasharray="2 4"/>
+                        <animate attributeName="opacity"
+                            values="0.35;0.75;0.35" dur="4s" repeatCount="indefinite"/>
+                    </g>
+
+                    <!-- layer 4: envelope breathes slower -->
+                    <path d="M 100 328 C 300 280, 500 200, 600 200 C 700 200, 900 280, 1100 328"
+                          fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.3">
+                        <animate attributeName="opacity" values="0.15;0.5;0.15" dur="5s" repeatCount="indefinite"/>
+                    </path>
+
+                    <!-- ============================================
+                         PHYSICS PEAKS — 3 bright (with fill), 5 dim
+                         ============================================ -->
+
+                    <!-- bright peaks as filled triangles -->
+                    <g class="peak bright" data-idx="0" style="opacity:0">
+                        <path d="M 195 340 L 200 165 L 205 340 Z"
+                              fill="url(#peakBright)" opacity="0.35"/>
+                        <path d="M 200 165 L 200 340"
+                              stroke="#a7f3d0" stroke-width="1.8"/>
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; 0 -6; 0 0" dur="3s" repeatCount="indefinite"/>
+                    </g>
+                    <g class="peak bright" data-idx="1" style="opacity:0">
+                        <path d="M 395 340 L 400 140 L 405 340 Z"
+                              fill="url(#peakBright)" opacity="0.4"/>
+                        <path d="M 400 140 L 400 340"
+                              stroke="#a7f3d0" stroke-width="1.8"/>
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; 0 -6; 0 0" dur="3s" begin="-1s" repeatCount="indefinite"/>
+                    </g>
+                    <g class="peak bright" data-idx="2" style="opacity:0">
+                        <path d="M 795 340 L 800 180 L 805 340 Z"
+                              fill="url(#peakBright)" opacity="0.3"/>
+                        <path d="M 800 180 L 800 340"
+                              stroke="#a7f3d0" stroke-width="1.8"/>
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; 0 -6; 0 0" dur="3s" begin="-2s" repeatCount="indefinite"/>
+                    </g>
+
+                    <!-- bright peak labels -->
+                    <g font-family="ui-monospace, monospace" font-size="10"
+                       fill="#a7f3d0" text-anchor="middle">
+                        <text class="peak-label" data-idx="0" x="200" y="150" style="opacity:0">entropy</text>
+                        <text class="peak-label" data-idx="1" x="400" y="125" style="opacity:0">sasa</text>
+                        <text class="peak-label" data-idx="2" x="800" y="165" style="opacity:0">gb</text>
+                    </g>
+
+                    <!-- 5 dim peaks as thin triangles -->
+                    <g stroke="#64748b" stroke-width="1.2" fill="none">
+                        <path class="peak dim" data-idx="3" d="M 280 340 L 285 250 L 290 340" style="opacity:0">
+                            <animate attributeName="opacity" values="0.35;0.65;0.35" dur="8s" repeatCount="indefinite"/>
+                        </path>
+                        <path class="peak dim" data-idx="4" d="M 518 340 L 523 240 L 528 340" style="opacity:0">
+                            <animate attributeName="opacity" values="0.35;0.65;0.35" dur="8s" begin="-1.6s" repeatCount="indefinite"/>
+                        </path>
+                        <path class="peak dim" data-idx="5" d="M 643 340 L 648 260 L 653 340" style="opacity:0">
+                            <animate attributeName="opacity" values="0.35;0.65;0.35" dur="8s" begin="-3.2s" repeatCount="indefinite"/>
+                        </path>
+                        <path class="peak dim" data-idx="6" d="M 903 340 L 908 245 L 913 340" style="opacity:0">
+                            <animate attributeName="opacity" values="0.35;0.65;0.35" dur="8s" begin="-4.8s" repeatCount="indefinite"/>
+                        </path>
+                        <path class="peak dim" data-idx="7" d="M 1028 340 L 1033 255 L 1038 340" style="opacity:0">
+                            <animate attributeName="opacity" values="0.35;0.65;0.35" dur="8s" begin="-6.4s" repeatCount="indefinite"/>
+                        </path>
+                    </g>
+
+                    <!-- dim peak labels -->
+                    <g font-family="ui-monospace, monospace" font-size="9"
+                       fill="#475569" text-anchor="middle" opacity="0.55">
+                        <text x="285" y="240">mmgbsa</text>
+                        <text x="523" y="230">fep</text>
+                        <text x="648" y="250">qm</text>
+                        <text x="908" y="235">water</text>
+                        <text x="1033" y="245">mm</text>
+                    </g>
+
+                    <!-- bright signal dots above peaks -->
+                    <g fill="#4ade80">
+                        <circle class="peak-dot" data-idx="0" cx="200" cy="160" r="4" style="opacity:0">
+                            <animate attributeName="r" values="3;5.5;3" dur="2.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="peak-dot" data-idx="1" cx="400" cy="135" r="4" style="opacity:0">
+                            <animate attributeName="r" values="3;5.5;3" dur="2.5s" begin="-0.8s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" begin="-0.8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="peak-dot" data-idx="2" cx="800" cy="175" r="4" style="opacity:0">
+                            <animate attributeName="r" values="3;5.5;3" dur="2.5s" begin="-1.6s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" begin="-1.6s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+
+                    <!-- ============================================
+                         AGREEMENT & DIVERGENCE
+                         ============================================ -->
+
+                    <g class="agree-points" style="opacity:0">
+                        <circle cx="200" cy="160" r="16" fill="url(#agreeGlow2)">
+                            <animate attributeName="r" values="13;19;13" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="400" cy="135" r="18" fill="url(#agreeGlow2)">
+                            <animate attributeName="r" values="15;21;15" dur="2.5s" begin="-0.8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="800" cy="175" r="16" fill="url(#agreeGlow2)">
+                            <animate attributeName="r" values="13;19;13" dur="2.5s" begin="-1.6s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+
+                    <g class="diverge-point" style="opacity:0">
+                        <circle cx="648" cy="260" r="17" fill="url(#divergeGlow2)">
+                            <animate attributeName="r" values="14;22;14" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="648" cy="260" r="4" fill="#fbbf24">
+                            <animate attributeName="r" values="4;6.5;4" dur="1.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="648" y="292" text-anchor="middle"
+                              font-family="ui-monospace, monospace"
+                              font-size="9" fill="#fbbf24" opacity="0.9">worth inspecting</text>
+                    </g>
+
+                    <!-- ============================================
+                         TRAVELING PARTICLES with trails
+                         ============================================ -->
+
+                    <circle r="3.5" fill="#ffffff" opacity="0.75">
+                        <animateMotion dur="10s" repeatCount="indefinite"
+                            path="M 100 300 C 260 220, 400 130, 600 130 C 800 130, 940 220, 1100 300"/>
+                    </circle>
+                    <circle r="3.5" fill="#93c5fd" opacity="0.75">
+                        <animateMotion dur="10s" repeatCount="indefinite" begin="-3.3s"
+                            path="M 100 300 C 260 220, 400 130, 600 130 C 800 130, 940 220, 1100 300"/>
+                    </circle>
+                    <circle r="3.5" fill="#60a5fa" opacity="0.75">
+                        <animateMotion dur="10s" repeatCount="indefinite" begin="-6.6s"
+                            path="M 100 300 C 260 220, 400 130, 600 130 C 800 130, 940 220, 1100 300"/>
+                    </circle>
+
+                    <!-- peak-sliding particles with vertical trails -->
+                    <g>
+                        <line x1="200" y1="340" x2="200" y2="240" stroke="#a7f3d0" stroke-width="1.2" opacity="0">
+                            <animate attributeName="opacity" values="0;0.55;0" dur="3s" repeatCount="indefinite"/>
+                        </line>
+                        <circle r="2.5" fill="#a7f3d0" opacity="0.9">
+                            <animateMotion dur="3s" repeatCount="indefinite"
+                                path="M 200 340 L 200 160 L 200 340"/>
+                        </circle>
+                    </g>
+                    <g>
+                        <line x1="800" y1="340" x2="800" y2="250" stroke="#a7f3d0" stroke-width="1.2" opacity="0">
+                            <animate attributeName="opacity" values="0;0.55;0" dur="3s" begin="-1.5s" repeatCount="indefinite"/>
+                        </line>
+                        <circle r="2.5" fill="#a7f3d0" opacity="0.9">
+                            <animateMotion dur="3s" repeatCount="indefinite" begin="-1.5s"
+                                path="M 800 340 L 800 180 L 800 340"/>
+                        </circle>
+                    </g>
+
+                    <!-- ============================================
+                         SCORE — with halo, emblem, sigma
+                         ============================================ -->
+
+                    <g class="score-readout" style="opacity:0">
+                        <circle cx="1120" cy="130" r="90" fill="url(#scoreHalo2)">
+                            <animate attributeName="r" values="80;105;80" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.65;1;0.65" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- thin circle emblem -->
+                        <circle cx="1100" cy="130" r="46" fill="none"
+                                stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
+                        <circle cx="1100" cy="130" r="40" fill="none"
+                                stroke="rgba(74,222,128,0.15)" stroke-width="0.6"/>
+
+                        <text x="1100" y="90" text-anchor="middle"
+                              font-family="Georgia, serif" font-size="10"
+                              font-style="italic" fill="#64748b">combined</text>
+                        <text x="1100" y="140" text-anchor="middle"
+                              font-family="Georgia, serif" font-size="38"
+                              font-weight="500" fill="#f1f5f9">−8.72</text>
+                        <text x="1100" y="160" text-anchor="middle"
+                              font-family="ui-monospace, monospace"
+                              font-size="9" fill="#4ade80" opacity="0.7">σ = 0.72</text>
+                    </g>
+
+                    <!-- side labels drifting slowly -->
+                    <text x="30" y="50" font-family="ui-monospace, monospace"
+                          font-size="10" letter-spacing="0.28em"
+                          fill="#4ade80" opacity="0.9">
+                        PHYSICS
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; 6 0; 0 0; -6 0; 0 0" dur="12s" repeatCount="indefinite"/>
+                    </text>
+                    <text x="1170" y="50" text-anchor="end"
+                          font-family="ui-monospace, monospace"
+                          font-size="10" letter-spacing="0.28em"
+                          fill="#60a5fa" opacity="0.9">
+                        LEARNED
+                        <animateTransform attributeName="transform" type="translate"
+                            values="0 0; -6 0; 0 0; 6 0; 0 0" dur="12s" repeatCount="indefinite"/>
+                    </text>
+
+                    <!-- soft vignette for depth -->
+                    <rect x="0" y="0" width="1200" height="440" fill="url(#vignette)" pointer-events="none"/>
+                </svg>
+
+                <div class="spectra-legend">
+                    <span class="legend-agree">
+                        <span class="legend-dot legend-dot-green"></span>
+                        Agreement — physics confirms the classifier's confidence
+                    </span>
+                    <span class="legend-diverge">
+                        <span class="legend-dot legend-dot-amber"></span>
+                        Divergence — flagged, not promoted
+                    </span>
+                </div>
+            </div>
+
+            <p class="spectra-foot">
+                When the two methods agree, the score is trusted. When they
+                diverge, the compound is flagged — because a disagreement
+                between a physical calculation and a learned judgment is
+                not noise. It is information.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="evidence">
+    <div class="container">
+        <h2>Evidence across <span class="accent">every layer</span></h2>
+        <p class="lead">
+            Predictions are checked against three independent kinds of
+            evidence — computational, cellular, physiological. A claim
+            that survives all three is worth acting on.
+        </p>
+
+        <div class="eco-layers">
+            <div class="eco-layer">
+                <div class="eco-glow eco-glow-green"></div>
+                <div class="eco-icon">
+                    <svg viewBox="0 0 120 120" width="100" height="100" preserveAspectRatio="xMidYMid meet">
+    <!-- chip body — solid square back -->
+    <rect x="30" y="30" width="60" height="60" rx="6"
+          fill="#0e1a14" stroke="#4ade80" stroke-width="1.8"/>
+
+    <!-- inner pads -->
+    <g fill="#a7f3d0" opacity="0.9">
+        <circle cx="44" cy="44" r="3.5"/>
+        <circle cx="76" cy="44" r="3.5"/>
+        <circle cx="44" cy="76" r="3.5"/>
+        <circle cx="76" cy="76" r="3.5"/>
+        <circle cx="60" cy="60" r="4.5" fill="#4ade80"/>
+    </g>
+
+    <!-- arcs from pads to center -->
+    <path d="M 44 44 L 50 48 L 46 54 L 52 56 L 48 60 L 60 60"
+          fill="none" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0;0" dur="1.4s" repeatCount="indefinite" begin="0s"/>
+    </path>
+    <path d="M 76 44 L 70 48 L 74 54 L 68 56 L 72 60 L 60 60"
+          fill="none" stroke="#a7f3d0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0;0" dur="1.4s" repeatCount="indefinite" begin="0.35s"/>
+    </path>
+    <path d="M 44 76 L 50 72 L 46 66 L 52 64 L 48 60 L 60 60"
+          fill="none" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0;0" dur="1.4s" repeatCount="indefinite" begin="0.7s"/>
+    </path>
+    <path d="M 76 76 L 70 72 L 74 66 L 68 64 L 72 60 L 60 60"
+          fill="none" stroke="#a7f3d0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0;0" dur="1.4s" repeatCount="indefinite" begin="1.05s"/>
+    </path>
+
+    <!-- center core -->
+    <circle cx="60" cy="60" r="4" fill="#4ade80" opacity="0.5">
+        <animate attributeName="r" values="3;11" dur="1.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="60" cy="60" r="3" fill="#ffffff">
+        <animate attributeName="r" values="2.5;3.5;2.5" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- pins with soft glow -->
+    <g stroke="#4ade80" stroke-width="1.8" stroke-linecap="round">
+        <line x1="42" y1="20" x2="42" y2="30"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0s"/></line>
+        <line x1="60" y1="20" x2="60" y2="30"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.2s"/></line>
+        <line x1="78" y1="20" x2="78" y2="30"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.4s"/></line>
+        <line x1="42" y1="90" x2="42" y2="100"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.6s"/></line>
+        <line x1="60" y1="90" x2="60" y2="100"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.8s"/></line>
+        <line x1="78" y1="90" x2="78" y2="100"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.0s"/></line>
+        <line x1="20" y1="42" x2="30" y2="42"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.3s"/></line>
+        <line x1="20" y1="60" x2="30" y2="60"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.5s"/></line>
+        <line x1="20" y1="78" x2="30" y2="78"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.7s"/></line>
+        <line x1="90" y1="42" x2="100" y2="42"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.9s"/></line>
+        <line x1="90" y1="60" x2="100" y2="60"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.1s"/></line>
+        <line x1="90" y1="78" x2="100" y2="78"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.3s"/></line>
+    </g>
+</svg>
+                </div>
+                <div class="eco-body">
+                    <span class="eco-tag">In silico</span>
+                    <h3>Computational</h3>
+                    <p>Every prediction is stress-tested in pure computation before anything touches a cell. Confidence is estimated from the spread of agreement across independent methods.</p>
+                    <ul>
+                        <li><strong>Structure prediction</strong> — modeled protein geometry</li>
+                        <li><strong>Binding simulation</strong> — strength across methods</li>
+                        <li><strong>Cross-validation</strong> — held-out data</li>
+                        <li><strong>Confidence intervals</strong> — agreement across approaches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="eco-layer">
+                <div class="eco-glow eco-glow-blue"></div>
+                <div class="eco-icon">
+                    <svg viewBox="0 0 120 120" width="100" height="100" preserveAspectRatio="xMidYMid meet">
+    <!-- central nucleus -->
+    <circle cx="60" cy="60" r="8" fill="#60a5fa" opacity="0.35"/>
+    <circle cx="60" cy="60" r="8" fill="none" stroke="#60a5fa" stroke-width="1.4"/>
+    <circle cx="60" cy="60" r="3.5" fill="#ffffff">
+        <animate attributeName="r" values="3;4.5;3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- orbital ring 1 (horizontal) -->
+    <ellipse cx="60" cy="60" rx="46" ry="14"
+             fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.65"/>
+    <!-- orbital ring 2 (vertical) -->
+    <ellipse cx="60" cy="60" rx="14" ry="46"
+             fill="none" stroke="#93c5fd" stroke-width="1" opacity="0.6"/>
+    <!-- orbital ring 3 (diagonal) -->
+    <ellipse cx="60" cy="60" rx="46" ry="14"
+             fill="none" stroke="#a7f3d0" stroke-width="1" opacity="0.5"
+             transform="rotate(-60 60 60)"/>
+
+    <!-- electrons orbiting -->
+    <circle r="3" fill="#4ade80">
+        <animateMotion dur="4s" repeatCount="indefinite"
+            path="M 14 60 A 46 14 0 1 1 13.9 60 Z"/>
+    </circle>
+    <circle r="3" fill="#93c5fd">
+        <animateMotion dur="5s" repeatCount="indefinite"
+            path="M 60 14 A 14 46 0 1 1 59.9 14 Z"/>
+    </circle>
+    <circle r="3" fill="#a7f3d0">
+        <animateMotion dur="6s" repeatCount="indefinite"
+            path="M 20 94 L 100 26"/>
+    </circle>
+
+    <!-- bonded atoms (small dots around the ring) -->
+    <g fill="#a7f3d0" opacity="0.85">
+        <circle cx="60" cy="14" r="2.5"/>
+        <circle cx="60" cy="106" r="2.5"/>
+        <circle cx="14" cy="60" r="2.5"/>
+        <circle cx="106" cy="60" r="2.5"/>
+    </g>
+
+    <!-- electron sparks leaving the nucleus -->
+    <circle r="1.5" fill="#ffffff">
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M 60 60 L 30 30"/>
+        <animate attributeName="opacity" values="1;1;0" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="1.5" fill="#ffffff">
+        <animateMotion dur="2.4s" repeatCount="indefinite" begin="-1.2s" path="M 60 60 L 90 90"/>
+        <animate attributeName="opacity" values="1;1;0" dur="2.4s" begin="-1.2s" repeatCount="indefinite"/>
+    </circle>
+</svg>
+                </div>
+                <div class="eco-body">
+                    <span class="eco-tag">In vitro</span>
+                    <h3>Cellular</h3>
+                    <p>Predictions are compared against real cell-based assays from public literature. Pathway activity, gene expression, and cytotoxicity all feed back into the model.</p>
+                    <ul>
+                        <li><strong>Cell-line assays</strong> — published screens</li>
+                        <li><strong>Pathway response</strong> — signaling under treatment</li>
+                        <li><strong>Gene expression</strong> — transcript-level confirmation</li>
+                        <li><strong>Cytotoxicity profiles</strong> — safe dose ranges</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="eco-layer">
+                <div class="eco-glow eco-glow-mint"></div>
+                <div class="eco-icon">
+                    <svg viewBox="0 0 120 120" width="100" height="100" preserveAspectRatio="xMidYMid meet">
+    <!-- heart shape -->
+    <path d="M 60 44
+             C 44 22 16 30 16 52
+             C 16 76 46 92 60 106
+             C 74 92 104 76 104 52
+             C 104 30 76 22 60 44 Z"
+          fill="#0e1a14" stroke="#a7f3d0" stroke-width="1.8" stroke-linejoin="round"/>
+
+    <!-- inner heart glow pulse -->
+    <path d="M 60 44
+             C 44 22 16 30 16 52
+             C 16 76 46 92 60 106
+             C 74 92 104 76 104 52
+             C 104 30 76 22 60 44 Z"
+          fill="#4ade80" opacity="0.15">
+        <animate attributeName="opacity" values="0.08;0.32;0.08" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- ECG waveform -->
+    <path d="M 20 68 L 34 68 L 38 60 L 42 78 L 46 52 L 50 84 L 54 68 L 66 68 L 70 60 L 74 76 L 78 68 L 100 68"
+          fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+          stroke-dasharray="0 400">
+        <animate attributeName="stroke-dasharray" values="0 400;400 0;400 0" dur="3s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- trailing dot on ECG -->
+    <circle r="2" fill="#ffffff">
+        <animateMotion dur="3s" repeatCount="indefinite"
+            path="M 20 68 L 34 68 L 38 60 L 42 78 L 46 52 L 50 84 L 54 68 L 66 68 L 70 60 L 74 76 L 78 68 L 100 68"/>
+    </circle>
+
+    <!-- + bubbles rising above the heart -->
+    <g stroke="#4ade80" stroke-width="1.4" stroke-linecap="round">
+        <g>
+            <line x1="44" y1="0" x2="44" y2="8"/>
+            <line x1="40" y1="4" x2="48" y2="4"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="0s"/>
+            <animateTransform attributeName="transform" type="translate"
+                values="0 24; 0 -20" dur="2.4s" repeatCount="indefinite" begin="0s"/>
+        </g>
+        <g>
+            <line x1="60" y1="0" x2="60" y2="8"/>
+            <line x1="56" y1="4" x2="64" y2="4"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
+            <animateTransform attributeName="transform" type="translate"
+                values="0 24; 0 -20" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
+        </g>
+        <g>
+            <line x1="76" y1="0" x2="76" y2="8"/>
+            <line x1="72" y1="4" x2="80" y2="4"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="1.2s"/>
+            <animateTransform attributeName="transform" type="translate"
+                values="0 24; 0 -20" dur="2.4s" repeatCount="indefinite" begin="1.2s"/>
+        </g>
+        <g>
+            <line x1="52" y1="0" x2="52" y2="6"/>
+            <line x1="49" y1="3" x2="55" y2="3"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="1.8s"/>
+            <animateTransform attributeName="transform" type="translate"
+                values="0 24; 0 -20" dur="2.4s" repeatCount="indefinite" begin="1.8s"/>
+        </g>
+        <g>
+            <line x1="68" y1="0" x2="68" y2="6"/>
+            <line x1="65" y1="3" x2="71" y2="3"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="0.9s"/>
+            <animateTransform attributeName="transform" type="translate"
+                values="0 24; 0 -20" dur="2.4s" repeatCount="indefinite" begin="0.9s"/>
+        </g>
+    </g>
+</svg>
+                </div>
+                <div class="eco-body">
+                    <span class="eco-tag">In vivo</span>
+                    <h3>Physiological</h3>
+                    <p>Protocols are evaluated against animal model studies and human trial data. Where the model predicts an outcome, that outcome is checked against published physiological responses.</p>
+                    <ul>
+                        <li><strong>Animal disease models</strong> — established systems</li>
+                        <li><strong>Clinical trial data</strong> — dosing, outcomes, events</li>
+                        <li><strong>Human cohorts</strong> — time-to-response</li>
+                        <li><strong>Longitudinal outcomes</strong> — durability at follow-up</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="cross-cut">
+            <h3>How we know it holds</h3>
+            <div class="cross-grid">
+
+                <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <path d="M32 56 L32 20"/>
+                            <path d="M32 20 L18 8"/>
+                            <path d="M32 20 L46 8"/>
+                            <path d="M32 36 L20 26"/>
+                            <path d="M32 36 L44 26"/>
+                            <circle cx="18" cy="8" r="3" class="icon-dot" fill="#a7f3d0" stroke="none"/>
+                            <circle cx="46" cy="8" r="3" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-0.5s"/>
+                            <circle cx="20" cy="26" r="2.6" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-1s"/>
+                            <circle cx="44" cy="26" r="2.6" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-1.5s"/>
+                            <circle cx="32" cy="56" r="3" class="icon-dot" fill="#34d399" stroke="none" style="animation-delay:-2s"/>
+                        </svg>
+                    </div>
+                    <div class="cross-title">Cross-species</div>
+                    <div class="cross-desc">A pattern that holds across evolutionary distance is a pattern worth trusting.</div>
+                </div>
+
+                <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#a7f3d0" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <ellipse cx="32" cy="42" rx="14" ry="11" class="icon-pulse"/>
+                            <circle cx="20" cy="24" r="5"/>
+                            <circle cx="30" cy="19" r="5"/>
+                            <circle cx="40" cy="20" r="5"/>
+                            <circle cx="48" cy="28" r="4.5"/>
+                        </svg>
+                    </div>
+                    <div class="cross-title">Animal models</div>
+                    <div class="cross-desc">Nothing reaches a human until it holds in a living organism first.</div>
+                </div>
+
+                <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <circle cx="32" cy="16" r="6" class="icon-pulse"/>
+                            <path d="M32 24 L32 44"/>
+                            <path d="M18 32 L46 32"/>
+                            <path d="M32 44 L22 58"/>
+                            <path d="M32 44 L42 58"/>
+                            <circle cx="32" cy="16" r="2" class="icon-dot" fill="#a7f3d0" stroke="none"/>
+                        </svg>
+                    </div>
+                    <div class="cross-title">Human trials</div>
+                    <div class="cross-desc">The final check. If a protocol works in people, everything beneath it was correct.</div>
+                </div>
+
+                <div class="cross-item">
+                    <div class="cross-icon">
+                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="#a7f3d0" stroke-width="1.6" stroke-linecap="round" class="icon-leaf">
+                            <path d="M14 14 L50 14 L38 32 L38 50 L26 50 L26 32 Z" class="icon-pulse"/>
+                            <circle cx="20" cy="22" r="2" class="icon-dot" fill="#4ade80" stroke="none"/>
+                            <circle cx="32" cy="24" r="2" class="icon-dot" fill="#4ade80" stroke="none" style="animation-delay:-0.4s"/>
+                            <circle cx="44" cy="22" r="2" class="icon-dot" fill="#4ade80" stroke="none" style="animation-delay:-0.8s"/>
+                            <circle cx="32" cy="44" r="2.4" class="icon-dot" fill="#a7f3d0" stroke="none" style="animation-delay:-1.2s"/>
+                        </svg>
+                    </div>
+                    <div class="cross-title">Held-out first</div>
+                    <div class="cross-desc">Nothing reaches a mouse until it passes on data the model has never seen.</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="different">
+    <div class="container">
+        <h2>Most tools solve <span class="accent">one piece</span>.<br>GAIA runs the whole chain — and then goes further.</h2>
+
+        <div class="movements">
+
+            <div class="movement">
+                <div class="movement-mark">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <path d="M 2 20 Q 8 8 14 20 T 26 20 T 38 20"
+                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round">
+                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="movement-body">
+                    <h3>It reads the genome <em>backward</em>.</h3>
+                    <p>Standard pipelines pick a target, then ask which variants matter. GAIA starts from the raw genome and the patient's own symptom pattern, and works back to the genes actually producing the disease. Nothing is hand-coded. Everything is derived.</p>
+                </div>
+            </div>
+
+            <div class="movement">
+                <div class="movement-mark">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <path d="M 2 20 L 10 20 L 12 12 L 16 28 L 20 20 L 28 20 L 30 10 L 34 30 L 38 20"
+                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="1s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="movement-body">
+                    <h3>It reawakens what disease <em>silences</em>.</h3>
+                    <p>Disease doesn't just damage tissue — it shuts down the repair pathways that would heal it. GAIA identifies compounds that reactivate those silenced signals, the difference between managing a disease and reversing it.</p>
+                </div>
+            </div>
+
+            <div class="movement">
+                <div class="movement-mark">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <path d="M 2 30 L 12 30 L 16 14 L 20 34 L 24 22 L 28 30 L 38 30"
+                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="2s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="movement-body">
+                    <h3>It <em>reverses</em>, not just manages.</h3>
+                    <p>The pathways that repair tissue are the same ones that repair DNA. When GAIA reawakens them, it does not stop at the joint — it reverses up to ten years of accumulated DNA-repair deficit in simulation. Reversal, not management.</p>
+                </div>
+            </div>
+
+            <div class="movement">
+                <div class="movement-mark">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <path d="M 2 20 L 10 20 L 14 10 L 20 30 L 26 10 L 32 30 L 36 20 L 38 20"
+                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="3s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="movement-body">
+                    <h3>It <em>checks itself</em> before it speaks.</h3>
+                    <p>A claim that survives only computation is not a claim. It is a guess. Verification is not a phase — it runs alongside every prediction, and the results are published.</p>
+                </div>
+            </div>
+
+            <div class="movement">
+                <div class="movement-mark">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <path d="M 2 20 L 12 20 L 16 12 L 20 28 L 24 12 L 28 28 L 32 20 L 38 20"
+                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="4s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="movement-body">
+                    <h3>It has already <em>run once</em>.</h3>
+                    <p>End to end, on Ankylosing Spondylitis. In simulation the full pipeline — genome read, variants mapped, compounds ranked, protocol designed — took BASDAI from 6.9 to 1.0 over 12 months. Clinical remission. The result, the numbers, and the method are public.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="sources">
+    <div class="container">
+        <h2>It reads the <span class="accent">open web</span></h2>
+        <p class="lead">
+            The system doesn't wait for someone to hand it data. It reads
+            hundreds of curated, reputable URLs — peer-reviewed literature,
+            reference genomes, protein structures, clinical registries — and
+            grows as new findings are published.
+        </p>
+
+        <div class="web-layout">
+            <div class="web-visual">
+                <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#a7f3d0" stop-opacity="1"/>
+                            <stop offset="60%" stop-color="#4ade80" stop-opacity="0.5"/>
+                            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
+
+                    <g class="spin-1">
+                        <ellipse cx="200" cy="200" rx="150" ry="60" fill="none" stroke="#4ade80" stroke-width="0.5" opacity="0.35" transform="rotate(20 200 200)"/>
+                    </g>
+                    <g class="spin-2">
+                        <ellipse cx="200" cy="200" rx="175" ry="70" fill="none" stroke="#60a5fa" stroke-width="0.5" opacity="0.25" transform="rotate(-30 200 200)"/>
+                    </g>
+
+                    <circle class="ring-out" cx="200" cy="200" r="40" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+                    <circle class="ring-out r2" cx="200" cy="200" r="40" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+                    <circle class="ring-out r3" cx="200" cy="200" r="40" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+
+                    <line class="flow" x1="200" y1="200" x2="70" y2="70" stroke="#60a5fa" stroke-width="1.6"/>
+                    <line class="flow f2" x1="200" y1="200" x2="330" y2="70" stroke="#a7f3d0" stroke-width="1.6"/>
+                    <line class="flow f3" x1="200" y1="200" x2="70" y2="330" stroke="#34d399" stroke-width="1.6"/>
+                    <line class="flow f4" x1="200" y1="200" x2="330" y2="330" stroke="#4ade80" stroke-width="1.6"/>
+                    <line class="flow f5" x1="200" y1="200" x2="200" y2="45" stroke="#60a5fa" stroke-width="1.2"/>
+                    <line class="flow f6" x1="200" y1="200" x2="200" y2="355" stroke="#34d399" stroke-width="1.2"/>
+                    <line class="flow f7" x1="200" y1="200" x2="45" y2="200" stroke="#a7f3d0" stroke-width="1.2"/>
+                    <line class="flow f8" x1="200" y1="200" x2="355" y2="200" stroke="#4ade80" stroke-width="1.2"/>
+
+                    <g class="center-pulse">
+                        <circle cx="200" cy="200" r="58" fill="url(#hubGrad)" opacity="0.45"/>
+                        <circle cx="200" cy="200" r="36" fill="none" stroke="#a7f3d0" stroke-width="2"/>
+                        <text x="200" y="206" text-anchor="middle" font-family="monospace" font-size="14" fill="#a7f3d0" font-weight="bold">GAIA</text>
+                    </g>
+
+                    <circle class="blink" cx="70" cy="70" r="7" fill="#60a5fa"/>
+                    <text x="70" y="46" text-anchor="middle" font-size="10" fill="#8fa89c" font-family="system-ui">Literature</text>
+
+                    <circle class="blink b2" cx="330" cy="70" r="7" fill="#a7f3d0"/>
+                    <text x="330" y="46" text-anchor="middle" font-size="10" fill="#8fa89c" font-family="system-ui">Genomes</text>
+
+                    <circle class="blink b3" cx="70" cy="330" r="7" fill="#34d399"/>
+                    <text x="70" y="360" text-anchor="middle" font-size="10" fill="#8fa89c" font-family="system-ui">Proteins</text>
+
+                    <circle class="blink b4" cx="330" cy="330" r="7" fill="#4ade80"/>
+                    <text x="330" y="360" text-anchor="middle" font-size="10" fill="#8fa89c" font-family="system-ui">Variants</text>
+
+                    <circle class="blink b5" cx="200" cy="45" r="6" fill="#60a5fa"/>
+                    <text x="200" y="26" text-anchor="middle" font-size="9" fill="#8fa89c" font-family="system-ui">Pathways</text>
+
+                    <circle class="blink b6" cx="200" cy="355" r="6" fill="#34d399"/>
+                    <text x="200" y="384" text-anchor="middle" font-size="9" fill="#8fa89c" font-family="system-ui">Compounds</text>
+
+                    <circle class="blink b7" cx="45" cy="200" r="6" fill="#a7f3d0"/>
+                    <text x="30" y="180" text-anchor="middle" font-size="9" fill="#8fa89c" font-family="system-ui">Trials</text>
+
+                    <circle class="blink b8" cx="355" cy="200" r="6" fill="#4ade80"/>
+                    <text x="372" y="180" text-anchor="middle" font-size="9" fill="#8fa89c" font-family="system-ui">Structures</text>
+                </svg>
+            </div>
+
+            <div class="web-info">
+                <span class="web-tag"><span class="live-dot"></span> Hundreds of curated sources</span>
+                <h3>Reputable <span class="accent">URLs</span>, continuously read</h3>
+                <p>
+                    Peer-reviewed publications, national reference databases,
+                    protein structure archives, clinical trial registries.
+                    Each source is vetted. Each new finding updates the graph.
+                </p>
+
+                <div class="web-chips">
+                    <div class="web-chip">
+                        <div class="chip-title">Publications</div>
+                        <div class="chip-desc">Peer-reviewed findings</div>
+                    </div>
+                    <div class="web-chip">
+                        <div class="chip-title">Genomes</div>
+                        <div class="chip-desc">Reference assemblies</div>
+                    </div>
+                    <div class="web-chip">
+                        <div class="chip-title">Proteins</div>
+                        <div class="chip-desc">Structures and functions</div>
+                    </div>
+                    <div class="web-chip">
+                        <div class="chip-title">Variants</div>
+                        <div class="chip-desc">Population and clinical</div>
+                    </div>
+                    <div class="web-chip">
+                        <div class="chip-title">Compounds</div>
+                        <div class="chip-desc">Bioactivity and libraries</div>
+                    </div>
+                    <div class="web-chip">
+                        <div class="chip-title">Trials</div>
+                        <div class="chip-desc">Clinical registries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reading-ticker">
+            <div class="ticker-track">
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Peer-reviewed literature</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Reference genomes</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Protein structure archives</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Population variant databases</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Clinical trial registries</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Bioactivity datasets</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Pathway databases</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Disease association catalogs</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Compound libraries</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Structural archives</span>
+                <!-- duplicate for seamless loop -->
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Peer-reviewed literature</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Reference genomes</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Protein structure archives</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Population variant databases</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Clinical trial registries</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Bioactivity datasets</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Pathway databases</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Disease association catalogs</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Compound libraries</span>
+                <span class="ticker-item"><span class="dot"></span><span class="label">reading</span>Structural archives</span>
+            </div>
+        </div>
+
+        <div class="sources-inline">
+            <span class="label">Named sources read continuously</span>
+            <span class="name">NCBI</span><span class="sep">·</span>
+            <span class="name">Ensembl</span><span class="sep">·</span>
+            <span class="name">UniProt</span><span class="sep">·</span>
+            <span class="name">PDB</span><span class="sep">·</span>
+            <span class="name">ChEMBL</span><span class="sep">·</span>
+            <span class="name">ClinicalTrials.gov</span><span class="sep">·</span>
+            <span class="name">gnomAD</span><span class="sep">·</span>
+            <span class="name">GWAS Catalog</span><span class="sep">·</span>
+            <span class="name">ClinVar</span><span class="sep">·</span>
+            <span class="name">KEGG</span><span class="sep">·</span>
+            <span class="name">Reactome</span><span class="sep">·</span>
+            <span class="name">ZINC</span><span class="sep">·</span>
+            <span class="name">COCONUT</span><span class="sep">·</span>
+            <span class="name">BindingDB</span>
+        </div>
+
+        <div class="scan-flow-wrap">
+            <h3>The continuous loop</h3>
+            <div class="scan-row">
+                <div class="scan-box">
+                    <span class="icon">🌐</span>
+                    <div class="label">Crawl</div>
+                    <div class="sub">Curated URLs</div>
+                </div>
+                <div class="scan-box">
+                    <span class="icon">📖</span>
+                    <div class="label">Parse</div>
+                    <div class="sub">Extract relations</div>
+                </div>
+                <div class="scan-box">
+                    <span class="icon">✓</span>
+                    <div class="label">Validate</div>
+                    <div class="sub">Cross-check sources</div>
+                </div>
+                <div class="scan-box">
+                    <span class="icon">🌱</span>
+                    <div class="label">Integrate</div>
+                    <div class="sub">Grow the graph</div>
+                </div>
+                <div class="scan-box">
+                    <span class="icon">📈</span>
+                    <div class="label">Retrain</div>
+                    <div class="sub">Learn from new data</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pipeline">
+    <div class="container">
+        <h2>The <span class="accent">pipeline</span></h2>
+        <p class="lead">From raw genome to treatment protocol — one continuous line.</p>
+
+        <div class="constellation">
+            <svg viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <radialGradient id="starHaloGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="25%"  stop-color="#a7f3d0" stop-opacity="0.7"/>
+                        <stop offset="60%"  stop-color="#4ade80" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="travelerGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="35%"  stop-color="#a7f3d0" stop-opacity="0.85"/>
+                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="travelerGradBlue" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="35%"  stop-color="#93c5fd" stop-opacity="0.85"/>
+                        <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+
+                <!-- Primary constellation lines (green glow) -->
+                <g>
+                    <line class="link-glow" x1="120" y1="230" x2="390" y2="140"/>
+                    <line class="link-glow" x1="390" y1="140" x2="620" y2="280"/>
+                    <line class="link-glow" x1="620" y1="280" x2="850" y2="130"/>
+                    <line class="link-glow" x1="850" y1="130" x2="1080" y2="230"/>
+                </g>
+                <g>
+                    <line class="link" x1="120" y1="230" x2="390" y2="140"/>
+                    <line class="link" x1="390" y1="140" x2="620" y2="280"/>
+                    <line class="link" x1="620" y1="280" x2="850" y2="130"/>
+                    <line class="link" x1="850" y1="130" x2="1080" y2="230"/>
+                </g>
+
+                <!-- Secondary cross links (blue, subtler) -->
+                <g>
+                    <line class="link-secondary" x1="120" y1="230" x2="620" y2="280"/>
+                    <line class="link-secondary" x1="390" y1="140" x2="850" y2="130"/>
+                    <line class="link-secondary" x1="620" y1="280" x2="1080" y2="230"/>
+                    <line class="link-secondary" x1="120" y1="230" x2="390" y2="140"/>
+                    <line class="link-secondary" x1="850" y1="130" x2="1080" y2="230"/>
+                    <line class="link-secondary" x1="120" y1="230" x2="850" y2="130"/>
+                    <line class="link-secondary" x1="390" y1="140" x2="1080" y2="230"/>
+                </g>
+
+                <!-- Orbital rings around the central star -->
+                <circle class="orbit-ring"     cx="620" cy="280" r="80"/>
+                <circle class="orbit-ring r2"  cx="620" cy="280" r="130"/>
+                <circle class="orbit-ring r3"  cx="620" cy="280" r="180"/>
+
+                <!-- Travelers, three -->
+                <g class="constellation-traveler">
+                    <circle class="constellation-traveler-halo" r="28">
+                        <animateMotion dur="18s" repeatCount="indefinite"
+                            path="M120,230 L390,140 L620,280 L850,130 L1080,230"/>
+                    </circle>
+                    <circle class="constellation-traveler" r="5">
+                        <animateMotion dur="18s" repeatCount="indefinite"
+                            path="M120,230 L390,140 L620,280 L850,130 L1080,230"/>
+                    </circle>
+                </g>
+                <g class="constellation-traveler secondary">
+                    <circle class="constellation-traveler-halo" r="22">
+                        <animateMotion dur="18s" repeatCount="indefinite" begin="-6s"
+                            path="M120,230 L390,140 L620,280 L850,130 L1080,230"/>
+                    </circle>
+                    <circle class="constellation-traveler" r="4">
+                        <animateMotion dur="18s" repeatCount="indefinite" begin="-6s"
+                            path="M120,230 L390,140 L620,280 L850,130 L1080,230"/>
+                    </circle>
+                </g>
+                <g class="constellation-traveler tertiary">
+                    <circle class="constellation-traveler-halo" r="20">
+                        <animateMotion dur="18s" repeatCount="indefinite" begin="-12s"
+                            path="M120,230 L390,140 L620,280 L850,130 L1080,230"/>
+                    </circle>
+                    <circle class="constellation-traveler" r="3.5">
+                        <animateMotion dur="18s" repeatCount="indefinite" begin="-12s"
+                            path="M120,230 L390,140 L620,280 L850,130 L1080,230"/>
+                    </circle>
+                </g>
+
+                <!-- Dense star field (SVG decorative) -->
+                <g fill="#ffffff" opacity="0.55">
+                    <circle cx="60"   cy="80"  r="1.2"/>
+                    <circle cx="150"  cy="340" r="1"/>
+                    <circle cx="240"  cy="60"  r="1.4"/>
+                    <circle cx="330"  cy="380" r="1"/>
+                    <circle cx="420"  cy="80"  r="1.2"/>
+                    <circle cx="500"  cy="360" r="1.1"/>
+                    <circle cx="580"  cy="60"  r="1.3"/>
+                    <circle cx="720"  cy="400" r="1"/>
+                    <circle cx="800"  cy="50"  r="1.2"/>
+                    <circle cx="900"  cy="380" r="1"/>
+                    <circle cx="980"  cy="80"  r="1.3"/>
+                    <circle cx="1080" cy="380" r="1"/>
+                    <circle cx="1160" cy="120" r="1.1"/>
+                    <circle cx="40"   cy="200" r="0.9"/>
+                    <circle cx="240"  cy="180" r="0.8"/>
+                    <circle cx="490"  cy="200" r="0.9"/>
+                    <circle cx="740"  cy="220" r="0.8"/>
+                    <circle cx="960"  cy="200" r="0.9"/>
+                    <circle cx="1140" cy="320" r="0.8"/>
+                </g>
+                <g fill="#a7f3d0" opacity="0.5">
+                    <circle cx="90"   cy="150" r="1.1"/>
+                    <circle cx="280"  cy="120" r="1"/>
+                    <circle cx="460"  cy="280" r="1.1"/>
+                    <circle cx="700"  cy="120" r="1"/>
+                    <circle cx="880"  cy="340" r="1.1"/>
+                    <circle cx="1050" cy="60"  r="1"/>
+                    <circle cx="180"  cy="290" r="0.9"/>
+                    <circle cx="550"  cy="420" r="0.9"/>
+                    <circle cx="1120" cy="290" r="0.9"/>
+                </g>
+                <g fill="#60a5fa" opacity="0.45">
+                    <circle cx="300"  cy="60"  r="1.1"/>
+                    <circle cx="450"  cy="120" r="1"/>
+                    <circle cx="670"  cy="380" r="1"/>
+                    <circle cx="870"  cy="60"  r="1.1"/>
+                    <circle cx="1000" cy="300" r="1"/>
+                    <circle cx="1100" cy="420" r="0.9"/>
+                </g>
+
+                <!-- Main stars -->
+                <g class="star" transform="translate(120 230)">
+                    <circle class="star-halo" r="46"/>
+                    <circle class="star-core" r="8"/>
+                </g>
+                <g class="star" transform="translate(390 140)">
+                    <circle class="star-halo" r="40"/>
+                    <circle class="star-core" r="7"/>
+                </g>
+                <g class="star central" transform="translate(620 280)">
+                    <circle class="star-halo" r="62"/>
+                    <circle class="star-core" r="13"/>
+                </g>
+                <g class="star" transform="translate(850 130)">
+                    <circle class="star-halo" r="40"/>
+                    <circle class="star-core" r="7"/>
+                </g>
+                <g class="star" transform="translate(1080 230)">
+                    <circle class="star-halo" r="46"/>
+                    <circle class="star-core" r="8"/>
+                </g>
+            </svg>
+
+            <div class="constellation-labels">
+                <div class="constellation-label">
+                    <span class="constellation-num">STAGE 01</span>
+                    <h3>Read the genome</h3>
+                    <p>Every window classified by structural signature — coding, conserved, regulatory, or silent.</p>
+                </div>
+                <div class="constellation-label">
+                    <span class="constellation-num">STAGE 02</span>
+                    <h3>Map the variants</h3>
+                    <p>Population variation placed in context. Every variant associated with its gene, pathway, and evidence.</p>
+                </div>
+                <div class="constellation-label">
+                    <span class="constellation-num">STAGE 03</span>
+                    <h3>Screen the compounds</h3>
+                    <p>Multiple libraries of small molecules and natural products, ranked by binding potential.</p>
+                </div>
+                <div class="constellation-label">
+                    <span class="constellation-num">STAGE 04</span>
+                    <h3>Score every interaction</h3>
+                    <p>Multiple scoring approaches combined into one ranking. Physical, chemical, and contextual.</p>
+                </div>
+                <div class="constellation-label">
+                    <span class="constellation-num">STAGE 05</span>
+                    <h3>Design the protocol</h3>
+                    <p>Multi-compound protocol with predicted outcomes across time. One ranking, one plan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample-output">
+            <div class="sample-output-header">
+                <div class="dot-row"><span></span><span></span><span></span></div>
+                <div class="title">sample output — ranked protocol</div>
+            </div>
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Compound</th>
+                    <th>Binding</th>
+                    <th>Evidence</th>
+                    <th>Confidence</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>resveratrol</td>
+                    <td class="score">−8.72</td>
+                    <td class="evidence">in silico · in vitro · in vivo</td>
+                    <td class="high">high</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>curcumin</td>
+                    <td class="score">−7.91</td>
+                    <td class="evidence">in silico · in vitro</td>
+                    <td class="high">high</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>fisetin</td>
+                    <td class="score">−7.45</td>
+                    <td class="evidence">in silico · in vitro · in vivo</td>
+                    <td class="high">high</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>berberine</td>
+                    <td class="score">−6.83</td>
+                    <td class="evidence">in silico · in vitro</td>
+                    <td class="med">medium</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>quercetin</td>
+                    <td class="score">−6.52</td>
+                    <td class="evidence">in silico only</td>
+                    <td class="med">medium</td>
+                </tr>
+            </table>
+            <div class="note">
+                → next: combine top 3 into a protocol, simulate outcomes at                30 / 90 / 180 / 365 days, generate full evidence report.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="capabilities">
+    <div class="container">
+        <h2>What it <span class="accent">does</span></h2>
+        <p class="lead">
+            Eight components. Each one is its own tile — hover or tap one to read its role.
+        </p>
+
+        <div class="tile-field">
+
+            <!-- Scattered chemistry background layer -->
+            <div class="chem-scatter" aria-hidden="true">
+                <!-- Erlenmeyer flask (small) -->
+                <div class="chem-mini" style="top: 8%; left: 4%; animation-delay: 0s;">
+                    <svg viewBox="0 0 40 50" width="40" height="50" fill="none" stroke="#4ade80" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 15 6 L 15 20 L 4 45 Q 3 48 7 48 L 33 48 Q 37 48 36 45 L 25 20 L 25 6 Z"/>
+                        <line x1="13" y1="6" x2="27" y2="6"/>
+                    </svg>
+                </div>
+                <!-- Round-bottom flask -->
+                <div class="chem-mini" style="top: 20%; right: 5%; animation-delay: -2s;">
+                    <svg viewBox="0 0 40 50" width="40" height="50" fill="none" stroke="#60a5fa" stroke-width="0.9" stroke-linejoin="round">
+                        <circle cx="20" cy="32" r="14"/>
+                        <line x1="16" y1="10" x2="16" y2="20"/>
+                        <line x1="24" y1="10" x2="24" y2="20"/>
+                        <line x1="14" y1="10" x2="26" y2="10"/>
+                    </svg>
+                </div>
+                <!-- Test tube (single) -->
+                <div class="chem-mini" style="top: 48%; left: 6%; animation-delay: -4s;">
+                    <svg viewBox="0 0 20 50" width="20" height="50" fill="none" stroke="#a7f3d0" stroke-width="0.9" stroke-linejoin="round">
+                        <rect x="6" y="4" width="8" height="40" rx="4"/>
+                        <line x1="3" y1="4" x2="17" y2="4"/>
+                    </svg>
+                </div>
+                <!-- Beaker -->
+                <div class="chem-mini" style="bottom: 10%; left: 8%; animation-delay: -6s;">
+                    <svg viewBox="0 0 40 46" width="40" height="46" fill="none" stroke="#34d399" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 7 5 L 7 38 Q 7 41 10 41 L 30 41 Q 33 41 33 38 L 33 5"/>
+                        <line x1="5" y1="5" x2="35" y2="5"/>
+                    </svg>
+                </div>
+                <!-- Bunsen burner (tiny) -->
+                <div class="chem-mini" style="bottom: 20%; right: 6%; animation-delay: -3s;">
+                    <svg viewBox="0 0 30 50" width="30" height="50" fill="none" stroke="#fbbf24" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 10 40 L 20 40 L 17 30 L 13 30 Z"/>
+                        <line x1="7" y1="40" x2="23" y2="40"/>
+                        <line x1="15" y1="30" x2="15" y2="22"/>
+                        <path d="M 11 16 Q 15 4 19 16 Q 15 14 11 16 Z"/>
+                    </svg>
+                </div>
+                <!-- Benzene ring -->
+                <div class="chem-mini" style="top: 68%; left: 4%; animation-delay: -5s;">
+                    <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#4ade80" stroke-width="0.9" stroke-linejoin="round">
+                        <polygon points="20,4 34,12 34,28 20,36 6,28 6,12"/>
+                        <circle cx="20" cy="20" r="7" stroke-dasharray="2 3"/>
+                    </svg>
+                </div>
+                <!-- Droplet -->
+                <div class="chem-mini" style="top: 32%; left: 48%; animation-delay: -7s;">
+                    <svg viewBox="0 0 20 30" width="20" height="30" fill="none" stroke="#93c5fd" stroke-width="0.9" stroke-linejoin="round">
+                        <path d="M 10 3 Q 18 14 18 21 A 8 8 0 0 1 2 21 Q 2 14 10 3 Z"/>
+                    </svg>
+                </div>
+                <!-- Pipette -->
+                <div class="chem-mini" style="top: 60%; right: 8%; animation-delay: -8s;">
+                    <svg viewBox="0 0 14 60" width="14" height="60" fill="none" stroke="#a7f3d0" stroke-width="0.9" stroke-linejoin="round">
+                        <rect x="4" y="4" width="6" height="30" rx="1"/>
+                        <line x1="7" y1="34" x2="7" y2="54"/>
+                    </svg>
+                </div>
+                <!-- Molecule (three atoms) -->
+                <div class="chem-mini" style="top: 82%; right: 20%; animation-delay: -9s;">
+                    <svg viewBox="0 0 40 30" width="40" height="30" fill="none" stroke="#4ade80" stroke-width="0.9">
+                        <circle cx="10" cy="15" r="5"/>
+                        <circle cx="30" cy="10" r="4"/>
+                        <circle cx="28" cy="24" r="4"/>
+                        <line x1="14" y1="14" x2="26" y2="11"/>
+                        <line x1="13" y1="17" x2="25" y2="22"/>
+                    </svg>
+                </div>
+                <!-- Hexagon molecule -->
+                <div class="chem-mini" style="top: 14%; left: 44%; animation-delay: -10s;">
+                    <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#60a5fa" stroke-width="0.9" stroke-linejoin="round">
+                        <polygon points="20,4 34,12 34,28 20,36 6,28 6,12"/>
+                        <circle cx="20" cy="4" r="2" fill="#60a5fa" stroke="none"/>
+                        <circle cx="34" cy="12" r="2" fill="#60a5fa" stroke="none"/>
+                        <circle cx="6" cy="28" r="2" fill="#60a5fa" stroke="none"/>
+                    </svg>
+                </div>
+                <!-- Test tube rack (tiny) -->
+                <div class="chem-mini" style="bottom: 6%; right: 30%; animation-delay: -11s;">
+                    <svg viewBox="0 0 50 40" width="50" height="40" fill="none" stroke="#34d399" stroke-width="0.9" stroke-linejoin="round">
+                        <rect x="6" y="10" width="38" height="3"/>
+                        <rect x="10" y="13" width="2" height="22"/>
+                        <rect x="38" y="13" width="2" height="22"/>
+                        <rect x="16" y="6" width="6" height="26" rx="3"/>
+                        <rect x="28" y="6" width="6" height="26" rx="3"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Tiles (periodic-table-inspired) -->
+            <div class="tile" data-name="How does it read the genome?" data-desc="Reads raw sequence at single-base resolution. Windows are classified by structural signature — GC composition, entropy, codon bias, PhyloP conservation — into coding, conserved, regulatory, or silent. Output: a full annotation track per chromosome." style="--x: 6%;  --y: 8%;  --r: -3deg; --d: 0s;">
+                <span class="tile-sym">GS</span>
+                <span class="tile-num">01</span>
+                <span class="tile-name">Genome<br>Scanning</span>
+            </div>
+
+            <div class="tile" data-name="What happens to variants?" data-desc="Each variant is projected onto its gene, transcript, and codon context. Population frequencies, functional impact, and pathway membership are attached — building the base layer that every downstream query reads from." style="--x: 28%; --y: 20%; --r: 4deg; --d: -0.5s;">
+                <span class="tile-sym">VM</span>
+                <span class="tile-num">02</span>
+                <span class="tile-name">Variant<br>Mapping</span>
+            </div>
+
+            <div class="tile" data-name="How does the graph grow?" data-desc="A directed graph of variants, genes, pathways, diseases, and compounds. Every new paper or database adds nodes and edges. Queries traverse the graph for causal and associative paths — the graph is the reasoning substrate." style="--x: 50%; --y: 6%; --r: -2deg; --d: -1s;">
+                <span class="tile-sym">KG</span>
+                <span class="tile-num">03</span>
+                <span class="tile-name">Knowledge<br>Graph</span>
+            </div>
+
+            <div class="tile" data-name="Where do compounds come from?" data-desc="Curated sets of small molecules and natural products, deduplicated and standardized to canonical SMILES with stereochemistry. Each compound is indexed by scaffold, target class, and known bioactivity." style="--x: 72%; --y: 18%; --r: 5deg; --d: -1.5s;">
+                <span class="tile-sym">CL</span>
+                <span class="tile-num">04</span>
+                <span class="tile-name">Compound<br>Libraries</span>
+            </div>
+
+            <div class="tile" data-name="How are interactions scored?" data-desc="Multiple scoring functions are combined — Lennard-Jones, electrostatics, solvation, entropy, quantum correction — into one ranking via z-scored weights learned from labeled data. The result is a single affinity score with an uncertainty band." style="--x: 10%; --y: 58%; --r: 6deg; --d: -2s;">
+                <span class="tile-sym">IS</span>
+                <span class="tile-num">05</span>
+                <span class="tile-name">Interaction<br>Scoring</span>
+            </div>
+
+            <div class="tile" data-name="How does it read symptoms?" data-desc="Patient symptom clusters are projected onto the graph and matched to gene drivers with known clinical associations. The output is a ranked list of likely causal genes — a diagnosis-side mirror of the standard variant → phenotype flow." style="--x: 32%; --y: 68%; --r: -4deg; --d: -2.5s;">
+                <span class="tile-sym">SM</span>
+                <span class="tile-num">06</span>
+                <span class="tile-name">Symptom<br>Mapping</span>
+            </div>
+
+            <div class="tile" data-name="What does signal reactivation mean?" data-desc="Silenced or downregulated pathways are identified via differential expression and methylation signatures. Compounds that re-express those pathways are ranked by predicted restoration strength — the reversal mechanism, not just the suppression." style="--x: 54%; --y: 54%; --r: 3deg; --d: -3s;">
+                <span class="tile-sym">SR</span>
+                <span class="tile-num">07</span>
+                <span class="tile-name">Signal<br>Reactivation</span>
+            </div>
+
+            <div class="tile" data-name="Is everything public?" data-desc="Every intermediate output is archived with a permanent identifier — training sets, model weights, benchmark results, and derived features. The full pipeline is reproducible from public sources with no hidden dependencies." style="--x: 76%; --y: 62%; --r: -5deg; --d: -3.5s;">
+                <span class="tile-sym">OD</span>
+                <span class="tile-num">08</span>
+                <span class="tile-name">Open<br>Datasets</span>
+            </div>
+
+        </div>
+
+        <div class="tile-detail" id="tileDetail">
+            <h3>Genome scanning</h3>
+            <p>Reads raw sequence at single-base resolution. Windows are classified by structural signature — GC composition, entropy, codon bias, PhyloP conservation — into coding, conserved, regulatory, or silent. Output: a full annotation track per chromosome.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+(function(){
+    var detail = document.getElementById('tileDetail');
+    if (!detail) return;
+    document.querySelectorAll('.tile').forEach(function(t){
+        var update = function(){
+            detail.querySelector('h3').textContent = t.dataset.name || '';
+            detail.querySelector('p').textContent  = t.dataset.desc || '';
+        };
+        t.addEventListener('mouseenter', update);
+        t.addEventListener('click', update);
+    });
+})();
+</script>
+
+
+
+<section id="datasets">
+    <div class="container">
+        <h2>Open <span class="accent">datasets</span></h2>
+        <p class="lead">
+            Every stage archived publicly with permanent identifiers.
+            Reproducible from raw public sources.
+            <a href="https://zenodo.org/communities/gaiaai" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">View the full collection on Zenodo →</a>
+        </p>
+
+        <table class="data-table">
+            <tr><th>Dataset</th><th>Size</th><th>Contents</th><th>Identifier</th></tr>
+            <tr><td>Compound library I</td><td>25.7 GB</td><td>Screening shards</td><td><a href="https://doi.org/10.5281/zenodo.22949286">22949286</a></td></tr>
+            <tr><td>Compound library II</td><td>44.3 GB</td><td>Compound set</td><td><a href="https://doi.org/10.5281/zenodo.23110910">23110910</a></td></tr>
+            <tr><td>Compound library III</td><td>45.1 GB</td><td>Compound set</td><td><a href="https://doi.org/10.5281/zenodo.23124533">23124533</a></td></tr>
+            <tr><td>Compound library IV</td><td>93.7 GB</td><td>Compound set</td><td><a href="https://doi.org/10.5281/zenodo.23127161">23127161</a></td></tr>
+            <tr><td>Compound library V</td><td>128.7 GB</td><td>Compound set</td><td><a href="https://doi.org/10.5281/zenodo.23139933">23139933</a></td></tr>
+            <tr><td>Benchmarks</td><td>20 GB</td><td>Reference data</td><td><a href="https://doi.org/10.5281/zenodo.22946723">22946723</a></td></tr>
+        </table>
+    </div>
+</section>
+
+<section id="next-strip">
+    <div class="container">
+        <div class="next-strip">
+            <span class="marker">What's next</span>
+            <div class="content">
+                <strong>Extended species coverage</strong> for the cross-species
+                validation layer. <strong>Longer clinical follow-up</strong> for
+                the physiological evidence layer. <strong>Continuous model
+                refinement</strong> as new datasets publish.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="use-it">
+    <div class="container">
+        <h2>Use it</h2>
+        <p class="lead">Three ways to start — depending on what you want to build on.</p>
+
+        <div class="use-grid">
+            <a class="use-card" href="https://zenodo.org/communities/gaiaai" target="_blank" rel="noopener">
+                <svg width="32" height="32" viewBox="0 0 40 40">
+                    <ellipse cx="20" cy="12" rx="12" ry="4" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+                    <path d="M8,12 L8,28 Q8,32 20,32 Q32,32 32,28 L32,12" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+                </svg>
+                <div class="title">Explore the datasets</div>
+                <div class="desc">All stages of the pipeline, archived with permanent identifiers. Browse the full collection — libraries, benchmarks, and intermediate results.</div>
+                <div class="arrow">Open datasets →</div>
+            </a>
+
+            <a class="use-card" href="https://github.com/ObviousSatire/GaiaAI" target="_blank" rel="noopener">
+                <svg width="32" height="32" viewBox="0 0 40 40">
+                    <path d="M14,6 L6,20 L14,34" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26,6 L34,20 L26,34" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="22" y1="10" x2="18" y2="30" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="title">Read the source</div>
+                <div class="desc">C++17 and Python stdlib only. No external dependencies. The physics engine, the learning pipeline, and the scanning loop.</div>
+                <div class="arrow">Open source →</div>
+            </a>
+
+            <a class="use-card" href="#pipeline" target="_self">
+                <svg width="32" height="32" viewBox="0 0 40 40">
+                    <path d="M6,32 L6,24 L14,24 L14,16 L22,16 L22,26 L30,26 L30,12 L34,12" fill="none" stroke="#a7f3d0" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <div class="title">Follow the pipeline</div>
+                <div class="desc">See how raw genome input becomes a treatment protocol — the five stages, the three evidence layers, and the outputs.</div>
+                <div class="arrow">Jump to pipeline →</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <svg class="divider-leaf" width="32" height="32" viewBox="0 0 40 40">
+            <path d="M20,4 Q32,12 20,20 Q8,12 20,4 Z" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0.6"/>
+            <path d="M20,20 Q32,28 20,36 Q8,28 20,20 Z" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+        <div class="footer-links">
+            <a href="https://github.com/ObviousSatire/GaiaAI">Source on GitHub</a>
+            <a href="https://zenodo.org/communities/gaiaai" target="_blank" rel="noopener">Open datasets</a>
+            <a href="#ml-physics">How it learns</a>
+        </div>
+        <p>Built with C++17 and Python stdlib. No external dependencies.</p>
+    </div>
+</footer>
+
+<script>
+const counters = document.querySelectorAll('.num[data-count]');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const fmt = el.dataset.format;
+        const duration = 2000;
+        const start = performance.now();
+        function update(now) {
+            const t = Math.min(1, (now - start) / duration);
+            const ease = 1 - Math.pow(1 - t, 3);
+            const val = Math.floor(target * ease);
+            if (fmt === 'k' && val >= 1000) {
+                el.textContent = (val / 1000).toFixed(2).replace(/\.00$/, '') + 'M';
+            } else if (fmt === 'b') {
+                el.textContent = val + 'B+';
+            } else if (fmt === 'm' && val >= 1000000) {
+                el.textContent = (val / 1000000).toFixed(0) + 'M+';
+            } else if (fmt === 'plus') {
+                el.textContent = val + '+';
+            } else if (fmt === 'tb') {
+                el.textContent = val + ' TB+';
+            } else {
+                el.textContent = val.toLocaleString();
+            }
+            if (t < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        observer.unobserve(el);
+    });
+}, { threshold: 0.3 });
+counters.forEach(c => observer.observe(c));
+
+const sections = document.querySelectorAll('section');
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            sectionObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+sections.forEach(s => sectionObserver.observe(s));
+
+/* Spectra visual reveal */
+(function() {
+    var el = document.querySelector('.spectra-visual');
+    if (!el) return;
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.25 });
+    obs.observe(el);
+})();
+
+</script>
+
+
+
+</body>
+</html>

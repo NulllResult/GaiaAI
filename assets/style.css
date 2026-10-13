@@ -3759,10 +3759,7 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 /* === helix (restored from f11c8ff) === */
 
 
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
-}
+
 
 
 }
@@ -4947,66 +4944,33 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 /* ============================================================
    LOOP 01 — DNA helix (clean)
    ============================================================ */
-.helix-wrap {
-    position: relative;
-    width: 260px;
-    height: 400px;
-    margin: 0 auto;
-    perspective: 1000px;
-}
-.helix {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: helixSpin 12s linear infinite;
-}
-@keyframes helixSpin {
-    from { transform: rotateY(0deg); }
-    to   { transform: rotateY(360deg); }
-}
-.rung {
-    position: absolute;
-    left: 50%;
-    width: 140px;
-    height: 6px;
-    margin-left: -70px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, #a7f3d0, #4ade80, #34d399);
-    box-shadow: 0 0 14px rgba(74,222,128,0.55);
-    animation: rungBreath 3s ease-in-out infinite;
-}
-.rung:nth-child(1)  { top: 0;    transform: rotateY(0deg);   animation-delay: 0s;     }
-.rung:nth-child(2)  { top: 22px; transform: rotateY(20deg);  animation-delay: -0.15s; }
-.rung:nth-child(3)  { top: 44px; transform: rotateY(40deg);  animation-delay: -0.30s; }
-.rung:nth-child(4)  { top: 66px; transform: rotateY(60deg);  animation-delay: -0.45s; }
-.rung:nth-child(5)  { top: 88px; transform: rotateY(80deg);  animation-delay: -0.60s; }
-.rung:nth-child(6)  { top: 110px;transform: rotateY(100deg); animation-delay: -0.75s; }
-.rung:nth-child(7)  { top: 132px;transform: rotateY(120deg); animation-delay: -0.90s; }
-.rung:nth-child(8)  { top: 154px;transform: rotateY(140deg); animation-delay: -1.05s; }
-.rung:nth-child(9)  { top: 176px;transform: rotateY(160deg); animation-delay: -1.20s; }
-.rung:nth-child(10) { top: 198px;transform: rotateY(180deg); animation-delay: -1.35s; }
-.rung:nth-child(11) { top: 220px;transform: rotateY(200deg); animation-delay: -1.50s; }
-.rung:nth-child(12) { top: 242px;transform: rotateY(220deg); animation-delay: -1.65s; }
-.rung:nth-child(13) { top: 264px;transform: rotateY(240deg); animation-delay: -1.80s; }
-.rung:nth-child(14) { top: 286px;transform: rotateY(260deg); animation-delay: -1.95s; }
-.rung:nth-child(15) { top: 308px;transform: rotateY(280deg); animation-delay: -2.10s; }
-.rung:nth-child(16) { top: 330px;transform: rotateY(300deg); animation-delay: -2.25s; }
-.rung:nth-child(17) { top: 352px;transform: rotateY(320deg); animation-delay: -2.40s; }
-.rung:nth-child(18) { top: 374px;transform: rotateY(340deg); animation-delay: -2.55s; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes rungBreath {
     0%, 100% { opacity: 0.55; }
     50%      { opacity: 1;    }
 }
-.base-pair {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #a7f3d0, #4ade80);
-    box-shadow: 0 0 14px rgba(74,222,128,0.9);
-    animation: pairFloat 6s ease-in-out infinite;
-}
+
 .base-pair:nth-child(1) { top: 8%;  left: 15%; animation-delay: 0s;     }
 .base-pair:nth-child(2) { top: 22%; left: 85%; animation-delay: -0.75s; }
 .base-pair:nth-child(3) { top: 35%; left: 10%; animation-delay: -1.5s;  }
@@ -5019,20 +4983,8 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     0%, 100% { transform: translateY(0) scale(1);      opacity: 0.5; }
     50%      { transform: translateY(-16px) scale(1.4); opacity: 1;   }
 }
-.scan-sweep {
-    position: absolute;
-    left: -20px;
-    right: -20px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #4ade80, transparent);
-    box-shadow: 0 0 20px #4ade80;
-    animation: sweep 4s ease-in-out infinite;
-    pointer-events: none;
-}
-@keyframes sweep {
-    0%, 100% { top: 0; }
-    50%      { top: 100%; }
-}
+
+
 
 /* ============================================================
    CROSS-CUTTING VALIDATION — icons + heading flanks
