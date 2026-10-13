@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=21">
+<link rel="stylesheet" href="assets/style.css?v=22">
 </head>
 <body>
 
@@ -110,7 +110,51 @@
 
     <div class="container hero-content">
         <div class="hero-helix" aria-hidden="true">
-            <div class="ring"></div>
+            <svg viewBox="0 0 120 120" width="120" height="120">
+                <defs>
+                    <linearGradient id="heroStrandGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%"   stop-color="#a7f3d0"/>
+                        <stop offset="50%"  stop-color="#4ade80"/>
+                        <stop offset="100%" stop-color="#34d399"/>
+                    </linearGradient>
+                    <radialGradient id="heroCore" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="40%"  stop-color="#4ade80" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <g class="hero-helix-spin">
+                    <!-- strand A (left) -->
+                    <path d="M 45 10
+                             C 45 25, 75 25, 75 40
+                             C 75 55, 45 55, 45 70
+                             C 45 85, 75 85, 75 100
+                             C 75 110, 60 115, 60 115"
+                          fill="none" stroke="url(#heroStrandGrad)" stroke-width="2.4" stroke-linecap="round"/>
+                    <!-- strand B (right) -->
+                    <path d="M 75 10
+                             C 75 25, 45 25, 45 40
+                             C 45 55, 75 55, 75 70
+                             C 75 85, 45 85, 45 100
+                             C 45 110, 60 115, 60 115"
+                          fill="none" stroke="url(#heroStrandGrad)" stroke-width="2.4" stroke-linecap="round"/>
+                    <!-- base-pair rungs -->
+                    <line x1="47" y1="18" x2="73" y2="18" stroke="#a7f3d0" stroke-width="1.2" opacity="0.9"/>
+                    <line x1="50" y1="26" x2="70" y2="26" stroke="#a7f3d0" stroke-width="1.2" opacity="0.8"/>
+                    <line x1="54" y1="33" x2="66" y2="33" stroke="#a7f3d0" stroke-width="1.2" opacity="0.7"/>
+                    <line x1="54" y1="47" x2="66" y2="47" stroke="#a7f3d0" stroke-width="1.2" opacity="0.7"/>
+                    <line x1="50" y1="54" x2="70" y2="54" stroke="#a7f3d0" stroke-width="1.2" opacity="0.8"/>
+                    <line x1="47" y1="62" x2="73" y2="62" stroke="#a7f3d0" stroke-width="1.2" opacity="0.9"/>
+                    <line x1="50" y1="78" x2="70" y2="78" stroke="#a7f3d0" stroke-width="1.2" opacity="0.8"/>
+                    <line x1="54" y1="85" x2="66" y2="85" stroke="#a7f3d0" stroke-width="1.2" opacity="0.7"/>
+                    <line x1="54" y1="99" x2="66" y2="99" stroke="#a7f3d0" stroke-width="1.2" opacity="0.7"/>
+                    <line x1="50" y1="106" x2="70" y2="106" stroke="#a7f3d0" stroke-width="1.2" opacity="0.8"/>
+                </g>
+                <circle cx="60" cy="60" r="14" fill="url(#heroCore)">
+                    <animate attributeName="r" values="12;16;12" dur="2.8s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
             <div class="ring dashed"></div>
             <div class="ring dot"></div>
             <div class="spinner">

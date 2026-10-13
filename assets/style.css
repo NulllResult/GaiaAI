@@ -5990,3 +5990,65 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 @media (max-width: 520px) {
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
 }
+
+/* ============================================================
+   FIX — tighten "How it learns" helix: scan width and base-pair spacing
+   ============================================================ */
+/* scan sweep should match the rung width, not spill past it */
+.helix-wrap .scan-sweep {
+    width: 140px !important;
+    left: 50% !important;
+    margin-left: -70px !important;
+    right: auto !important;
+}
+/* base pairs should sit tighter and align with the rungs */
+.helix-wrap .base-pair {
+    width: 140px !important;
+    left: 50% !important;
+    margin-left: -70px !important;
+    height: 4px !important;
+}
+.helix-wrap .base-pair:nth-child(9),
+.helix-wrap .base-pair:nth-child(10),
+.helix-wrap .base-pair:nth-child(11),
+.helix-wrap .base-pair:nth-child(12),
+.helix-wrap .base-pair:nth-child(13),
+.helix-wrap .base-pair:nth-child(14),
+.helix-wrap .base-pair:nth-child(15),
+.helix-wrap .base-pair:nth-child(16) {
+    /* tighter vertical spread so they look like pairs, not scattered */
+    transform: scaleY(0.85);
+}
+
+/* ============================================================
+   HERO helix cleanup — remove old complex CSS (we're SVG now)
+   ============================================================ */
+.hero-helix {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-helix svg {
+    width: 120px;
+    height: 120px;
+    overflow: visible;
+}
+.hero-helix .hero-helix-spin {
+    transform-origin: 60px 60px;
+    animation: heroHelixRotate 8s linear infinite;
+}
+@keyframes heroHelixRotate {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+}
+/* kill any leftover old rules */
+.hero-helix .ring,
+.hero-helix .spinner,
+.hero-helix .strand,
+.hero-helix .rung,
+.hero-helix .orbit,
+.hero-helix .core { display: none !important; }
