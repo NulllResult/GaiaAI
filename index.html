@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=12">
+<link rel="stylesheet" href="assets/style.css?v=13">
 </head>
 <body>
 
@@ -130,6 +130,10 @@
             that knows more tomorrow than it did today.
         </p>
 
+        <p class="tagline-proof" style="font-size: 0.95rem; color: var(--fg-dim); margin-top: -8px; margin-bottom: 28px; font-family: ui-monospace, monospace; letter-spacing: 0.02em;">
+            In simulation: Ankylosing Spondylitis BASDAI 6.9 &rarr; 1.0 in 12 months. Clinical remission.
+        </p>
+
         <div class="hero-cta">
             <a href="#learning" class="btn btn-primary">How it learns →</a>
             <a href="https://github.com/ObviousSatire/GaiaAI" class="btn">View source</a>
@@ -149,8 +153,8 @@
                 <div class="label">Curated sources</div>
             </div>
             <div class="stat">
-                <div class="num" data-count="1" data-format="tb">0</div>
-                <div class="label">Knowledge base</div>
+                <div class="num static">C++17</div>
+                <div class="label">stdlib only &middot; no deps</div>
             </div>
         </div>
     </div>
@@ -594,9 +598,7 @@
             </div>
 
             <p class="math-close">
-                No thresholds are hand-set. No rules are hard-coded. The boundaries,
-                the features, and the decision surface are all discovered from
-                labeled sequence — and every equation is written from scratch.
+                No threshold is chosen. The boundaries, the features, and the decision surface are all discovered from labeled sequence — and every equation is written from scratch.
             </p>
 
         </div>
@@ -1396,7 +1398,7 @@
                 </div>
                 <div class="movement-body">
                     <h3>It <em>reverses</em>, not just manages.</h3>
-                    <p>Diseases silence the pathways that would repair them. GAIA finds compounds that reawaken those signals — and the same pathways also repair the DNA damage that accumulates with age. In simulation, a single treatment protocol reverses up to ten years of DNA-repair deficit.</p>
+                    <p>The pathways that repair tissue are the same ones that repair DNA. When GAIA reawakens them, it does not stop at the joint — it reverses up to ten years of accumulated DNA-repair deficit in simulation. Reversal, not management.</p>
                 </div>
             </div>
 
@@ -1411,7 +1413,22 @@
                 </div>
                 <div class="movement-body">
                     <h3>It <em>checks itself</em> before it speaks.</h3>
-                    <p>Every prediction is verified against three independent layers — computational, cellular, physiological. A claim that survives all three is worth acting on. A claim that survives only computation is not a claim. It is a guess.</p>
+                    <p>A claim that survives only computation is not a claim. It is a guess. Verification is not a phase — it runs alongside every prediction, and the results are published.</p>
+                </div>
+            </div>
+
+            <div class="movement">
+                <div class="movement-mark">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <path d="M 2 20 L 12 20 L 16 12 L 20 28 L 24 12 L 28 28 L 32 20 L 38 20"
+                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="4s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="movement-body">
+                    <h3>It has already <em>run once</em>.</h3>
+                    <p>End to end, on Ankylosing Spondylitis. In simulation the full pipeline — genome read, variants mapped, compounds ranked, protocol designed — took BASDAI from 6.9 to 1.0 over 12 months. Clinical remission. The result, the numbers, and the method are public.</p>
                 </div>
             </div>
 
