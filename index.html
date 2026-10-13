@@ -551,203 +551,77 @@
             Two methods. Each covers what the other misses.
         </p>
 
-        <div class="mlp-canvas">
-            <svg viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid meet" class="mlp-svg">
-                <defs>
-                    <radialGradient id="physicsAura" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#4ade80" stop-opacity="0.14"/>
-                        <stop offset="60%" stop-color="#4ade80" stop-opacity="0.04"/>
-                        <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
-                    </radialGradient>
-                    <radialGradient id="mlAura" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.14"/>
-                        <stop offset="60%" stop-color="#60a5fa" stop-opacity="0.04"/>
-                        <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
-                    </radialGradient>
-                    <radialGradient id="mergeAura" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.28"/>
-                        <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0"/>
-                    </radialGradient>
-                    <linearGradient id="physStream" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#4ade80" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#4ade80" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#a7f3d0" stop-opacity="1"/>
-                    </linearGradient>
-                    <linearGradient id="mlStream" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0"/>
-                        <stop offset="50%" stop-color="#60a5fa" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#93c5fd" stop-opacity="1"/>
-                    </linearGradient>
-                </defs>
+        <div class="mlp-grid">
 
-                <circle cx="200" cy="300" r="280" fill="url(#physicsAura)"/>
-                <circle cx="1000" cy="300" r="280" fill="url(#mlAura)"/>
-                <circle cx="750" cy="500" r="260" fill="url(#mergeAura)"/>
+            <!-- PHYSICS -->
+            <div class="mlp-col mlp-physics">
+                <div class="mlp-kicker">Physics</div>
+                <h3>Can score anything. Cannot learn.</h3>
+                <p class="mlp-desc">
+                    Every candidate gets a physical score. Lennard-Jones for contacts.
+                    Coulomb for electrostatics. Solvation for how the pocket reshapes.
+                    Entropy for what the ligand loses when it binds.
+                </p>
+                <div class="mlp-terms">
+                    <span class="mlp-term">ΔG<sub>LJ</sub></span>
+                    <span class="mlp-term">ΔG<sub>elec</sub></span>
+                    <span class="mlp-term">ΔG<sub>solv</sub></span>
+                    <span class="mlp-term">ΔG<sub>entropy</sub></span>
+                </div>
+                <p class="mlp-foot">
+                    The number is real. The physics is inspectable.
+                    But the equations are fixed — they do not learn from what they get wrong.
+                </p>
+            </div>
 
-                <g font-family="ui-monospace, monospace" font-size="11" fill="#4ade80" opacity="0.12">
-                    <text x="80" y="140">Σ</text>
-                    <text x="220" y="180">∫</text>
-                    <text x="160" y="720">∇</text>
-                    <text x="320" y="800">λ</text>
-                </g>
-                <g font-family="ui-monospace, monospace" font-size="11" fill="#60a5fa" opacity="0.12">
-                    <text x="1050" y="160">θ</text>
-                    <text x="980" y="740">∂</text>
-                    <text x="1120" y="780">η</text>
-                    <text x="940" y="220">w</text>
-                </g>
+            <!-- CENTER MARKER -->
+            <div class="mlp-center">
+                <div class="mlp-pulse"></div>
+                <div class="mlp-pulse"></div>
+                <div class="mlp-pulse"></div>
+            </div>
 
-                <!-- PHYSICS -->
-                <g>
-                    <text x="260" y="90" text-anchor="middle"
-                          font-family="ui-monospace, monospace" font-size="13"
-                          fill="#4ade80" letter-spacing="6" font-weight="600">PHYSICS</text>
-                    <text x="260" y="116" text-anchor="middle"
-                          font-family="Georgia, serif" font-size="14"
-                          fill="#a7f3d0" font-style="italic">
-                        can score anything · cannot learn
-                    </text>
+            <!-- ML -->
+            <div class="mlp-col mlp-ml">
+                <div class="mlp-kicker">Machine learning</div>
+                <h3>Can learn anything. Cannot explain it.</h3>
+                <p class="mlp-desc">
+                    The same complex is read as a feature vector. The classifier
+                    discovers which combinations separate binders from non-binders —
+                    patterns no one hand-coded, thresholds no one set.
+                </p>
+                <div class="mlp-vector">
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                    <div class="mlp-cell"></div><div class="mlp-cell"></div>
+                </div>
+                <p class="mlp-foot">
+                    It finds what physics alone would miss — but it cannot
+                    justify its decisions. When it disagrees with physics,
+                    nobody can say which one is right.
+                </p>
+            </div>
 
-                    <g transform="translate(140 200)">
-                        <circle r="34" fill="#0e1a14" stroke="#4ade80" stroke-width="1.6"/>
-                        <text y="-2" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#a7f3d0">ΔG</text>
-                        <text y="14" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#4ade80" letter-spacing="2">LJ</text>
-                    </g>
-                    <g transform="translate(390 180)">
-                        <circle r="34" fill="#0e1a14" stroke="#4ade80" stroke-width="1.6"/>
-                        <text y="-2" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#a7f3d0">ΔG</text>
-                        <text y="14" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#4ade80" letter-spacing="2">ELEC</text>
-                    </g>
-                    <g transform="translate(180 400)">
-                        <circle r="34" fill="#0e1a14" stroke="#4ade80" stroke-width="1.6"/>
-                        <text y="-2" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#a7f3d0">ΔG</text>
-                        <text y="14" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#4ade80" letter-spacing="2">SOLV</text>
-                    </g>
-                    <g transform="translate(400 420)">
-                        <circle r="34" fill="#0e1a14" stroke="#4ade80" stroke-width="1.6"/>
-                        <text y="-2" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="#a7f3d0">ΔG</text>
-                        <text y="14" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#4ade80" letter-spacing="2">ENT</text>
-                    </g>
+        </div>
 
-                    <g stroke="#4ade80" stroke-width="0.8" fill="none" opacity="0.4">
-                        <line x1="174" y1="200" x2="356" y2="180"/>
-                        <line x1="174" y1="200" x2="196" y2="380"/>
-                        <line x1="390" y1="180" x2="400" y2="390"/>
-                        <line x1="200" y1="430" x2="380" y2="440"/>
-                    </g>
-                    <g fill="#a7f3d0">
-                        <circle r="2"><animateMotion dur="2.6s" repeatCount="indefinite" path="M 174 200 L 356 180"/></circle>
-                        <circle r="2"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.3s" path="M 390 180 L 400 390"/></circle>
-                    </g>
-
-                    <g transform="translate(560 320)">
-                        <circle r="50" fill="none" stroke="#4ade80" stroke-width="0.6" opacity="0.4">
-                            <animate attributeName="r" values="50;60;50" dur="4s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="0" y="18" text-anchor="middle"
-                              font-family="Times New Roman, serif" font-size="72"
-                              font-style="italic" fill="#4ade80" opacity="0.75">Σ</text>
-                    </g>
-
-                    <path d="M 620 320 C 700 320 720 480 780 500"
-                          fill="none" stroke="url(#physStream)" stroke-width="2" opacity="0.7"/>
-                    <circle r="2.5" fill="#a7f3d0">
-                        <animateMotion dur="3s" repeatCount="indefinite" path="M 620 320 C 700 320 720 480 780 500"/>
-                    </circle>
-                </g>
-
-                <!-- ML -->
-                <g>
-                    <text x="940" y="90" text-anchor="middle"
-                          font-family="ui-monospace, monospace" font-size="13"
-                          fill="#60a5fa" letter-spacing="6" font-weight="600">MACHINE LEARNING</text>
-                    <text x="940" y="116" text-anchor="middle"
-                          font-family="Georgia, serif" font-size="14"
-                          fill="#93c5fd" font-style="italic">
-                        can learn anything · cannot explain it
-                    </text>
-
-                    <g transform="translate(830 180)" fill="#60a5fa">
-                        <rect x="0"   y="0"   width="20" height="20" rx="3" opacity="0.6"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/></rect>
-                        <rect x="26"  y="0"   width="20" height="20" rx="3" opacity="0.4"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.1s" repeatCount="indefinite"/></rect>
-                        <rect x="52"  y="0"   width="20" height="20" rx="3" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.2s" repeatCount="indefinite"/></rect>
-                        <rect x="78"  y="0"   width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.3s" repeatCount="indefinite"/></rect>
-                        <rect x="104" y="0"   width="20" height="20" rx="3" opacity="0.8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.4s" repeatCount="indefinite"/></rect>
-                        <rect x="130" y="0"   width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.5s" repeatCount="indefinite"/></rect>
-                        <rect x="0"   y="26"  width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.2s" repeatCount="indefinite"/></rect>
-                        <rect x="26"  y="26"  width="20" height="20" rx="3" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.3s" repeatCount="indefinite"/></rect>
-                        <rect x="52"  y="26"  width="20" height="20" rx="3" opacity="0.4"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.4s" repeatCount="indefinite"/></rect>
-                        <rect x="78"  y="26"  width="20" height="20" rx="3" opacity="0.8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/></rect>
-                        <rect x="104" y="26"  width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.6s" repeatCount="indefinite"/></rect>
-                        <rect x="130" y="26"  width="20" height="20" rx="3" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.7s" repeatCount="indefinite"/></rect>
-                        <rect x="0"   y="52"  width="20" height="20" rx="3" opacity="0.6"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.4s" repeatCount="indefinite"/></rect>
-                        <rect x="26"  y="52"  width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.5s" repeatCount="indefinite"/></rect>
-                        <rect x="52"  y="52"  width="20" height="20" rx="3" opacity="0.8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.6s" repeatCount="indefinite"/></rect>
-                        <rect x="78"  y="52"  width="20" height="20" rx="3" opacity="0.4"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.7s" repeatCount="indefinite"/></rect>
-                        <rect x="104" y="52"  width="20" height="20" rx="3" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.8s" repeatCount="indefinite"/></rect>
-                        <rect x="130" y="52"  width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.9s" repeatCount="indefinite"/></rect>
-                        <rect x="0"   y="78"  width="20" height="20" rx="3" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.6s" repeatCount="indefinite"/></rect>
-                        <rect x="26"  y="78"  width="20" height="20" rx="3" opacity="0.5"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.7s" repeatCount="indefinite"/></rect>
-                        <rect x="52"  y="78"  width="20" height="20" rx="3" opacity="0.6"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.8s" repeatCount="indefinite"/></rect>
-                        <rect x="78"  y="78"  width="20" height="20" rx="3" opacity="0.8"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="0.9s" repeatCount="indefinite"/></rect>
-                        <rect x="104" y="78"  width="20" height="20" rx="3" opacity="0.4"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.0s" repeatCount="indefinite"/></rect>
-                        <rect x="130" y="78"  width="20" height="20" rx="3" opacity="0.7"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" begin="1.1s" repeatCount="indefinite"/></rect>
-                    </g>
-
-                    <path d="M 900 310 Q 900 350 900 380" fill="none" stroke="#60a5fa" stroke-width="1.4" opacity="0.6"/>
-                    <circle r="2.5" fill="#93c5fd">
-                        <animateMotion dur="1.6s" repeatCount="indefinite" path="M 900 310 L 900 380"/>
-                    </circle>
-
-                    <g transform="translate(900 440)">
-                        <circle r="52" fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.6">
-                            <animate attributeName="r" values="52;64;52" dur="4s" repeatCount="indefinite"/>
-                        </circle>
-                        <circle r="38" fill="none" stroke="#93c5fd" stroke-width="1.2" opacity="0.7"/>
-                        <circle r="20" fill="#0e1a14" stroke="#60a5fa" stroke-width="1.6"/>
-                        <text y="-2" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#f1f5f9" font-style="italic">classifier</text>
-                        <text y="12" text-anchor="middle" font-family="ui-monospace, monospace" font-size="7" fill="#64748b" letter-spacing="1.5">NOT INSPECTABLE</text>
-                    </g>
-
-                    <path d="M 848 440 C 780 440 760 500 720 500" fill="none" stroke="url(#mlStream)" stroke-width="2" opacity="0.7"/>
-                    <circle r="2.5" fill="#93c5fd">
-                        <animateMotion dur="3s" repeatCount="indefinite" path="M 848 440 C 780 440 760 500 720 500"/>
-                    </circle>
-                </g>
-
-                <!-- CENTER -->
-                <g>
-                    <circle cx="750" cy="500" r="90" fill="url(#mergeAura)"/>
-                    <circle cx="750" cy="500" r="50" fill="none" stroke="#a7f3d0" stroke-width="1.4" opacity="0.75">
-                        <animate attributeName="r" values="50;96" dur="3.6s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.75;0" dur="3.6s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="750" cy="500" r="50" fill="none" stroke="#a7f3d0" stroke-width="1.4" opacity="0.75">
-                        <animate attributeName="r" values="50;96" dur="3.6s" begin="1.8s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.75;0" dur="3.6s" begin="1.8s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="750" cy="500" r="46" fill="#0e1a14" stroke="#a7f3d0" stroke-width="1.8"/>
-                    <text x="750" y="488" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#a7f3d0" letter-spacing="3">COMBINED</text>
-                    <text x="750" y="512" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#f1f5f9" font-weight="600">−8.72</text>
-                    <text x="750" y="440" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#a7f3d0" letter-spacing="3">AGREEMENT</text>
-                    <text x="750" y="600" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#a7f3d0" letter-spacing="3">TRUSTED</text>
-                </g>
-
-                <!-- DIVERGENCE -->
-                <g>
-                    <path d="M 340 720 Q 600 720 860 720" fill="none" stroke="#fbbf24" stroke-width="0.8" stroke-dasharray="3 6" opacity="0.7"/>
-                    <circle cx="600" cy="790" r="34" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.6">
-                        <animate attributeName="r" values="34;52;34" dur="5s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.6;0.1;0.6" dur="5s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="600" cy="790" r="16" fill="none" stroke="#fbbf24" stroke-width="1.4"/>
-                    <line x1="600" y1="784" x2="600" y2="792" stroke="#fbbf24" stroke-width="1.6"/>
-                    <text x="600" y="738" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#fbbf24" letter-spacing="4">DIVERGENCE</text>
-                    <text x="600" y="860" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f1f5f9" font-style="italic">flagged, not promoted</text>
-                    <text x="600" y="882" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#94a3b8" font-style="italic">A disagreement is not noise. It is information.</text>
-                </g>
-
-            </svg>
+        <div class="mlp-bottom">
+            <div class="mlp-split">
+                <span class="mlp-split-label">When they agree</span>
+                <span class="mlp-split-value mlp-agree">trusted</span>
+            </div>
+            <div class="mlp-split">
+                <span class="mlp-split-label">When they diverge</span>
+                <span class="mlp-split-value mlp-diverge">flagged — not promoted</span>
+            </div>
+            <p class="mlp-coda">
+                A disagreement between a physical calculation and a learned judgment
+                is not noise. It is information.
+            </p>
         </div>
     </div>
 </section>
