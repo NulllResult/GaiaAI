@@ -5713,26 +5713,6 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     position: relative;
     overflow: hidden;
 }
-#what-gaia-is::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-        90deg,
-        transparent 0px,
-        transparent 22px,
-        rgba(74,222,128,0.055) 22px,
-        rgba(74,222,128,0.055) 24px
-    );
-    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-            mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-    animation: gaiadrift 50s linear infinite;
-    pointer-events: none;
-}
-@keyframes gaiadrift {
-    from { background-position: 0 0; }
-    to   { background-position: 240px 0; }
-}
 #what-gaia-is .container-narrow {
     position: relative;
     z-index: 2;
@@ -5764,3 +5744,10 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     max-width: 660px;
     margin: 0 auto;
 }
+
+/* remove the separator line on the What GAIA is section */
+#what-gaia-is {
+    border-top: none !important;
+}
+
+#what-gaia-is { border-top: none !important; }
