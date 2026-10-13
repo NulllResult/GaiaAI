@@ -5788,3 +5788,31 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 @media (max-width: 600px) {
     .stats { grid-template-columns: repeat(2, 1fr) !important; }
 }
+
+/* ============================================================
+   HARD LOCK — hero stats in one row at every screen size
+   ============================================================ */
+.stats {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    align-items: start !important;
+}
+.stats .stat {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding: 8px 4px !important;
+}
+.stats .num {
+    font-size: clamp(0.95rem, 3.2vw, 2rem) !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+}
+.stats .label {
+    font-size: clamp(0.55rem, 1.6vw, 0.78rem) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    letter-spacing: 0.04em !important;
+}
