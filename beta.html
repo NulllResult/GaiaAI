@@ -132,22 +132,18 @@
 }
 </style>
 <style>
+html, body { background: #0a1410; }
 .gaia-bg {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    background: #0a1410;
 }
 .gaia-bg svg {
     width: 100%;
     height: 100%;
     display: block;
-}
-body {
-    position: relative;
-    background: transparent !important;
 }
 .beta-hero {
     position: relative;
@@ -156,6 +152,176 @@ body {
 </style>
 </head>
 <body>
+<div class="gaia-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 2400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+        <defs>
+            <radialGradient id="bgA" cx="25%" cy="20%" r="45%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.14"/>
+                <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="bgB" cx="80%" cy="60%" r="45%">
+                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.11"/>
+                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="bgC" cx="50%" cy="90%" r="40%">
+                <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.09"/>
+                <stop offset="100%" stop-color="#a7f3d0" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="ln" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.65"/>
+                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.4"/>
+            </linearGradient>
+        </defs>
+
+        <rect width="1200" height="2400" fill="url(#bgA)"/>
+        <rect width="1200" height="2400" fill="url(#bgB)"/>
+        <rect width="1200" height="2400" fill="url(#bgC)"/>
+
+        <!-- ============ KNOWLEDGE GRAPH — spans full height ============ -->
+
+        <!-- Edges: 3 clusters connected -->
+        <g stroke="url(#ln)" stroke-width="1" fill="none" opacity="0.55">
+            <!-- top cluster -->
+            <line x1="200" y1="300" x2="500" y2="450"/>
+            <line x1="500" y1="450" x2="900" y2="350"/>
+            <line x1="900" y1="350" x2="1000" y2="600"/>
+            <line x1="1000" y1="600" x2="600" y2="700"/>
+            <line x1="600" y1="700" x2="200" y2="300"/>
+            <line x1="500" y1="450" x2="600" y2="700"/>
+            <line x1="900" y1="350" x2="600" y2="700"/>
+            <!-- middle cluster -->
+            <line x1="600" y1="700" x2="300" y2="1000"/>
+            <line x1="300" y1="1000" x2="700" y2="1150"/>
+            <line x1="700" y1="1150" x2="1050" y2="1000"/>
+            <line x1="1050" y1="1000" x2="900" y2="1300"/>
+            <line x1="900" y1="1300" x2="500" y2="1400"/>
+            <line x1="500" y1="1400" x2="300" y2="1000"/>
+            <line x1="700" y1="1150" x2="500" y2="1400"/>
+            <line x1="1050" y1="1000" x2="700" y2="1150"/>
+            <!-- bottom cluster -->
+            <line x1="500" y1="1400" x2="250" y2="1700"/>
+            <line x1="250" y1="1700" x2="600" y2="1850"/>
+            <line x1="600" y1="1850" x2="950" y2="1750"/>
+            <line x1="950" y1="1750" x2="1000" y2="2050"/>
+            <line x1="1000" y1="2050" x2="700" y2="2200"/>
+            <line x1="700" y1="2200" x2="300" y2="2100"/>
+            <line x1="300" y1="2100" x2="250" y2="1700"/>
+            <line x1="600" y1="1850" x2="700" y2="2200"/>
+            <line x1="950" y1="1750" x2="600" y2="1850"/>
+            <!-- cross-cluster connectors -->
+            <line x1="500" y1="450" x2="300" y2="1000"/>
+            <line x1="900" y1="350" x2="1050" y2="1000"/>
+            <line x1="300" y1="1000" x2="250" y2="1700"/>
+            <line x1="1050" y1="1000" x2="950" y2="1750"/>
+            <line x1="700" y1="1150" x2="600" y2="1850"/>
+        </g>
+
+        <!-- Nodes — 22 across full height, pulsing -->
+        <g fill="#4ade80">
+            <circle cx="200" cy="300" r="7"><animate attributeName="r" values="5;9;5" dur="3.4s" repeatCount="indefinite"/></circle>
+            <circle cx="500" cy="450" r="9"><animate attributeName="r" values="6;11;6" dur="4s" repeatCount="indefinite" begin="-0.5s"/></circle>
+            <circle cx="900" cy="350" r="7"><animate attributeName="r" values="5;9;5" dur="3.6s" repeatCount="indefinite" begin="-1s"/></circle>
+            <circle cx="1000" cy="600" r="6"><animate attributeName="r" values="4.5;8;4.5" dur="3.8s" repeatCount="indefinite" begin="-1.5s"/></circle>
+            <circle cx="600" cy="700" r="9"><animate attributeName="r" values="6;11;6" dur="4.2s" repeatCount="indefinite" begin="-2s"/></circle>
+
+            <circle cx="300" cy="1000" r="8"><animate attributeName="r" values="5;9;5" dur="3.5s" repeatCount="indefinite" begin="-0.3s"/></circle>
+            <circle cx="700" cy="1150" r="10"><animate attributeName="r" values="7;12;7" dur="4.4s" repeatCount="indefinite" begin="-0.8s"/></circle>
+            <circle cx="1050" cy="1000" r="7"><animate attributeName="r" values="5;9;5" dur="3.9s" repeatCount="indefinite" begin="-1.3s"/></circle>
+            <circle cx="900" cy="1300" r="8"><animate attributeName="r" values="5;9;5" dur="4.1s" repeatCount="indefinite" begin="-1.8s"/></circle>
+            <circle cx="500" cy="1400" r="9"><animate attributeName="r" values="6;11;6" dur="3.7s" repeatCount="indefinite" begin="-2.3s"/></circle>
+
+            <circle cx="250" cy="1700" r="7"><animate attributeName="r" values="5;9;5" dur="4.3s" repeatCount="indefinite" begin="-0.4s"/></circle>
+            <circle cx="600" cy="1850" r="10"><animate attributeName="r" values="7;12;7" dur="3.6s" repeatCount="indefinite" begin="-0.9s"/></circle>
+            <circle cx="950" cy="1750" r="8"><animate attributeName="r" values="5;9;5" dur="4.5s" repeatCount="indefinite" begin="-1.4s"/></circle>
+            <circle cx="1000" cy="2050" r="7"><animate attributeName="r" values="5;9;5" dur="3.8s" repeatCount="indefinite" begin="-1.9s"/></circle>
+            <circle cx="700" cy="2200" r="9"><animate attributeName="r" values="6;11;6" dur="4.1s" repeatCount="indefinite" begin="-2.4s"/></circle>
+            <circle cx="300" cy="2100" r="7"><animate attributeName="r" values="5;9;5" dur="3.9s" repeatCount="indefinite" begin="-2.9s"/></circle>
+        </g>
+
+        <!-- Central hub glow -->
+        <g>
+            <circle cx="600" cy="1150" r="30" fill="none" stroke="#a7f3d0" stroke-width="1.5" opacity="0.55"/>
+            <circle cx="600" cy="1150" r="12" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+            <circle cx="600" cy="1150" r="5" fill="#4ade80">
+                <animate attributeName="r" values="3.5;7;3.5" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="600" cy="1150" r="30" fill="none" stroke="#4ade80" stroke-width="0.8" opacity="0.35">
+                <animate attributeName="r" values="30;65;30" dur="4.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.35;0;0.35" dur="4.5s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+
+        <!-- Flowing particles along edges -->
+        <circle r="4" fill="#a7f3d0" opacity="0.95">
+            <animateMotion dur="7s" repeatCount="indefinite" path="M 200 300 L 500 450 L 900 350 L 1000 600 L 600 700 L 200 300"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="7s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="4" fill="#60a5fa" opacity="0.95">
+            <animateMotion dur="9s" repeatCount="indefinite" begin="-3s" path="M 300 1000 L 700 1150 L 1050 1000 L 900 1300 L 500 1400 L 300 1000"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="9s" begin="-3s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="4" fill="#ffffff" opacity="0.95">
+            <animateMotion dur="8s" repeatCount="indefinite" begin="-5s" path="M 250 1700 L 600 1850 L 950 1750 L 1000 2050 L 700 2200 L 300 2100 L 250 1700"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="8s" begin="-5s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3.5" fill="#34d399" opacity="0.95">
+            <animateMotion dur="11s" repeatCount="indefinite" begin="-1s" path="M 500 450 L 300 1000 L 250 1700 L 600 1850 L 700 1150 L 500 450"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="11s" begin="-1s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Rotating molecular fragments distributed vertically -->
+        <g transform="translate(280 250)" opacity="0.28" stroke="#a7f3d0" stroke-width="1" fill="none">
+            <polygon points="0,-24 21,-12 21,12 0,24 -21,12 -21,-12"/>
+            <circle cx="0" cy="0" r="9" stroke-dasharray="2 3"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 280 250" to="360 280 250" dur="120s" repeatCount="indefinite"/>
+        </g>
+        <g transform="translate(920 480)" opacity="0.25" stroke="#60a5fa" stroke-width="1" fill="none">
+            <polygon points="0,-20 17,-10 17,10 0,20 -17,10 -17,-10"/>
+            <circle cx="0" cy="0" r="7" stroke-dasharray="2 3"/>
+            <animateTransform attributeName="transform" type="rotate" from="360 920 480" to="0 920 480" dur="150s" repeatCount="indefinite"/>
+        </g>
+        <g transform="translate(200 1250)" opacity="0.26" stroke="#34d399" stroke-width="1" fill="none">
+            <polygon points="0,-22 19,-11 19,11 0,22 -19,11 -19,-11"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 200 1250" to="360 200 1250" dur="170s" repeatCount="indefinite"/>
+        </g>
+        <g transform="translate(1000 1550)" opacity="0.24" stroke="#4ade80" stroke-width="1" fill="none">
+            <polygon points="0,-26 22,-13 22,13 0,26 -22,13 -22,-13"/>
+            <circle cx="0" cy="0" r="10" stroke-dasharray="3 4"/>
+            <animateTransform attributeName="transform" type="rotate" from="360 1000 1550" to="0 1000 1550" dur="200s" repeatCount="indefinite"/>
+        </g>
+        <g transform="translate(880 2150)" opacity="0.22" stroke="#a7f3d0" stroke-width="1" fill="none">
+            <polygon points="0,-20 17,-10 17,10 0,20 -17,10 -17,-10"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 880 2150" to="360 880 2150" dur="160s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- Ambient dust — scattered full height -->
+        <g fill="#a7f3d0" opacity="0.55">
+            <circle cx="150" cy="200" r="2"><animate attributeName="cy" values="200;185;200" dur="12s" repeatCount="indefinite"/></circle>
+            <circle cx="1050" cy="350" r="1.7"><animate attributeName="cy" values="350;335;350" dur="11s" repeatCount="indefinite"/></circle>
+            <circle cx="400" cy="550" r="1.8"><animate attributeName="cy" values="550;535;550" dur="13s" repeatCount="indefinite"/></circle>
+            <circle cx="800" cy="800" r="2"><animate attributeName="cy" values="800;785;800" dur="14s" repeatCount="indefinite"/></circle>
+            <circle cx="200" cy="950" r="1.6"><animate attributeName="cy" values="950;935;950" dur="10s" repeatCount="indefinite"/></circle>
+            <circle cx="1000" cy="1100" r="1.9"><animate attributeName="cy" values="1100;1085;1100" dur="15s" repeatCount="indefinite"/></circle>
+            <circle cx="350" cy="1350" r="1.7"><animate attributeName="cy" values="1350;1335;1350" dur="12s" repeatCount="indefinite"/></circle>
+            <circle cx="850" cy="1600" r="2"><animate attributeName="cy" values="1600;1585;1600" dur="13.5s" repeatCount="indefinite"/></circle>
+            <circle cx="150" cy="1800" r="1.8"><animate attributeName="cy" values="1800;1785;1800" dur="11.5s" repeatCount="indefinite"/></circle>
+            <circle cx="1050" cy="1950" r="1.6"><animate attributeName="cy" values="1950;1935;1950" dur="14.5s" repeatCount="indefinite"/></circle>
+            <circle cx="450" cy="2150" r="1.9"><animate attributeName="cy" values="2150;2135;2150" dur="12.5s" repeatCount="indefinite"/></circle>
+            <circle cx="750" cy="2300" r="1.7"><animate attributeName="cy" values="2300;2285;2300" dur="13s" repeatCount="indefinite"/></circle>
+        </g>
+
+        <!-- Slow reference rings around graph center -->
+        <g fill="none" stroke="#4ade80" stroke-width="0.5" opacity="0.18">
+            <circle cx="600" cy="1150" r="500" stroke-dasharray="5 10">
+                <animateTransform attributeName="transform" type="rotate" from="0 600 1150" to="360 600 1150" dur="200s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="600" cy="1150" r="650" stroke-dasharray="3 15">
+                <animateTransform attributeName="transform" type="rotate" from="360 600 1150" to="0 600 1150" dur="280s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </svg>
+</div>
+
 <div class="gaia-bg" aria-hidden="true">
     <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
