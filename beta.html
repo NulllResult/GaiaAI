@@ -230,6 +230,70 @@ body > .beta-hero {
     }
 }
 </style>
+<style>
+.earth-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.earth-overlay .eq {
+    position: absolute;
+    font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 0.85rem;
+    color: #a7f3d0;
+    opacity: 0.55;
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.45);
+    letter-spacing: 0.03em;
+    animation: eqDrift 14s ease-in-out infinite alternate;
+}
+.earth-overlay .eq.small { font-size: 0.72rem; opacity: 0.42; }
+.earth-overlay .eq.med   { font-size: 0.95rem; opacity: 0.60; }
+.earth-overlay .eq.large { font-size: 1.1rem;  opacity: 0.7;  }
+.earth-overlay .eq .op { color: #4ade80; padding: 0 0.15em; }
+.earth-overlay .eq .f  { font-style: italic; color: #34d399; }
+.earth-overlay .eq .v  { color: #ffffff; font-style: italic; }
+.earth-overlay .eq .n  { color: #f1f5f9; }
+
+@keyframes eqDrift {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(6px, -4px); }
+}
+
+.earth-overlay .mol {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    opacity: 0.75;
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.4));
+    animation: molDrift 18s ease-in-out infinite alternate;
+}
+.earth-overlay .mol:nth-of-type(2) { animation-duration: 22s; animation-direction: alternate-reverse; }
+.earth-overlay .mol:nth-of-type(3) { animation-duration: 16s; }
+
+@keyframes molDrift {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    50%  { transform: translate(4px, -6px) rotate(8deg); }
+    100% { transform: translate(-3px, 4px) rotate(-6deg); }
+}
+
+/* Hide the overlay on the top half so it doesn't fight the form */
+.earth-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 58%;
+    background: linear-gradient(to bottom, #06120c 0%, #06120c 40%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    .earth-overlay .eq { font-size: 0.7rem; }
+    .earth-overlay .mol { width: 52px; height: 52px; }
+}
+</style>
 </head>
 <body>
 <canvas id="gaia-bg-canvas" aria-hidden="true"></canvas>
@@ -266,10 +330,10 @@ body > .beta-hero {
         color: 0x4ade80,
         wireframe: true,
         transparent: true,
-        opacity: 0.14,
+        opacity: 0.42,
         depthWrite: false,
     });
-    const grid = new THREE.Mesh(new THREE.SphereGeometry(1.008, 24, 18), gridMat);
+    const grid = new THREE.Mesh(new THREE.SphereGeometry(1.010, 32, 20), gridMat);
     scene.add(grid);
 
     // ---- (B) Orbital ring around the globe (tilted) ----
@@ -277,21 +341,23 @@ body > .beta-hero {
     ringGroup.rotation.x = Math.PI * 0.42;   // tilt
     ringGroup.rotation.z = Math.PI * 0.15;
 
-    const ringGeo = new THREE.TorusGeometry(1.35, 0.004, 8, 128);
+    const ringGeo = new THREE.TorusGeometry(1.35, 0.008, 8, 160);
     const ringMat = new THREE.MeshBasicMaterial({
         color: 0xa7f3d0,
         transparent: true,
-        opacity: 0.65,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
     });
     const ring = new THREE.Mesh(ringGeo, ringMat);
     ringGroup.add(ring);
 
     // second thinner ring, opposite tilt
-    const ring2Geo = new THREE.TorusGeometry(1.5, 0.002, 8, 128);
+    const ring2Geo = new THREE.TorusGeometry(1.5, 0.005, 8, 160);
     const ring2Mat = new THREE.MeshBasicMaterial({
         color: 0x60a5fa,
         transparent: true,
-        opacity: 0.4,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending,
     });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.x = Math.PI * 0.55;
@@ -303,7 +369,7 @@ body > .beta-hero {
     // ---- (C) Orbiting satellites on the rings ----
     const satMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const satMat2 = new THREE.MeshBasicMaterial({ color: 0x4ade80 });
-    const satGeo = new THREE.SphereGeometry(0.018, 12, 12);
+    const satGeo = new THREE.SphereGeometry(0.030, 12, 12);
 
     const sat1 = new THREE.Mesh(satGeo, satMat);
     const sat2 = new THREE.Mesh(satGeo, satMat2);
@@ -344,9 +410,10 @@ body > .beta-hero {
         const mat = new THREE.LineBasicMaterial({
             color: color,
             transparent: true,
-            opacity: opacity,
+            opacity: Math.min(opacity * 1.6, 1.0),
             blending: THREE.AdditiveBlending,
             depthWrite: false,
+            linewidth: 2,
         });
         return new THREE.Line(geo, mat);
     }
@@ -369,11 +436,12 @@ body > .beta-hero {
 
     // ---- (E) Pulsing "signal" nodes on the surface ----
     const nodeMat = new THREE.MeshBasicMaterial({
-        color: 0x4ade80,
+        color: 0xa7f3d0,
         transparent: true,
-        opacity: 0.85,
+        opacity: 1.0,
+        blending: THREE.AdditiveBlending,
     });
-    const nodeGeo = new THREE.SphereGeometry(0.014, 10, 10);
+    const nodeGeo = new THREE.SphereGeometry(0.028, 10, 10);
     const nodePositions = [
         [35,  -100, 1.01],
         [50,    10, 1.01],
@@ -400,7 +468,7 @@ body > .beta-hero {
     const shellMat1 = new THREE.MeshBasicMaterial({
         color: 0x4ade80,
         transparent: true,
-        opacity: 0.06,
+        opacity: 0.14,
         side: THREE.BackSide,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
@@ -411,7 +479,7 @@ body > .beta-hero {
     const shellMat2 = new THREE.MeshBasicMaterial({
         color: 0xa7f3d0,
         transparent: true,
-        opacity: 0.035,
+        opacity: 0.08,
         side: THREE.BackSide,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
@@ -422,11 +490,12 @@ body > .beta-hero {
     // ---- (G) Grid of ring particles around the equator ----
     const equatorCount = 60;
     const equatorGroup = new THREE.Group();
-    const pGeo = new THREE.SphereGeometry(0.008, 6, 6);
+    const pGeo = new THREE.SphereGeometry(0.014, 6, 6);
     const pMat = new THREE.MeshBasicMaterial({
-        color: 0xa7f3d0,
+        color: 0x4ade80,
         transparent: true,
-        opacity: 0.7,
+        opacity: 1.0,
+        blending: THREE.AdditiveBlending,
     });
     for (let i = 0; i < equatorCount; i++) {
         const a = (i / equatorCount) * Math.PI * 2;
@@ -696,7 +765,7 @@ if (container) {
     const tintMat = new THREE.MeshBasicMaterial({
         color: 0x4ade80,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.10,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         side: THREE.FrontSide,
@@ -783,6 +852,61 @@ if (container) {
     tick();
 }
 </script>
+
+
+<!-- ============================================================
+     FLOATING MATH + MOLECULES over the Earth
+     ============================================================ -->
+<div class="earth-overlay" aria-hidden="true">
+    <!-- Equations drifting over the upper limb of the planet -->
+    <span class="eq" style="top: 8%;  left: 6%;">
+        H <span class="op">=</span> <span class="op">−</span> Σ <span class="v">p</span><sub>i</sub> <span class="f">log</span><sub>2</sub> <span class="v">p</span><sub>i</sub>
+    </span>
+    <span class="eq med" style="top: 22%; left: 68%;">
+        D <span class="op">=</span> <span class="f">lim</span><sub>ε→0</sub> <span class="f">log</span> N(ε) <span class="op">/</span> <span class="f">log</span>(1/ε)
+    </span>
+    <span class="eq small" style="top: 40%; left: 12%;">
+        E <span class="op">~</span> c · n<sup><span class="v">H</span></sup>
+    </span>
+    <span class="eq med" style="top: 55%; left: 76%;">
+        ΔG <span class="op">=</span> ⟨G⟩<sub>bound</sub> <span class="op">−</span> ⟨G⟩<sub>free</sub>
+    </span>
+    <span class="eq small" style="top: 70%; left: 8%;">
+        F<sub>1</sub> <span class="op">=</span> 2 · P · R <span class="op">/</span> (P + R)
+    </span>
+
+    <!-- Small molecule SVGs scattered above the horizon -->
+    <svg class="mol" style="top: 15%; left: 38%;" viewBox="0 0 80 80">
+        <polygon points="40,10 62,24 62,52 40,66 18,52 18,24"
+                 fill="none" stroke="#a7f3d0" stroke-width="1.4"/>
+        <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.9" stroke-dasharray="2 3"/>
+        <line x1="40" y1="10" x2="40" y2="0" stroke="#a7f3d0" stroke-width="1.2"/>
+        <line x1="62" y1="52" x2="74" y2="60" stroke="#a7f3d0" stroke-width="1.2"/>
+        <line x1="18" y1="52" x2="6" y2="60" stroke="#a7f3d0" stroke-width="1.2"/>
+        <circle cx="40" cy="0" r="2.4" fill="#4ade80"/>
+        <circle cx="74" cy="60" r="2.4" fill="#60a5fa"/>
+        <circle cx="6" cy="60" r="2.4" fill="#34d399"/>
+    </svg>
+
+    <svg class="mol" style="top: 32%; left: 58%;" viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="12" fill="none" stroke="#4ade80" stroke-width="1.4"/>
+        <circle cx="40" cy="40" r="5" fill="none" stroke="#a7f3d0" stroke-width="0.9"/>
+        <ellipse cx="40" cy="40" rx="28" ry="10" fill="none" stroke="#4ade80" stroke-width="0.8" opacity="0.7"/>
+        <ellipse cx="40" cy="40" rx="10" ry="28" fill="none" stroke="#60a5fa" stroke-width="0.8" opacity="0.7"/>
+        <circle cx="68" cy="40" r="2" fill="#a7f3d0"/>
+        <circle cx="12" cy="40" r="2" fill="#a7f3d0"/>
+    </svg>
+
+    <svg class="mol" style="top: 62%; left: 32%;" viewBox="0 0 80 80">
+        <path d="M 10 60 L 26 40 L 42 54 L 58 30 L 72 44"
+              fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="10" cy="60" r="3" fill="#a7f3d0"/>
+        <circle cx="26" cy="40" r="3" fill="#4ade80"/>
+        <circle cx="42" cy="54" r="3" fill="#34d399"/>
+        <circle cx="58" cy="30" r="3" fill="#60a5fa"/>
+        <circle cx="72" cy="44" r="3" fill="#a7f3d0"/>
+    </svg>
+</div>
 
 </body>
 </html>
