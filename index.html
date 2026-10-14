@@ -1567,10 +1567,23 @@
             <div class="movement">
                 <div class="movement-mark">
                     <svg viewBox="0 0 40 40" width="40" height="40">
-                        <path d="M 2 20 Q 8 8 14 20 T 26 20 T 38 20"
-                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round">
-                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" repeatCount="indefinite"/>
-                        </path>
+                        <g stroke="#4ade80" stroke-width="1.5" fill="none" stroke-linecap="round">
+                            <line x1="8"  y1="20" x2="16" y2="12"/>
+                            <line x1="16" y1="12" x2="24" y2="20"/>
+                            <line x1="24" y1="20" x2="32" y2="12"/>
+                            <line x1="8"  y1="20" x2="16" y2="28"/>
+                            <line x1="16" y1="28" x2="24" y2="20"/>
+                            <line x1="24" y1="20" x2="32" y2="28"/>
+                        </g>
+                        <circle cx="8"  cy="20" r="2.6" fill="#a7f3d0"/>
+                        <circle cx="16" cy="12" r="2.6" fill="#4ade80"/>
+                        <circle cx="16" cy="28" r="2.6" fill="#4ade80"/>
+                        <circle cx="24" cy="20" r="2.6" fill="#a7f3d0"/>
+                        <circle cx="32" cy="12" r="2.6" fill="#4ade80"/>
+                        <circle cx="32" cy="28" r="2.6" fill="#4ade80"/>
+                        <circle cx="24" cy="20" r="6" fill="none" stroke="#a7f3d0" stroke-width="0.8" stroke-dasharray="2 3">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                        </circle>
                     </svg>
                 </div>
                 <div class="movement-body">
@@ -1582,10 +1595,19 @@
             <div class="movement">
                 <div class="movement-mark">
                     <svg viewBox="0 0 40 40" width="40" height="40">
-                        <path d="M 2 20 L 10 20 L 12 12 L 16 28 L 20 20 L 28 20 L 30 10 L 34 30 L 38 20"
-                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="1s" repeatCount="indefinite"/>
-                        </path>
+                        <polygon points="20,8 30,14 30,26 20,32 10,26 10,14"
+                                 fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linejoin="round"/>
+                        <circle cx="20" cy="20" r="6" fill="none" stroke="#a7f3d0" stroke-width="0.9" stroke-dasharray="2 3">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <line x1="20" y1="8"  x2="20" y2="2" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="30" y1="26" x2="36" y2="30" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="10" y1="26" x2="4"  y2="30" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="20" cy="2"  r="2" fill="#4ade80">
+                            <animate attributeName="r" values="1.6;2.4;1.6" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="36" cy="30" r="2" fill="#a7f3d0"/>
+                        <circle cx="4"  cy="30" r="2" fill="#a7f3d0"/>
                     </svg>
                 </div>
                 <div class="movement-body">
@@ -1597,10 +1619,14 @@
             <div class="movement">
                 <div class="movement-mark">
                     <svg viewBox="0 0 40 40" width="40" height="40">
-                        <path d="M 2 30 L 12 30 L 16 14 L 20 34 L 24 22 L 28 30 L 38 30"
-                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="2s" repeatCount="indefinite"/>
-                        </path>
+                        <polygon points="14,10 22,15 22,25 14,30 6,25 6,15"
+                                 fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linejoin="round"/>
+                        <polygon points="22,15 30,10 38,15 38,25 30,30 22,25"
+                                 fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linejoin="round"/>
+                        <circle cx="22" cy="20" r="3" fill="none" stroke="#a7f3d0" stroke-width="0.9">
+                            <animate attributeName="r" values="2.6;4;2.6" dur="2.4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.4s" repeatCount="indefinite"/>
+                        </circle>
                     </svg>
                 </div>
                 <div class="movement-body">
@@ -1612,10 +1638,21 @@
             <div class="movement">
                 <div class="movement-mark">
                     <svg viewBox="0 0 40 40" width="40" height="40">
-                        <path d="M 2 20 L 10 20 L 14 10 L 20 30 L 26 10 L 32 30 L 36 20 L 38 20"
-                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="3s" repeatCount="indefinite"/>
-                        </path>
+                        <polygon points="20,8 30,14 30,26 20,32 10,26 10,14"
+                                 fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linejoin="round"/>
+                        <circle cx="20" cy="20" r="4" fill="none" stroke="#a7f3d0" stroke-width="1.2"/>
+                        <circle cx="20" cy="20" r="2" fill="#4ade80">
+                            <animate attributeName="r" values="1.6;2.8;1.6" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="20" cy="8" r="1.8" fill="#a7f3d0">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="30" cy="26" r="1.8" fill="#a7f3d0">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="0.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="10" cy="26" r="1.8" fill="#a7f3d0">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" begin="1.2s" repeatCount="indefinite"/>
+                        </circle>
                     </svg>
                 </div>
                 <div class="movement-body">
@@ -1627,10 +1664,16 @@
             <div class="movement">
                 <div class="movement-mark">
                     <svg viewBox="0 0 40 40" width="40" height="40">
-                        <path d="M 2 20 L 12 20 L 16 12 L 20 28 L 24 12 L 28 28 L 32 20 L 38 20"
-                              fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <animate attributeName="stroke-dasharray" values="0 200;200 0" dur="4s" begin="4s" repeatCount="indefinite"/>
-                        </path>
+                        <polygon points="12,10 18,14 18,22 12,26 6,22 6,14"
+                                 fill="none" stroke="#4ade80" stroke-width="1.4" stroke-linejoin="round" opacity="0.7"/>
+                        <circle cx="12" cy="18" r="2" fill="#a7f3d0" opacity="0.7"/>
+                        <path d="M 18 18 L 26 18" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M 24 15 L 27 18 L 24 21" fill="none" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polygon points="34,10 40,14 40,22 34,26 28,22 28,14"
+                                 fill="none" stroke="#4ade80" stroke-width="1.6" stroke-linejoin="round"/>
+                        <circle cx="34" cy="18" r="2.4" fill="#4ade80">
+                            <animate attributeName="r" values="2;3.2;2" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
                     </svg>
                 </div>
                 <div class="movement-body">
