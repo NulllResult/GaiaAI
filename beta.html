@@ -207,7 +207,7 @@ body > .beta-hero {
     transform: translateX(-50%);
     width: 120vw;                  /* wider than viewport for the big limb */
     height: 80vh;
-    z-index: 0;
+    z-index: 1;                    /* earth in FRONT of the canvas network */
     pointer-events: none;
 }
 /* soft fade at top of container so the form doesn't fight the horizon */
@@ -237,8 +237,8 @@ body > .beta-hero {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 38vh;              /* only the bottom 38% of viewport */
-    z-index: 1;
+    height: 26vh;              /* only the bottom 26% of viewport — over the earth */
+    z-index: 2;
     pointer-events: none;
     overflow: hidden;
 }
@@ -252,9 +252,9 @@ body > .beta-hero {
     letter-spacing: 0.02em;
     animation: emDrift 16s ease-in-out infinite alternate;
 }
-.earth-math .em-a { top: 12%; left: 6%;  font-size: 0.85rem; opacity: 0.6; }
-.earth-math .em-b { top: 38%; right: 8%; font-size: 0.75rem; opacity: 0.5; animation-duration: 20s; animation-direction: alternate-reverse; }
-.earth-math .em-c { top: 68%; left: 14%; font-size: 0.7rem;  opacity: 0.4; animation-duration: 18s; }
+.earth-math .em-a { top: 35%; left: 6%;  font-size: 0.8rem; opacity: 0.55; }
+.earth-math .em-b { top: 55%; right: 8%; font-size: 0.72rem; opacity: 0.5; animation-duration: 20s; animation-direction: alternate-reverse; }
+.earth-math .em-c { top: 78%; left: 14%; font-size: 0.68rem;  opacity: 0.4; animation-duration: 18s; }
 
 .earth-math .em-op { color: #4ade80; padding: 0 0.15em; }
 .earth-math .em-v  { color: #ffffff; font-style: italic; }
@@ -272,8 +272,8 @@ body > .beta-hero {
     filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.45));
     animation: emMolDrift 14s ease-in-out infinite alternate;
 }
-.earth-math .em-m1 { top: 22%; left: 58%; }
-.earth-math .em-m2 { top: 58%; right: 22%; animation-duration: 18s; animation-direction: alternate-reverse; }
+.earth-math .em-m1 { top: 40%; left: 62%; }
+.earth-math .em-m2 { top: 70%; right: 18%; animation-duration: 18s; animation-direction: alternate-reverse; }
 
 @keyframes emMolDrift {
     0%   { transform: translate(0, 0) rotate(0deg); }
@@ -752,12 +752,12 @@ if (container) {
     const tintMat = new THREE.MeshBasicMaterial({
         color: 0x4ade80,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.15,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         side: THREE.FrontSide,
     });
-    const tint = new THREE.Mesh(new THREE.SphereGeometry(1.002, 64, 64), tintMat);
+    const tint = new THREE.Mesh(new THREE.SphereGeometry(0.998, 64, 64), tintMat);
     scene.add(tint);
 
     // Second tint — a brighter mint just along the limb, to make edges glow.
