@@ -230,8 +230,20 @@ body > .beta-hero {
     }
 }
 </style>
+<style>
+/* ============================================================
+   BETA PAGE — kill the grid + radial glows from assets/style.css
+   These are the "diagonal line" and unwanted background effects.
+   ============================================================ */
+html body.beta-page::before,
+html body.beta-page::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+}
+</style>
 </head>
-<body>
+<body class="beta-page">
 <canvas id="gaia-bg-canvas" aria-hidden="true"></canvas>
 
 <script>
