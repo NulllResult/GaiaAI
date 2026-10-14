@@ -159,6 +159,37 @@ html, body {
     z-index: 1;
 }
 </style>
+<style>
+/* FINAL override — form always above the canvas */
+body > canvas#gaia-bg-canvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+body > .beta-hero,
+body > div.beta-hero {
+    position: relative !important;
+    z-index: 999 !important;
+}
+body > .beta-hero * {
+    position: relative;
+    z-index: 1;
+}
+/* form readability — dark panel behind the copy so the network doesn't bleed through */
+.beta-hero {
+    background: radial-gradient(
+        ellipse 700px 900px at 50% 40%,
+        rgba(6, 18, 12, 0.72) 0%,
+        rgba(6, 18, 12, 0.55) 40%,
+        rgba(6, 18, 12, 0.30) 70%,
+        transparent 100%
+    );
+}
+</style>
 </head>
 <body>
 <canvas id="gaia-bg-canvas" aria-hidden="true"></canvas>
@@ -201,14 +232,20 @@ html, body {
     function rand(a, b) { return a + Math.random() * (b - a); }
 
     function makeParticle() {
+        const homeX = Math.random() * W;
+        const homeY = Math.random() * H;
         return {
-            x: Math.random() * W,
-            y: Math.random() * H,
-            vx: rand(-CONFIG.speed, CONFIG.speed),
-            vy: rand(-CONFIG.speed, CONFIG.speed),
+            homeX: homeX,
+            homeY: homeY,
+            x: homeX,
+            y: homeY,
+            ampX: rand(4, 14),
+            ampY: rand(4, 14),
+            freqX: rand(0.0004, 0.0012),
+            freqY: rand(0.0004, 0.0012),
+            t: Math.random() * 1000,
             r: rand(CONFIG.nodeRadius[0], CONFIG.nodeRadius[1]),
             color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)],
-            // pulse phase for extra life
             phase: Math.random() * Math.PI * 2,
             pulseSpeed: rand(0.008, 0.02),
         };
@@ -240,16 +277,12 @@ html, body {
     function step() {
         ctx.clearRect(0, 0, W, H);
 
-        // Update positions
+        // Update positions — oscillate around home
         for (const p of particles) {
-            p.x += p.vx;
-            p.y += p.vy;
+            p.t += 1;
+            p.x = p.homeX + Math.sin(p.t * p.freqX) * p.ampX;
+            p.y = p.homeY + Math.cos(p.t * p.freqY) * p.ampY;
             p.phase += p.pulseSpeed;
-
-            if (p.x < -20) p.x = W + 20;
-            if (p.x > W + 20) p.x = -20;
-            if (p.y < -20) p.y = H + 20;
-            if (p.y > H + 20) p.y = -20;
         }
 
         // Draw edges first (under nodes)
