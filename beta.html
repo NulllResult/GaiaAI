@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIA — Beta Access</title>
+<meta name="description" content="Request access to the GAIA closed beta.">
+<link rel="stylesheet" href="assets/style.css?v=31">
+<style>
+.beta-hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 40px;
+    text-align: center;
+}
+.beta-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.beta-hero p {
+    max-width: 560px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--fg-dim);
+    margin-bottom: 32px;
+}
+.beta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+}
+.beta-form input,
+.beta-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(14,26,20,0.6);
+    border: 1px solid rgba(74,222,128,0.28);
+    border-radius: 8px;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 0.98rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.beta-form input:focus,
+.beta-form textarea:focus {
+    border-color: #4ade80;
+    box-shadow: 0 0 0 3px rgba(74,222,128,0.12);
+}
+.beta-form textarea { min-height: 100px; resize: vertical; font-family: inherit; }
+.beta-form button {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #4ade80, #34d399);
+    border: none;
+    border-radius: 8px;
+    color: #0a1410;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+.beta-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(74,222,128,0.3);
+}
+.beta-note {
+    font-size: 0.82rem;
+    color: rgba(167,243,208,0.5);
+    margin-top: 24px;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.04em;
+}
+.beta-back {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+.beta-back:hover { opacity: 1; }
+.beta-promise {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(74,222,128,0.15);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.beta-promise h3 {
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #4ade80;
+    opacity: 0.75;
+    margin-bottom: 16px;
+}
+.beta-promise ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+.beta-promise li {
+    font-size: 0.92rem;
+    color: var(--fg-dim);
+    line-height: 1.6;
+    padding-left: 22px;
+    position: relative;
+}
+.beta-promise li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #4ade80;
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<div class="beta-hero">
+    <h1>GAIA <span class="accent">Beta Access</span></h1>
+    <p>
+        GAIA is in closed beta. Request access to run the full pipeline on
+        your own data — genome read, variant mapping, compound ranking,
+        protocol design, and the reversal simulation.
+    </p>
+
+    <form class="beta-form" action="#" method="POST" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received — we\'ll be in touch'; this.querySelector('button').disabled=true; this.querySelector('button').style.opacity=0.7;">
+        <input type="email" name="email" placeholder="you@example.com" required>
+        <input type="text" name="affiliation" placeholder="Affiliation (optional)">
+        <textarea name="use_case" placeholder="What would you use GAIA for? (optional)"></textarea>
+        <button type="submit">Request beta access</button>
+    </form>
+
+    <p class="beta-note">No email yet — access requests will be collected and followed up manually.</p>
+
+    <div class="beta-promise">
+        <h3>What beta access includes</h3>
+        <ul>
+            <li>Full access to the genome-scanning pipeline</li>
+            <li>Compound library screening across 25M+ molecules</li>
+            <li>The reversal simulation — run protocols on your own disease model</li>
+            <li>All datasets, all benchmarks, all intermediate outputs</li>
+            <li>Direct line for feedback — the system is built by one person</li>
+        </ul>
+    </div>
+
+    <a href="index.html" class="beta-back">← Back to GAIA</a>
+</div>
+
+</body>
+</html>
