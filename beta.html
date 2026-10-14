@@ -207,7 +207,7 @@ body > .beta-hero {
     transform: translateX(-50%);
     width: 120vw;                  /* wider than viewport for the big limb */
     height: 80vh;
-    z-index: 1;                    /* earth in FRONT of the canvas network */
+    z-index: 0;
     pointer-events: none;
 }
 /* soft fade at top of container so the form doesn't fight the horizon */
@@ -228,61 +228,6 @@ body > .beta-hero {
         width: 160vw;
         height: 70vh;
     }
-}
-</style>
-<style>
-/* Minimal math + molecule layer — bottom of the page only, over the Earth */
-.earth-math {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 26vh;              /* only the bottom 26% of viewport — over the earth */
-    z-index: 2;
-    pointer-events: none;
-    overflow: hidden;
-}
-.earth-math .em-eq {
-    position: absolute;
-    font-family: ui-monospace, 'SF Mono', Consolas, monospace;
-    font-size: 0.78rem;
-    color: #a7f3d0;
-    opacity: 0.5;
-    text-shadow: 0 0 10px rgba(74, 222, 128, 0.6), 0 0 4px rgba(0,0,0,0.9);
-    letter-spacing: 0.02em;
-    animation: emDrift 16s ease-in-out infinite alternate;
-}
-.earth-math .em-a { top: 35%; left: 6%;  font-size: 0.8rem; opacity: 0.55; }
-.earth-math .em-b { top: 55%; right: 8%; font-size: 0.72rem; opacity: 0.5; animation-duration: 20s; animation-direction: alternate-reverse; }
-.earth-math .em-c { top: 78%; left: 14%; font-size: 0.68rem;  opacity: 0.4; animation-duration: 18s; }
-
-.earth-math .em-op { color: #4ade80; padding: 0 0.15em; }
-.earth-math .em-v  { color: #ffffff; font-style: italic; }
-
-@keyframes emDrift {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(5px, -3px); }
-}
-
-.earth-math .em-mol {
-    position: absolute;
-    width: 54px;
-    height: 54px;
-    opacity: 0.6;
-    filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.45));
-    animation: emMolDrift 14s ease-in-out infinite alternate;
-}
-.earth-math .em-m1 { top: 40%; left: 62%; }
-.earth-math .em-m2 { top: 70%; right: 18%; animation-duration: 18s; animation-direction: alternate-reverse; }
-
-@keyframes emMolDrift {
-    0%   { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(4px, -5px) rotate(6deg); }
-}
-
-@media (max-width: 600px) {
-    .earth-math .em-eq { font-size: 0.68rem; }
-    .earth-math .em-mol { width: 42px; height: 42px; }
 }
 </style>
 </head>
@@ -312,187 +257,6 @@ body > .beta-hero {
         linkOpacity: 0.18,       // base line opacity
         nodeOpacity: 0.75,
     };
-
-
-    // ====== GAIA COMPLEXITY LAYERS ======
-
-    // ---- (A) Wireframe lat/long grid overlay (subtle) ----
-    const gridMat = new THREE.MeshBasicMaterial({
-        color: 0x4ade80,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.18,
-        depthWrite: false,
-    });
-    const grid = new THREE.Mesh(new THREE.SphereGeometry(1.010, 32, 20), gridMat);
-    scene.add(grid);
-
-    // ---- (B) Orbital ring around the globe (tilted) ----
-    const ringGroup = new THREE.Group();
-    ringGroup.rotation.x = Math.PI * 0.42;   // tilt
-    ringGroup.rotation.z = Math.PI * 0.15;
-
-    const ringGeo = new THREE.TorusGeometry(1.35, 0.004, 8, 128);
-    const ringMat = new THREE.MeshBasicMaterial({
-        color: 0xa7f3d0,
-        transparent: true,
-        opacity: 0.55,
-    });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    ringGroup.add(ring);
-
-    // second thinner ring, opposite tilt
-    const ring2Geo = new THREE.TorusGeometry(1.5, 0.003, 8, 128);
-    const ring2Mat = new THREE.MeshBasicMaterial({
-        color: 0x60a5fa,
-        transparent: true,
-        opacity: 0.35,
-    });
-    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
-    ring2.rotation.x = Math.PI * 0.55;
-    ring2.rotation.y = Math.PI * 0.3;
-    ringGroup.add(ring2);
-
-    scene.add(ringGroup);
-
-    // ---- (C) Orbiting satellites on the rings ----
-    const satMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-    const satMat2 = new THREE.MeshBasicMaterial({ color: 0x4ade80 });
-    const satGeo = new THREE.SphereGeometry(0.018, 12, 12);
-
-    const sat1 = new THREE.Mesh(satGeo, satMat);
-    const sat2 = new THREE.Mesh(satGeo, satMat2);
-    const sat3 = new THREE.Mesh(satGeo, satMat);
-    ringGroup.add(sat1);
-    ringGroup.add(sat2);
-    ringGroup.add(sat3);
-
-    // ---- (D) Data arcs — flowing lines across the globe surface ----
-    // Each arc is a quadratic bezier between two points on the sphere
-    function makeArc(lat1, lon1, lat2, lon2, color, opacity) {
-        const r = 1.02;
-        const phi1 = (90 - lat1) * Math.PI / 180;
-        const theta1 = lon1 * Math.PI / 180;
-        const phi2 = (90 - lat2) * Math.PI / 180;
-        const theta2 = lon2 * Math.PI / 180;
-
-        const p1 = new THREE.Vector3(
-            r * Math.sin(phi1) * Math.cos(theta1),
-            r * Math.cos(phi1),
-            r * Math.sin(phi1) * Math.sin(theta1)
-        );
-        const p2 = new THREE.Vector3(
-            r * Math.sin(phi2) * Math.cos(theta2),
-            r * Math.cos(phi2),
-            r * Math.sin(phi2) * Math.sin(theta2)
-        );
-
-        // control point above the surface midpoint
-        const mid = p1.clone().add(p2).multiplyScalar(0.5);
-        const arcHeight = 0.15 + p1.distanceTo(p2) * 0.25;
-        const ctrl = mid.clone().normalize().multiplyScalar(1 + arcHeight);
-
-        const curve = new THREE.QuadraticBezierCurve3(p1, ctrl, p2);
-        const points = curve.getPoints(60);
-        const geo = new THREE.BufferGeometry().setFromPoints(points);
-
-        const mat = new THREE.LineBasicMaterial({
-            color: color,
-            transparent: true,
-            opacity: opacity,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            linewidth: 2,
-        });
-        return new THREE.Line(geo, mat);
-    }
-
-    // a set of arcs in GAIA colors — sparser, to keep it readable
-    const arcSpecs = [
-        [40, -100, 50, 10,   0x4ade80, 0.75],
-        [30, 120, -20, 30,   0xa7f3d0, 0.65],
-        [55, 0, 25, 130,     0x60a5fa, 0.55],
-        [-10, 20, 45, -80,   0x34d399, 0.60],
-        [35, -120, -30, 145, 0x4ade80, 0.55],
-        [20, 100, 60, -50,   0x93c5fd, 0.50],
-    ];
-
-    const arcs = arcSpecs.map(spec => {
-        const a = makeArc(spec[0], spec[1], spec[2], spec[3], spec[4], spec[5]);
-        scene.add(a);
-        return a;
-    });
-
-    // ---- (E) Pulsing "signal" nodes on the surface ----
-    const nodeMat = new THREE.MeshBasicMaterial({
-        color: 0x4ade80,
-        transparent: true,
-        opacity: 0.85,
-    });
-    const nodeGeo = new THREE.SphereGeometry(0.014, 10, 10);
-    const nodePositions = [
-        [35,  -100, 1.01],
-        [50,    10, 1.01],
-        [30,   120, 1.01],
-        [45,   -80, 1.01],
-        [-10,   20, 1.01],
-        [20,   100, 1.01],
-    ];
-    const nodeGroup = new THREE.Group();
-    for (const [lat, lon, r] of nodePositions) {
-        const phi = (90 - lat) * Math.PI / 180;
-        const theta = lon * Math.PI / 180;
-        const n = new THREE.Mesh(nodeGeo, nodeMat);
-        n.position.set(
-            r * Math.sin(phi) * Math.cos(theta),
-            r * Math.cos(phi),
-            r * Math.sin(phi) * Math.sin(theta)
-        );
-        nodeGroup.add(n);
-    }
-    scene.add(nodeGroup);
-
-    // ---- (F) Outer atmospheric shells ----
-    const shellMat1 = new THREE.MeshBasicMaterial({
-        color: 0x4ade80,
-        transparent: true,
-        opacity: 0.06,
-        side: THREE.BackSide,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-    });
-    const shell1 = new THREE.Mesh(new THREE.SphereGeometry(1.25, 64, 64), shellMat1);
-    scene.add(shell1);
-
-    const shellMat2 = new THREE.MeshBasicMaterial({
-        color: 0xa7f3d0,
-        transparent: true,
-        opacity: 0.035,
-        side: THREE.BackSide,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-    });
-    const shell2 = new THREE.Mesh(new THREE.SphereGeometry(1.45, 64, 64), shellMat2);
-    scene.add(shell2);
-
-    // ---- (G) Grid of ring particles around the equator ----
-    const equatorCount = 60;
-    const equatorGroup = new THREE.Group();
-    const pGeo = new THREE.SphereGeometry(0.008, 6, 6);
-    const pMat = new THREE.MeshBasicMaterial({
-        color: 0xa7f3d0,
-        transparent: true,
-        opacity: 0.7,
-    });
-    for (let i = 0; i < equatorCount; i++) {
-        const a = (i / equatorCount) * Math.PI * 2;
-        const p = new THREE.Mesh(pGeo, pMat);
-        p.position.set(Math.cos(a) * 1.05, 0, Math.sin(a) * 1.05);
-        equatorGroup.add(p);
-    }
-    scene.add(equatorGroup);
-
-    // ====== END GAIA LAYERS ======
 
     function resize() {
         DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -752,12 +516,12 @@ if (container) {
     const tintMat = new THREE.MeshBasicMaterial({
         color: 0x4ade80,
         transparent: true,
-        opacity: 0.15,
+        opacity: 0.22,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         side: THREE.FrontSide,
     });
-    const tint = new THREE.Mesh(new THREE.SphereGeometry(0.998, 64, 64), tintMat);
+    const tint = new THREE.Mesh(new THREE.SphereGeometry(1.002, 64, 64), tintMat);
     scene.add(tint);
 
     // Second tint — a brighter mint just along the limb, to make edges glow.
@@ -788,81 +552,14 @@ if (container) {
     function tick() {
         t += 0.0016;
         earth.rotation.y = t;
-
         const clouds = scene.getObjectByName('clouds');
         if (clouds) clouds.rotation.y = t * 1.18;
-
-        // rotate the grid with earth (slightly slower for depth)
-        if (typeof grid !== 'undefined') grid.rotation.y = t * 0.98;
-
-        // orbital rings spin at their own pace
-        if (typeof ringGroup !== 'undefined') ringGroup.rotation.y = t * 0.35;
-
-        // satellites orbit on the rings
-        const now = performance.now() / 1000;
-        if (typeof sat1 !== 'undefined') {
-            sat1.position.set(Math.cos(now * 0.55) * 1.35, 0, Math.sin(now * 0.55) * 1.35);
-            sat2.position.set(Math.cos(-now * 0.42) * 1.5, 0.15, Math.sin(-now * 0.42) * 1.5);
-            sat3.position.set(Math.cos(now * 0.28 + 1.2) * 1.35, -0.1, Math.sin(now * 0.28 + 1.2) * 1.35);
-        }
-
-        // pulse the surface nodes
-        if (typeof nodeGroup !== 'undefined') {
-            nodeGroup.rotation.y = t;
-            const s = 1 + 0.35 * Math.sin(now * 3);
-            nodeGroup.children.forEach((n, i) => {
-                n.scale.setScalar(s + 0.2 * Math.sin(now * 2 + i));
-            });
-        }
-
-        // rotate the equatorial particle ring
-        if (typeof equatorGroup !== 'undefined') equatorGroup.rotation.y = t * 0.6;
-
-        // fade the atmospheric shells slowly
-        if (typeof shell1 !== 'undefined') {
-            shell1.material.opacity = 0.05 + 0.03 * Math.sin(now * 0.8);
-        }
-        if (typeof shell2 !== 'undefined') {
-            shell2.material.opacity = 0.03 + 0.02 * Math.sin(now * 0.5 + 1.5);
-        }
-
-        // subtle flicker on the arcs so they feel alive
-        if (typeof arcs !== 'undefined') {
-            arcs.forEach((a, i) => {
-                a.material.opacity = 0.35 + 0.35 * (0.5 + 0.5 * Math.sin(now * 1.4 + i));
-            });
-        }
-
         renderer.render(scene, camera);
         requestAnimationFrame(tick);
     }
     tick();
 }
 </script>
-
-
-
-<div class="earth-math" aria-hidden="true">
-    <span class="em-eq em-a">ΔG <span class="em-op">=</span> ⟨G⟩<sub>bound</sub> <span class="em-op">−</span> ⟨G⟩<sub>free</sub></span>
-    <span class="em-eq em-b"><span class="em-v">H</span> <span class="em-op">=</span> <span class="em-op">−</span> Σ p<sub>i</sub> log<sub>2</sub> p<sub>i</sub></span>
-    <span class="em-eq em-c">F<sub>1</sub> <span class="em-op">=</span> 2PR <span class="em-op">/</span> (P+R)</span>
-
-    <svg class="em-mol em-m1" viewBox="0 0 80 80">
-        <polygon points="40,10 62,24 62,52 40,66 18,52 18,24"
-                 fill="none" stroke="#a7f3d0" stroke-width="1.3" opacity="0.85"/>
-        <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.9" stroke-dasharray="2 3" opacity="0.7"/>
-        <circle cx="40" cy="10" r="2.2" fill="#4ade80"/>
-        <circle cx="62" cy="52" r="2.2" fill="#60a5fa"/>
-        <circle cx="18" cy="52" r="2.2" fill="#34d399"/>
-    </svg>
-
-    <svg class="em-mol em-m2" viewBox="0 0 80 80">
-        <circle cx="40" cy="40" r="11" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.85"/>
-        <ellipse cx="40" cy="40" rx="26" ry="9" fill="none" stroke="#4ade80" stroke-width="0.7" opacity="0.55"/>
-        <ellipse cx="40" cy="40" rx="9" ry="26" fill="none" stroke="#60a5fa" stroke-width="0.7" opacity="0.55"/>
-        <circle cx="40" cy="40" r="3" fill="#a7f3d0"/>
-    </svg>
-</div>
 
 </body>
 </html>
