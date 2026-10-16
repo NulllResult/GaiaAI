@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=35">
+<link rel="stylesheet" href="assets/style.css?v=36">
 <style>
 .beta-hero {
     min-height: 0;
@@ -201,15 +201,15 @@ body > .beta-hero {
 <style>
 /* Real Earth (Three.js) — bottom of beta page */
 #earth-container {
-    position: fixed;
-    bottom: -34vh;                 /* earth cuts off at bottom of viewport */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 160vw;                  /* always 1.6x viewport width — same look everywhere */
-    height: 68vh;
-    z-index: 0;
-    pointer-events: none;
-    max-width: none;               /* remove any cap */
+    position: fixed !important;
+    bottom: -34vh !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 160vw !important;
+    height: 68vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    max-width: none !important;
 }
 /* soft fade at top of container so the form doesn't fight the horizon */
 #earth-container::before {
