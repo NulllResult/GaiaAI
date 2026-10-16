@@ -5,7 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=33">
+<link rel="stylesheet" href="assets/style.css?v=34">
+<style>
+/* ============================================================
+   Kill the assets/style.css grid + glow pseudo-elements.
+   They were causing the diagonal line across the page.
+   ============================================================ */
+html body::before,
+html body::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    animation: none !important;
+}
+</style>
+<style>
+/* ============================================================
+   Math section — keep equations readable on mobile
+   ============================================================ */
+.equation-stack {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+.equation-row {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 18px;
+    background: rgba(74, 222, 128, 0.03);
+    border-left: 2px solid rgba(74, 222, 128, 0.35);
+    border-radius: 0 8px 8px 0;
+}
+.equation-label {
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: #4ade80;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.equation-body {
+    font-family: ui-monospace, monospace;
+    font-size: 1.02rem;
+    color: #f1f5f9;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    letter-spacing: 0.02em;
+}
+.equation-note {
+    font-size: 0.82rem;
+    color: rgba(167, 243, 208, 0.55);
+    font-style: italic;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Mobile — stack to 2 rows, keep body inline */
+@media (max-width: 720px) {
+    .equation-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 12px 14px;
+    }
+    .equation-label {
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+    }
+    .equation-body {
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+    .equation-note {
+        text-align: left;
+        font-size: 0.76rem;
+        white-space: normal;
+    }
+}
+</style>
 </head>
 <body>
 
@@ -2531,7 +2612,7 @@
                 <div class="arrow">Open datasets →</div>
             </a>
 
-            <a class="use-card" href="https://github.com/ObviousSatire/GaiaAI" target="_blank" rel="noopener">
+            <a class="use-card" href="https://github.com/nulllresult/GaiaAI" target="_blank" rel="noopener">
                 <svg width="32" height="32" viewBox="0 0 40 40">
                     <path d="M14,6 L6,20 L14,34" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M26,6 L34,20 L26,34" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2562,12 +2643,12 @@
         </svg>
         <div class="footer-links">
             <a href="beta.html">Request beta access</a>
-            <a href="https://github.com/ObviousSatire/GaiaAI">Source on GitHub</a>
+            <a href="https://github.com/nulllresult/GaiaAI">Source on GitHub</a>
             <a href="https://zenodo.org/communities/gaiaai" target="_blank" rel="noopener">Open datasets</a>
             <a href="#learning">How it learns</a>
         </div>
         <p style="margin-top: 20px; font-size: 0.82rem; color: rgba(167,243,208,0.5); font-family: ui-monospace, monospace; letter-spacing: 0.04em;">
-            Built solo by <a href="https://github.com/ObviousSatire" style="color: inherit; border-bottom: 1px dotted currentColor;">ObviousSatire</a> · Data: CC-BY-4.0 · Code: MIT · 2025
+            Built solo by <a href="https://github.com/nulllresult" style="color: inherit; border-bottom: 1px dotted currentColor;">nulllresult</a> · Data: CC-BY-4.0 · Code: MIT · 2025
         </p>
         <p>Built with C++17 and Python stdlib. No external dependencies.</p>
     </div>
