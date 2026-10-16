@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=32">
+<link rel="stylesheet" href="assets/style.css?v=33">
 <style>
 .beta-hero {
     min-height: 0;
@@ -202,13 +202,14 @@ body > .beta-hero {
 /* Real Earth (Three.js) — bottom of beta page */
 #earth-container {
     position: fixed;
-    bottom: -46vh;                /* cut off lower portion of the sphere */
+    bottom: -40vh;                 /* earth cuts off at bottom of viewport */
     left: 50%;
     transform: translateX(-50%);
-    width: min(1600px, 140vw);     /* cap on desktop, still huge on mobile */
-    height: min(1000px, 86vh);
+    width: 160vw;                  /* always 1.6x viewport width — same look everywhere */
+    height: 80vh;
     z-index: 0;
     pointer-events: none;
+    max-width: none;               /* remove any cap */
 }
 /* soft fade at top of container so the form doesn't fight the horizon */
 #earth-container::before {
@@ -222,13 +223,7 @@ body > .beta-hero {
     z-index: 2;
     pointer-events: none;
 }
-@media (max-width: 600px) {
-    #earth-container {
-        bottom: -38vh;
-        width: 160vw;
-        height: 70vh;
-    }
-}
+
 </style>
 <style>
 /* ============================================================
@@ -240,16 +235,6 @@ html body.beta-page::after {
     display: none !important;
     content: none !important;
     background: none !important;
-}
-</style>
-<style>
-/* DESKTOP WIDE — cap earth so it fits nicely on laptop screens */
-@media (min-width: 900px) {
-    #earth-container {
-        bottom: -50vh;
-        width: min(1800px, 120vw);
-        height: min(1100px, 92vh);
-    }
 }
 </style>
 </head>

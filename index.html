@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=34">
+<link rel="stylesheet" href="assets/style.css?v=35">
 <style>
 /* ============================================================
    Kill the assets/style.css grid + glow pseudo-elements.
@@ -21,11 +21,11 @@ html body::after {
 </style>
 <style>
 /* ============================================================
-   Math section — keep equations readable on mobile
+   Math section — keep equations readable on mobile, no backgrounds
    ============================================================ */
 .equation-stack {
     display: grid;
-    gap: 16px;
+    gap: 4px;
     margin: 24px 0;
 }
 .equation-row {
@@ -33,10 +33,10 @@ html body::after {
     grid-template-columns: 100px 1fr auto;
     gap: 16px;
     align-items: baseline;
-    padding: 14px 18px;
-    background: rgba(74, 222, 128, 0.03);
-    border-left: 2px solid rgba(74, 222, 128, 0.35);
-    border-radius: 0 8px 8px 0;
+    padding: 12px 0;
+    background: none;
+    border: none;
+    border-radius: 0;
 }
 .equation-label {
     font-family: ui-monospace, monospace;
@@ -63,12 +63,12 @@ html body::after {
     white-space: nowrap;
 }
 
-/* Mobile — stack to 2 rows, keep body inline */
+/* Mobile — stack to 3 rows, keep equation inline */
 @media (max-width: 720px) {
     .equation-row {
         grid-template-columns: 1fr;
         gap: 6px;
-        padding: 12px 14px;
+        padding: 12px 0;
     }
     .equation-label {
         font-size: 0.66rem;
