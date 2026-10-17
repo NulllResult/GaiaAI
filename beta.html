@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=32">
+<link rel="stylesheet" href="assets/style.css?v=38">
 <style>
 .beta-hero {
     min-height: 0;
@@ -249,6 +249,89 @@ html body.beta-page::after {
         bottom: -50vh;
         width: min(1800px, 120vw);
         height: min(1100px, 92vh);
+    }
+}
+</style>
+<style>
+/* ============================================================
+   BETA PAGE FINAL MOBILE & DESKTOP FIX
+   ============================================================ */
+
+/* 1. Kill the background grid line completely */
+body::before,
+body::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+}
+
+/* 2. Constrain the form container so it doesn't stretch on mobile/PC */
+body > .beta-hero {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 48px 20px 60px !important; /* Restore normal mobile padding */
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+}
+
+/* 3. Ensure the form itself is sized properly */
+.beta-form {
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+}
+
+/* 4. Fix fonts that got enlarged */
+.beta-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+    text-align: center !important;
+}
+.beta-hero > p {
+    font-size: 1rem !important;
+    max-width: 560px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 24px !important;
+    text-align: center !important;
+}
+
+/* 5. Earth stays exactly where it is */
+#earth-container {
+    position: fixed !important;
+    bottom: -38vh !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 160vw !important;
+    height: 70vh !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* 6. Make sure the canvas network is behind the earth */
+body > canvas#gaia-bg-canvas {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 7. Desktop override to cap the form so it doesn't stretch */
+@media (min-width: 600px) {
+    body > .beta-hero {
+        padding-top: 90px !important;
+    }
+    .beta-form {
+        max-width: 480px !important;
     }
 }
 </style>
