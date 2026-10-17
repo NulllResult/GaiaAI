@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=33">
+<link rel="stylesheet" href="assets/style.css?v=35">
 <style>
 
 .beta-hero h1 {
@@ -345,6 +345,42 @@ body > .beta-hero {
     max-width: 440px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+</style>
+<style>
+/* ============================================================
+   FORCE MOBILE LAYOUT ON ALL DEVICES (Beta Page)
+   ============================================================ */
+
+/* 1. Constrain the form */
+body > .beta-hero {
+    max-width: 640px !important;
+    margin: 0 auto !important;
+    padding-top: 120px !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* 2. Make the Earth massive and cropped like mobile */
+#earth-container {
+    position: fixed !important;
+    bottom: -35vh !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 120vw !important;
+    height: 100vh !important;
+    z-index: 1 !important;
+}
+
+/* 3. Ensure canvas network is visible behind it */
+body > canvas#gaia-bg-canvas {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 0 !important;
+    opacity: 1 !important;
+    display: block !important;
 }
 </style>
 </head>

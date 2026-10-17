@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=35">
+<link rel="stylesheet" href="assets/style.css?v=37">
 <style>
 /* ============================================================
    Kill the assets/style.css grid + glow pseudo-elements.
@@ -177,6 +177,47 @@ section {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+}
+</style>
+<style>
+/* ============================================================
+   FORCE MOBILE LAYOUT ON ALL DEVICES (Main Page)
+   ============================================================ */
+
+/* 1. Center "What GAIA is" */
+#what-gaia-is .container-narrow {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+#what-gaia-is p.lead,
+#what-gaia-is p.secondary {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+/* 2. Fix math section readability everywhere */
+.math-narrative .equation-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 12px 16px !important;
+}
+.math-narrative .equation-label {
+    min-width: 70px !important;
+    font-size: 0.75rem !important;
+}
+.math-narrative .equation-body {
+    font-size: 1.1rem !important; 
+    flex: 1;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.math-narrative .equation-note {
+    font-size: 0.85rem !important;
+    color: rgba(167,243,208,0.7) !important;
+    min-width: 150px;
+    text-align: right;
 }
 </style>
 </head>
