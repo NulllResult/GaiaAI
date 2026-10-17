@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=101">
+<link rel="stylesheet" href="assets/style.css?v=102">
 <style>
 
 .beta-hero h1 {
@@ -345,6 +345,26 @@ body > .beta-hero {
         width: 120vw !important;
         height: 100vh !important;
         bottom: -35vh !important;
+    }
+}
+</style>
+<style>
+/* PC-ONLY FIX for Beta Page Earth and Form */
+@media (min-width: 769px) {
+    /* 1. Cap the Earth container width so the camera doesn't zoom out */
+    #earth-container {
+        width: 900px !important;       /* Fixed pixel width for PC */
+        height: 900px !important;
+        bottom: -300px !important;     /* Push it down so only the top curve shows */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    /* 2. Constrain the form so it's a nice column in the middle */
+    body > .beta-hero {
+        max-width: 600px !important;
+        margin: 0 auto !important;
+        padding-top: 100px !important;
     }
 }
 </style>
