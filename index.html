@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=43">
+<link rel="stylesheet" href="assets/style.css?v=35">
 <style>
 /* ============================================================
    Kill the assets/style.css grid + glow pseudo-elements.
@@ -142,6 +142,41 @@ section > .container-narrow {
 section {
     width: 100% !important;
     max-width: none !important;
+}
+</style>
+<style>
+/* Desktop Math Section Fixes */
+.math-narrative .equation-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 24px !important;
+    padding: 16px 24px !important;
+}
+.math-narrative .equation-label {
+    min-width: 80px !important;
+    font-size: 0.85rem !important;
+}
+.math-narrative .equation-body {
+    font-size: 1.4rem !important; /* Bigger math text */
+    flex: 1;
+}
+.math-narrative .equation-note {
+    font-size: 0.95rem !important;
+    color: rgba(167,243,208,0.7) !important;
+    min-width: 200px;
+    text-align: right;
+}
+
+/* What GAIA is section — force center alignment */
+#what-gaia-is .container-narrow {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+#what-gaia-is p.lead,
+#what-gaia-is p.secondary {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
 }
 </style>
 </head>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=42">
+<link rel="stylesheet" href="assets/style.css?v=33">
 <style>
 
 .beta-hero h1 {
@@ -179,15 +179,14 @@ body >
 <style>
 /* Real Earth (Three.js) — bottom of beta page */
 #earth-container {
-    position: fixed !important;
-    bottom: -34vh !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 160vw !important;
-    height: 68vh !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
-    max-width: none !important;
+    position: fixed;
+    bottom: -35vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120vw;
+    height: 100vh;
+    z-index: 1; /* earth sits above the network canvas */
+    pointer-events: none;
 }
 /* soft fade at top of container so the form doesn't fight the horizon */
 /* (fade removed — was causing a visible band) */
