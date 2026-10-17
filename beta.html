@@ -5,101 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=104">
-
-
-
-
-
-
-
-
-
+<link rel="stylesheet" href="assets/style.css?v=105">
 <style>
 /* ============================================================
-   GAIA BETA — CANONICAL LAYOUT (PC & MOBILE)
+   GAIA BETA — CANONICAL LAYOUT
    ============================================================ */
+body::before, body::after { display: none !important; content: none !important; }
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #06120c; overflow-x: hidden; }
 
-/* Kill the main site's grid/line artifacts */
-body::before, body::after {
-    display: none !important;
-    content: none !important;
-}
-
-/* Base page reset */
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: #06120c !important; /* Dark fallback */
-    overflow-x: hidden !important;
-}
-
-/* The particle network background */
+/* 1. The Background Particle Network */
 body > canvas#gaia-bg-canvas {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
+    position: fixed; inset: 0; width: 100vw; height: 100vh;
+    z-index: 0; pointer-events: none;
 }
 
-/* The 3D Earth container */
+/* 2. The 3D Earth Horizon */
 #earth-container {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 60vh !important; /* Takes up bottom 60% of screen */
-    z-index: 1 !important;
-    pointer-events: none !important;
+    position: fixed; bottom: 0; left: 0; width: 100vw; height: 55vh;
+    z-index: 1; pointer-events: none;
 }
 
-/* The Form Column */
+/* 3. The Form */
 .beta-hero {
-    position: relative !important;
-    z-index: 10 !important;
-    max-width: 600px !important;
-    margin: 0 auto !important;
-    min-height: 100vh !important;
-    padding: 60px 24px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    background: transparent !important; /* Let the network show through */
+    position: relative; z-index: 10; max-width: 600px; margin: 0 auto;
+    min-height: 100vh; padding: 60px 24px;
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
 }
+.beta-hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-top: 0; margin-bottom: 20px; text-align: center; color: #fff; }
+.beta-hero p { font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.6; margin-bottom: 32px; text-align: center; color: #8fa89c; }
+.beta-form { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 14px; }
+.beta-form input, .beta-form textarea { width: 100%; padding: 14px 18px; background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.28); border-radius: 8px; color: #fff; font-family: inherit; font-size: 1rem; }
+.beta-form textarea { min-height: 100px; resize: vertical; }
+.beta-form button { padding: 14px 24px; background: linear-gradient(135deg, #4ade80, #34d399); border: none; border-radius: 8px; color: #0a1410; font-weight: 600; cursor: pointer; }
+.beta-promise { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(74,222,128,0.15); width: 100%; max-width: 480px; }
+.beta-promise h3 { font-family: ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: #4ade80; margin-bottom: 16px; }
+.beta-promise ul { list-style: none; padding: 0; display: grid; gap: 10px; }
+.beta-promise li { font-size: 0.92rem; color: #8fa89c; padding-left: 22px; position: relative; }
+.beta-promise li::before { content: "→"; position: absolute; left: 0; color: #4ade80; }
+.beta-back { display: inline-block; margin-top: 40px; font-family: ui-monospace, monospace; font-size: 0.85rem; color: #4ade80; text-decoration: none; }
 
-/* Typography fixes */
-.beta-hero h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem) !important;
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;
-    text-align: center !important;
-}
-.beta-hero p {
-    font-size: clamp(1rem, 2vw, 1.15rem) !important;
-    line-height: 1.6 !important;
-    margin-bottom: 32px !important;
-    text-align: center !important;
-}
-.beta-form {
-    width: 100% !important;
-    max-width: 480px !important;
-}
-
-/* On PC, prevent body scrolling so it feels like an app */
+/* 4. PC Specific Tweaks */
 @media (min-width: 769px) {
-    body {
-        overflow-y: hidden !important;
-    }
+    body { overflow-y: hidden; } /* Stop scrolling on PC */
+    .beta-hero { padding-top: 80px; }
 }
 </style>
 </head>
-<body class="beta-page">
+<body>
+
 <canvas id="gaia-bg-canvas" aria-hidden="true"></canvas>
 
 <script>
@@ -109,169 +62,32 @@ body > canvas#gaia-bg-canvas {
     const ctx = canvas.getContext('2d');
     let W, H, DPR;
     let particles = [];
-
-    // Config — tuned to feel dense but readable
-    const CONFIG = {
-        count: 90,               // node count (density)
-        maxLinkDist: 160,        // px — how far apart nodes still connect
-        speed: 0.35,             // drift speed
-        nodeRadius: [1.4, 3.2],  // min/max node radius
-        colors: [
-            'rgba(74, 222, 128, ',   // green
-            'rgba(167, 243, 208, ',  // mint
-            'rgba(96, 165, 250, ',   // blue
-            'rgba(52, 211, 153, ',   // teal
-        ],
-        linkOpacity: 0.18,       // base line opacity
-        nodeOpacity: 0.75,
-    };
-
-    function resize() {
-        DPR = Math.min(window.devicePixelRatio || 1, 2);
-        W = window.innerWidth;
-        H = window.innerHeight;
-        canvas.width = W * DPR;
-        canvas.height = H * DPR;
-        canvas.style.width = W + 'px';
-        canvas.style.height = H + 'px';
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
-
+    const CONFIG = { count: 90, maxLinkDist: 160, speed: 0.35, nodeRadius: [1.4, 3.2], colors: ['rgba(74, 222, 128, ', 'rgba(167, 243, 208, ', 'rgba(96, 165, 250, ', 'rgba(52, 211, 153, '], linkOpacity: 0.18, nodeOpacity: 0.75 };
+    function resize() { DPR = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; H = window.innerHeight; canvas.width = W * DPR; canvas.height = H * DPR; canvas.style.width = W + 'px'; canvas.style.height = H + 'px'; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
     function rand(a, b) { return a + Math.random() * (b - a); }
-
-    function makeParticle() {
-        const homeX = Math.random() * W;
-        const homeY = Math.random() * H;
-        return {
-            homeX: homeX,
-            homeY: homeY,
-            x: homeX,
-            y: homeY,
-            ampX: rand(4, 14),
-            ampY: rand(4, 14),
-            freqX: rand(0.0004, 0.0012),
-            freqY: rand(0.0004, 0.0012),
-            t: Math.random() * 1000,
-            r: rand(CONFIG.nodeRadius[0], CONFIG.nodeRadius[1]),
-            color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)],
-            phase: Math.random() * Math.PI * 2,
-            pulseSpeed: rand(0.008, 0.02),
-        };
-    }
-
-    function initParticles() {
-        particles = [];
-        // scale count with screen area so density is consistent
-        const area = W * H;
-        const base = 400000;
-        const n = Math.max(40, Math.min(140, Math.round(CONFIG.count * (area / base))));
-        for (let i = 0; i < n; i++) particles.push(makeParticle());
-    }
-
-    // Flow particles — always a few moving fast along the network
+    function makeParticle() { const homeX = Math.random() * W; const homeY = Math.random() * H; return { homeX, homeY, x: homeX, y: homeY, ampX: rand(4, 14), ampY: rand(4, 14), freqX: rand(0.0004, 0.0012), freqY: rand(0.0004, 0.0012), t: Math.random() * 1000, r: rand(CONFIG.nodeRadius[0], CONFIG.nodeRadius[1]), color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)], phase: Math.random() * Math.PI * 2, pulseSpeed: rand(0.008, 0.02) }; }
+    function initParticles() { particles = []; const area = W * H; const n = Math.max(40, Math.min(140, Math.round(CONFIG.count * (area / 400000)))); for (let i = 0; i < n; i++) particles.push(makeParticle()); }
     const flows = [];
-    function initFlows() {
-        flows.length = 0;
-        for (let i = 0; i < 6; i++) {
-            flows.push({
-                a: particles[Math.floor(Math.random() * particles.length)],
-                b: particles[Math.floor(Math.random() * particles.length)],
-                t: Math.random(),
-                speed: rand(0.004, 0.009),
-            });
-        }
-    }
-
-    function step() {
-        ctx.clearRect(0, 0, W, H);
-
-        // Update positions — oscillate around home
-        for (const p of particles) {
-            p.t += 1;
-            p.x = p.homeX + Math.sin(p.t * p.freqX) * p.ampX;
-            p.y = p.homeY + Math.cos(p.t * p.freqY) * p.ampY;
-            p.phase += p.pulseSpeed;
-        }
-
-        // Draw edges first (under nodes)
-        for (let i = 0; i < particles.length; i++) {
-            const a = particles[i];
-            for (let j = i + 1; j < particles.length; j++) {
-                const b = particles[j];
-                const dx = a.x - b.x, dy = a.y - b.y;
-                const d2 = dx * dx + dy * dy;
-                if (d2 > CONFIG.maxLinkDist * CONFIG.maxLinkDist) continue;
-                const d = Math.sqrt(d2);
-                const alpha = (1 - d / CONFIG.maxLinkDist) * CONFIG.linkOpacity;
-                ctx.strokeStyle = 'rgba(74, 222, 128, ' + alpha.toFixed(3) + ')';
-                ctx.lineWidth = 0.6;
-                ctx.beginPath();
-                ctx.moveTo(a.x, a.y);
-                ctx.lineTo(b.x, b.y);
-                ctx.stroke();
-            }
-        }
-
-        // Draw nodes with pulse
-        for (const p of particles) {
-            const pulse = 0.85 + 0.35 * Math.sin(p.phase);
-            const r = p.r * pulse;
-            ctx.fillStyle = p.color + CONFIG.nodeOpacity + ')';
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-            ctx.fill();
-            // subtle glow
-            ctx.fillStyle = p.color + '0.12)';
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, r * 3.5, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        // Flow particles along network edges
-        for (const f of flows) {
-            f.t += f.speed;
-            if (f.t >= 1) {
-                f.t = 0;
-                f.a = particles[Math.floor(Math.random() * particles.length)];
-                f.b = particles[Math.floor(Math.random() * particles.length)];
-            }
-            const x = f.a.x + (f.b.x - f.a.x) * f.t;
-            const y = f.a.y + (f.b.y - f.a.y) * f.t;
-            // fade in/out over the trip
-            const alpha = Math.sin(f.t * Math.PI);
-            ctx.fillStyle = 'rgba(255, 255, 255, ' + (0.9 * alpha).toFixed(3) + ')';
-            ctx.beginPath();
-            ctx.arc(x, y, 2.4, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        requestAnimationFrame(step);
-    }
-
-    window.addEventListener('resize', () => { resize(); initParticles(); initFlows(); });
-    resize();
-    initParticles();
-    initFlows();
-    step();
+    function initFlows() { flows.length = 0; for (let i = 0; i < 6; i++) { flows.push({ a: particles[Math.floor(Math.random() * particles.length)], b: particles[Math.floor(Math.random() * particles.length)], t: Math.random(), speed: rand(0.004, 0.009) }); } }
+    function step() { ctx.clearRect(0, 0, W, H); for (const p of particles) { p.t += 1; p.x = p.homeX + Math.sin(p.t * p.freqX) * p.ampX; p.y = p.homeY + Math.cos(p.t * p.freqY) * p.ampY; p.phase += p.pulseSpeed; }
+        for (let i = 0; i < particles.length; i++) { const a = particles[i]; for (let j = i + 1; j < particles.length; j++) { const b = particles[j]; const dx = a.x - b.x, dy = a.y - b.y; const d2 = dx * dx + dy * dy; if (d2 > CONFIG.maxLinkDist * CONFIG.maxLinkDist) continue; const d = Math.sqrt(d2); const alpha = (1 - d / CONFIG.maxLinkDist) * CONFIG.linkOpacity; ctx.strokeStyle = 'rgba(74, 222, 128, ' + alpha.toFixed(3) + ')'; ctx.lineWidth = 0.6; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
+        for (const p of particles) { const pulse = 0.85 + 0.35 * Math.sin(p.phase); const r = p.r * pulse; ctx.fillStyle = p.color + CONFIG.nodeOpacity + ')'; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = p.color + '0.12)'; ctx.beginPath(); ctx.arc(p.x, p.y, r * 3.5, 0, Math.PI * 2); ctx.fill(); }
+        for (const f of flows) { f.t += f.speed; if (f.t >= 1) { f.t = 0; f.a = particles[Math.floor(Math.random() * particles.length)]; f.b = particles[Math.floor(Math.random() * particles.length)]; } const x = f.a.x + (f.b.x - f.a.x) * f.t; const y = f.a.y + (f.b.y - f.a.y) * f.t; const alpha = Math.sin(f.t * Math.PI); ctx.fillStyle = 'rgba(255, 255, 255, ' + (0.9 * alpha).toFixed(3) + ')'; ctx.beginPath(); ctx.arc(x, y, 2.4, 0, Math.PI * 2); ctx.fill(); }
+        requestAnimationFrame(step); }
+    window.addEventListener('resize', () => { resize(); initParticles(); initFlows(); }); resize(); initParticles(); initFlows(); step();
 })();
 </script>
+
 <div class="beta-hero">
     <h1>GAIA <span class="accent">Beta Access</span></h1>
-    <p>
-        GAIA is in closed beta. Request access to run the full pipeline on
-        your own data — genome read, variant mapping, compound ranking,
-        protocol design, and the reversal simulation.
-    </p>
-
-    <form class="beta-form" action="#" method="POST" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received — we\'ll be in touch'; this.querySelector('button').disabled=true; this.querySelector('button').style.opacity=0.7;">
+    <p>GAIA is in closed beta. Request access to run the full pipeline on your own data — genome read, variant mapping, compound ranking, protocol design, and the reversal simulation.</p>
+    <form class="beta-form" action="#" method="POST" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received'; this.querySelector('button').disabled=true;">
         <input type="email" name="email" placeholder="you@example.com" required>
         <input type="text" name="affiliation" placeholder="Affiliation (optional)">
         <textarea name="use_case" placeholder="What would you use GAIA for? (optional)"></textarea>
         <button type="submit">Request beta access</button>
     </form>
-
-    <p class="beta-note">No email yet — access requests will be collected and followed up manually.</p>
-
+    <p style="font-family: ui-monospace; font-size: 0.82rem; color: rgba(167,243,208,0.5); margin-top: 24px;">No email yet — access requests will be collected and followed up manually.</p>
     <div class="beta-promise">
         <h3>What beta access includes</h3>
         <ul>
@@ -282,14 +98,11 @@ body > canvas#gaia-bg-canvas {
             <li>Direct line for feedback — the system is built by one person</li>
         </ul>
     </div>
-
     <a href="index.html" class="beta-back">← Back to GAIA</a>
 </div>
 
-
 <div id="earth-container" aria-hidden="true"></div>
 
-<!-- Real Earth (Three.js + NASA Blue Marble texture) -->
 <script type="importmap">
 {
   "imports": {
@@ -300,136 +113,59 @@ body > canvas#gaia-bg-canvas {
 
 <script type="module">
 import * as THREE from 'three';
-
 const container = document.getElementById('earth-container');
 if (container) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1000);
-    camera.position.z = 3.2;
+    // Move camera closer to make Earth massive
+    camera.position.z = 2.2; 
     camera.position.y = 0.2;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // ----- Earth sphere -----
     const earthGeo = new THREE.SphereGeometry(1, 64, 64);
     const textureLoader = new THREE.TextureLoader();
-    // NASA Blue Marble (public domain) — high-res day map
-    const earthTex = textureLoader.load(
-        'https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg',
-        undefined, undefined,
-        (e) => console.warn('earth texture failed', e)
-    );
+    const earthTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg');
     earthTex.colorSpace = THREE.SRGBColorSpace;
-
-    const earthMat = new THREE.MeshPhongMaterial({
-        map: earthTex,
-        specular: new THREE.Color(0x333333),
-        shininess: 15,
-    });
+    const earthMat = new THREE.MeshPhongMaterial({ map: earthTex, specular: new THREE.Color(0x333333), shininess: 15 });
     const earth = new THREE.Mesh(earthGeo, earthMat);
     scene.add(earth);
 
-    // ----- clouds layer (slightly larger sphere with alpha) -----
-    const cloudTex = textureLoader.load(
-        'https://unpkg.com/three-globe@2.31.0/example/img/clouds.png',
-        undefined, undefined,
-        () => {} // clouds optional, no error if missing
-    );
-    if (cloudTex) {
-        cloudTex.colorSpace = THREE.SRGBColorSpace;
-        const cloudMat = new THREE.MeshPhongMaterial({
-            map: cloudTex,
-            transparent: true,
-            opacity: 0.55,
-            depthWrite: false,
-        });
-        const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.005, 64, 64), cloudMat);
-        scene.add(clouds);
-        clouds.name = 'clouds';
-    }
+    const cloudTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/clouds.png');
+    cloudTex.colorSpace = THREE.SRGBColorSpace;
+    const cloudMat = new THREE.MeshPhongMaterial({ map: cloudTex, transparent: true, opacity: 0.55, depthWrite: false });
+    const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.005, 64, 64), cloudMat);
+    scene.add(clouds); clouds.name = 'clouds';
 
-    // ----- atmospheric rim glow -----
-    const atmoMat = new THREE.MeshBasicMaterial({
-        color: 0x4ade80,
-        transparent: true,
-        opacity: 0.18,
-        side: THREE.BackSide,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-    });
+    const tintMat = new THREE.MeshBasicMaterial({ color: 0x4ade80, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending, depthWrite: false });
+    const tint = new THREE.Mesh(new THREE.SphereGeometry(0.998, 64, 64), tintMat);
+    scene.add(tint);
+
+    const atmoMat = new THREE.MeshBasicMaterial({ color: 0x4ade80, transparent: true, opacity: 0.18, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false });
     const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.14, 64, 64), atmoMat);
     scene.add(atmo);
 
-    // ----- lighting: sun from upper-left, rim light from right -----
-    // Sun — slightly green-tinted white
-    const sun = new THREE.DirectionalLight(0xd8ffe8, 2.4);
-    sun.position.set(-3, 2, 2);
-    scene.add(sun);
+    const sun = new THREE.DirectionalLight(0xd8ffe8, 2.4); sun.position.set(-3, 2, 2); scene.add(sun);
+    const ambient = new THREE.AmbientLight(0x1a3a28, 1.5); scene.add(ambient);
+    const rim = new THREE.DirectionalLight(0x4ade80, 1.0); rim.position.set(2, -1, -3); scene.add(rim);
 
-    // Ambient — green so the shadowed side stays on-theme
-    const ambient = new THREE.AmbientLight(0x1a3a28, 1.5);
-    scene.add(ambient);
-
-    // Rim light — GAIA green
-    const rim = new THREE.DirectionalLight(0x4ade80, 1.0);
-    rim.position.set(2, -1, -3);
-    scene.add(rim);
-
-    // ====== GAIA THEME TINT ======
-    // Green "sci-fi overlay" sphere slightly larger than earth.
-    // Additive so the surface detail is preserved, but tinted green.
-    const tintMat = new THREE.MeshBasicMaterial({
-        color: 0x4ade80,
-        transparent: true,
-        opacity: 0.22,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-        side: THREE.FrontSide,
-    });
-    const tint = new THREE.Mesh(new THREE.SphereGeometry(1.002, 64, 64), tintMat);
-    scene.add(tint);
-
-    // Second tint — a brighter mint just along the limb, to make edges glow.
-    const edgeMat = new THREE.MeshBasicMaterial({
-        color: 0xa7f3d0,
-        transparent: true,
-        opacity: 0.18,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-        side: THREE.BackSide,
-    });
-    const edge = new THREE.Mesh(new THREE.SphereGeometry(1.06, 64, 64), edgeMat);
-    scene.add(edge);
-
-    // ----- sizing: positioned at bottom of page, mostly cut off -----
     function resize() {
-        const w = container.clientWidth;
-        const h = container.clientHeight;
+        const w = container.clientWidth; const h = container.clientHeight;
         renderer.setSize(w, h);
-        // Force a widescreen aspect ratio regardless of actual screen,
-        // so the globe stretches to fill the bottom like a horizon.
-        camera.aspect = 16 / 9; 
-        camera.updateProjectionMatrix();
+        camera.aspect = w / h; camera.updateProjectionMatrix();
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener('resize', resize); resize();
 
-    // ----- animation: rotate earth, drift clouds faster -----
     let t = 0;
     function tick() {
-        t += 0.0016;
-        earth.rotation.y = t;
-        const clouds = scene.getObjectByName('clouds');
-        if (clouds) clouds.rotation.y = t * 1.18;
-        renderer.render(scene, camera);
-        requestAnimationFrame(tick);
+        t += 0.0016; earth.rotation.y = t;
+        const c = scene.getObjectByName('clouds'); if (c) c.rotation.y = t * 1.18;
+        renderer.render(scene, camera); requestAnimationFrame(tick);
     }
     tick();
 }
 </script>
-
 </body>
 </html>
