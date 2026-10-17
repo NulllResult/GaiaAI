@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=41">
+<link rel="stylesheet" href="assets/style.css?v=43">
 <style>
 /* ============================================================
    Kill the assets/style.css grid + glow pseudo-elements.
@@ -89,14 +89,13 @@ html body::after {
 </style>
 <style>
 /* ============================================================
-   CONTENT CAP — content max 980px centered, backgrounds full-bleed
+   HERO CAP — 980px wide page, hero and its layers capped too.
+   Backgrounds behind the page remain full-bleed.
    ============================================================ */
 
-/* Main content containers — capped */
+/* Page content column */
 .container,
-.container-narrow,
-.hero .container,
-.hero-content {
+.container-narrow {
     max-width: 980px !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -105,17 +104,44 @@ html body::after {
     box-sizing: border-box !important;
 }
 
-/* Wide sections that should fill the screen (hero gradient, bg canvas, etc.) */
-.hero,
-section {
-    width: 100% !important;
-    max-width: none !important;
+/* Hero is capped so equations + math layer sit beside text */
+.hero {
+    max-width: 980px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
 }
 
-/* Inner content of every section still respects the cap via .container */
+/* The hero's SVG background and eq-layer stay inside the capped hero */
+.hero .hero-bg,
+.hero .eq-layer,
+.hero .container,
+.hero .hero-content {
+    max-width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* Formulas sit relative to the capped hero, not the full viewport */
+.hero .eq {
+    position: absolute !important;
+}
+
+/* Sections below the hero keep the standard container cap */
 section > .container,
 section > .container-narrow {
     max-width: 980px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Sections themselves stay full-bleed */
+section {
+    width: 100% !important;
+    max-width: none !important;
 }
 </style>
 </head>
