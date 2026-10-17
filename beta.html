@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=980">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=38">
+<link rel="stylesheet" href="assets/style.css?v=39">
 <style>
 
 .beta-hero h1 {
@@ -320,35 +320,6 @@ body > * {
 /* Force every top-level wrapper to be the same on all viewports */
 body > .beta-hero {
     max-width: none !important;
-}
-</style>
-<style>
-/* ============================================================
-   CANONICAL VIEWPORT — force 980px layout everywhere
-   Mobile mode, mobile desktop mode, PC full, PC narrow: all 980px.
-   ============================================================ */
-html {
-    width: 100% !important;
-    overflow-x: hidden !important;
-}
-body {
-    width: 980px !important;
-    max-width: 980px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    overflow-x: hidden !important;
-    position: relative !important;
-}
-/* Every top-level element inherits the 980 box */
-body > * {
-    max-width: 980px !important;
-}
-/* Fix any nested fixed-position elements to align to the 980 box */
-body > canvas#gaia-bg-canvas {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 980px !important;
-    max-width: 980px !important;
 }
 </style>
 </head>
