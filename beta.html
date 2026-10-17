@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=37">
+<link rel="stylesheet" href="assets/style.css?v=101">
 <style>
 
 .beta-hero h1 {
@@ -320,6 +320,32 @@ body > * {
 /* Force every top-level wrapper to be the same on all viewports */
 body > .beta-hero {
     max-width: none !important;
+}
+</style>
+<style>
+/* PC-ONLY FIX — Does not affect mobile */
+@media (min-width: 769px) {
+    /* Restore background */
+    body.beta-page::before, body.beta-page::after {
+        display: block !important;
+    }
+    /* Fix the form size so it's not huge on desktop */
+    body > .beta-hero {
+        max-width: 640px !important;
+        margin: 0 auto !important;
+        padding-top: 100px !important;
+    }
+    /* Fix text sizes */
+    .beta-hero h1 { font-size: 3rem !important; }
+    .beta-hero p { font-size: 1.1rem !important; }
+    .beta-form input, .beta-form textarea { font-size: 1rem !important; }
+    
+    /* Make Earth fill PC screen correctly */
+    #earth-container {
+        width: 120vw !important;
+        height: 100vh !important;
+        bottom: -35vh !important;
+    }
 }
 </style>
 </head>

@@ -5,20 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=36">
-<style>
-/* ============================================================
-   Kill the assets/style.css grid + glow pseudo-elements.
-   They were causing the diagonal line across the page.
-   ============================================================ */
-html body::before,
-html body::after {
-    display: none !important;
-    content: none !important;
-    background: none !important;
-    animation: none !important;
-}
-</style>
+<link rel="stylesheet" href="assets/style.css?v=100">
 <style>
 /* ============================================================
    Math section — keep equations readable on mobile, no backgrounds
@@ -84,6 +71,26 @@ html body::after {
         text-align: left;
         font-size: 0.76rem;
         white-space: normal;
+    }
+}
+</style>
+<style>
+/* PC-ONLY FIX — Does not affect mobile */
+@media (min-width: 769px) {
+    /* Restore the background network for PC */
+    body::before, body::after {
+        display: block !important;
+    }
+    /* Fix the giant text */
+    body {
+        font-size: 16px !important;
+    }
+    .hero-content .tagline, 
+    #what-gaia-is p {
+        font-size: 1.1rem !important;
+        max-width: 800px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 }
 </style>
