@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=37">
+<link rel="stylesheet" href="assets/style.css?v=34">
 <style>
 /* ============================================================
    Kill the assets/style.css grid + glow pseudo-elements.
@@ -21,11 +21,11 @@ html body::after {
 </style>
 <style>
 /* ============================================================
-   Math section — keep equations readable on mobile, no backgrounds
+   Math section — keep equations readable on mobile
    ============================================================ */
 .equation-stack {
     display: grid;
-    gap: 4px;
+    gap: 16px;
     margin: 24px 0;
 }
 .equation-row {
@@ -33,10 +33,10 @@ html body::after {
     grid-template-columns: 100px 1fr auto;
     gap: 16px;
     align-items: baseline;
-    padding: 12px 0;
-    background: none;
-    border: none;
-    border-radius: 0;
+    padding: 14px 18px;
+    background: rgba(74, 222, 128, 0.03);
+    border-left: 2px solid rgba(74, 222, 128, 0.35);
+    border-radius: 0 8px 8px 0;
 }
 .equation-label {
     font-family: ui-monospace, monospace;
@@ -63,12 +63,12 @@ html body::after {
     white-space: nowrap;
 }
 
-/* Mobile — stack to 3 rows, keep equation inline */
+/* Mobile — stack to 2 rows, keep body inline */
 @media (max-width: 720px) {
     .equation-row {
         grid-template-columns: 1fr;
         gap: 6px;
-        padding: 12px 0;
+        padding: 12px 14px;
     }
     .equation-label {
         font-size: 0.66rem;
@@ -85,139 +85,6 @@ html body::after {
         font-size: 0.76rem;
         white-space: normal;
     }
-}
-</style>
-<style>
-/* ============================================================
-   HERO CAP — 980px wide page, hero and its layers capped too.
-   Backgrounds behind the page remain full-bleed.
-   ============================================================ */
-
-/* Page content column */
-.container,
-.container-narrow {
-    max-width: 980px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-    box-sizing: border-box !important;
-}
-
-/* Hero is capped so equations + math layer sit beside text */
-.hero {
-    max-width: 980px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-}
-
-/* The hero's SVG background and eq-layer stay inside the capped hero */
-.hero .hero-bg,
-.hero .eq-layer,
-.hero .container,
-.hero .hero-content {
-    max-width: 100% !important;
-    left: auto !important;
-    right: auto !important;
-}
-
-/* Formulas sit relative to the capped hero, not the full viewport */
-.hero .eq {
-    position: absolute !important;
-}
-
-/* Sections below the hero keep the standard container cap */
-section > .container,
-section > .container-narrow {
-    max-width: 980px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-/* Sections themselves stay full-bleed */
-section {
-    width: 100% !important;
-    max-width: none !important;
-}
-</style>
-<style>
-/* Desktop Math Section Fixes */
-.math-narrative .equation-row {
-    display: flex !important;
-    align-items: center !important;
-    gap: 24px !important;
-    padding: 16px 24px !important;
-}
-.math-narrative .equation-label {
-    min-width: 80px !important;
-    font-size: 0.85rem !important;
-}
-.math-narrative .equation-body {
-    font-size: 1.4rem !important; /* Bigger math text */
-    flex: 1;
-}
-.math-narrative .equation-note {
-    font-size: 0.95rem !important;
-    color: rgba(167,243,208,0.7) !important;
-    min-width: 200px;
-    text-align: right;
-}
-
-/* What GAIA is section — force center alignment */
-#what-gaia-is .container-narrow {
-    text-align: center !important;
-    margin: 0 auto !important;
-}
-#what-gaia-is p.lead,
-#what-gaia-is p.secondary {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-}
-</style>
-<style>
-/* ============================================================
-   FORCE MOBILE LAYOUT ON ALL DEVICES (Main Page)
-   ============================================================ */
-
-/* 1. Center "What GAIA is" */
-#what-gaia-is .container-narrow {
-    text-align: center !important;
-    margin: 0 auto !important;
-}
-#what-gaia-is p.lead,
-#what-gaia-is p.secondary {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-}
-
-/* 2. Fix math section readability everywhere */
-.math-narrative .equation-row {
-    display: flex !important;
-    align-items: center !important;
-    gap: 16px !important;
-    padding: 12px 16px !important;
-}
-.math-narrative .equation-label {
-    min-width: 70px !important;
-    font-size: 0.75rem !important;
-}
-.math-narrative .equation-body {
-    font-size: 1.1rem !important; 
-    flex: 1;
-    white-space: nowrap;
-    overflow-x: auto;
-}
-.math-narrative .equation-note {
-    font-size: 0.85rem !important;
-    color: rgba(167,243,208,0.7) !important;
-    min-width: 150px;
-    text-align: right;
 }
 </style>
 </head>
