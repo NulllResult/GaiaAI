@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=39">
+<link rel="stylesheet" href="assets/style.css?v=42">
 <style>
 
 .beta-hero h1 {
@@ -320,6 +320,32 @@ body > * {
 /* Force every top-level wrapper to be the same on all viewports */
 body > .beta-hero {
     max-width: none !important;
+}
+</style>
+<style>
+/* ============================================================
+   CONTENT CAP — beta page content max 980px centered,
+   canvas + earth remain full-bleed
+   ============================================================ */
+.beta-hero {
+    max-width: 980px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 130px 24px 100px !important;
+    box-sizing: border-box !important;
+}
+.beta-hero h1,
+.beta-hero > p,
+.beta-form,
+.beta-promise,
+.beta-back {
+    max-width: 100% !important;
+}
+/* Form stays narrow, page stays wide */
+.beta-form {
+    max-width: 440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 </style>
 </head>

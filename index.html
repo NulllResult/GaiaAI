@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=40">
+<link rel="stylesheet" href="assets/style.css?v=41">
 <style>
 /* ============================================================
    Kill the assets/style.css grid + glow pseudo-elements.
@@ -85,6 +85,37 @@ html body::after {
         font-size: 0.76rem;
         white-space: normal;
     }
+}
+</style>
+<style>
+/* ============================================================
+   CONTENT CAP — content max 980px centered, backgrounds full-bleed
+   ============================================================ */
+
+/* Main content containers — capped */
+.container,
+.container-narrow,
+.hero .container,
+.hero-content {
+    max-width: 980px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    box-sizing: border-box !important;
+}
+
+/* Wide sections that should fill the screen (hero gradient, bg canvas, etc.) */
+.hero,
+section {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Inner content of every section still respects the cap via .container */
+section > .container,
+section > .container-narrow {
+    max-width: 980px !important;
 }
 </style>
 </head>
