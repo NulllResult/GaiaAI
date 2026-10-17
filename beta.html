@@ -5,366 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=102">
-<style>
+<link rel="stylesheet" href="assets/style.css?v=104">
 
-.beta-hero h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-.beta-hero p {
-    max-width: 560px;
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--fg-dim);
-    margin-bottom: 32px;
-}
-.beta-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-width: 440px;
-    width: 100%;
-    margin: 0 auto;
-}
-.beta-form input,
-.beta-form textarea {
-    width: 100%;
-    padding: 14px 18px;
-    background: rgba(14,26,20,0.6);
-    border: 1px solid rgba(74,222,128,0.28);
-    border-radius: 8px;
-    color: var(--fg);
-    font-family: inherit;
-    font-size: 0.98rem;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-.beta-form input:focus,
-.beta-form textarea:focus {
-    border-color: #4ade80;
-    box-shadow: 0 0 0 3px rgba(74,222,128,0.12);
-}
-.beta-form textarea { min-height: 100px; resize: vertical; font-family: inherit; }
-.beta-form button {
-    padding: 14px 24px;
-    background: linear-gradient(135deg, #4ade80, #34d399);
-    border: none;
-    border-radius: 8px;
-    color: #0a1410;
-    font-family: inherit;
-    font-size: 0.98rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s;
-}
-.beta-form button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(74,222,128,0.3);
-}
-.beta-note {
-    font-size: 0.82rem;
-    color: rgba(167,243,208,0.5);
-    margin-top: 24px;
-    font-family: ui-monospace, monospace;
-    letter-spacing: 0.04em;
-}
-.beta-back {
-    display: inline-block;
-    margin-top: 40px;
-    font-family: ui-monospace, monospace;
-    font-size: 0.85rem;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    opacity: 0.75;
-    transition: opacity 0.2s;
-}
-.beta-back:hover { opacity: 1; }
-.beta-promise {
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(74,222,128,0.15);
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-.beta-promise h3 {
-    font-family: ui-monospace, monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #4ade80;
-    opacity: 0.75;
-    margin-bottom: 16px;
-}
-.beta-promise ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 10px;
-}
-.beta-promise li {
-    font-size: 0.92rem;
-    color: var(--fg-dim);
-    line-height: 1.6;
-    padding-left: 22px;
-    position: relative;
-}
-.beta-promise li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #4ade80;
-    opacity: 0.7;
-}
-</style>
-<style>
-html, body {
-    background: #06120c;
-    min-height: 100%;
-}
-#gaia-bg-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-    display: block;
-}
-/* radial vignette so the center stays dark for readability */
-#gaia-bg-canvas::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 40%, rgba(6,18,12,0.55) 0%, rgba(6,18,12,0.15) 60%, transparent 100%);
-    pointer-events: none;
-}
 
-</style>
+
+
+
+
+
+
+
 <style>
 /* ============================================================
-   BETA PAGE — single clean layout override
-   Beats everything in assets/style.css (which we can't easily edit)
+   GAIA BETA — CANONICAL LAYOUT (PC & MOBILE)
    ============================================================ */
 
-/* The canvas is fixed and never takes layout space */
+/* Kill the main site's grid/line artifacts */
+body::before, body::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Base page reset */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: #06120c !important; /* Dark fallback */
+    overflow-x: hidden !important;
+}
+
+/* The particle network background */
 body > canvas#gaia-bg-canvas {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
     z-index: 0 !important;
     pointer-events: none !important;
-    display: block !important;
 }
 
-/* Form sits above the canvas */
-body > 
-
-/* Tighten form spacing so it fits without scrolling */
-.beta-hero h1 { margin-top: 0 !important; margin-bottom: 16px !important; }
-.beta-hero > p { margin-bottom: 24px !important; }
-.beta-promise { margin-top: 32px !important; padding-top: 24px !important; }
-</style>
-<style>
-/* Real Earth (Three.js) — bottom of beta page */
+/* The 3D Earth container */
 #earth-container {
     position: fixed !important;
-    bottom: -34vh !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 160vw !important;
-    height: 68vh !important;
-    z-index: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 60vh !important; /* Takes up bottom 60% of screen */
+    z-index: 1 !important;
     pointer-events: none !important;
-    max-width: none !important;
 }
-/* soft fade at top of container so the form doesn't fight the horizon */
-/* (fade removed — was causing a visible band) */
 
-</style>
-<style>
-/* ============================================================
-   BETA PAGE — kill the grid + radial glows from assets/style.css
-   These are the "diagonal line" and unwanted background effects.
-   ============================================================ */
-html body.beta-page::before,
-html body.beta-page::after {
-    display: none !important;
-    content: none !important;
-    background: none !important;
-}
-</style>
-<style>
-/* ============================================================
-   CANONICAL beta-hero + earth layout — matches mobile-in-
-   desktop-mode appearance at every viewport width
-   ============================================================ */
-html body .beta-hero,
-html body > .beta-hero {
+/* The Form Column */
+.beta-hero {
     position: relative !important;
     z-index: 10 !important;
-    min-height: 0 !important;
-    height: auto !important;
-    margin: 0 !important;
-    padding: 130px 24px 100px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: center !important;
-    max-width: none !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
-html body .beta-hero h1 {
-    font-size: clamp(2rem, 5vw, 3rem) !important;
-    letter-spacing: -0.03em !important;
-    margin: 0 0 20px 0 !important;
-    font-weight: 700 !important;
-}
-html body .beta-hero > p {
-    max-width: 560px !important;
-    font-size: 1.05rem !important;
-    line-height: 1.75 !important;
-    color: var(--fg-dim) !important;
-    margin: 0 auto 32px auto !important;
-}
-html body .beta-form {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-    max-width: 440px !important;
-    width: 100% !important;
+    max-width: 600px !important;
     margin: 0 auto !important;
+    min-height: 100vh !important;
+    padding: 60px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    background: transparent !important; /* Let the network show through */
 }
-html body .beta-form input,
-html body .beta-form textarea {
-    width: 100% !important;
-    padding: 14px 18px !important;
-    background: rgba(14,26,20,0.6) !important;
-    border: 1px solid rgba(74,222,128,0.28) !important;
-    border-radius: 8px !important;
-    color: var(--fg) !important;
-    font-family: inherit !important;
-    font-size: 0.98rem !important;
-    outline: none !important;
-    box-sizing: border-box !important;
-}
-html body .beta-form textarea {
-    min-height: 100px !important;
-    resize: vertical !important;
-}
-html body .beta-form button {
-    padding: 14px 24px !important;
-    background: linear-gradient(135deg, #4ade80, #34d399) !important;
-    border: none !important;
-    border-radius: 8px !important;
-    color: #0a1410 !important;
-    font-family: inherit !important;
-    font-size: 0.98rem !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
-}
-html body .beta-note {
-    font-size: 0.82rem !important;
-    color: rgba(167,243,208,0.5) !important;
-    margin-top: 24px !important;
-    font-family: ui-monospace, monospace !important;
-}
-html body .beta-promise {
-    margin-top: 48px !important;
-    padding-top: 32px !important;
-    border-top: 1px solid rgba(74,222,128,0.15) !important;
-    max-width: 560px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: left !important;
-}
-html body .beta-back {
-    display: inline-block !important;
-    margin-top: 40px !important;
-    font-family: ui-monospace, monospace !important;
-    font-size: 0.85rem !important;
-    color: var(--accent) !important;
-    text-decoration: none !important;
-    opacity: 0.75 !important;
-}
-</style>
-<style>
-/* ============================================================
-   ISOLATE FROM assets/style.css — reset everything it sets
-   that could vary by viewport
-   ============================================================ */
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
-    overflow-x: hidden !important;
-    background: #06120c !important;
-}
-body > * {
-    position: relative;
-}
-/* Force every top-level wrapper to be the same on all viewports */
-body > .beta-hero {
-    max-width: none !important;
-}
-</style>
-<style>
-/* PC-ONLY FIX — Does not affect mobile */
-@media (min-width: 769px) {
-    /* Restore background */
-    body.beta-page::before, body.beta-page::after {
-        display: block !important;
-    }
-    /* Fix the form size so it's not huge on desktop */
-    body > .beta-hero {
-        max-width: 640px !important;
-        margin: 0 auto !important;
-        padding-top: 100px !important;
-    }
-    /* Fix text sizes */
-    .beta-hero h1 { font-size: 3rem !important; }
-    .beta-hero p { font-size: 1.1rem !important; }
-    .beta-form input, .beta-form textarea { font-size: 1rem !important; }
-    
-    /* Make Earth fill PC screen correctly */
-    #earth-container {
-        width: 120vw !important;
-        height: 100vh !important;
-        bottom: -35vh !important;
-    }
-}
-</style>
-<style>
-/* PC-ONLY FIX for Beta Page Earth and Form */
-@media (min-width: 769px) {
-    /* 1. Cap the Earth container width so the camera doesn't zoom out */
-    #earth-container {
-        width: 900px !important;       /* Fixed pixel width for PC */
-        height: 900px !important;
-        bottom: -300px !important;     /* Push it down so only the top curve shows */
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-    }
 
-    /* 2. Constrain the form so it's a nice column in the middle */
-    body > .beta-hero {
-        max-width: 600px !important;
-        margin: 0 auto !important;
-        padding-top: 100px !important;
+/* Typography fixes */
+.beta-hero h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+}
+.beta-hero p {
+    font-size: clamp(1rem, 2vw, 1.15rem) !important;
+    line-height: 1.6 !important;
+    margin-bottom: 32px !important;
+    text-align: center !important;
+}
+.beta-form {
+    width: 100% !important;
+    max-width: 480px !important;
+}
+
+/* On PC, prevent body scrolling so it feels like an app */
+@media (min-width: 769px) {
+    body {
+        overflow-y: hidden !important;
     }
 }
 </style>
@@ -679,7 +409,9 @@ if (container) {
         const w = container.clientWidth;
         const h = container.clientHeight;
         renderer.setSize(w, h);
-        camera.aspect = w / h;
+        // Force a widescreen aspect ratio regardless of actual screen,
+        // so the globe stretches to fill the bottom like a horizon.
+        camera.aspect = 16 / 9; 
         camera.updateProjectionMatrix();
     }
     window.addEventListener('resize', resize);
