@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Self-Learning Platform for Disease Research</title>
 <meta name="description" content="A self-learning platform for computational disease research. Scans genomes, scans the web, and builds knowledge that grows.">
-<link rel="stylesheet" href="assets/style.css?v=100">
+<link rel="stylesheet" href="assets/style.css?v=111">
 <style>
 /* ============================================================
    Math section — keep equations readable on mobile, no backgrounds
@@ -92,6 +92,47 @@
         margin-left: auto !important;
         margin-right: auto !important;
     }
+}
+</style>
+<style>
+/* ============================================================
+   MOBILE DESKTOP-MODE LOCK (Main Page)
+   Forces mobile layout even if the phone requests "Desktop site"
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        font-size: 16px !important; /* Prevents OS font inflation */
+    }
+
+    /* Force containers to stay narrow */
+    .container, .container-narrow {
+        max-width: 100% !important;
+        padding: 0 20px !important;
+    }
+
+    /* Fix the math equations so they don't stretch sideways */
+    .equation-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    .equation-body {
+        font-size: 1.1rem !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    /* Prevent the hero SVGs from blowing up to desktop size */
+    .hero-bg, .divider-leaf, .spectra-svg {
+        max-width: 100vw !important;
+        height: auto !important;
+    }
+
+    /* Fix the "What GAIA is" text */
+    #what-gaia-is h2 { font-size: 2rem !important; }
+    #what-gaia-is p { font-size: 1rem !important; }
 }
 </style>
 </head>
