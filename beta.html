@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=120">
+<link rel="stylesheet" href="assets/style.css?v=125">
 <style>
 /* ============================================================
    GAIA BETA — MOBILE-FIRST LAYOUT
@@ -140,18 +140,7 @@ body > canvas#gaia-bg-canvas {
    PC OVERRIDE — only applies on real desktop (min-width 769px AND hover available)
    This is the ONLY place PC layout is defined.
    ============================================================ */
-@media (min-width: 769px) and (hover: hover) {
-    .beta-hero {
-        max-width: 500px !important;
-        height: 90vh !important;
-        padding: 24px !important;
-    }
-    .beta-hero h1 { font-size: 2.5rem !important; }
-    #earth-container {
-        width: 100vw !important;
-        height: 50vh !important;
-    }
-}
+
 </style>
 <style>
 /* ============================================================
@@ -198,6 +187,50 @@ body > canvas#gaia-bg-canvas {
     .beta-hero h1 { font-size: 2.5rem !important; }
     .beta-hero p { font-size: 1rem !important; }
     .beta-form input, .beta-form textarea { font-size: 16px !important; } /* Prevents iOS auto-zoom */
+}
+</style>
+<style>
+/* ============================================================
+   STRICT PC-ONLY FIX
+   This applies ONLY to screens wider than 769px.
+   Mobile view (<= 768px) is 100% untouched.
+   ============================================================ */
+@media (min-width: 769px) {
+    /* 1. Stop the page from scrolling */
+    html, body {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
+
+    /* 2. Fix the form: put it in the center, narrow, no scroll */
+    .beta-hero {
+        position: absolute !important;
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        height: 100vh !important;
+        max-width: 600px !important;
+        width: 100% !important;
+        padding-top: 80px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        z-index: 10 !important;
+    }
+
+    /* 3. Fix the Earth: make it fill the bottom, push it down out of view */
+    #earth-container {
+        position: absolute !important;
+        bottom: -55vh !important; /* Pushes the globe down so only the top curve shows */
+        left: 0 !important;
+        width: 100vw !important; 
+        height: 100vh !important;
+        transform: none !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
 }
 </style>
 </head>
