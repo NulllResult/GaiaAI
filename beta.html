@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=1200">
 <title>GAIA — Beta Access</title>
 <meta name="description" content="Request access to the GAIA closed beta.">
-<link rel="stylesheet" href="assets/style.css?v=132">
+<link rel="stylesheet" href="assets/style.css?v=133">
 <style>
 /* ============================================================
    GAIA BETA — MOBILE-FIRST LAYOUT
@@ -275,16 +275,55 @@ import * as THREE from 'three';
 const container = document.getElementById('earth-container');
 if (container) {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1000);
-    // Move camera closer to make Earth massive
-    camera.position.z = 1.6; 
-    camera.position.y = -0.15;
+    // Camera FOV 35 is good for a wide horizon
+    const camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 0.1, 1000);
+    
+    // Position the camera looking at the top of the sphere.
+    // z=1.7 puts us close enough to make it massive.
+    // y=-0.6 pushes the sphere down so we only see the top curve.
+    camera.position.z = 1.7;
+    camera.position.y = -0.5;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
+    const earthGeo = new THREE.SphereGeometry(1, 64, 64);
+    const textureLoader = new THREE.TextureLoader();
+    
+    // Load texture
+    const earthTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg');
+    earthTex.colorSpace = THREE.SRGBColorSpace;
+    const earthMat = new THREE.MeshPhongMaterial({ map: earthTex, specular: new THREE.Color(0x333333), shininess: 15 });
+    const earth = new THREE.Mesh(earthGeo, earthMat);
+    scene.add(earth);
+
+    // Add clouds
+    const cloudTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/clouds.png');
+    cloudTex.colorSpace = THREE.SRGBColorSpace;
+    const cloudMat = new THREE.MeshPhongMaterial({ map: cloudTex, transparent: true, opacity: 0.5, depthWrite: false });
+    const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.005, 64, 64), cloudMat);
+    scene.add(clouds); clouds.name = 'clouds';
+
+    // Add green atmosphere tint
+    const tintMat = new THREE.MeshBasicMaterial({ color: 0x4ade80, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending, depthWrite: false });
+    const tint = new THREE.Mesh(new THREE.SphereGeometry(1.002, 64, 64), tintMat);
+    scene.add(tint);
+
+    // Lighting: bright sun from the left, green ambient from the right
+    const sun = new THREE.DirectionalLight(0xffffff, 3.5); 
+    sun.position.set(-3, 2, 2); 
+    scene.add(sun);
+    
+    const ambient = new THREE.AmbientLight(0x2a4a32, 1.5); // Dark green ambient so shadow side isn't pure black
+    scene.add(ambient);
+    
+    const rim = new THREE.DirectionalLight(0x4ade80, 1.0); 
+    rim.position.set(2, -1, -3); 
+    scene.add(rim);
+
+    // Resize function ensures the camera math is always correct
     function resizeThree() {
         const w = container.clientWidth;
         const h = container.clientHeight;
@@ -293,46 +332,14 @@ if (container) {
         camera.updateProjectionMatrix();
     }
     window.addEventListener('resize', resizeThree);
-    resizeThree();
-
-    const earthGeo = new THREE.SphereGeometry(1, 64, 64);
-    const textureLoader = new THREE.TextureLoader();
-    const earthTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg');
-    earthTex.colorSpace = THREE.SRGBColorSpace;
-    const earthMat = new THREE.MeshPhongMaterial({ map: earthTex, specular: new THREE.Color(0x333333), shininess: 15 });
-    const earth = new THREE.Mesh(earthGeo, earthMat);
-    scene.add(earth);
-
-    const cloudTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/clouds.png');
-    cloudTex.colorSpace = THREE.SRGBColorSpace;
-    const cloudMat = new THREE.MeshPhongMaterial({ map: cloudTex, transparent: true, opacity: 0.55, depthWrite: false });
-    const clouds = new THREE.Mesh(new THREE.SphereGeometry(1.005, 64, 64), cloudMat);
-    scene.add(clouds); clouds.name = 'clouds';
-
-    const tintMat = new THREE.MeshBasicMaterial({ color: 0x4ade80, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending, depthWrite: false });
-    const tint = new THREE.Mesh(new THREE.SphereGeometry(0.998, 64, 64), tintMat);
-    scene.add(tint);
-
-    const atmoMat = new THREE.MeshBasicMaterial({ color: 0x4ade80, transparent: true, opacity: 0.18, side: THREE.BackSide, blending: THREE.AdditiveBlending, depthWrite: false });
-    const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.14, 64, 64), atmoMat);
-    scene.add(atmo);
-
-    const sun = new THREE.DirectionalLight(0xffffff, 4.5); sun.position.set(-4, 3, 3); scene.add(sun);
-    const ambient = new THREE.AmbientLight(0x88ffaa, 2.0); scene.add(ambient);
-    const rim = new THREE.DirectionalLight(0x4ade80, 1.0); rim.position.set(2, -1, -3); scene.add(rim);
-
-    function resize() {
-        const w = container.clientWidth; const h = container.clientHeight;
-        renderer.setSize(w, h);
-        camera.aspect = w / h; camera.updateProjectionMatrix();
-    }
-    window.addEventListener('resize', resize); resize();
 
     let t = 0;
     function tick() {
-        t += 0.0016; earth.rotation.y = t;
-        const c = scene.getObjectByName('clouds'); if (c) c.rotation.y = t * 1.18;
-        renderer.render(scene, camera); requestAnimationFrame(tick);
+        t += 0.001; 
+        earth.rotation.y = t;
+        if (clouds) clouds.rotation.y = t * 1.15;
+        renderer.render(scene, camera); 
+        requestAnimationFrame(tick);
     }
     tick();
 }
