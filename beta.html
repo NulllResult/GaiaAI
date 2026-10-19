@@ -5,7 +5,7 @@
 <!-- FORCE DESKTOP VIEW ON MOBILE -->
 <meta name="viewport" content="width=1200">
 <title>GAIA — Beta Access</title>
-<link rel="stylesheet" href="assets/style.css?v=150">
+<link rel="stylesheet" href="assets/style.css?v=151">
 <style>
 /* ============================================================
    GAIA BETA — SINGLE CANONICAL DESKTOP LAYOUT
@@ -52,8 +52,8 @@ body > canvas#gaia-bg-canvas {
 
 /* 3. The Earth Container - Wide and tall to fill the screen */
 #earth-container {
-    position: absolute; bottom: -10vh; left: 0;
-    width: 100vw; height: 60vh;
+    position: absolute; bottom: 0; left: 0;
+    width: 100vw; height: 70vh;
     z-index: 1; pointer-events: none;
 }
 
@@ -130,8 +130,8 @@ if (container) {
     // We use a 2:1 aspect ratio. This is the secret to getting the wide curve.
     const camera = new THREE.PerspectiveCamera(45, 2, 0.1, 1000);
     // Pull camera back and put it slightly above center
-    camera.position.z = 2.5; 
-    camera.position.y = 0.1;
+    camera.position.z = 1.5; 
+    camera.position.y = -0.7;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
