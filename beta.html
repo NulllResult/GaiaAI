@@ -91,7 +91,7 @@ body > canvas#gaia-bg-canvas {
 <div class="beta-hero">
     <h1>GAIA <span class="accent">Beta Access</span></h1>
     <p>GAIA is in closed beta. Request access to run the full pipeline on your own data — genome read, variant mapping, compound ranking, protocol design, and the reversal simulation.</p>
-    <form class="beta-form" action="#" method="POST" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received'; this.querySelector('button').disabled=true;">
+    <form class="beta-form" action="https://formspree.io/f/xvkzyjdz" method="POST" onsubmit="this.querySelector('button').textContent='Sending...'; this.querySelector('button').disabled=true;">
         <input type="email" name="email" placeholder="you@example.com" required>
         <input type="text" name="affiliation" placeholder="Affiliation (optional)">
         <textarea name="use_case" placeholder="What would you use GAIA for? (optional)"></textarea>
