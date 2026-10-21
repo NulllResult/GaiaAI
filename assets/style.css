@@ -11,7 +11,7 @@
     --accent: #4ade80;
     --accent2: #34d399;
     --accent3: #60a5fa;
-    --accent4: #a7f3d0;
+    --accent4: #22c55e;
     --amber: #fbbf24;
     --glow: 0 0 100px rgba(74, 222, 128, 0.25);
 }
@@ -316,7 +316,7 @@ section h2 {
     line-height: 1.15;
 }
 section h2 .accent {
-    background: linear-gradient(135deg, var(--accent4), var(--accent));
+    background: linear-gradient(135deg, #22c55e, #15803d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1060,7 +1060,7 @@ footer .footer-links {
     font-weight: 600;
 }
 .web-side h3 .accent {
-    background: linear-gradient(135deg, var(--accent4), var(--accent));
+    background: linear-gradient(135deg, #22c55e, #15803d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2256,7 +2256,7 @@ footer .footer-links {
 }
 
 .web-info h3 .accent {
-    background: linear-gradient(135deg, var(--accent4), var(--accent));
+    background: linear-gradient(135deg, #22c55e, #15803d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -3069,7 +3069,7 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
 }
 
 .learn-copy h3 .accent {
-    background: linear-gradient(135deg, var(--accent4), var(--accent));
+    background: linear-gradient(135deg, #22c55e, #15803d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -3483,7 +3483,7 @@ section.visible .learn-card:nth-child(3) { animation-delay: 0.25s; }
     font-weight: 600;
 }
 .math-header h3 .accent {
-    background: linear-gradient(135deg, var(--accent4), var(--accent));
+    background: linear-gradient(135deg, #22c55e, #15803d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
