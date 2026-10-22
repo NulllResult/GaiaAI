@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
-<link rel="stylesheet" href="assets/style.css?v=201">
+<link rel="stylesheet" href="assets/style.css?v=200">
 <style>
 /* ============================================================
    GAIA BETA — SINGLE CANONICAL LAYOUT (NO SCROLL, SMOOTH EARTH)
@@ -81,6 +81,47 @@ body > canvas#gaia-bg-canvas {
 .beta-promise li::before { content: "→"; position: absolute; left: 0; color: #4ade80; }
 
 .beta-back { display: block; margin-top: 16px; font-family: ui-monospace, monospace; font-size: 0.8rem; color: #4ade80; text-decoration: none; }
+</style>
+<style>
+/* ============================================================
+   PC WIDENING — form fills the screen, background stays visible
+   Earth still needs fixing (that's next)
+   ============================================================ */
+@media (min-width: 769px) {
+    /* Widen the form significantly on PC */
+    body > .beta-hero {
+        max-width: 900px !important;
+        padding-top: 60px !important;
+    }
+    
+    /* Two-column form layout: inputs beside the promise list */
+    .beta-hero > h1 { font-size: 2.8rem !important; margin-bottom: 24px !important; }
+    .beta-hero > p { font-size: 1.05rem !important; max-width: 700px !important; margin: 0 auto 32px !important; }
+    
+    /* Make the form wider and more spacious */
+    .beta-form {
+        max-width: 700px !important;
+        margin: 0 auto !important;
+    }
+    .beta-form input,
+    .beta-form textarea {
+        padding: 14px 18px !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Promise block wider too */
+    .beta-promise {
+        max-width: 700px !important;
+        margin: 32px auto 0 !important;
+    }
+    
+    /* Keep the earth contained */
+    #earth-container {
+        bottom: -42vh !important;
+        width: 100vw !important;
+        height: 80vh !important;
+    }
+}
 </style>
 </head>
 <body>
