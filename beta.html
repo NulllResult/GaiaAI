@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
-<link rel="stylesheet" href="assets/style.css?v=200">
+<link rel="stylesheet" href="assets/style.css?v=210">
 <style>
 /* ============================================================
    GAIA BETA — SINGLE CANONICAL LAYOUT (NO SCROLL, SMOOTH EARTH)
@@ -84,42 +84,87 @@ body > canvas#gaia-bg-canvas {
 </style>
 <style>
 /* ============================================================
-   PC WIDENING — form fills the screen, background stays visible
-   Earth still needs fixing (that's next)
+   PC DEFINITIVE — wide form, contained earth, no narrow column
    ============================================================ */
 @media (min-width: 769px) {
-    /* Widen the form significantly on PC */
+    /* Widen the form container to fill the screen */
     body > .beta-hero {
-        max-width: 900px !important;
-        padding-top: 60px !important;
+        max-width: 1200px !important;
+        width: 92vw !important;
+        margin: 0 auto !important;
+        padding: 60px 40px 80px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
-    
-    /* Two-column form layout: inputs beside the promise list */
-    .beta-hero > h1 { font-size: 2.8rem !important; margin-bottom: 24px !important; }
-    .beta-hero > p { font-size: 1.05rem !important; max-width: 700px !important; margin: 0 auto 32px !important; }
-    
-    /* Make the form wider and more spacious */
+
+    /* Heading wider */
+    .beta-hero h1 {
+        font-size: 3.5rem !important;
+        margin-bottom: 24px !important;
+        text-align: center !important;
+    }
+
+    /* Intro text wider */
+    .beta-hero > p:first-of-type {
+        font-size: 1.15rem !important;
+        max-width: 800px !important;
+        text-align: center !important;
+        margin: 0 auto 40px !important;
+    }
+
+    /* Form itself - wide and centered */
     .beta-form {
-        max-width: 700px !important;
+        max-width: 720px !important;
+        width: 100% !important;
         margin: 0 auto !important;
     }
+
+    /* Inputs bigger */
     .beta-form input,
     .beta-form textarea {
-        padding: 14px 18px !important;
-        font-size: 1rem !important;
+        padding: 16px 20px !important;
+        font-size: 1.05rem !important;
     }
-    
-    /* Promise block wider too */
+
+    .beta-form button {
+        padding: 16px 32px !important;
+        font-size: 1.05rem !important;
+    }
+
+    /* Promise block wider */
     .beta-promise {
-        max-width: 700px !important;
-        margin: 32px auto 0 !important;
+        max-width: 720px !important;
+        width: 100% !important;
+        margin: 40px auto 0 !important;
+        text-align: left !important;
     }
-    
-    /* Keep the earth contained */
+
+    .beta-promise ul {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px 24px !important;
+    }
+
+    /* Earth - contained at bottom, only top curve visible */
     #earth-container {
-        bottom: -42vh !important;
+        position: fixed !important;
+        bottom: -50vh !important;
+        left: 0 !important;
         width: 100vw !important;
-        height: 80vh !important;
+        height: 100vh !important;
+        z-index: 0 !important;
+    }
+
+    /* Ensure form content sits above earth */
+    .beta-hero {
+        position: relative !important;
+        z-index: 10 !important;
     }
 }
 </style>
