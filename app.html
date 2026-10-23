@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Research Interface</title>
-<link rel="stylesheet" href="assets/style.css?v=300">
+<link rel="stylesheet" href="assets/style.css?v=301">
 <style>
 /* ============================================================
    GAIA APP — Interface Layout
@@ -230,8 +230,143 @@ html, body {
     color: #4ade80; margin-top: 6px; opacity: 0.7;
 }
 </style>
-</head>
+<style>
+/* ============================================================
+   Floating elements + canvas background
+   ============================================================ */
+#app-bg-canvas {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+}
+.app-bg { display: none !important; } /* remove old gradient */
+
+.float-layer {
+    position: fixed; inset: 0; z-index: 1;
+    pointer-events: none; overflow: hidden;
+}
+.float-mol {
+    position: absolute;
+    width: 70px; height: 70px;
+    animation: floatDrift 20s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(74,222,128,0.15));
+}
+@keyframes floatDrift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(15px, -12px) rotate(6deg); }
+    50% { transform: translate(-8px, 10px) rotate(-4deg); }
+    75% { transform: translate(10px, 6px) rotate(3deg); }
+}
+.float-eq {
+    position: absolute;
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: #a7f3d0;
+    opacity: 0.15;
+    animation: eqDrift 25s ease-in-out infinite;
+    white-space: nowrap;
+}
+@keyframes eqDrift {
+    0%, 100% { transform: translate(0, 0); opacity: 0.15; }
+    50% { transform: translate(-20px, 10px); opacity: 0.25; }
+}
+
+/* Glassmorphism for panels */
+.input-panel {
+    background: rgba(6, 18, 12, 0.55) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative; z-index: 10;
+}
+.results-panel { position: relative; z-index: 10; }
+
+/* Result cards — more glass, more glow */
+.result-card, .sci-card, .pipeline-stage {
+    background: rgba(14, 26, 20, 0.55) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(74,222,128,0.2) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 40px rgba(74,222,128,0.03);
+    transition: all 0.3s ease;
+}
+.result-card:hover, .sci-card:hover {
+    border-color: rgba(74,222,128,0.4) !important;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 60px rgba(74,222,128,0.08);
+}
+
+/* Animated gradient on headings */
+.app-header h1 span,
+.results-panel h2 {
+    background: linear-gradient(90deg, #a7f3d0, #4ade80, #34d399, #4ade80, #a7f3d0);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradFlow 6s linear infinite;
+}
+@keyframes gradFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Empty state — replace emoji with animated molecule */
+.empty-state .icon {
+    font-size: 0 !important;
+    display: inline-block;
+    width: 80px; height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon points='40,10 62,24 62,52 40,66 18,52 18,24' fill='none' stroke='%234ade80' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='40' cy='38' r='7' fill='none' stroke='%23a7f3d0' stroke-width='0.9' stroke-dasharray='2 3' opacity='0.7'/%3E%3Ccircle cx='40' cy='10' r='2.5' fill='%234ade80'/%3E%3Ccircle cx='62' cy='52' r='2.5' fill='%2360a5fa'/%3E%3Ccircle cx='18' cy='52' r='2.5' fill='%2334d399'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: floatDrift 8s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+/* Status dot bigger glow */
+.status-dot {
+    box-shadow: 0 0 12px #4ade80, 0 0 24px rgba(74,222,128,0.5);
+}
+
+/* Table row hover */
+.sci-card table tr:hover {
+    background: rgba(74,222,128,0.04);
+}
+</style></head>
 <body>
+
+<canvas id="app-bg-canvas" aria-hidden="true" style="position: fixed; inset: 0; z-index: 0; pointer-events: none;"></canvas>
+
+<!-- Floating molecules -->
+<div class="float-layer" aria-hidden="true">
+    <svg class="float-mol" style="top: 8%; left: 4%; animation-delay: 0s;" viewBox="0 0 80 80">
+        <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#a7f3d0" stroke-width="1.2" opacity="0.35"/>
+        <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.4"/>
+        <circle cx="40" cy="10" r="2" fill="#4ade80" opacity="0.5"/>
+        <circle cx="62" cy="52" r="2" fill="#60a5fa" opacity="0.5"/>
+        <circle cx="18" cy="52" r="2" fill="#34d399" opacity="0.5"/>
+    </svg>
+    <svg class="float-mol" style="top: 60%; left: 8%; animation-delay: -3s;" viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="11" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
+        <ellipse cx="40" cy="40" rx="26" ry="9" fill="none" stroke="#4ade80" stroke-width="0.6" opacity="0.25"/>
+        <ellipse cx="40" cy="40" rx="9" ry="26" fill="none" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
+        <circle cx="40" cy="40" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+    </svg>
+    <svg class="float-mol" style="top: 75%; right: 6%; animation-delay: -6s;" viewBox="0 0 80 80">
+        <path d="M 10 60 L 26 40 L 42 54 L 58 30 L 72 44" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
+        <circle cx="10" cy="60" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+        <circle cx="26" cy="40" r="2.5" fill="#4ade80" opacity="0.5"/>
+        <circle cx="42" cy="54" r="2.5" fill="#34d399" opacity="0.5"/>
+        <circle cx="58" cy="30" r="2.5" fill="#60a5fa" opacity="0.5"/>
+        <circle cx="72" cy="44" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+    </svg>
+    <svg class="float-mol" style="top: 20%; right: 10%; animation-delay: -9s;" viewBox="0 0 80 80">
+        <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.25"/>
+        <circle cx="40" cy="38" r="6" fill="none" stroke="#93c5fd" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.3"/>
+    </svg>
+    <!-- Floating equations -->
+    <span class="float-eq" style="top: 12%; right: 30%; animation-delay: 0s;">ΔG = −RT ln K</span>
+    <span class="float-eq" style="top: 42%; left: 25%; animation-delay: -4s;">E = mc²</span>
+    <span class="float-eq" style="top: 85%; left: 50%; animation-delay: -8s;">∑ p(x) = 1</span>
+    <span class="float-eq" style="top: 68%; right: 22%; animation-delay: -12s;">∂E/∂λ</span>
+</div>
+
 
 <div class="app-bg"></div>
 
@@ -487,5 +622,74 @@ document.getElementById('runBtn').addEventListener('click', async () => {
 });
 </script>
 
+<script>
+(function() {
+    const canvas = document.getElementById('app-bg-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, DPR;
+    let particles = [];
+    const CONFIG = { count: 60, maxLinkDist: 140, colors: ['rgba(74,222,128,', 'rgba(167,243,208,', 'rgba(96,165,250,', 'rgba(52,211,153,'], linkOpacity: 0.12, nodeOpacity: 0.5 };
+    function resize() {
+        DPR = Math.min(window.devicePixelRatio || 1, 2);
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W * DPR; canvas.height = H * DPR;
+        canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    function rand(a,b) { return a + Math.random()*(b-a); }
+    function makeParticle() {
+        const homeX = Math.random()*W, homeY = Math.random()*H;
+        return {
+            homeX, homeY, x: homeX, y: homeY,
+            ampX: rand(6,20), ampY: rand(6,20),
+            freqX: rand(0.0003,0.001), freqY: rand(0.0003,0.001),
+            t: Math.random()*1000, r: rand(1.2,2.8),
+            color: CONFIG.colors[Math.floor(Math.random()*CONFIG.colors.length)],
+            phase: Math.random()*Math.PI*2, pulseSpeed: rand(0.008,0.02)
+        };
+    }
+    function initParticles() {
+        particles = [];
+        const area = W*H;
+        const n = Math.max(30, Math.min(100, Math.round(CONFIG.count*(area/600000))));
+        for (let i=0; i<n; i++) particles.push(makeParticle());
+    }
+    function step() {
+        ctx.clearRect(0,0,W,H);
+        for (const p of particles) {
+            p.t += 1;
+            p.x = p.homeX + Math.sin(p.t*p.freqX)*p.ampX;
+            p.y = p.homeY + Math.cos(p.t*p.freqY)*p.ampY;
+            p.phase += p.pulseSpeed;
+        }
+        for (let i=0; i<particles.length; i++) {
+            const a = particles[i];
+            for (let j=i+1; j<particles.length; j++) {
+                const b = particles[j];
+                const dx = a.x-b.x, dy = a.y-b.y;
+                const d2 = dx*dx+dy*dy;
+                if (d2 > CONFIG.maxLinkDist*CONFIG.maxLinkDist) continue;
+                const d = Math.sqrt(d2);
+                const alpha = (1 - d/CONFIG.maxLinkDist)*CONFIG.linkOpacity;
+                ctx.strokeStyle = 'rgba(74,222,128,'+alpha.toFixed(3)+')';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+            }
+        }
+        for (const p of particles) {
+            const pulse = 0.85 + 0.35*Math.sin(p.phase);
+            const r = p.r*pulse;
+            ctx.fillStyle = p.color + CONFIG.nodeOpacity + ')';
+            ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = p.color + '0.08)';
+            ctx.beginPath(); ctx.arc(p.x, p.y, r*4, 0, Math.PI*2); ctx.fill();
+        }
+        requestAnimationFrame(step);
+    }
+    window.addEventListener('resize', () => { resize(); initParticles(); });
+    resize(); initParticles(); step();
+})();
+</script>
 </body>
 </html>
