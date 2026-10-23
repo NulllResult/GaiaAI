@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
-<link rel="stylesheet" href="assets/style.css?v=220">
+<link rel="stylesheet" href="assets/style.css?v=221">
 <style>
 /* ============================================================
    GAIA BETA — SINGLE CANONICAL LAYOUT (NO SCROLL, SMOOTH EARTH)
@@ -185,18 +185,17 @@ const container = document.getElementById('earth-container');
 if (container) {
     const scene = new THREE.Scene();
     
-    // Hardcode the aspect ratio to 1.0 (Square).
-    // This prevents the 3D engine from stretching the sphere into a flat polygon on wide screens.
+    // Camera: pull back so sphere doesn't fill the whole canvas
+    // FOV 35, aspect locked to 1.0 so it never distorts
     const camera = new THREE.PerspectiveCamera(35, 1.0, 0.1, 1000);
     
-    // Position camera to look at the top curve of a massive sphere
-    camera.position.z = 1.8; 
-    camera.position.y = 0.2;
+    // KEY FIX: z=3.2 pulls the camera back so the sphere is smaller.
+    // y=-0.9 pushes the sphere DOWN so only the top curve shows.
+    camera.position.z = 3.2; 
+    camera.position.y = -0.9;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    
-    // Force the renderer size to match the container but keep the camera square
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
@@ -222,10 +221,8 @@ if (container) {
     const ambient = new THREE.AmbientLight(0x2a4a32, 1.5); scene.add(ambient);
     const rim = new THREE.DirectionalLight(0x4ade80, 1.0); rim.position.set(2, -1, -3); scene.add(rim);
 
-    // Resize handler: stops the Earth from distorting if the window changes size
     window.addEventListener('resize', () => {
         renderer.setSize(container.clientWidth, container.clientHeight);
-        // Intentionally DO NOT update camera.aspect here. We keep it at 1.0.
     });
 
     let t = 0;
