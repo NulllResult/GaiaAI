@@ -1,695 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAIA — Research Interface</title>
-<link rel="stylesheet" href="assets/style.css?v=301">
-<style>
-/* ============================================================
-   GAIA APP — Interface Layout
-   ============================================================ */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-    width: 100%; min-height: 100vh;
-    background: #06120c; color: #e8f4ee;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAIA — Research Interface</title>
+  <link rel="stylesheet" href="assets/style.css?v=302">
+  <style>
+    /* ======================================================
+       GAIA APP — Interface Layout (Improved)
+       ====================================================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Ambient background */
-.app-bg {
-    position: fixed; inset: 0; z-index: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(74,222,128,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(96,165,250,0.06) 0%, transparent 50%);
-    pointer-events: none;
-}
+    :root {
+      --bg-deep: #06120c;
+      --bg-panel: rgba(14, 26, 20, 0.6);
+      --bg-panel-solid: #0e1a14;
+      --accent-green: #4ade80;
+      --accent-green-dim: #34d399;
+      --accent-blue: #60a5fa;
+      --accent-amber: #fbbf24;
+      --text-primary: #e8f4ee;
+      --text-secondary: #8fa89c;
+      --text-muted: #566b60;
+      --border-subtle: rgba(74, 222, 128, 0.15);
+      --border-glow: rgba(74, 222, 128, 0.4);
+      --shadow-glow: 0 0 20px rgba(74, 222, 128, 0.15);
+      --font-mono: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+    }
 
-/* Header */
-.app-header {
-    position: relative; z-index: 10;
-    padding: 20px 40px; border-bottom: 1px solid rgba(74,222,128,0.15);
-    display: flex; justify-content: space-between; align-items: center;
-}
-.app-header h1 { font-size: 1.4rem; letter-spacing: -0.02em; }
-.app-header h1 span { color: #4ade80; }
-.app-header .status {
-    font-family: ui-monospace, monospace; font-size: 0.75rem;
-    color: #4ade80; display: flex; align-items: center; gap: 8px;
-}
-.status-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
-    animation: pulse 1.6s ease-in-out infinite;
-}
-@keyframes pulse {
-    0%,100% { opacity: 1; box-shadow: 0 0 8px #4ade80; }
-    50% { opacity: 0.5; box-shadow: 0 0 16px #4ade80; }
-}
+    html, body {
+      width: 100%; min-height: 100vh;
+      background: var(--bg-deep); color: var(--text-primary);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-/* Main grid */
-.app-grid {
-    position: relative; z-index: 10;
-    display: grid; grid-template-columns: 320px 1fr;
-    gap: 0; min-height: calc(100vh - 80px);
-}
+    /* Ambient Background */
+    .app-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(74, 222, 128, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(96, 165, 250, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .app-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(6, 18, 12, 0.8) 100%);
+    }
 
-/* Left panel — Input */
-.input-panel {
-    border-right: 1px solid rgba(74,222,128,0.15);
-    padding: 32px 24px; background: rgba(6,18,12,0.6);
-    overflow-y: auto;
-}
-.input-panel h2 {
-    font-size: 0.72rem; font-family: ui-monospace, monospace;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: #4ade80; margin-bottom: 24px;
-}
-.field { margin-bottom: 20px; }
-.field label {
-    display: block; font-size: 0.78rem; color: #8fa89c;
-    margin-bottom: 6px; font-weight: 500;
-}
-.field input, .field select {
-    width: 100%; padding: 10px 14px;
-    background: rgba(14,26,20,0.8); border: 1px solid rgba(74,222,128,0.25);
-    border-radius: 6px; color: #fff; font-family: inherit; font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s;
-}
-.field input:focus, .field select:focus { border-color: #4ade80; }
-.upload-zone {
-    border: 2px dashed rgba(74,222,128,0.3); border-radius: 8px;
-    padding: 24px 16px; text-align: center; cursor: pointer;
-    transition: all 0.2s; margin-bottom: 20px;
-}
-.upload-zone:hover { border-color: #4ade80; background: rgba(74,222,128,0.04); }
-.upload-zone .icon { font-size: 1.5rem; margin-bottom: 8px; opacity: 0.6; }
-.upload-zone .text { font-size: 0.8rem; color: #8fa89c; }
-.upload-zone .hint { font-size: 0.7rem; color: #566b60; margin-top: 4px; }
+    /* Floating Particles Canvas */
+    #app-bg-canvas {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      opacity: 0.8;
+    }
 
-.run-btn {
-    width: 100%; padding: 14px;
-    background: linear-gradient(135deg, #4ade80, #34d399);
-    border: none; border-radius: 8px; color: #0a1410;
-    font-weight: 600; font-size: 1rem; cursor: pointer;
-    margin-top: 8px; transition: transform 0.15s, box-shadow 0.2s;
-}
-.run-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(74,222,128,0.3);
-}
-.run-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    /* Header */
+    .app-header {
+      position: relative; z-index: 10;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(6, 18, 12, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .app-header h1 { font-size: 1.4rem; letter-spacing: -0.02em; }
+    .app-header h1 span {
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dim), var(--accent-blue));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradFlow 4s linear infinite;
+    }
+    @keyframes gradFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .app-header .status {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--accent-green); display: flex; align-items: center; gap: 8px;
+    }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-green); }
+      50% { opacity: 0.5; box-shadow: 0 0 16px var(--accent-green); }
+    }
 
-/* Right panel — Results */
-.results-panel { padding: 32px 40px; overflow-y: auto; }
-.results-panel h2 { font-size: 1.8rem; margin-bottom: 8px; letter-spacing: -0.02em; }
-.results-panel .subtitle {
-    color: #8fa89c; font-size: 0.95rem; margin-bottom: 32px;
-}
+    /* Main Grid */
+    .app-grid {
+      position: relative; z-index: 10;
+      display: grid; grid-template-columns: 340px 1fr; gap: 0;
+      min-height: calc(100vh - 80px);
+    }
 
-/* Tab switcher */
-.tab-bar {
-    display: flex; gap: 4px; margin-bottom: 32px;
-    border-bottom: 1px solid rgba(74,222,128,0.15);
-}
-.tab {
-    padding: 12px 24px; background: transparent; border: none;
-    color: #8fa89c; font-size: 0.9rem; font-weight: 500;
-    cursor: pointer; border-bottom: 2px solid transparent;
-    transition: all 0.2s; font-family: inherit;
-}
-.tab:hover { color: #e8f4ee; }
-.tab.active { color: #4ade80; border-bottom-color: #4ade80; }
+    /* Left Panel — Input */
+    .input-panel {
+      border-right: 1px solid var(--border-subtle);
+      padding: 32px 24px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow-y: auto;
+      transition: background 0.3s ease;
+    }
+    .input-panel h2 {
+      font-size: 0.72rem; font-family: var(--font-mono);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent-green); margin-bottom: 24px;
+    }
+    .field { margin-bottom: 20px; }
+    .field label {
+      display: block; font-size: 0.78rem; color: var(--text-secondary);
+      margin-bottom: 6px; font-weight: 500;
+    }
+    .field input, .field select {
+      width: 100%; padding: 10px 14px;
+      background: rgba(14, 26, 20, 0.8);
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      border-radius: 6px; color: #fff; font-family: inherit;
+      font-size: 0.9rem; outline: none; transition: all 0.2s ease;
+    }
+    .field input:focus, .field select:focus {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+    }
+    .upload-zone {
+      border: 2px dashed rgba(74, 222, 128, 0.3);
+      border-radius: 8px; padding: 24px 16px;
+      text-align: center; cursor: pointer;
+      transition: all 0.2s ease; margin-bottom: 20px;
+    }
+    .upload-zone:hover {
+      border-color: var(--accent-green);
+      background: rgba(74, 222, 128, 0.04);
+    }
+    .upload-zone .icon { font-size: 1.5rem; margin-bottom: 8px; opacity: 0.6; }
+    .upload-zone .text { font-size: 0.8rem; color: var(--text-secondary); }
+    .upload-zone .hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+    .run-btn {
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dim));
+      border: none; border-radius: 8px; color: #0a1410;
+      font-weight: 600; font-size: 1rem; cursor: pointer;
+      margin-top: 8px; transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .run-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
+    }
+    .run-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* Human view content */
-.human-view { display: none; }
-.human-view.active { display: block; }
+    /* Right Panel — Results */
+    .results-panel { padding: 32px 40px; overflow-y: auto; }
+    .results-panel h2 { font-size: 1.8rem; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .results-panel .subtitle {
+      color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 32px;
+    }
 
-.result-card {
-    background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.15);
-    border-radius: 12px; padding: 28px; margin-bottom: 20px;
-}
-.result-card h3 {
-    font-size: 0.72rem; font-family: ui-monospace, monospace;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: #4ade80; margin-bottom: 12px;
-}
-.result-card .value { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
-.result-card .value.green { color: #4ade80; }
-.result-card .desc { font-size: 0.9rem; color: #8fa89c; margin-top: 8px; line-height: 1.6; }
+    /* Tab Switcher */
+    .tab-bar {
+      display: flex; gap: 4px; margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .tab {
+      padding: 12px 24px; background: transparent; border: none;
+      color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;
+      cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.2s ease; font-family: inherit;
+    }
+    .tab:hover { color: var(--text-primary); }
+    .tab.active { color: var(--accent-green); border-bottom-color: var(--accent-green); }
 
-.protocol-timeline {
-    margin-top: 24px;
-}
-.timeline-row {
-    display: grid; grid-template-columns: 140px 1fr 60px;
-    align-items: center; gap: 16px;
-    padding: 12px 0; border-bottom: 1px solid rgba(74,222,128,0.08);
-}
-.timeline-row .metric { font-size: 0.85rem; color: #8fa89c; }
-.timeline-row .bar-track {
-    height: 6px; background: rgba(74,222,128,0.1); border-radius: 3px;
-    position: relative; overflow: hidden;
-}
-.timeline-row .bar-fill {
-    height: 100%; background: linear-gradient(90deg, #4ade80, #34d399);
-    border-radius: 3px; transition: width 0.8s ease-out;
-}
-.timeline-row .val { font-family: ui-monospace, monospace; font-size: 0.85rem; text-align: right; }
+    /* Human View */
+    .human-view { display: none; }
+    .human-view.active { display: block; }
+    .result-card {
+      background: var(--bg-panel); border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 28px; margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .result-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
+    }
+    .result-card h3 {
+      font-size: 0.72rem; font-family: var(--font-mono);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent-green); margin-bottom: 12px;
+    }
+    .result-card .value {
+      font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .result-card .value.green { color: var(--accent-green); }
+    .result-card .desc {
+      font-size: 0.9rem; color: var(--text-secondary);
+      margin-top: 8px; line-height: 1.6;
+    }
 
-/* Scientist view content */
-.scientist-view { display: none; }
-.scientist-view.active { display: block; }
+    /* Protocol Timeline (Improved) */
+    .protocol-timeline { margin-top: 24px; }
+    .timeline-row {
+      display: grid; grid-template-columns: 140px 1fr 70px;
+      align-items: center; gap: 16px;
+      padding: 12px 0; border-bottom: 1px solid rgba(74, 222, 128, 0.08);
+      transition: background 0.2s;
+    }
+    .timeline-row:hover { background: rgba(74, 222, 128, 0.02); }
+    .timeline-row .metric { font-size: 0.85rem; color: var(--text-secondary); }
+    .timeline-row .bar-track {
+      height: 8px; background: rgba(74, 222, 128, 0.08);
+      border-radius: 4px; position: relative; overflow: hidden;
+    }
+    .timeline-row .bar-fill {
+      height: 100%; background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dim));
+      border-radius: 4px; transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+    }
+    .timeline-row .bar-fill::after {
+      content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+      width: 20px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2));
+      animation: shimmer 2s infinite;
+    }
+    @keyframes shimmer {
+      0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; }
+    }
+    .timeline-row .val {
+      font-family: var(--font-mono); font-size: 0.85rem; text-align: right;
+      color: var(--accent-green);
+    }
 
-.sci-card {
-    background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.15);
-    border-radius: 12px; margin-bottom: 20px; overflow: hidden;
-}
-.sci-card-header {
-    padding: 16px 20px; background: rgba(74,222,128,0.04);
-    border-bottom: 1px solid rgba(74,222,128,0.15);
-    font-family: ui-monospace, monospace; font-size: 0.8rem;
-    color: #4ade80; letter-spacing: 0.1em;
-}
-.sci-card table { width: 100%; border-collapse: collapse; }
-.sci-card table th, .sci-card table td {
-    padding: 10px 20px; text-align: left;
-    font-size: 0.85rem; border-bottom: 1px solid rgba(74,222,128,0.06);
-}
-.sci-card table th {
-    font-family: ui-monospace, monospace; font-size: 0.72rem;
-    color: #8fa89c; font-weight: 500; text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-.sci-card table td.mono { font-family: ui-monospace, monospace; color: #a7f3d0; }
-.sci-card table td.high { color: #4ade80; }
-.sci-card table td.med { color: #fbbf24; }
+    /* Scientist View */
+    .scientist-view { display: none; }
+    .scientist-view.active { display: block; }
+    .sci-card {
+      background: var(--bg-panel); border: 1px solid var(--border-subtle);
+      border-radius: 12px; margin-bottom: 20px; overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .sci-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
+    }
+    .sci-card-header {
+      padding: 16px 20px; background: rgba(74, 222, 128, 0.04);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono); font-size: 0.8rem;
+      color: var(--accent-green); letter-spacing: 0.1em;
+    }
+    .sci-card table { width: 100%; border-collapse: collapse; }
+    .sci-card table th, .sci-card table td {
+      padding: 12px 20px; text-align: left;
+      font-size: 0.85rem; border-bottom: 1px solid rgba(74, 222, 128, 0.06);
+    }
+    .sci-card table th {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--text-secondary); font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .sci-card table tr:nth-child(even) { background: rgba(74, 222, 128, 0.02); }
+    .sci-card table tr:hover { background: rgba(74, 222, 128, 0.04); }
+    .sci-card table td.mono { font-family: var(--font-mono); color: #a7f3d0; }
+    .sci-card table td.high { color: var(--accent-green); font-weight: 600; }
+    .sci-card table td.med { color: var(--accent-amber); font-weight: 600; }
+    .sci-card table td.low { color: #f87171; font-weight: 600; }
 
-/* Empty state */
-.empty-state {
-    text-align: center; padding: 80px 40px; color: #566b60;
-}
-.empty-state .icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.3; }
-.empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: #8fa89c; }
-.empty-state p { font-size: 0.9rem; max-width: 400px; margin: 0 auto; line-height: 1.6; }
+    /* Badges */
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-high { background: rgba(74, 222, 128, 0.15); color: var(--accent-green); }
+    .badge-medium { background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); }
+    .badge-low { background: rgba(248, 113, 113, 0.15); color: #f87171; }
 
-/* Pipeline progress (during run) */
-.pipeline-progress {
-    display: none; flex-direction: column; gap: 16px;
-}
-.pipeline-progress.active { display: flex; }
-.pipeline-stage {
-    display: grid; grid-template-columns: 40px 1fr;
-    gap: 16px; align-items: center;
-    padding: 16px; border-radius: 8px;
-    background: rgba(14,26,20,0.6);
-    border: 1px solid rgba(74,222,128,0.08);
-    transition: all 0.3s;
-}
-.pipeline-stage.active {
-    border-color: rgba(74,222,128,0.4);
-    background: rgba(74,222,128,0.04);
-}
-.pipeline-stage.done {
-    border-color: rgba(74,222,128,0.2);
-}
-.stage-num {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: rgba(74,222,128,0.1); color: #4ade80;
-    display: flex; align-items: center; justify-content: center;
-    font-family: ui-monospace, monospace; font-size: 0.9rem; font-weight: 600;
-}
-.pipeline-stage.active .stage-num {
-    background: #4ade80; color: #0a1410;
-    animation: pulse 1.2s ease-in-out infinite;
-}
-.pipeline-stage.done .stage-num { background: #4ade80; color: #0a1410; }
-.stage-info .title { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
-.stage-info .desc { font-size: 0.8rem; color: #8fa89c; }
-.stage-info .log {
-    font-family: ui-monospace, monospace; font-size: 0.72rem;
-    color: #4ade80; margin-top: 6px; opacity: 0.7;
-}
-</style>
-<style>
-/* ============================================================
-   Floating elements + canvas background
-   ============================================================ */
-#app-bg-canvas {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-}
-.app-bg { display: none !important; } /* remove old gradient */
+    /* Empty State */
+    .empty-state {
+      text-align: center; padding: 80px 40px; color: var(--text-muted);
+    }
+    .empty-state .icon {
+      font-size: 3rem; margin-bottom: 16px; opacity: 0.3;
+      animation: floatIcon 4s ease-in-out infinite;
+    }
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .empty-state h3 {
+      font-size: 1.2rem; margin-bottom: 8px; color: var(--text-secondary);
+    }
+    .empty-state p {
+      font-size: 0.9rem; max-width: 400px; margin: 0 auto; line-height: 1.6;
+    }
 
-.float-layer {
-    position: fixed; inset: 0; z-index: 1;
-    pointer-events: none; overflow: hidden;
-}
-.float-mol {
-    position: absolute;
-    width: 70px; height: 70px;
-    animation: floatDrift 20s ease-in-out infinite;
-    filter: drop-shadow(0 0 12px rgba(74,222,128,0.15));
-}
-@keyframes floatDrift {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(15px, -12px) rotate(6deg); }
-    50% { transform: translate(-8px, 10px) rotate(-4deg); }
-    75% { transform: translate(10px, 6px) rotate(3deg); }
-}
-.float-eq {
-    position: absolute;
-    font-family: ui-monospace, monospace;
-    font-size: 0.75rem;
-    color: #a7f3d0;
-    opacity: 0.15;
-    animation: eqDrift 25s ease-in-out infinite;
-    white-space: nowrap;
-}
-@keyframes eqDrift {
-    0%, 100% { transform: translate(0, 0); opacity: 0.15; }
-    50% { transform: translate(-20px, 10px); opacity: 0.25; }
-}
+    /* Pipeline Progress (Improved) */
+    .pipeline-progress {
+      display: none; flex-direction: column; gap: 12px;
+    }
+    .pipeline-progress.active { display: flex; }
+    .pipeline-stage {
+      display: grid; grid-template-columns: 40px 1fr;
+      gap: 16px; align-items: center;
+      padding: 16px; border-radius: 8px;
+      background: var(--bg-panel);
+      border: 1px solid rgba(74, 222, 128, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .pipeline-stage.active {
+      border-color: var(--border-glow);
+      background: rgba(74, 222, 128, 0.04);
+      box-shadow: var(--shadow-glow);
+    }
+    .pipeline-stage.done {
+      border-color: rgba(74, 222, 128, 0.2);
+    }
+    .stage-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(74, 222, 128, 0.1); color: var(--accent-green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .pipeline-stage.active .stage-num {
+      background: var(--accent-green); color: #0a1410;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .pipeline-stage.done .stage-num {
+      background: var(--accent-green); color: #0a1410;
+    }
+    .stage-info .title { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
+    .stage-info .desc { font-size: 0.8rem; color: var(--text-secondary); }
+    .stage-info .log {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent-green); margin-top: 6px; opacity: 0.7;
+      min-height: 1.2em;
+    }
 
-/* Glassmorphism for panels */
-.input-panel {
-    background: rgba(6, 18, 12, 0.55) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    position: relative; z-index: 10;
-}
-.results-panel { position: relative; z-index: 10; }
+    /* Floating Molecules */
+    .float-layer {
+      position: fixed; inset: 0; z-index: 1;
+      pointer-events: none; overflow: hidden;
+    }
+    .float-mol {
+      position: absolute;
+      width: 70px; height: 70px;
+      animation: floatDrift 20s ease-in-out infinite;
+      filter: drop-shadow(0 0 12px rgba(74, 222, 128, 0.15));
+      opacity: 0.6;
+    }
+    @keyframes floatDrift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(15px, -12px) rotate(6deg); }
+      50% { transform: translate(-8px, 10px) rotate(-4deg); }
+      75% { transform: translate(10px, 6px) rotate(3deg); }
+    }
+    .float-eq {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #a7f3d0;
+      opacity: 0.15;
+      animation: eqDrift 25s ease-in-out infinite;
+      white-space: nowrap;
+    }
+    @keyframes eqDrift {
+      0%, 100% { transform: translate(0, 0); opacity: 0.15; }
+      50% { transform: translate(-20px, 10px); opacity: 0.25; }
+    }
 
-/* Result cards — more glass, more glow */
-.result-card, .sci-card, .pipeline-stage {
-    background: rgba(14, 26, 20, 0.55) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(74,222,128,0.2) !important;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 40px rgba(74,222,128,0.03);
-    transition: all 0.3s ease;
-}
-.result-card:hover, .sci-card:hover {
-    border-color: rgba(74,222,128,0.4) !important;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 60px rgba(74,222,128,0.08);
-}
-
-/* Animated gradient on headings */
-.app-header h1 span,
-.results-panel h2 {
-    background: linear-gradient(90deg, #a7f3d0, #4ade80, #34d399, #4ade80, #a7f3d0);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradFlow 6s linear infinite;
-}
-@keyframes gradFlow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-}
-
-/* Empty state — replace emoji with animated molecule */
-.empty-state .icon {
-    font-size: 0 !important;
-    display: inline-block;
-    width: 80px; height: 80px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon points='40,10 62,24 62,52 40,66 18,52 18,24' fill='none' stroke='%234ade80' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='40' cy='38' r='7' fill='none' stroke='%23a7f3d0' stroke-width='0.9' stroke-dasharray='2 3' opacity='0.7'/%3E%3Ccircle cx='40' cy='10' r='2.5' fill='%234ade80'/%3E%3Ccircle cx='62' cy='52' r='2.5' fill='%2360a5fa'/%3E%3Ccircle cx='18' cy='52' r='2.5' fill='%2334d399'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: floatDrift 8s ease-in-out infinite;
-    margin-bottom: 20px;
-}
-
-/* Status dot bigger glow */
-.status-dot {
-    box-shadow: 0 0 12px #4ade80, 0 0 24px rgba(74,222,128,0.5);
-}
-
-/* Table row hover */
-.sci-card table tr:hover {
-    background: rgba(74,222,128,0.04);
-}
-</style></head>
+    /* Responsive */
+    @media (max-width: 900px) {
+      .app-grid { grid-template-columns: 1fr; }
+      .input-panel {
+        border-right: none; border-bottom: 1px solid var(--border-subtle);
+        padding: 24px 20px;
+      }
+      .results-panel { padding: 24px 20px; }
+      .app-header { padding: 16px 20px; }
+      .timeline-row { grid-template-columns: 100px 1fr 60px; }
+    }
+  </style>
+</head>
 <body>
+  <div class="app-bg"></div>
+  <canvas id="app-bg-canvas" aria-hidden="true"></canvas>
 
-<canvas id="app-bg-canvas" aria-hidden="true" style="position: fixed; inset: 0; z-index: 0; pointer-events: none;"></canvas>
-
-<!-- Floating molecules -->
-<div class="float-layer" aria-hidden="true">
+  <!-- Floating Molecules Layer -->
+  <div class="float-layer" aria-hidden="true">
     <svg class="float-mol" style="top: 8%; left: 4%; animation-delay: 0s;" viewBox="0 0 80 80">
-        <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#a7f3d0" stroke-width="1.2" opacity="0.35"/>
-        <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.4"/>
-        <circle cx="40" cy="10" r="2" fill="#4ade80" opacity="0.5"/>
-        <circle cx="62" cy="52" r="2" fill="#60a5fa" opacity="0.5"/>
-        <circle cx="18" cy="52" r="2" fill="#34d399" opacity="0.5"/>
+      <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#a7f3d0" stroke-width="1.2" opacity="0.35"/>
+      <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.4"/>
+      <circle cx="40" cy="10" r="2" fill="#4ade80" opacity="0.5"/>
+      <circle cx="62" cy="52" r="2" fill="#60a5fa" opacity="0.5"/>
+      <circle cx="18" cy="52" r="2" fill="#34d399" opacity="0.5"/>
     </svg>
     <svg class="float-mol" style="top: 60%; left: 8%; animation-delay: -3s;" viewBox="0 0 80 80">
-        <circle cx="40" cy="40" r="11" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
-        <ellipse cx="40" cy="40" rx="26" ry="9" fill="none" stroke="#4ade80" stroke-width="0.6" opacity="0.25"/>
-        <ellipse cx="40" cy="40" rx="9" ry="26" fill="none" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
-        <circle cx="40" cy="40" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+      <circle cx="40" cy="40" r="11" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
+      <ellipse cx="40" cy="40" rx="26" ry="9" fill="none" stroke="#4ade80" stroke-width="0.6" opacity="0.25"/>
+      <ellipse cx="40" cy="40" rx="9" ry="26" fill="none" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
+      <circle cx="40" cy="40" r="2.5" fill="#a7f3d0" opacity="0.5"/>
     </svg>
     <svg class="float-mol" style="top: 75%; right: 6%; animation-delay: -6s;" viewBox="0 0 80 80">
-        <path d="M 10 60 L 26 40 L 42 54 L 58 30 L 72 44" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
-        <circle cx="10" cy="60" r="2.5" fill="#a7f3d0" opacity="0.5"/>
-        <circle cx="26" cy="40" r="2.5" fill="#4ade80" opacity="0.5"/>
-        <circle cx="42" cy="54" r="2.5" fill="#34d399" opacity="0.5"/>
-        <circle cx="58" cy="30" r="2.5" fill="#60a5fa" opacity="0.5"/>
-        <circle cx="72" cy="44" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+      <path d="M 10 60 L 26 40 L 42 54 L 58 30 L 72 44" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
+      <circle cx="10" cy="60" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+      <circle cx="26" cy="40" r="2.5" fill="#4ade80" opacity="0.5"/>
+      <circle cx="42" cy="54" r="2.5" fill="#34d399" opacity="0.5"/>
+      <circle cx="58" cy="30" r="2.5" fill="#60a5fa" opacity="0.5"/>
+      <circle cx="72" cy="44" r="2.5" fill="#a7f3d0" opacity="0.5"/>
     </svg>
     <svg class="float-mol" style="top: 20%; right: 10%; animation-delay: -9s;" viewBox="0 0 80 80">
-        <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.25"/>
-        <circle cx="40" cy="38" r="6" fill="none" stroke="#93c5fd" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.3"/>
+      <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.25"/>
+      <circle cx="40" cy="38" r="6" fill="none" stroke="#93c5fd" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.3"/>
     </svg>
-    <!-- Floating equations -->
+    <!-- Floating Equations -->
     <span class="float-eq" style="top: 12%; right: 30%; animation-delay: 0s;">ΔG = −RT ln K</span>
     <span class="float-eq" style="top: 42%; left: 25%; animation-delay: -4s;">E = mc²</span>
     <span class="float-eq" style="top: 85%; left: 50%; animation-delay: -8s;">∑ p(x) = 1</span>
     <span class="float-eq" style="top: 68%; right: 22%; animation-delay: -12s;">∂E/∂λ</span>
-</div>
+  </div>
 
-
-<div class="app-bg"></div>
-
-<header class="app-header">
+  <header class="app-header">
     <h1><span>GAIA</span> Research Interface</h1>
     <div class="status"><span class="status-dot"></span> Ready</div>
-</header>
+  </header>
 
-<div class="app-grid">
-
+  <div class="app-grid">
     <!-- LEFT: Input -->
     <aside class="input-panel">
-        <h2>Query</h2>
-
-        <div class="field">
-            <label>Disease or Condition</label>
-            <input type="text" placeholder="e.g., Ankylosing Spondylitis">
+      <h2>Query</h2>
+      <div class="field">
+        <label>Disease or Condition</label>
+        <input type="text" placeholder="e.g., Ankylosing Spondylitis">
+      </div>
+      <div class="field">
+        <label>Gene or Target (optional)</label>
+        <input type="text" placeholder="e.g., HLA-B27">
+      </div>
+      <div class="field">
+        <label>Patient Profile</label>
+        <select>
+          <option>Adult · Male · 45</option>
+          <option>Adult · Female · 52</option>
+          <option>Adult · Male · 38</option>
+          <option>Custom profile...</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Data Upload</label>
+        <div class="upload-zone">
+          <div class="icon">📁</div>
+          <div class="text">Drop VCF, PDB, or SDF</div>
+          <div class="hint">or click to browse</div>
         </div>
-
-        <div class="field">
-            <label>Gene or Target (optional)</label>
-            <input type="text" placeholder="e.g., HLA-B27">
-        </div>
-
-        <div class="field">
-            <label>Patient Profile</label>
-            <select>
-                <option>Adult · Male · 45</option>
-                <option>Adult · Female · 52</option>
-                <option>Adult · Male · 38</option>
-                <option>Custom profile...</option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label>Data Upload</label>
-            <div class="upload-zone">
-                <div class="icon">📁</div>
-                <div class="text">Drop VCF, PDB, or SDF</div>
-                <div class="hint">or click to browse</div>
-            </div>
-        </div>
-
-        <button class="run-btn" id="runBtn">Run GAIA Pipeline →</button>
+      </div>
+      <button class="run-btn" id="runBtn">Run GAIA Pipeline →</button>
     </aside>
 
     <!-- RIGHT: Results -->
     <main class="results-panel">
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState">
+        <div class="icon">🌱</div>
+        <h3>Ready to analyze</h3>
+        <p>Enter a disease, gene, or upload patient data on the left, then run the pipeline.</p>
+      </div>
 
-        <!-- Empty state (shown before run) -->
-        <div class="empty-state" id="emptyState">
-            <div class="icon">🌱</div>
-            <h3>Ready to analyze</h3>
-            <p>Enter a disease, gene, or upload patient data on the left, then run the pipeline.</p>
+      <!-- Pipeline progress -->
+      <div class="pipeline-progress" id="pipelineProgress">
+        <div class="pipeline-stage" id="stage1">
+          <div class="stage-num">1</div>
+          <div class="stage-info">
+            <div class="title">Reading the genome</div>
+            <div class="desc">Scanning structural signatures across chromosomes</div>
+            <div class="log" id="log1"></div>
+          </div>
+        </div>
+        <div class="pipeline-stage" id="stage2">
+          <div class="stage-num">2</div>
+          <div class="stage-info">
+            <div class="title">Mapping variants</div>
+            <div class="desc">Placing population variation in gene context</div>
+            <div class="log" id="log2"></div>
+          </div>
+        </div>
+        <div class="pipeline-stage" id="stage3">
+          <div class="stage-num">3</div>
+          <div class="stage-info">
+            <div class="title">Screening compounds</div>
+            <div class="desc">Ranking 25M+ candidates by binding potential</div>
+            <div class="log" id="log3"></div>
+          </div>
+        </div>
+        <div class="pipeline-stage" id="stage4">
+          <div class="stage-num">4</div>
+          <div class="stage-info">
+            <div class="title">Scoring interactions</div>
+            <div class="desc">Physics + ML combined ranking</div>
+            <div class="log" id="log4"></div>
+          </div>
+        </div>
+        <div class="pipeline-stage" id="stage5">
+          <div class="stage-num">5</div>
+          <div class="stage-info">
+            <div class="title">Designing protocol</div>
+            <div class="desc">Multi-compound treatment plan with timeline</div>
+            <div class="log" id="log5"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results view -->
+      <div class="results-view" id="resultsView" style="display: none;">
+        <h2>Results</h2>
+        <p class="subtitle">Ankylosing Spondylitis · HLA-B27 positive · 45M</p>
+
+        <div class="tab-bar">
+          <button class="tab active" data-tab="human">Human View</button>
+          <button class="tab" data-tab="scientist">Scientist View</button>
         </div>
 
-        <!-- Pipeline progress (shown during run) -->
-        <div class="pipeline-progress" id="pipelineProgress">
-            <div class="pipeline-stage" id="stage1">
-                <div class="stage-num">1</div>
-                <div class="stage-info">
-                    <div class="title">Reading the genome</div>
-                    <div class="desc">Scanning structural signatures across chromosomes</div>
-                    <div class="log" id="log1"></div>
-                </div>
+        <!-- HUMAN VIEW -->
+        <div class="human-view active" id="humanView">
+          <div class="result-card">
+            <h3>Predicted outcome</h3>
+            <div class="value green">85% damage reversal</div>
+            <div class="desc">In simulation, the full pipeline took BASDAI from 6.9 to 1.0 over 12 months. Clinical remission achieved by day 60–90.</div>
+          </div>
+
+          <div class="result-card">
+            <h3>Your protocol</h3>
+            <div class="desc" style="font-size: 1rem; color: var(--text-primary); line-height: 1.8;">
+              <strong>EGCG</strong> 400mg · Morning<br>
+              <strong>Quercetin</strong> 500mg · Morning<br>
+              <strong>Fisetin</strong> 300mg · Afternoon<br>
+              <strong>MSM</strong> 3000mg · Afternoon<br>
+              <strong>Resveratrol</strong> 500mg · Evening<br>
+              <strong>Curcumin</strong> 500mg · Evening<br>
+              <strong>Berberine</strong> 500mg · With food
             </div>
-            <div class="pipeline-stage" id="stage2">
-                <div class="stage-num">2</div>
-                <div class="stage-info">
-                    <div class="title">Mapping variants</div>
-                    <div class="desc">Placing population variation in gene context</div>
-                    <div class="log" id="log2"></div>
-                </div>
+            <div class="desc" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
+              Estimated monthly cost: <strong style="color: var(--accent-green);">$165/mo</strong><br>
+              Time to remission: <strong style="color: var(--accent-green);">60–90 days</strong>
             </div>
-            <div class="pipeline-stage" id="stage3">
-                <div class="stage-num">3</div>
-                <div class="stage-info">
-                    <div class="title">Screening compounds</div>
-                    <div class="desc">Ranking 25M+ candidates by binding potential</div>
-                    <div class="log" id="log3"></div>
-                </div>
+          </div>
+
+          <div class="result-card">
+            <h3>Damage reversal over 12 months</h3>
+            <div class="protocol-timeline">
+              <div class="timeline-row">
+                <div class="metric">Inflammation</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
+                <div class="val">8.5 → 0.4</div>
+              </div>
+              <div class="timeline-row">
+                <div class="metric">Joint function</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
+                <div class="val">4.0 → 8.8</div>
+              </div>
+              <div class="timeline-row">
+                <div class="metric">DNA repair</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 77%;"></div></div>
+                <div class="val">3.0 → 7.7</div>
+              </div>
+              <div class="timeline-row">
+                <div class="metric">Senescent cells</div>
+                <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
+                <div class="val">7.0 → 0.6</div>
+              </div>
             </div>
-            <div class="pipeline-stage" id="stage4">
-                <div class="stage-num">4</div>
-                <div class="stage-info">
-                    <div class="title">Scoring interactions</div>
-                    <div class="desc">Physics + ML combined ranking</div>
-                    <div class="log" id="log4"></div>
-                </div>
-            </div>
-            <div class="pipeline-stage" id="stage5">
-                <div class="stage-num">5</div>
-                <div class="stage-info">
-                    <div class="title">Designing protocol</div>
-                    <div class="desc">Multi-compound treatment plan with timeline</div>
-                    <div class="log" id="log5"></div>
-                </div>
-            </div>
+          </div>
         </div>
 
-        <!-- Results (shown after run) -->
-        <div class="results-view" id="resultsView" style="display: none;">
-            <h2>Results</h2>
-            <p class="subtitle">Ankylosing Spondylitis · HLA-B27 positive · 45M</p>
+        <!-- SCIENTIST VIEW -->
+        <div class="scientist-view" id="scientistView">
+          <div class="sci-card">
+            <div class="sci-card-header">GENOMIC TARGETS</div>
+            <table>
+              <tr><th>Gene</th><th>Variant</th><th>Pathway</th><th>Evidence</th></tr>
+              <tr><td>HLA-B27</td><td class="mono">rs691919</td><td>Antigen presentation</td><td><span class="badge badge-high">high</span></td></tr>
+              <tr><td>ERAP1</td><td class="mono">rs27044</td><td>Peptide trimming</td><td><span class="badge badge-high">high</span></td></tr>
+              <tr><td>IL23R</td><td class="mono">rs11209026</td><td>IL-23 signaling</td><td><span class="badge badge-high">high</span></td></tr>
+              <tr><td>RUNX3</td><td class="mono">rs6600247</td><td>Th17 differentiation</td><td><span class="badge badge-medium">medium</span></td></tr>
+            </table>
+          </div>
 
-            <!-- Tab bar -->
-            <div class="tab-bar">
-                <button class="tab active" data-tab="human">Human View</button>
-                <button class="tab" data-tab="scientist">Scientist View</button>
-            </div>
+          <div class="sci-card">
+            <div class="sci-card-header">COMPOUND RANKING</div>
+            <table>
+              <tr><th>Rank</th><th>Compound</th><th>Binding (kcal/mol)</th><th>ML R²</th><th>Evidence</th><th>Confidence</th></tr>
+              <tr><td>1</td><td>resveratrol</td><td class="mono">−8.72</td><td class="mono">0.40</td><td>in silico · in vitro · in vivo</td><td><span class="badge badge-high">high</span></td></tr>
+              <tr><td>2</td><td>curcumin</td><td class="mono">−7.91</td><td class="mono">0.40</td><td>in silico · in vitro</td><td><span class="badge badge-high">high</span></td></tr>
+              <tr><td>3</td><td>fisetin</td><td class="mono">−7.45</td><td class="mono">0.40</td><td>in silico · in vitro · in vivo</td><td><span class="badge badge-high">high</span></td></tr>
+              <tr><td>4</td><td>berberine</td><td class="mono">−6.83</td><td class="mono">0.40</td><td>in silico · in vitro</td><td><span class="badge badge-medium">medium</span></td></tr>
+              <tr><td>5</td><td>quercetin</td><td class="mono">−6.52</td><td class="mono">0.40</td><td>in silico only</td><td><span class="badge badge-medium">medium</span></td></tr>
+            </table>
+          </div>
 
-            <!-- HUMAN VIEW -->
-            <div class="human-view active" id="humanView">
-                <div class="result-card">
-                    <h3>Predicted outcome</h3>
-                    <div class="value green">85% damage reversal</div>
-                    <div class="desc">In simulation, the full pipeline took BASDAI from 6.9 to 1.0 over 12 months. Clinical remission achieved by day 60–90.</div>
-                </div>
-
-                <div class="result-card">
-                    <h3>Your protocol</h3>
-                    <div class="desc" style="font-size: 1rem; color: #e8f4ee; line-height: 1.8;">
-                        <strong>EGCG</strong> 400mg · Morning<br>
-                        <strong>Quercetin</strong> 500mg · Morning<br>
-                        <strong>Fisetin</strong> 300mg · Afternoon<br>
-                        <strong>MSM</strong> 3000mg · Afternoon<br>
-                        <strong>Resveratrol</strong> 500mg · Evening<br>
-                        <strong>Curcumin</strong> 500mg · Evening<br>
-                        <strong>Berberine</strong> 500mg · With food
-                    </div>
-                    <div class="desc" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(74,222,128,0.1);">
-                        Estimated monthly cost: <strong style="color: #4ade80;">$165/mo</strong><br>
-                        Time to remission: <strong style="color: #4ade80;">60–90 days</strong>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <h3>Damage reversal over 12 months</h3>
-                    <div class="protocol-timeline">
-                        <div class="timeline-row">
-                            <div class="metric">Inflammation</div>
-                            <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
-                            <div class="val">8.5 → 0.4</div>
-                        </div>
-                        <div class="timeline-row">
-                            <div class="metric">Joint function</div>
-                            <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
-                            <div class="val">4.0 → 8.8</div>
-                        </div>
-                        <div class="timeline-row">
-                            <div class="metric">DNA repair</div>
-                            <div class="bar-track"><div class="bar-fill" style="width: 77%;"></div></div>
-                            <div class="val">3.0 → 7.7</div>
-                        </div>
-                        <div class="timeline-row">
-                            <div class="metric">Senescent cells</div>
-                            <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
-                            <div class="val">7.0 → 0.6</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SCIENTIST VIEW -->
-            <div class="scientist-view" id="scientistView">
-                <div class="sci-card">
-                    <div class="sci-card-header">GENOMIC TARGETS</div>
-                    <table>
-                        <tr><th>Gene</th><th>Variant</th><th>Pathway</th><th>Evidence</th></tr>
-                        <tr><td>HLA-B27</td><td class="mono">rs691919</td><td>Antigen presentation</td><td class="high">high</td></tr>
-                        <tr><td>ERAP1</td><td class="mono">rs27044</td><td>Peptide trimming</td><td class="high">high</td></tr>
-                        <tr><td>IL23R</td><td class="mono">rs11209026</td><td>IL-23 signaling</td><td class="high">high</td></tr>
-                        <tr><td>RUNX3</td><td class="mono">rs6600247</td><td>Th17 differentiation</td><td class="med">medium</td></tr>
-                    </table>
-                </div>
-
-                <div class="sci-card">
-                    <div class="sci-card-header">COMPOUND RANKING</div>
-                    <table>
-                        <tr><th>Rank</th><th>Compound</th><th>Binding (kcal/mol)</th><th>ML R²</th><th>Evidence</th><th>Confidence</th></tr>
-                        <tr><td>1</td><td>resveratrol</td><td class="mono">−8.72</td><td class="mono">0.40</td><td class="mono">in silico · in vitro · in vivo</td><td class="high">high</td></tr>
-                        <tr><td>2</td><td>curcumin</td><td class="mono">−7.91</td><td class="mono">0.40</td><td class="mono">in silico · in vitro</td><td class="high">high</td></tr>
-                        <tr><td>3</td><td>fisetin</td><td class="mono">−7.45</td><td class="mono">0.40</td><td class="mono">in silico · in vitro · in vivo</td><td class="high">high</td></tr>
-                        <tr><td>4</td><td>berberine</td><td class="mono">−6.83</td><td class="mono">0.40</td><td class="mono">in silico · in vitro</td><td class="med">medium</td></tr>
-                        <tr><td>5</td><td>quercetin</td><td class="mono">−6.52</td><td class="mono">0.40</td><td class="mono">in silico only</td><td class="med">medium</td></tr>
-                    </table>
-                </div>
-
-                <div class="sci-card">
-                    <div class="sci-card-header">DAMAGE METRICS (12-MONTH SIMULATION)</div>
-                    <table>
-                        <tr><th>Metric</th><th>Day 0</th><th>Day 30</th><th>Day 90</th><th>Day 180</th><th>Day 365</th></tr>
-                        <tr><td>Inflammation</td><td class="mono">8.5</td><td class="mono">5.2</td><td class="mono">2.1</td><td class="mono">0.9</td><td class="mono">0.4</td></tr>
-                        <tr><td>Synovial hyperplasia</td><td class="mono">7.5</td><td class="mono">4.8</td><td class="mono">2.0</td><td class="mono">1.1</td><td class="mono">0.7</td></tr>
-                        <tr><td>Cartilage damage</td><td class="mono">6.0</td><td class="mono">3.9</td><td class="mono">1.9</td><td class="mono">1.6</td><td class="mono">1.6</td></tr>
-                        <tr><td>Bone erosion</td><td class="mono">5.5</td><td class="mono">3.6</td><td class="mono">1.8</td><td class="mono">2.6</td><td class="mono">2.8</td></tr>
-                        <tr><td>Enthesitis</td><td class="mono">8.0</td><td class="mono">4.9</td><td class="mono">1.7</td><td class="mono">0.7</td><td class="mono">0.5</td></tr>
-                        <tr><td>DNA repair</td><td class="mono">3.0</td><td class="mono">3.2</td><td class="mono">3.4</td><td class="mono">5.9</td><td class="mono">7.7</td></tr>
-                        <tr><td>Joint function</td><td class="mono">4.0</td><td class="mono">3.5</td><td class="mono">3.6</td><td class="mono">6.6</td><td class="mono">8.8</td></tr>
-                    </table>
-                </div>
-            </div>
+          <div class="sci-card">
+            <div class="sci-card-header">DAMAGE METRICS (12-MONTH SIMULATION)</div>
+            <table>
+              <tr><th>Metric</th><th>Day 0</th><th>Day 30</th><th>Day 90</th><th>Day 180</th><th>Day 365</th></tr>
+              <tr><td>Inflammation</td><td class="mono">8.5</td><td class="mono">5.2</td><td class="mono">2.1</td><td class="mono">0.9</td><td class="mono">0.4</td></tr>
+              <tr><td>Synovial hyperplasia</td><td class="mono">7.5</td><td class="mono">4.8</td><td class="mono">2.0</td><td class="mono">1.1</td><td class="mono">0.7</td></tr>
+              <tr><td>Cartilage damage</td><td class="mono">6.0</td><td class="mono">3.9</td><td class="mono">1.9</td><td class="mono">1.6</td><td class="mono">1.6</td></tr>
+              <tr><td>Bone erosion</td><td class="mono">5.5</td><td class="mono">3.6</td><td class="mono">1.8</td><td class="mono">2.6</td><td class="mono">2.8</td></tr>
+              <tr><td>Enthesitis</td><td class="mono">8.0</td><td class="mono">4.9</td><td class="mono">1.7</td><td class="mono">0.7</td><td class="mono">0.5</td></tr>
+              <tr><td>DNA repair</td><td class="mono">3.0</td><td class="mono">3.2</td><td class="mono">3.4</td><td class="mono">5.9</td><td class="mono">7.7</td></tr>
+              <tr><td>Joint function</td><td class="mono">4.0</td><td class="mono">3.5</td><td class="mono">3.6</td><td class="mono">6.6</td><td class="mono">8.8</td></tr>
+            </table>
+          </div>
         </div>
+      </div>
     </main>
-</div>
+  </div>
 
-<script>
-// Tab switcher
-document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
+  <script>
+    // ============================================================
+    // GAIA APP — Interactive Logic
+    // ============================================================
+
+    // Tab Switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         const target = tab.dataset.tab;
         document.getElementById('humanView').classList.toggle('active', target === 'human');
         document.getElementById('scientistView').classList.toggle('active', target === 'scientist');
+      });
     });
-});
 
-// Simulated pipeline run
-document.getElementById('runBtn').addEventListener('click', async () => {
-    const btn = document.getElementById('runBtn');
-    btn.disabled = true;
-    btn.textContent = 'Running...';
-    document.getElementById('emptyState').style.display = 'none';
-    document.getElementById('resultsView').style.display = 'none';
-    document.getElementById('pipelineProgress').classList.add('active');
+    // Simulated Pipeline Run
+    document.getElementById('runBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('runBtn');
+      btn.disabled = true;
+      btn.textContent = 'Running...';
+      document.getElementById('emptyState').style.display = 'none';
+      document.getElementById('resultsView').style.display = 'none';
+      document.getElementById('pipelineProgress').classList.add('active');
 
-    const stages = [
+      const stages = [
         { id: 'stage1', log: 'log1', msgs: ['Scanning chr1...', 'chr6: 3,124 coding regions', 'HLA-B27 region flagged'] },
         { id: 'stage2', log: 'log2', msgs: ['Loading 1000 Genomes...', '2,847 variants in HLA region', '4 high-confidence targets'] },
         { id: 'stage3', log: 'log3', msgs: ['Loading ZINC22...', '25,000,000 candidates', 'Top 100 ranked'] },
         { id: 'stage4', log: 'log4', msgs: ['Physics scoring...', 'ML scoring (R²=0.40)...', 'Combined ranking'] },
         { id: 'stage5', log: 'log5', msgs: ['Designing 7-compound protocol', 'Simulating 365 days...', 'Remission at day 90'] }
-    ];
+      ];
 
-    for (const stage of stages) {
+      for (const stage of stages) {
         const el = document.getElementById(stage.id);
         el.classList.add('active');
         const log = document.getElementById(stage.log);
         for (const msg of stage.msgs) {
-            log.textContent = msg;
-            await new Promise(r => setTimeout(r, 600));
+          log.textContent = msg;
+          await new Promise(r => setTimeout(r, 600));
         }
         el.classList.remove('active');
         el.classList.add('done');
-    }
+      }
 
-    document.getElementById('pipelineProgress').classList.remove('active');
-    document.getElementById('resultsView').style.display = 'block';
+      document.getElementById('pipelineProgress').classList.remove('active');
+      document.getElementById('resultsView').style.display = 'block';
 
-    btn.disabled = false;
-    btn.textContent = 'Run again →';
-});
-</script>
+      btn.disabled = false;
+      btn.textContent = 'Run again →';
+    });
 
-<script>
-(function() {
-    const canvas = document.getElementById('app-bg-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, DPR;
-    let particles = [];
-    const CONFIG = { count: 60, maxLinkDist: 140, colors: ['rgba(74,222,128,', 'rgba(167,243,208,', 'rgba(96,165,250,', 'rgba(52,211,153,'], linkOpacity: 0.12, nodeOpacity: 0.5 };
-    function resize() {
+    // ============================================================
+    // Particle Network Background
+    // ============================================================
+    (function() {
+      const canvas = document.getElementById('app-bg-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, DPR;
+      let particles = [];
+      const CONFIG = {
+        count: 60,
+        maxLinkDist: 140,
+        colors: ['rgba(74,222,128,', 'rgba(167,243,208,', 'rgba(96,165,250,', 'rgba(52,211,153,'],
+        linkOpacity: 0.12,
+        nodeOpacity: 0.5
+      };
+
+      function resize() {
         DPR = Math.min(window.devicePixelRatio || 1, 2);
         W = window.innerWidth; H = window.innerHeight;
         canvas.width = W * DPR; canvas.height = H * DPR;
         canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
-    function rand(a,b) { return a + Math.random()*(b-a); }
-    function makeParticle() {
-        const homeX = Math.random()*W, homeY = Math.random()*H;
+      }
+
+      function rand(a, b) { return a + Math.random() * (b - a); }
+
+      function makeParticle() {
+        const homeX = Math.random() * W;
+        const homeY = Math.random() * H;
         return {
-            homeX, homeY, x: homeX, y: homeY,
-            ampX: rand(6,20), ampY: rand(6,20),
-            freqX: rand(0.0003,0.001), freqY: rand(0.0003,0.001),
-            t: Math.random()*1000, r: rand(1.2,2.8),
-            color: CONFIG.colors[Math.floor(Math.random()*CONFIG.colors.length)],
-            phase: Math.random()*Math.PI*2, pulseSpeed: rand(0.008,0.02)
+          homeX, homeY, x: homeX, y: homeY,
+          ampX: rand(6, 20), ampY: rand(6, 20),
+          freqX: rand(0.0003, 0.001), freqY: rand(0.0003, 0.001),
+          t: Math.random() * 1000,
+          r: rand(1.2, 2.8),
+          color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)],
+          phase: Math.random() * Math.PI * 2,
+          pulseSpeed: rand(0.008, 0.02)
         };
-    }
-    function initParticles() {
+      }
+
+      function initParticles() {
         particles = [];
-        const area = W*H;
-        const n = Math.max(30, Math.min(100, Math.round(CONFIG.count*(area/600000))));
-        for (let i=0; i<n; i++) particles.push(makeParticle());
-    }
-    function step() {
-        ctx.clearRect(0,0,W,H);
+        const area = W * H;
+        const n = Math.max(30, Math.min(100, Math.round(CONFIG.count * (area / 600000))));
+        for (let i = 0; i < n; i++) particles.push(makeParticle());
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, W, H);
         for (const p of particles) {
-            p.t += 1;
-            p.x = p.homeX + Math.sin(p.t*p.freqX)*p.ampX;
-            p.y = p.homeY + Math.cos(p.t*p.freqY)*p.ampY;
-            p.phase += p.pulseSpeed;
+          p.t += 1;
+          p.x = p.homeX + Math.sin(p.t * p.freqX) * p.ampX;
+          p.y = p.homeY + Math.cos(p.t * p.freqY) * p.ampY;
+          p.phase += p.pulseSpeed;
         }
-        for (let i=0; i<particles.length; i++) {
-            const a = particles[i];
-            for (let j=i+1; j<particles.length; j++) {
-                const b = particles[j];
-                const dx = a.x-b.x, dy = a.y-b.y;
-                const d2 = dx*dx+dy*dy;
-                if (d2 > CONFIG.maxLinkDist*CONFIG.maxLinkDist) continue;
-                const d = Math.sqrt(d2);
-                const alpha = (1 - d/CONFIG.maxLinkDist)*CONFIG.linkOpacity;
-                ctx.strokeStyle = 'rgba(74,222,128,'+alpha.toFixed(3)+')';
-                ctx.lineWidth = 0.5;
-                ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
-            }
+        for (let i = 0; i < particles.length; i++) {
+          const a = particles[i];
+          for (let j = i + 1; j < particles.length; j++) {
+            const b = particles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d2 = dx * dx + dy * dy;
+            if (d2 > CONFIG.maxLinkDist * CONFIG.maxLinkDist) continue;
+            const d = Math.sqrt(d2);
+            const alpha = (1 - d / CONFIG.maxLinkDist) * CONFIG.linkOpacity;
+            ctx.strokeStyle = 'rgba(74,222,128,' + alpha.toFixed(3) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
         }
         for (const p of particles) {
-            const pulse = 0.85 + 0.35*Math.sin(p.phase);
-            const r = p.r*pulse;
-            ctx.fillStyle = p.color + CONFIG.nodeOpacity + ')';
-            ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2); ctx.fill();
-            ctx.fillStyle = p.color + '0.08)';
-            ctx.beginPath(); ctx.arc(p.x, p.y, r*4, 0, Math.PI*2); ctx.fill();
+          const pulse = 0.85 + 0.35 * Math.sin(p.phase);
+          const r = p.r * pulse;
+          ctx.fillStyle = p.color + CONFIG.nodeOpacity + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = p.color + '0.08)';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r * 4, 0, Math.PI * 2);
+          ctx.fill();
         }
         requestAnimationFrame(step);
-    }
-    window.addEventListener('resize', () => { resize(); initParticles(); });
-    resize(); initParticles(); step();
-})();
-</script>
+      }
+
+      window.addEventListener('resize', () => { resize(); initParticles(); });
+      resize(); initParticles(); step();
+    })();
+  </script>
 </body>
 </html>
