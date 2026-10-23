@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAIA — Beta Access</title>
-<link rel="stylesheet" href="assets/style.css?v=230">
+<link rel="stylesheet" href="assets/style.css?v=240">
 <style>
 /* ============================================================
    GAIA BETA — SINGLE CANONICAL LAYOUT (NO SCROLL, SMOOTH EARTH)
@@ -119,14 +119,20 @@ html, body { margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidde
     #earth-container { height: 40vh !important; }
 }
 </style><style>
-@media (min-width: 769px) {
+/* Force the Earth container to be a wide rectangle at the bottom */
+#earth-container {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 40vh !important; /* Short height */
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+@media (max-width: 768px) {
     #earth-container {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 45vh !important; /* Wider than it is tall */
-        z-index: 1 !important;
+        height: 50vh !important;
     }
 }
 </style></head>
@@ -196,12 +202,15 @@ const container = document.getElementById('earth-container');
 if (container) {
     const scene = new THREE.Scene();
     
-    // Camera: looking DOWN at the earth from above.
-    // z=1.5 puts us very close. y=0 is center. We tilt it down using rotation.
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    // Get the ACTUAL aspect ratio of the container (e.g., 1920x400 = 4.8)
+    const aspect = container.clientWidth / container.clientHeight;
     
-    // Move the camera to look at the north pole
-    camera.position.set(0, 0, 2.2); 
+    // We use a very narrow FOV (15) to flatten the perspective
+    const camera = new THREE.PerspectiveCamera(15, aspect, 0.1, 1000);
+    
+    // Position the camera very close to the surface, looking down
+    // z=1.6 pushes us close enough that the curve fills the screen
+    camera.position.set(0, 0, 1.6); 
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -209,14 +218,16 @@ if (container) {
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
-    // The Earth itself - rotate it so the top faces us
+    // Earth setup
     const earthGeo = new THREE.SphereGeometry(1, 64, 64);
     const textureLoader = new THREE.TextureLoader();
     const earthTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/earth-blue-marble.jpg');
     earthTex.colorSpace = THREE.SRGBColorSpace;
     const earthMat = new THREE.MeshPhongMaterial({ map: earthTex });
     const earth = new THREE.Mesh(earthGeo, earthMat);
-    earth.rotation.x = Math.PI / 2; // Tilt the earth so we see the top curve
+    
+    // Tilt the earth so we see the north pole
+    earth.rotation.x = Math.PI / 2;
     scene.add(earth);
 
     const cloudTex = textureLoader.load('https://unpkg.com/three-globe@2.31.0/example/img/clouds.png');
@@ -227,18 +238,27 @@ if (container) {
     scene.add(clouds); clouds.name = 'clouds';
 
     // Lighting
-    const sun = new THREE.DirectionalLight(0xffffff, 2.5); sun.position.set(-3, 2, 2); scene.add(sun);
+    const sun = new THREE.DirectionalLight(0xffffff, 3.0); sun.position.set(-3, 2, 2); scene.add(sun);
     const ambient = new THREE.AmbientLight(0x2a4a32, 1.0); scene.add(ambient);
 
     let t = 0;
     function tick() {
         t += 0.0005; 
-        earth.rotation.z = t; // Spin around the axis
+        earth.rotation.z = t; 
         if (clouds) clouds.rotation.z = t * 1.15;
         renderer.render(scene, camera); 
         requestAnimationFrame(tick);
     }
     tick();
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+    });
 }
 </script>
 </body>
