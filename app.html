@@ -4,19 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GAIA — Research Cockpit</title>
-  <link rel="stylesheet" href="assets/style.css?v=310">
+  <link rel="stylesheet" href="assets/style.css?v=400">
   <style>
     /* ======================================================
-       GAIA RESEARCH COCKPIT — Multi-Modal Interface
+       GAIA RESEARCH COCKPIT — IMPROVED UI
        ====================================================== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg-deep: #06120c;
       --bg-panel: rgba(14, 26, 20, 0.65);
-      --bg-panel-solid: #0e1a14;
       --accent-green: #4ade80;
-      --accent-green-dim: #34d399;
       --accent-blue: #60a5fa;
       --accent-amber: #fbbf24;
       --accent-red: #f87171;
@@ -25,19 +22,14 @@
       --text-muted: #566b60;
       --border-subtle: rgba(74, 222, 128, 0.15);
       --border-glow: rgba(74, 222, 128, 0.4);
-      --shadow-glow: 0 0 20px rgba(74, 222, 128, 0.15);
       --font-mono: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
     }
-
     html, body {
       width: 100%; min-height: 100vh;
       background: var(--bg-deep); color: var(--text-primary);
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, sans-serif;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-
     /* Ambient Background */
     .app-bg {
       position: fixed; inset: 0; z-index: 0;
@@ -46,17 +38,9 @@
         radial-gradient(circle at 85% 75%, rgba(96, 165, 250, 0.06) 0%, transparent 50%);
       pointer-events: none;
     }
-    .app-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(6, 18, 12, 0.85) 100%);
-    }
-
     #app-bg-canvas {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      opacity: 0.7;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.7;
     }
-
     /* Header */
     .app-header {
       position: relative; z-index: 10;
@@ -65,39 +49,26 @@
       display: flex; justify-content: space-between; align-items: center;
       background: rgba(6, 18, 12, 0.7);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
     .app-header h1 { font-size: 1.3rem; letter-spacing: -0.02em; }
     .app-header h1 span {
-      background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dim), var(--accent-blue));
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
       background-size: 200% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: gradFlow 4s linear infinite;
     }
-    @keyframes gradFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
+    @keyframes gradFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
     .header-right { display: flex; align-items: center; gap: 16px; }
     .integrity-badge {
       display: flex; align-items: center; gap: 6px;
       font-family: var(--font-mono); font-size: 0.7rem;
       padding: 4px 10px; border-radius: 20px;
-      background: rgba(74, 222, 128, 0.1);
-      border: 1px solid rgba(74, 222, 128, 0.3);
+      background: rgba(74, 222, 128, 0.1); border: 1px solid rgba(74, 222, 128, 0.3);
       color: var(--accent-green);
     }
-    .integrity-badge.warn {
-      background: rgba(251, 191, 36, 0.1);
-      border-color: rgba(251, 191, 36, 0.3);
-      color: var(--accent-amber);
-    }
-    .integrity-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: currentColor;
-    }
+    .integrity-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
     .status-indicator {
       font-family: var(--font-mono); font-size: 0.72rem;
       color: var(--accent-green); display: flex; align-items: center; gap: 8px;
@@ -106,30 +77,20 @@
       width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green);
       animation: pulse 1.6s ease-in-out infinite;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-green); }
-      50% { opacity: 0.5; box-shadow: 0 0 16px var(--accent-green); }
-    }
+    @keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-green); } 50% { opacity: 0.5; box-shadow: 0 0 16px var(--accent-green); } }
 
-    /* ======================================================
-       FOUR-PANEL GRID
-       ====================================================== */
+    /* Main Grid */
     .cockpit {
       position: relative; z-index: 10;
-      display: grid;
-      grid-template-columns: 300px 1fr 380px;
-      gap: 0;
-      min-height: calc(100vh - 65px);
+      display: grid; grid-template-columns: 320px 1fr 420px;
+      gap: 0; min-height: calc(100vh - 65px);
     }
-
     .panel {
       border-right: 1px solid var(--border-subtle);
       padding: 24px 20px;
       background: var(--bg-panel);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       overflow-y: auto;
-      transition: background 0.3s ease;
     }
     .panel:last-child { border-right: none; }
     .panel h2 {
@@ -138,400 +99,117 @@
       color: var(--accent-green); margin-bottom: 20px;
       display: flex; align-items: center; gap: 8px;
     }
-    .panel h2 .step-num {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: rgba(74, 222, 128, 0.15); font-size: 0.6rem;
-    }
 
-    /* ======================================================
-       PANEL 1: DATA INTAKE
-       ====================================================== */
-    .input-tabs {
-      display: flex; gap: 2px; margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-subtle);
-      flex-wrap: wrap;
-    }
-    .input-tab {
-      padding: 8px 10px; background: transparent; border: none;
-      color: var(--text-muted); font-size: 0.72rem; font-weight: 500;
-      cursor: pointer; border-bottom: 2px solid transparent;
-      transition: all 0.2s ease; font-family: inherit;
-    }
-    .input-tab:hover { color: var(--text-secondary); }
-    .input-tab.active { color: var(--accent-green); border-bottom-color: var(--accent-green); }
-
+    /* Left Panel: Input */
     .input-pane { display: none; }
     .input-pane.active { display: block; }
-
+    .input-tabs { display: flex; gap: 2px; margin-bottom: 16px; border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap; }
+    .input-tab { padding: 8px 10px; background: transparent; border: none; color: var(--text-muted); font-size: 0.72rem; cursor: pointer; border-bottom: 2px solid transparent; }
+    .input-tab.active { color: var(--accent-green); border-bottom-color: var(--accent-green); }
     .field { margin-bottom: 16px; }
-    .field label {
-      display: block; font-size: 0.72rem; color: var(--text-secondary);
-      margin-bottom: 5px; font-weight: 500;
-    }
-    .field input, .field select {
-      width: 100%; padding: 8px 12px;
-      background: rgba(14, 26, 20, 0.8);
-      border: 1px solid rgba(74, 222, 128, 0.2);
-      border-radius: 5px; color: #fff; font-family: inherit;
-      font-size: 0.82rem; outline: none; transition: all 0.2s ease;
-    }
-    .field input:focus, .field select:focus {
-      border-color: var(--accent-green);
-      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.12);
-    }
-    .upload-zone {
-      border: 2px dashed rgba(74, 222, 128, 0.25);
-      border-radius: 6px; padding: 18px 12px;
-      text-align: center; cursor: pointer;
-      transition: all 0.2s ease; margin-bottom: 12px;
-    }
-    .upload-zone:hover {
-      border-color: var(--accent-green);
-      background: rgba(74, 222, 128, 0.04);
-    }
-    .upload-zone .icon { font-size: 1.2rem; margin-bottom: 4px; opacity: 0.6; }
-    .upload-zone .text { font-size: 0.72rem; color: var(--text-secondary); }
-    .upload-zone .hint { font-size: 0.62rem; color: var(--text-muted); margin-top: 2px; }
+    .field label { display: block; font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 5px; }
+    .field input, .field select { width: 100%; padding: 8px 12px; background: rgba(14, 26, 20, 0.8); border: 1px solid rgba(74, 222, 128, 0.2); border-radius: 5px; color: #fff; font-size: 0.82rem; }
+    .upload-zone { border: 2px dashed rgba(74, 222, 128, 0.25); border-radius: 6px; padding: 18px 12px; text-align: center; cursor: pointer; }
+    .upload-zone:hover { border-color: var(--accent-green); background: rgba(74, 222, 128, 0.04); }
+    .run-btn { position: sticky; bottom: 20px; width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dim, #34d399)); border: none; border-radius: 6px; color: #0a1410; font-weight: 600; cursor: pointer; margin-top: 12px; }
+    .run-btn:disabled { opacity: 0.5; }
 
-    .data-source-item {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 10px; margin-bottom: 6px;
-      background: rgba(14, 26, 20, 0.5);
-      border: 1px solid rgba(74, 222, 128, 0.08);
-      border-radius: 5px; font-size: 0.72rem;
-      transition: all 0.2s;
-    }
-    .data-source-item:hover { border-color: rgba(74, 222, 128, 0.25); }
-    .data-source-item .ds-icon { font-size: 0.9rem; opacity: 0.7; }
-    .data-source-item .ds-name { flex: 1; }
-    .data-source-item .ds-status {
-      font-family: var(--font-mono); font-size: 0.6rem;
-      padding: 2px 6px; border-radius: 3px;
-    }
-    .ds-status.ok { background: rgba(74, 222, 128, 0.15); color: var(--accent-green); }
-    .ds-status.missing { background: rgba(248, 113, 113, 0.15); color: var(--accent-red); }
-    .ds-status.partial { background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); }
-
-    .load-real-btn {
-      width: 100%; padding: 8px;
-      background: rgba(74, 222, 128, 0.08);
-      border: 1px solid rgba(74, 222, 128, 0.25);
-      border-radius: 5px; color: var(--accent-green);
-      font-size: 0.72rem; font-weight: 500; cursor: pointer;
-      transition: all 0.2s; margin-bottom: 12px;
-    }
-    .load-real-btn:hover { background: rgba(74, 222, 128, 0.15); }
-
-    .run-btn {
-      width: 100%; padding: 12px;
-      background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dim));
-      border: none; border-radius: 6px; color: #0a1410;
-      font-weight: 600; font-size: 0.9rem; cursor: pointer;
-      margin-top: 12px; transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .run-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
-    }
-    .run-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    /* ======================================================
-       PANEL 2: CROSS-VALIDATION PIPELINE
-       ====================================================== */
-    .pipeline-section { margin-bottom: 24px; }
-    .pipeline-section h3 {
-      font-size: 0.62rem; font-family: var(--font-mono);
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text-muted); margin-bottom: 10px;
-    }
-
+    /* Center Panel: Pipeline */
+    .pipeline-section { margin-bottom: 16px; }
     .stage-card {
-      display: grid; grid-template-columns: 32px 1fr;
-      gap: 12px; align-items: start;
-      padding: 12px 14px; border-radius: 8px;
-      background: rgba(14, 26, 20, 0.5);
-      border: 1px solid rgba(74, 222, 128, 0.06);
-      margin-bottom: 8px;
-      transition: all 0.3s ease;
-      position: relative;
+      display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+      padding: 12px; border-radius: 8px; background: rgba(14, 26, 20, 0.5);
+      border: 1px solid var(--border-subtle); margin-bottom: 8px; transition: all 0.3s ease;
+      cursor: pointer;
     }
-    .stage-card.active {
-      border-color: var(--border-glow);
-      background: rgba(74, 222, 128, 0.04);
-      box-shadow: var(--shadow-glow);
-    }
+    .stage-card.active { border-color: var(--border-glow); background: rgba(74, 222, 128, 0.04); }
     .stage-card.done { border-color: rgba(74, 222, 128, 0.2); }
-    .stage-num {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(74, 222, 128, 0.1); color: var(--accent-green);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
-      transition: all 0.3s ease; flex-shrink: 0;
-    }
-    .stage-card.active .stage-num {
-      background: var(--accent-green); color: #0a1410;
-      animation: pulse 1.2s ease-in-out infinite;
-    }
-    .stage-card.done .stage-num { background: var(--accent-green); color: #0a1410; }
+    .stage-num { width: 32px; height: 32px; border-radius: 50%; background: rgba(74, 222, 128, 0.1); color: var(--accent-green); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 600; }
+    .stage-card.active .stage-num { background: var(--accent-green); color: #0a1410; }
     .stage-info .title { font-size: 0.85rem; font-weight: 500; margin-bottom: 3px; }
     .stage-info .desc { font-size: 0.7rem; color: var(--text-secondary); }
-    .stage-info .log {
-      font-family: var(--font-mono); font-size: 0.65rem;
-      color: var(--accent-green); margin-top: 4px; opacity: 0.7;
-      min-height: 1em;
+    .stage-info .log { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-green); margin-top: 4px; opacity: 0.7; min-height: 1em; }
+    /* Live log timer */
+    .live-log {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--accent-amber); margin-top: 8px;
+      background: rgba(0,0,0,0.3); padding: 6px 8px; border-radius: 4px;
     }
+    /* Collapsible stages */
+    .stage-body { display: none; padding-top: 8px; }
+    .stage-card.expanded .stage-body { display: block; }
 
-    /* Cross-Validation Grid */
-    .xv-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 8px; margin-top: 10px;
-    }
-    .xv-method {
-      padding: 8px 10px; border-radius: 6px;
-      background: rgba(14, 26, 20, 0.6);
-      border: 1px solid rgba(74, 222, 128, 0.08);
-      font-size: 0.68rem; transition: all 0.3s;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .xv-method.validated {
-      border-color: rgba(74, 222, 128, 0.3);
-      background: rgba(74, 222, 128, 0.04);
-    }
-    .xv-method .xv-name { color: var(--text-secondary); }
-    .xv-method .xv-status {
-      font-family: var(--font-mono); font-size: 0.6rem;
-      padding: 1px 5px; border-radius: 3px;
-    }
-    .xv-status.ok { background: rgba(74, 222, 128, 0.15); color: var(--accent-green); }
-    .xv-status.missing { background: rgba(248, 113, 113, 0.12); color: var(--accent-red); }
-
-    /* Gene confidence bars */
-    .gene-conf-row {
-      display: grid; grid-template-columns: 80px 1fr 40px;
-      align-items: center; gap: 8px;
-      padding: 6px 0; font-size: 0.7rem;
-    }
-    .gene-conf-row .gene-name { font-family: var(--font-mono); color: var(--accent-green); }
-    .gene-conf-row .conf-bar-track {
-      height: 6px; background: rgba(74, 222, 128, 0.08);
-      border-radius: 3px; overflow: hidden;
-    }
-    .gene-conf-row .conf-bar-fill {
-      height: 100%; border-radius: 3px;
-      background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dim));
-      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .gene-conf-row .conf-val {
-      font-family: var(--font-mono); font-size: 0.62rem;
-      text-align: right; color: var(--accent-green);
-    }
-
-    /* ======================================================
-       PANEL 3: EVIDENCE DASHBOARD
-       ====================================================== */
-    .dashboard-tabs {
-      display: flex; gap: 2px; margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .dash-tab {
-      padding: 8px 14px; background: transparent; border: none;
-      color: var(--text-muted); font-size: 0.75rem; font-weight: 500;
-      cursor: pointer; border-bottom: 2px solid transparent;
-      transition: all 0.2s ease; font-family: inherit;
-    }
-    .dash-tab:hover { color: var(--text-secondary); }
+    /* Right Panel: Evidence */
+    .dashboard-tabs { display: flex; gap: 2px; margin-bottom: 16px; border-bottom: 1px solid var(--border-subtle); }
+    .dash-tab { padding: 8px 14px; background: transparent; border: none; color: var(--text-muted); font-size: 0.75rem; cursor: pointer; border-bottom: 2px solid transparent; }
     .dash-tab.active { color: var(--accent-green); border-bottom-color: var(--accent-green); }
-
     .dash-pane { display: none; }
     .dash-pane.active { display: block; }
 
-    /* Bottom Line Card */
-    .bottom-line {
-      background: linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(52, 211, 153, 0.04));
-      border: 1px solid rgba(74, 222, 128, 0.25);
-      border-radius: 10px; padding: 16px; margin-bottom: 16px;
+    /* Hero Card for Top Targets */
+    .hero-card {
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.12), rgba(96, 165, 250, 0.08));
+      border: 1px solid var(--border-glow); border-radius: 10px; padding: 20px;
+      margin-bottom: 20px; text-align: center;
     }
-    .bottom-line h3 {
-      font-size: 0.62rem; font-family: var(--font-mono);
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent-green); margin-bottom: 10px;
-    }
-    .bl-finding {
-      font-size: 1.3rem; font-weight: 700; color: var(--accent-green);
-      margin-bottom: 4px;
-    }
-    .bl-detail {
-      font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6;
-    }
-    .bl-stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 8px; margin-top: 12px;
-    }
-    .bl-stat {
-      padding: 8px; border-radius: 6px;
-      background: rgba(6, 18, 12, 0.5);
-    }
-    .bl-stat .stat-label { font-size: 0.62rem; color: var(--text-muted); }
-    .bl-stat .stat-value {
-      font-family: var(--font-mono); font-size: 0.9rem;
-      font-weight: 600; color: var(--accent-green); margin-top: 2px;
-    }
+    .hero-card .hero-label { font-size: 0.65rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-amber); margin-bottom: 8px; }
+    .hero-card .hero-gene { font-size: 2.2rem; font-weight: 700; color: var(--accent-green); letter-spacing: -0.02em; }
+    .hero-card .hero-desc { font-size: 0.75rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.5; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .hero-stat { background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; }
+    .hero-stat .stat-label { font-size: 0.6rem; color: var(--text-muted); }
+    .hero-stat .stat-value { font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent-green); }
 
     /* Result cards */
-    .result-card {
-      background: rgba(14, 26, 20, 0.5);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px; padding: 16px; margin-bottom: 12px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    .result-card:hover {
-      border-color: var(--border-glow);
-      box-shadow: var(--shadow-glow);
-    }
-    .result-card h3 {
-      font-size: 0.62rem; font-family: var(--font-mono);
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent-green); margin-bottom: 8px;
-    }
-    .result-card .value {
-      font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em;
-    }
-    .result-card .value.green { color: var(--accent-green); }
-    .result-card .desc {
-      font-size: 0.75rem; color: var(--text-secondary);
-      margin-top: 4px; line-height: 1.5;
-    }
+    .result-card { background: rgba(14, 26, 20, 0.5); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+    .result-card h3 { font-size: 0.62rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-green); margin-bottom: 8px; }
 
-    /* Protocol list */
-    .protocol-item {
-      display: flex; justify-content: space-between;
-      padding: 6px 0; border-bottom: 1px solid rgba(74, 222, 128, 0.06);
-      font-size: 0.75rem;
-    }
-    .protocol-item:last-child { border-bottom: none; }
-    .protocol-item .p-name { color: var(--text-primary); }
-    .protocol-item .p-dose {
-      font-family: var(--font-mono); font-size: 0.68rem;
-      color: var(--accent-green);
-    }
+    /* Cross-validation dots */
+    .xv-dots { display: flex; gap: 4px; margin-top: 4px; }
+    .xv-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(74, 222, 128, 0.1); }
+    .xv-dot.filled { background: var(--accent-green); }
 
-    /* Reversal timeline */
-    .reversal-timeline { margin-top: 10px; }
-    .rev-phase {
-      display: grid; grid-template-columns: 70px 1fr;
-      gap: 10px; padding: 8px 0;
-      border-bottom: 1px solid rgba(74, 222, 128, 0.06);
-      font-size: 0.72rem;
-    }
-    .rev-phase .phase-time {
-      font-family: var(--font-mono); font-size: 0.62rem;
-      color: var(--accent-green); opacity: 0.8;
-    }
-    .rev-phase .phase-desc { color: var(--text-secondary); }
+    /* Gene table */
+    .gene-table { width: 100%; border-collapse: collapse; }
+    .gene-table th, .gene-table td { padding: 8px 10px; text-align: left; font-size: 0.72rem; border-bottom: 1px solid rgba(74, 222, 128, 0.06); }
+    .gene-table th { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; }
+    .gene-table tr { cursor: pointer; transition: background 0.15s; }
+    .gene-table tr:hover { background: rgba(74, 222, 128, 0.06); }
+    .gene-table td.gene-name { font-weight: 600; color: var(--accent-green); }
 
-    /* Scientist tables */
-    .sci-card {
-      background: rgba(14, 26, 20, 0.5);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px; margin-bottom: 12px; overflow: hidden;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+    /* Slide-out panel for gene details */
+    .detail-panel {
+      position: fixed; right: 0; top: 0; bottom: 0; width: 480px;
+      background: rgba(6, 18, 12, 0.98); border-left: 1px solid var(--border-glow);
+      padding: 24px; z-index: 100; transform: translateX(100%);
+      transition: transform 0.3s ease; overflow-y: auto;
+      backdrop-filter: blur(20px);
     }
-    .sci-card:hover { border-color: var(--border-glow); box-shadow: var(--shadow-glow); }
-    .sci-card-header {
-      padding: 10px 14px; background: rgba(74, 222, 128, 0.04);
-      border-bottom: 1px solid var(--border-subtle);
-      font-family: var(--font-mono); font-size: 0.65rem;
-      color: var(--accent-green); letter-spacing: 0.1em;
-    }
-    .sci-card table { width: 100%; border-collapse: collapse; }
-    .sci-card table th, .sci-card table td {
-      padding: 7px 14px; text-align: left;
-      font-size: 0.68rem; border-bottom: 1px solid rgba(74, 222, 128, 0.06);
-    }
-    .sci-card table th {
-      font-family: var(--font-mono); font-size: 0.6rem;
-      color: var(--text-secondary); font-weight: 500; text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .sci-card table tr:nth-child(even) { background: rgba(74, 222, 128, 0.02); }
-    .sci-card table tr:hover { background: rgba(74, 222, 128, 0.04); }
-    .sci-card table td.mono { font-family: var(--font-mono); color: #a7f3d0; }
-
-    /* Badges */
-    .badge {
-      display: inline-block; padding: 1px 6px; border-radius: 3px;
-      font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .badge-high { background: rgba(74, 222, 128, 0.15); color: var(--accent-green); }
-    .badge-medium { background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); }
-    .badge-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-red); }
-
-    /* Audit log */
-    .audit-log {
-      font-family: var(--font-mono); font-size: 0.65rem;
-      background: rgba(6, 18, 12, 0.8);
-      border: 1px solid rgba(74, 222, 128, 0.15);
-      border-radius: 6px; padding: 10px;
-      max-height: 400px; overflow-y: auto;
-      line-height: 1.6;
-    }
-    .audit-line { display: flex; gap: 8px; padding: 2px 0; }
-    .audit-line .audit-time { color: var(--text-muted); flex-shrink: 0; }
-    .audit-line .audit-msg { color: var(--text-secondary); }
-    .audit-line .audit-msg.ok { color: var(--accent-green); }
-    .audit-line .audit-msg.warn { color: var(--accent-amber); }
-    .audit-line .audit-msg.err { color: var(--accent-red); }
+    .detail-panel.open { transform: translateX(0); }
+    .detail-panel h2 { font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-green); }
+    .detail-panel .close-btn { position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .detail-layer { margin-bottom: 20px; padding: 12px; background: rgba(14, 26, 20, 0.5); border-radius: 8px; }
+    .detail-layer h4 { font-size: 0.7rem; font-family: var(--font-mono); color: var(--accent-amber); margin-bottom: 8px; text-transform: uppercase; }
+    .detail-layer .value { font-size: 1.4rem; font-family: var(--font-mono); color: var(--accent-green); }
+    .detail-layer .desc { font-size: 0.72rem; color: var(--text-secondary); margin-top: 4px; }
 
     /* Empty state */
-    .empty-state {
-      text-align: center; padding: 40px 20px; color: var(--text-muted);
-    }
-    .empty-state .icon {
-      font-size: 2.5rem; margin-bottom: 12px; opacity: 0.3;
-      animation: floatIcon 4s ease-in-out infinite;
-    }
-    @keyframes floatIcon {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .empty-state h3 {
-      font-size: 1rem; margin-bottom: 6px; color: var(--text-secondary);
-    }
-    .empty-state p { font-size: 0.75rem; max-width: 280px; margin: 0 auto; line-height: 1.5; }
+    .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.3; }
 
     /* Floating Molecules */
-    .float-layer {
-      position: fixed; inset: 0; z-index: 1;
-      pointer-events: none; overflow: hidden;
-    }
-    .float-mol {
-      position: absolute; width: 60px; height: 60px;
-      animation: floatDrift 20s ease-in-out infinite;
-      filter: drop-shadow(0 0 12px rgba(74, 222, 128, 0.15));
-      opacity: 0.5;
-    }
+    .float-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+    .float-mol { position: absolute; width: 60px; height: 60px; animation: floatDrift 20s ease-in-out infinite; opacity: 0.4; }
     @keyframes floatDrift {
       0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(15px, -12px) rotate(6deg); }
-      50% { transform: translate(-8px, 10px) rotate(-4deg); }
-      75% { transform: translate(10px, 6px) rotate(3deg); }
+      50% { transform: translate(-20px, 15px) rotate(5deg); }
     }
 
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .cockpit { grid-template-columns: 280px 1fr 340px; }
-    }
+    /* Mobile */
     @media (max-width: 900px) {
       .cockpit { grid-template-columns: 1fr; }
       .panel { border-right: none; border-bottom: 1px solid var(--border-subtle); }
-      .app-header { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
-      .header-right { flex-wrap: wrap; gap: 8px; }
+      .detail-panel { width: 100%; }
     }
   </style>
 </head>
@@ -539,29 +217,19 @@
   <div class="app-bg"></div>
   <canvas id="app-bg-canvas" aria-hidden="true"></canvas>
 
-  <!-- Floating Molecules -->
   <div class="float-layer" aria-hidden="true">
-    <svg class="float-mol" style="top: 8%; left: 2%; animation-delay: 0s;" viewBox="0 0 80 80">
+    <svg class="float-mol" style="top: 10%; left: 3%;" viewBox="0 0 80 80">
       <polygon points="40,10 62,24 62,52 40,66 18,52 18,24" fill="none" stroke="#a7f3d0" stroke-width="1.2" opacity="0.35"/>
-      <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.4"/>
-      <circle cx="40" cy="10" r="2" fill="#4ade80" opacity="0.5"/>
-      <circle cx="62" cy="52" r="2" fill="#60a5fa" opacity="0.5"/>
-      <circle cx="18" cy="52" r="2" fill="#34d399" opacity="0.5"/>
-    </svg>
-    <svg class="float-mol" style="top: 70%; right: 2%; animation-delay: -6s;" viewBox="0 0 80 80">
-      <circle cx="40" cy="40" r="11" fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0.3"/>
-      <ellipse cx="40" cy="40" rx="26" ry="9" fill="none" stroke="#4ade80" stroke-width="0.6" opacity="0.25"/>
-      <ellipse cx="40" cy="40" rx="9" ry="26" fill="none" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
-      <circle cx="40" cy="40" r="2.5" fill="#a7f3d0" opacity="0.5"/>
+      <circle cx="40" cy="38" r="7" fill="none" stroke="#4ade80" stroke-width="0.8" stroke-dasharray="2 3"/>
     </svg>
   </div>
 
   <header class="app-header">
     <h1><span>GAIA</span> Research Cockpit</h1>
     <div class="header-right">
-      <div class="integrity-badge warn" id="integrityBadge">
+      <div class="integrity-badge">
         <span class="integrity-dot"></span>
-        <span id="integrityText">8/10 data sources</span>
+        <span>6/7 data layers</span>
       </div>
       <div class="status-indicator">
         <span class="status-dot" id="statusDot"></span>
@@ -571,440 +239,202 @@
   </header>
 
   <div class="cockpit">
-    <!-- ============================================================
-         PANEL 1: DATA INTAKE
-         ============================================================ -->
+    <!-- LEFT: Data Intake -->
     <aside class="panel">
-      <h2><span class="step-num">1</span> Data Intake</h2>
-
-      <button class="load-real-btn" id="loadRealBtn">📂 Load Real Patient Data (patient_data_real.json)</button>
-
-      <div class="input-tabs">
-        <button class="input-tab active" data-pane="pane-genomics">Genomics</button>
-        <button class="input-tab" data-pane="pane-proteomics">Proteomics</button>
-        <button class="input-tab" data-pane="pane-metabolomics">Metabolomics</button>
-        <button class="input-tab" data-pane="pane-imaging">Imaging</button>
-        <button class="input-tab" data-pane="pane-clinical">Clinical</button>
-      </div>
-
-      <div class="input-pane active" id="pane-genomics">
-        <div class="field">
-          <label>Genome File (VCF / FASTA)</label>
-          <div class="upload-zone">
-            <div class="icon">🧬</div>
-            <div class="text">Drop VCF or FASTA</div>
-            <div class="hint">Chaos-Fractal DNA scanner input</div>
-          </div>
-        </div>
-        <div class="field">
-          <label>Variant List (CSV)</label>
-          <div class="upload-zone">
-            <div class="icon">📊</div>
-            <div class="text">Drop EUR variants CSV</div>
-            <div class="hint">1000 Genomes input</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="input-pane" id="pane-proteomics">
-        <div class="field">
-          <label>Mass Spec Data (CSV)</label>
-          <div class="upload-zone">
-            <div class="icon">🔬</div>
-            <div class="text">Drop mass_spec_AS_patients.csv</div>
-            <div class="hint">Protein expression → gene mapping</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="input-pane" id="pane-metabolomics">
-        <div class="field">
-          <label>Metabolite Data (CSV)</label>
-          <div class="upload-zone">
-            <div class="icon">⚗️</div>
-            <div class="text">Drop metabolite_patients.csv</div>
-            <div class="hint">Metabolites → pathways → genes</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="input-pane" id="pane-imaging">
-        <div class="field">
-          <label>Brain Scan (fMRI CSV / NIfTI)</label>
-          <div class="upload-zone">
-            <div class="icon">🧠</div>
-            <div class="text">Drop fmri_AS_patients.csv</div>
-            <div class="hint">Brain activity → DNA regions</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="input-pane" id="pane-clinical">
-        <div class="field">
-          <label>Patient Records (JSON)</label>
-          <div class="upload-zone">
-            <div class="icon">📋</div>
-            <div class="text">Drop patient_data.json</div>
-            <div class="hint">BASDAI, symptoms, HLA-B27</div>
-          </div>
-        </div>
-      </div>
-
-      <h2 style="margin-top: 20px;"><span class="step-num">2</span> Targets</h2>
+      <h2>① Data Intake</h2>
       <div class="field">
-        <label>Disease Target</label>
+        <label>Disease</label>
         <input type="text" value="Ankylosing Spondylitis" id="diseaseInput">
       </div>
       <div class="field">
-        <label>Gene / Receptor</label>
+        <label>Gene / Target</label>
         <input type="text" value="HLA-B27" id="geneInput">
       </div>
       <div class="field">
-        <label>Patient Profile</label>
-        <select id="profileSelect">
-          <option>Adult · Male · 45 · HLA-B27+</option>
-          <option>Adult · Female · 52 · HLA-B27+</option>
-          <option>Adult · Male · 38 · HLA-B27+</option>
-          <option>Custom profile...</option>
-        </select>
+        <label>Available Layers</label>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.72rem;">
+          <span>✅ Genomics (5 VCFs)</span>
+          <span>✅ Methylation (27,378 genes)</span>
+          <span>✅ Transcriptomics (16,764 genes)</span>
+          <span>✅ Proteomics (779 genes)</span>
+          <span>✅ Brain atlas (6 donors)</span>
+          <span>✅ PDBbind (19,037 complexes)</span>
+          <span style="color: var(--accent-red);">❌ Metabolomics (excluded — wrong disease)</span>
+        </div>
       </div>
-
-      <h2 style="margin-top: 20px;"><span class="step-num">3</span> Data Sources</h2>
-      <div class="data-source-item">
-        <span class="ds-icon">🧬</span>
-        <span class="ds-name">Protein Atlas</span>
-        <span class="ds-status ok">LOADED</span>
-      </div>
-      <div class="data-source-item">
-        <span class="ds-icon">🔬</span>
-        <span class="ds-name">ClinVar</span>
-        <span class="ds-status ok">LOADED</span>
-      </div>
-      <div class="data-source-item">
-        <span class="ds-icon">⚗️</span>
-        <span class="ds-name">ZINC22 (444k)</span>
-        <span class="ds-status ok">LOADED</span>
-      </div>
-      <div class="data-source-item">
-        <span class="ds-icon">📊</span>
-        <span class="ds-name">PDBbind (19k)</span>
-        <span class="ds-status ok">LOADED</span>
-      </div>
-      <div class="data-source-item">
-        <span class="ds-icon">🧠</span>
-        <span class="ds-name">Brain Scans</span>
-        <span class="ds-status missing">MISSING</span>
-      </div>
-      <div class="data-source-item">
-        <span class="ds-icon">🩸</span>
-        <span class="ds-name">cfDNA Methylation</span>
-        <span class="ds-status missing">MISSING</span>
-      </div>
-
-      <button class="run-btn" id="runBtn">Run GAIA Pipeline →</button>
+      <button class="run-btn" id="runBtn">Run 4-Layer Cross-Validation →</button>
     </aside>
 
-    <!-- ============================================================
-         PANEL 2: CROSS-VALIDATION PIPELINE
-         ============================================================ -->
+    <!-- CENTER: Cross-Validation Pipeline -->
     <main class="panel" id="pipelinePanel">
-      <h2><span class="step-num">4</span> Cross-Validation Pipeline</h2>
+      <h2>② Cross-Validation Pipeline</h2>
 
-      <!-- Empty state -->
-      <div class="empty-state" id="pipelineEmpty">
-        <div class="icon">🔀</div>
-        <h3>Awaiting input</h3>
-        <p>Load data and run the pipeline to see the cross-validation process.</p>
+      <div class="pipeline-section">
+        <h3 style="font-size: 0.62rem; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 10px;">STAGE 1 — DATA INGESTION</h3>
+        <div class="stage-card" id="stage1">
+          <div class="stage-num">1</div>
+          <div class="stage-info">
+            <div class="title">Loading 4 layers</div>
+            <div class="desc">Methylation + transcriptomics + proteomics + brain</div>
+            <div class="log" id="log1"></div>
+            <div class="stage-body">
+              <div class="live-log" id="liveLog1">Waiting...</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Pipeline stages -->
-      <div id="pipelineStages" style="display: none;">
-        <div class="pipeline-section">
-          <h3>Stage 1 — Data Ingestion</h3>
-          <div class="stage-card" id="pstage1">
-            <div class="stage-num">1</div>
-            <div class="stage-info">
-              <div class="title">Harmonizing multi-modal data</div>
-              <div class="desc">Loading VCF, CSV, JSON into unified schema</div>
-              <div class="log" id="plog1"></div>
+      <div class="pipeline-section">
+        <h3 style="font-size: 0.62rem; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 10px;">STAGE 2 — CROSS-LAYER MERGE</h3>
+        <div class="stage-card" id="stage2">
+          <div class="stage-num">2</div>
+          <div class="stage-info">
+            <div class="title">Overlap: 668 genes</div>
+            <div class="desc">Genes present in all 4 layers</div>
+            <div class="log" id="log2"></div>
+            <div class="stage-body">
+              <div class="live-log" id="liveLog2">Waiting...</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="pipeline-section">
-          <h3>Stage 2 — Multi-Modal Mapping</h3>
-          <div class="xv-grid" id="xvGrid">
-            <div class="xv-method" data-method="chaos">
-              <span class="xv-name">Chaos-Fractal DNA</span>
-              <span class="xv-status" id="xv-chaos">pending</span>
-            </div>
-            <div class="xv-method" data-method="eur">
-              <span class="xv-name">EUR Variants</span>
-              <span class="xv-status" id="xv-eur">pending</span>
-            </div>
-            <div class="xv-method" data-method="gwas">
-              <span class="xv-name">GWAS (Gene→Disease)</span>
-              <span class="xv-status" id="xv-gwas">pending</span>
-            </div>
-            <div class="xv-method" data-method="kegg">
-              <span class="xv-name">KEGG (Gene→Pathway)</span>
-              <span class="xv-status" id="xv-kegg">pending</span>
-            </div>
-            <div class="xv-method" data-method="drugbank">
-              <span class="xv-name">DrugBank (Gene→Drug)</span>
-              <span class="xv-status" id="xv-drugbank">pending</span>
-            </div>
-            <div class="xv-method" data-method="proteomics">
-              <span class="xv-name">Proteomics→Gene</span>
-              <span class="xv-status" id="xv-proteomics">pending</span>
-            </div>
-            <div class="xv-method" data-method="metabolomics">
-              <span class="xv-name">Metabolomics→Pathway</span>
-              <span class="xv-status" id="xv-metabolomics">pending</span>
-            </div>
-            <div class="xv-method" data-method="brain">
-              <span class="xv-name">Brain Scan→DNA</span>
-              <span class="xv-status" id="xv-brain">missing</span>
-            </div>
-            <div class="xv-method" data-method="cfdna">
-              <span class="xv-name">cfDNA Methylation</span>
-              <span class="xv-status" id="xv-cfdna">missing</span>
-            </div>
-            <div class="xv-method" data-method="symptom">
-              <span class="xv-name">Symptom→Gene</span>
-              <span class="xv-status" id="xv-symptom">pending</span>
+      <div class="pipeline-section">
+        <h3 style="font-size: 0.62rem; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 10px;">STAGE 3 — Z-SCORING & RANKING</h3>
+        <div class="stage-card" id="stage3">
+          <div class="stage-num">3</div>
+          <div class="stage-info">
+            <div class="title">Ranking 668 genes</div>
+            <div class="desc">Composite score across 4 layers</div>
+            <div class="log" id="log3"></div>
+            <div class="stage-body">
+              <div class="live-log" id="liveLog3">Waiting...</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="pipeline-section">
-          <h3>Stage 3 — Cross-Validation Scoring</h3>
-          <div id="geneConfidence">
-            <div class="gene-conf-row">
-              <span class="gene-name">HLA-B27</span>
-              <div class="conf-bar-track"><div class="conf-bar-fill" id="conf-hla" style="width: 0%;"></div></div>
-              <span class="conf-val" id="confval-hla">0/5</span>
-            </div>
-            <div class="gene-conf-row">
-              <span class="gene-name">ERAP1</span>
-              <div class="conf-bar-track"><div class="conf-bar-fill" id="conf-erap" style="width: 0%;"></div></div>
-              <span class="conf-val" id="confval-erap">0/5</span>
-            </div>
-            <div class="gene-conf-row">
-              <span class="gene-name">IL23R</span>
-              <div class="conf-bar-track"><div class="conf-bar-fill" id="conf-il23r" style="width: 0%;"></div></div>
-              <span class="conf-val" id="confval-il23r">0/5</span>
-            </div>
-            <div class="gene-conf-row">
-              <span class="gene-name">RUNX3</span>
-              <div class="conf-bar-track"><div class="conf-bar-fill" id="conf-runx3" style="width: 0%;"></div></div>
-              <span class="conf-val" id="confval-runx3">0/5</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pipeline-section">
-          <h3>Stage 4 — Compound Screening</h3>
-          <div class="stage-card" id="pstage4">
-            <div class="stage-num">4</div>
-            <div class="stage-info">
-              <div class="title">ZINC22 → Docking → Ranking</div>
-              <div class="desc">25M+ candidates → top 100 → top 13</div>
-              <div class="log" id="plog4"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="pipeline-section">
-          <h3>Stage 5 — Reversal Protocol</h3>
-          <div class="stage-card" id="pstage5">
-            <div class="stage-num">5</div>
-            <div class="stage-info">
-              <div class="title">Designing 7-compound reversal protocol</div>
-              <div class="desc">Simulating 365 days of damage reversal</div>
-              <div class="log" id="plog5"></div>
+      <div class="pipeline-section">
+        <h3 style="font-size: 0.62rem; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 10px;">STAGE 4 — LAYER AGREEMENT</h3>
+        <div class="stage-card" id="stage4">
+          <div class="stage-num">4</div>
+          <div class="stage-info">
+            <div class="title">Finding top 25% in all 4</div>
+            <div class="desc">2 genes (PCM1, NCOA7) reach 4/4</div>
+            <div class="log" id="log4"></div>
+            <div class="stage-body">
+              <div class="live-log" id="liveLog4">Waiting...</div>
             </div>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- ============================================================
-         PANEL 3: EVIDENCE DASHBOARD
-         ============================================================ -->
+    <!-- RIGHT: Evidence Dashboard -->
     <aside class="panel">
-      <h2><span class="step-num">5</span> Evidence Dashboard</h2>
+      <h2>③ Evidence Dashboard</h2>
 
-      <!-- Empty state -->
-      <div class="empty-state" id="dashboardEmpty">
-        <div class="icon">📊</div>
-        <h3>No results yet</h3>
-        <p>Run the pipeline to see the evidence dashboard.</p>
+      <!-- HERO: Top Targets -->
+      <div class="hero-card" id="heroCard" style="display: none;">
+        <div class="hero-label">Top 4-Layer Hit</div>
+        <div class="hero-gene" id="heroGene">PCM1</div>
+        <div class="hero-desc" id="heroDesc">Centrosome / DNA damage repair — validated by methylation, brain expression, transcriptomics, and proteomics.</div>
+        <div class="hero-grid">
+          <div class="hero-stat">
+            <div class="stat-label">Methylation</div>
+            <div class="stat-value" id="heroMeth">0.135</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-label">Brain expr</div>
+            <div class="stat-value" id="heroBrain">8.95</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-label">Transcriptomics</div>
+            <div class="stat-value" id="heroTx">0.021</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-label">Proteomics</div>
+            <div class="stat-value" id="heroProt">0.700</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Dashboard content -->
-      <div id="dashboardContent" style="display: none;">
-        <div class="dashboard-tabs">
-          <button class="dash-tab active" data-dash="dash-human">Human</button>
-          <button class="dash-tab" data-dash="dash-scientist">Scientist</button>
-          <button class="dash-tab" data-dash="dash-audit">Audit</button>
+      <div class="dashboard-tabs">
+        <button class="dash-tab active" data-dash="dash-top">Top Hits</button>
+        <button class="dash-tab" data-dash="dash-all">All 668</button>
+        <button class="dash-tab" data-dash="dash-audit">Audit</button>
+      </div>
+
+      <div class="dash-pane active" id="dash-top">
+        <div class="empty-state" id="dashEmpty">
+          <div class="icon">🧬</div>
+          <p>Run the pipeline to see results</p>
         </div>
+        <table class="gene-table" id="topGeneTable" style="display: none;">
+          <thead>
+            <tr><th>Gene</th><th>Meth</th><th>Brain</th><th>Tx</th><th>Prot</th><th>Layers</th></tr>
+          </thead>
+          <tbody id="topGeneBody"></tbody>
+        </table>
+      </div>
 
-        <!-- HUMAN VIEW -->
-        <div class="dash-pane active" id="dash-human">
-          <div class="bottom-line">
-            <h3>The Bottom Line</h3>
-            <div class="bl-finding" id="blFinding">Clinical Remission Achieved</div>
-            <div class="bl-detail">BASDAI &lt; 2.0 · Damage reversal 70–90% · Time to reversal 6–12 months</div>
-            <div class="bl-stats">
-              <div class="bl-stat">
-                <div class="stat-label">BASDAI</div>
-                <div class="stat-value">1.0</div>
-              </div>
-              <div class="bl-stat">
-                <div class="stat-label">Reversal</div>
-                <div class="stat-value">85%</div>
-              </div>
-              <div class="bl-stat">
-                <div class="stat-label">Cost/mo</div>
-                <div class="stat-value">$165</div>
-              </div>
-              <div class="bl-stat">
-                <div class="stat-label">Time</div>
-                <div class="stat-value">60–90d</div>
-              </div>
-            </div>
-          </div>
+      <div class="dash-pane" id="dash-all">
+        <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 12px;">Showing first 20 of 668 genes</p>
+        <table class="gene-table" id="allGeneTable">
+          <thead>
+            <tr><th>Gene</th><th>Score</th><th>Layers</th></tr>
+          </thead>
+          <tbody id="allGeneBody"></tbody>
+        </table>
+      </div>
 
-          <div class="result-card">
-            <h3>Your Reversal Protocol</h3>
-            <div class="protocol-item"><span class="p-name">EGCG</span><span class="p-dose">400mg · Morning</span></div>
-            <div class="protocol-item"><span class="p-name">Quercetin</span><span class="p-dose">500mg · Morning</span></div>
-            <div class="protocol-item"><span class="p-name">Fisetin</span><span class="p-dose">300mg · Afternoon</span></div>
-            <div class="protocol-item"><span class="p-name">MSM</span><span class="p-dose">3000mg · Afternoon</span></div>
-            <div class="protocol-item"><span class="p-name">Resveratrol</span><span class="p-dose">500mg · Evening</span></div>
-            <div class="protocol-item"><span class="p-name">Curcumin</span><span class="p-dose">500mg · Evening</span></div>
-            <div class="protocol-item"><span class="p-name">Berberine</span><span class="p-dose">500mg · With food</span></div>
-          </div>
-
-          <div class="result-card">
-            <h3>Reversal Timeline</h3>
-            <div class="reversal-timeline">
-              <div class="rev-phase">
-                <span class="phase-time">Week 1–4</span>
-                <span class="phase-desc">Inflammation stops, pain decreases</span>
-              </div>
-              <div class="rev-phase">
-                <span class="phase-time">Week 4–8</span>
-                <span class="phase-desc">Senescent cells cleared</span>
-              </div>
-              <div class="rev-phase">
-                <span class="phase-time">Week 8–12</span>
-                <span class="phase-desc">Tissue repair begins</span>
-              </div>
-              <div class="rev-phase">
-                <span class="phase-time">Month 3–6</span>
-                <span class="phase-desc">Cartilage regeneration</span>
-              </div>
-              <div class="rev-phase">
-                <span class="phase-time">Month 6–12</span>
-                <span class="phase-desc">Bone remodeling, function restored</span>
-              </div>
-            </div>
-          </div>
+      <div class="dash-pane" id="dash-audit">
+        <div class="detail-layer">
+          <h4>Data layers used</h4>
+          <div class="desc">Methylation (27,378) · Transcriptomics (16,764) · Brain (18,725) · Proteomics (779)</div>
         </div>
-
-        <!-- SCIENTIST VIEW -->
-        <div class="dash-pane" id="dash-scientist">
-          <div class="sci-card">
-            <div class="sci-card-header">GENOMIC TARGETS (CROSS-VALIDATED)</div>
-            <table>
-              <tr><th>Gene</th><th>Variant</th><th>Methods Agreeing</th><th>Confidence</th></tr>
-              <tr><td>HLA-B27</td><td class="mono">rs691919</td><td class="mono">3/5</td><td><span class="badge badge-high">high</span></td></tr>
-              <tr><td>ERAP1</td><td class="mono">rs27044</td><td class="mono">2/5</td><td><span class="badge badge-medium">medium</span></td></tr>
-              <tr><td>IL23R</td><td class="mono">rs11209026</td><td class="mono">3/5</td><td><span class="badge badge-high">high</span></td></tr>
-              <tr><td>RUNX3</td><td class="mono">rs6600247</td><td class="mono">2/5</td><td><span class="badge badge-medium">medium</span></td></tr>
-            </table>
-          </div>
-
-          <div class="sci-card">
-            <div class="sci-card-header">COMPOUND RANKING</div>
-            <table>
-              <tr><th>Rank</th><th>Compound</th><th>Binding</th><th>Evidence</th></tr>
-              <tr><td>1</td><td>resveratrol</td><td class="mono">−8.72</td><td>in silico · in vitro · in vivo</td></tr>
-              <tr><td>2</td><td>curcumin</td><td class="mono">−7.91</td><td>in silico · in vitro</td></tr>
-              <tr><td>3</td><td>fisetin</td><td class="mono">−7.45</td><td>in silico · in vitro · in vivo</td></tr>
-              <tr><td>4</td><td>berberine</td><td class="mono">−6.83</td><td>in silico · in vitro</td></tr>
-              <tr><td>5</td><td>quercetin</td><td class="mono">−6.52</td><td>in silico only</td></tr>
-            </table>
-          </div>
-
-          <div class="sci-card">
-            <div class="sci-card-header">DAMAGE METRICS (12-MONTH SIMULATION)</div>
-            <table>
-              <tr><th>Metric</th><th>Day 0</th><th>Day 90</th><th>Day 365</th></tr>
-              <tr><td>Inflammation</td><td class="mono">8.5</td><td class="mono">2.1</td><td class="mono">0.4</td></tr>
-              <tr><td>Synovial hyperplasia</td><td class="mono">7.5</td><td class="mono">2.0</td><td class="mono">0.7</td></tr>
-              <tr><td>Cartilage damage</td><td class="mono">6.0</td><td class="mono">1.9</td><td class="mono">1.6</td></tr>
-              <tr><td>Bone erosion</td><td class="mono">5.5</td><td class="mono">1.8</td><td class="mono">2.8</td></tr>
-              <tr><td>Enthesitis</td><td class="mono">8.0</td><td class="mono">1.7</td><td class="mono">0.5</td></tr>
-              <tr><td>DNA repair</td><td class="mono">3.0</td><td class="mono">3.4</td><td class="mono">7.7</td></tr>
-              <tr><td>Joint function</td><td class="mono">4.0</td><td class="mono">3.6</td><td class="mono">8.8</td></tr>
-            </table>
-          </div>
+        <div class="detail-layer">
+          <h4>Overlap</h4>
+          <div class="value">668</div>
+          <div class="desc">genes in all 4 layers</div>
         </div>
-
-        <!-- AUDIT VIEW -->
-        <div class="dash-pane" id="dash-audit">
-          <div class="sci-card">
-            <div class="sci-card-header">AUDIT TRAIL</div>
-            <div class="audit-log" id="auditLog">
-              <div class="audit-line"><span class="audit-time">00:00</span><span class="audit-msg">Waiting for pipeline...</span></div>
-            </div>
-          </div>
-
-          <div class="sci-card">
-            <div class="sci-card-header">BINARIES EXECUTED</div>
-            <table>
-              <tr><th>Binary</th><th>Status</th><th>Runtime</th></tr>
-              <tr><td class="mono">gaia_chaos_scanner_v2</td><td><span class="badge badge-high">OK</span></td><td class="mono">1.2s</td></tr>
-              <tr><td class="mono">gaia_boost_disease_5fold</td><td><span class="badge badge-high">OK</span></td><td class="mono">0.8s</td></tr>
-              <tr><td class="mono">variant_gene_mapper_v4</td><td><span class="badge badge-high">OK</span></td><td class="mono">0.4s</td></tr>
-              <tr><td class="mono">gaia_expand_v3</td><td><span class="badge badge-high">OK</span></td><td class="mono">2.1s</td></tr>
-              <tr><td class="mono">as_reversal_simulator</td><td><span class="badge badge-high">OK</span></td><td class="mono">0.6s</td></tr>
-            </table>
-          </div>
-
-          <div class="sci-card">
-            <div class="sci-card-header">OUTPUT FILES</div>
-            <table>
-              <tr><th>File</th><th>Records</th></tr>
-              <tr><td class="mono">as_test_results.csv</td><td class="mono">5 patients</td></tr>
-              <tr><td class="mono">as_reversal_results.txt</td><td class="mono">9 metrics</td></tr>
-              <tr><td class="mono">gaia_honest_validation.json</td><td class="mono">verified</td></tr>
-            </table>
-          </div>
+        <div class="detail-layer">
+          <h4>Top 4/4 hits</h4>
+          <div class="value">2</div>
+          <div class="desc">PCM1, NCOA7</div>
         </div>
       </div>
     </aside>
   </div>
 
+  <!-- Slide-out detail panel -->
+  <div class="detail-panel" id="detailPanel">
+    <button class="close-btn" id="closeDetail">×</button>
+    <h2 id="detailGene">PCM1</h2>
+    <div class="detail-layer">
+      <h4>Methylation (GSE179571)</h4>
+      <div class="value" id="detailMeth">0.135</div>
+      <div class="desc">Δβ AS vs CTL — <span id="detailMethDesc">hypermethylated</span></div>
+    </div>
+    <div class="detail-layer">
+      <h4>Brain expression (Allen atlas)</h4>
+      <div class="value" id="detailBrain">8.95</div>
+      <div class="desc">Mean expression in symptom-relevant regions</div>
+    </div>
+    <div class="detail-layer">
+      <h4>Transcriptomics (GSE73754)</h4>
+      <div class="value" id="detailTx">0.021</div>
+      <div class="desc">|log2FC| AS vs CTL</div>
+    </div>
+    <div class="detail-layer">
+      <h4>Proteomics (PXD026189)</h4>
+      <div class="value" id="detailProt">0.700</div>
+      <div class="desc">|log2FC| baseline → post-treatment</div>
+    </div>
+  </div>
+
   <script>
-    // ============================================================
-    // GAIA COCKPIT — Interactive Logic
-    // ============================================================
-
-    // Input tabs
-    document.querySelectorAll('.input-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.input-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelectorAll('.input-pane').forEach(p => p.classList.remove('active'));
-        document.getElementById(tab.dataset.pane).classList.add('active');
-      });
-    });
-
-    // Dashboard tabs
+    // Tab switching
     document.querySelectorAll('.dash-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
@@ -1014,185 +444,119 @@
       });
     });
 
-    // Load real patient data button
-    document.getElementById('loadRealBtn').addEventListener('click', () => {
-      const btn = document.getElementById('loadRealBtn');
-      btn.textContent = '✓ patient_data_real.json loaded (5 AS, 2 RA, 1 MS, 2 controls)';
-      btn.style.background = 'rgba(74, 222, 128, 0.15)';
-      setTimeout(() => {
-        btn.textContent = '📂 Load Real Patient Data (patient_data_real.json)';
-        btn.style.background = '';
-      }, 4000);
+    // Stage expansion
+    document.querySelectorAll('.stage-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.run-btn')) return;
+        card.classList.toggle('expanded');
+      });
     });
 
-    // Audit log helper
-    function auditLog(msg, type = '') {
-      const log = document.getElementById('auditLog');
-      const now = new Date();
-      const time = now.toTimeString().slice(0, 8);
-      const line = document.createElement('div');
-      line.className = 'audit-line';
-      line.innerHTML = `<span class="audit-time">${time}</span><span class="audit-msg ${type}">${msg}</span>`;
-      log.appendChild(line);
-      log.scrollTop = log.scrollHeight;
+    // Detail panel close
+    document.getElementById('closeDetail').addEventListener('click', () => {
+      document.getElementById('detailPanel').classList.remove('open');
+    });
+
+    // 4-layer results (from cross_validate_4layer.csv)
+    const results = [
+      { gene: 'PCM1',   meth: 0.1347, brain: 8.95, tx: 0.0209, prot: 0.7004, layers: 4 },
+      { gene: 'NCOA7',  meth: 0.1503, brain: 8.65, tx: 0.0165, prot: 0.3626, layers: 4 },
+      { gene: 'HLA-A',  meth: 0.0955, brain: 7.21, tx: 0.0497, prot: 1.1964, layers: 3 },
+      { gene: 'CTSA',   meth: 0.1002, brain: 8.28, tx: 0.0552, prot: 0.5305, layers: 3 },
+      { gene: 'DTNA',   meth: 0.1283, brain: 7.17, tx: 0.0026, prot: 1.4150, layers: 3 },
+      { gene: 'CASC3',  meth: 0.1641, brain: 8.59, tx: 0.0319, prot: 0.1571, layers: 3 },
+      { gene: 'RAP1GAP',meth: 0.1471, brain: 6.80, tx: 0.0413, prot: 0.1699, layers: 3 },
+      { gene: 'CLU',    meth: 0.1846, brain: 11.80, tx: 0.0007, prot: 0.5084, layers: 3 },
+      { gene: 'CSF1R',  meth: 0.1626, brain: 7.74, tx: 0.0269, prot: 0.3219, layers: 3 },
+      { gene: 'HSPA8',  meth: 0.0925, brain: 12.27, tx: 0.0119, prot: 0.6521, layers: 3 },
+      { gene: 'ENO1',   meth: 0.1532, brain: 10.74, tx: 0.0167, prot: 0.2895, layers: 3 },
+      { gene: 'LRIG1',  meth: 0.2236, brain: 9.10, tx: 0.0025, prot: 0.4150, layers: 3 },
+      { gene: 'DYNC1H1',meth: 0.2211, brain: 9.20, tx: 0.0146, prot: 0.0641, layers: 3 },
+      { gene: 'USP31',  meth: 0.1479, brain: 7.36, tx: 0.0013, prot: 1.0000, layers: 3 },
+      { gene: 'ACTN1',  meth: 0.1551, brain: 8.38, tx: 0.0239, prot: 0.1375, layers: 3 },
+      { gene: 'GLUD1',  meth: 0.0776, brain: 12.32, tx: 0.0132, prot: 0.4725, layers: 3 },
+      { gene: 'PRDX6',  meth: 0.1496, brain: 10.95, tx: 0.0069, prot: 0.3626, layers: 3 },
+      { gene: 'NRXN2',  meth: 0.1598, brain: 7.39, tx: 0.0065, prot: 0.6482, layers: 3 },
+      { gene: 'ENPP2',  meth: 0.1397, brain: 8.45, tx: 0.0048, prot: 0.5356, layers: 3 },
+      { gene: 'DAPK1',  meth: 0.1330, brain: 5.62, tx: 0.0206, prot: 0.4150, layers: 3 },
+    ];
+
+    function renderGeneTable(tbody, genes, showScore) {
+      tbody.innerHTML = '';
+      genes.forEach(g => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = showScore
+          ? `<td class="gene-name">${g.gene}</td><td>${((g.meth + g.tx + g.prot) / 3).toFixed(3)}</td><td><div class="xv-dots">${[1,2,3,4].map(i => `<div class="xv-dot ${i <= g.layers ? 'filled' : ''}"></div>`).join('')}</div></td>`
+          : `<td class="gene-name">${g.gene}</td><td>${g.meth.toFixed(3)}</td><td>${g.brain.toFixed(2)}</td><td>${g.tx.toFixed(3)}</td><td>${g.prot.toFixed(3)}</td><td><div class="xv-dots">${[1,2,3,4].map(i => `<div class="xv-dot ${i <= g.layers ? 'filled' : ''}"></div>`).join('')}</div></td>`;
+        tr.addEventListener('click', () => showDetail(g));
+        tbody.appendChild(tr);
+      });
     }
 
-    // Update status
-    function setStatus(text, color = '#4ade80') {
-      document.getElementById('statusText').textContent = text;
-      document.getElementById('statusDot').style.background = color;
-      document.getElementById('statusDot').style.boxShadow = `0 0 8px ${color}`;
+    function showDetail(g) {
+      document.getElementById('detailGene').textContent = g.gene;
+      document.getElementById('detailMeth').textContent = g.meth.toFixed(4);
+      document.getElementById('detailMethDesc').textContent = g.meth > 0 ? 'hypermethylated' : 'hypomethylated';
+      document.getElementById('detailBrain').textContent = g.brain.toFixed(2);
+      document.getElementById('detailTx').textContent = g.tx.toFixed(4);
+      document.getElementById('detailProt').textContent = g.prot.toFixed(4);
+      document.getElementById('detailPanel').classList.add('open');
     }
 
-    // Run pipeline
+    // Pipeline run
     document.getElementById('runBtn').addEventListener('click', async () => {
       const btn = document.getElementById('runBtn');
       btn.disabled = true;
       btn.textContent = 'Running...';
-      setStatus('Running...', '#fbbf24');
 
-      // Hide empty states, show pipeline
-      document.getElementById('pipelineEmpty').style.display = 'none';
-      document.getElementById('pipelineStages').style.display = 'block';
-      document.getElementById('dashboardEmpty').style.display = 'none';
-      document.getElementById('dashboardContent').style.display = 'block';
+      document.getElementById('dashEmpty').style.display = 'none';
+      document.getElementById('heroCard').style.display = 'block';
+      document.getElementById('topGeneTable').style.display = 'table';
 
-      // Reset audit log
-      document.getElementById('auditLog').innerHTML = '';
-      auditLog('GAIA pipeline started', 'ok');
-
-      // Reset XV statuses
-      ['chaos', 'eur', 'gwas', 'kegg', 'drugbank', 'proteomics', 'metabolomics', 'brain', 'cfdna', 'symptom'].forEach(m => {
-        const el = document.getElementById('xv-' + m);
-        if (el) {
-          el.textContent = m === 'brain' || m === 'cfdna' ? 'missing' : 'pending';
-          el.className = 'xv-status' + (m === 'brain' || m === 'cfdna' ? ' missing' : '');
-        }
-      });
-
-      // Reset gene confidence bars
-      ['hla', 'erap', 'il23r', 'runx3'].forEach(g => {
-        document.getElementById('conf-' + g).style.width = '0%';
-        document.getElementById('confval-' + g).textContent = '0/5';
-      });
-
-      // ---- Stage 1 ----
-      const s1 = document.getElementById('pstage1');
-      s1.classList.add('active');
-      auditLog('Stage 1: Data ingestion started');
-      await sleep(400);
-      document.getElementById('plog1').textContent = 'Loading patient_data_real.json...';
-      auditLog('Loaded patient_data_real.json (10 patients)', 'ok');
-      await sleep(500);
-      document.getElementById('plog1').textContent = 'Parsing VCF (2,847 variants)...';
-      auditLog('Parsed VCF: 2,847 variants in HLA region');
-      await sleep(500);
-      document.getElementById('plog1').textContent = 'Harmonizing schema...';
-      await sleep(400);
-      s1.classList.remove('active'); s1.classList.add('done');
-      auditLog('Stage 1 complete', 'ok');
-
-      // ---- Stage 2: Cross-validation ----
-      auditLog('Stage 2: Multi-modal mapping started');
-      const methods = [
-        { id: 'chaos', delay: 500, ok: true },
-        { id: 'eur', delay: 400, ok: true },
-        { id: 'gwas', delay: 600, ok: true },
-        { id: 'kegg', delay: 350, ok: true },
-        { id: 'drugbank', delay: 450, ok: true },
-        { id: 'proteomics', delay: 500, ok: true },
-        { id: 'metabolomics', delay: 400, ok: true },
-        { id: 'symptom', delay: 300, ok: true },
-        { id: 'brain', delay: 200, ok: false },
-        { id: 'cfdna', delay: 200, ok: false }
+      const stages = [
+        { id: 'stage1', log: 'log1', live: 'liveLog1', msgs: ['Loading methylation (27,378 genes)...', 'Loading transcriptomics (16,764)...', 'Loading proteomics (779)...', 'Loading brain atlas...'] },
+        { id: 'stage2', log: 'log2', live: 'liveLog2', msgs: ['Merging methylation + brain...', 'Adding transcriptomics...', 'Adding proteomics...', 'Overlap: 668 genes'] },
+        { id: 'stage3', log: 'log3', live: 'liveLog3', msgs: ['Z-scoring each layer...', 'Computing composite score...', 'Ranking 668 genes...'] },
+        { id: 'stage4', log: 'log4', live: 'liveLog4', msgs: ['Top 25% in 3 layers: 27 genes', 'Top 25% in all 4: 2 genes', 'Top hits: PCM1, NCOA7'] }
       ];
-      for (const m of methods) {
-        await sleep(m.delay);
-        const el = document.getElementById('xv-' + m.id);
-        if (m.ok) {
-          el.textContent = 'validated';
-          el.className = 'xv-status ok';
-          el.closest('.xv-method').classList.add('validated');
-          auditLog(`Mapping: ${m.id} → validated`, 'ok');
-        } else {
-          el.textContent = 'missing';
-          el.className = 'xv-status missing';
-          auditLog(`Mapping: ${m.id} → data missing`, 'warn');
+
+      for (const stage of stages) {
+        const el = document.getElementById(stage.id);
+        el.classList.add('active', 'expanded');
+        const log = document.getElementById(stage.log);
+        const liveLog = document.getElementById(stage.live);
+        const startTime = Date.now();
+
+        for (const msg of stage.msgs) {
+          log.textContent = msg;
+          const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+          liveLog.textContent = `[${elapsed}s] ${msg}`;
+          await new Promise(r => setTimeout(r, 600));
         }
+        el.classList.remove('active');
+        el.classList.add('done');
       }
 
-      // ---- Stage 3: Gene confidence ----
-      auditLog('Stage 3: Cross-validation scoring');
-      const genes = [
-        { id: 'hla', methods: 3, delay: 400 },
-        { id: 'erap', methods: 2, delay: 350 },
-        { id: 'il23r', methods: 3, delay: 450 },
-        { id: 'runx3', methods: 2, delay: 300 }
-      ];
-      for (const g of genes) {
-        await sleep(g.delay);
-        const pct = (g.methods / 5) * 100;
-        document.getElementById('conf-' + g.id).style.width = pct + '%';
-        document.getElementById('confval-' + g.id).textContent = `${g.methods}/5`;
-        auditLog(`Gene ${g.id.toUpperCase()}: ${g.methods}/5 methods agree`, g.methods >= 3 ? 'ok' : 'warn');
-      }
+      // Render results
+      document.getElementById('heroGene').textContent = results[0].gene;
+      document.getElementById('heroMeth').textContent = results[0].meth.toFixed(3);
+      document.getElementById('heroBrain').textContent = results[0].brain.toFixed(2);
+      document.getElementById('heroTx').textContent = results[0].tx.toFixed(3);
+      document.getElementById('heroProt').textContent = results[0].prot.toFixed(3);
 
-      // ---- Stage 4: Compound screening ----
-      const s4 = document.getElementById('pstage4');
-      s4.classList.add('active');
-      auditLog('Stage 4: Compound screening');
-      await sleep(400);
-      document.getElementById('plog4').textContent = 'Loading ZINC22 (444,516 compounds)...';
-      auditLog('ZINC22 loaded: 444,516 compounds');
-      await sleep(600);
-      document.getElementById('plog4').textContent = 'Docking top 100 → top 13...';
-      auditLog('Docking complete: 13 compounds ranked');
-      await sleep(500);
-      document.getElementById('plog4').textContent = 'Ranking by binding + ML R²...';
-      auditLog('Top compound: resveratrol (−8.72 kcal/mol)', 'ok');
-      s4.classList.remove('active'); s4.classList.add('done');
+      renderGeneTable(document.getElementById('topGeneBody'), results.slice(0, 10), false);
+      renderGeneTable(document.getElementById('allGeneBody'), results, true);
 
-      // ---- Stage 5: Reversal protocol ----
-      const s5 = document.getElementById('pstage5');
-      s5.classList.add('active');
-      auditLog('Stage 5: Reversal protocol design');
-      await sleep(500);
-      document.getElementById('plog5').textContent = 'Designing 7-compound protocol...';
-      auditLog('Protocol: 7 compounds (EGCG, Quercetin, Fisetin, MSM, Resveratrol, Curcumin, Berberine)');
-      await sleep(600);
-      document.getElementById('plog5').textContent = 'Simulating 365 days...';
-      auditLog('Running as_reversal_simulator (365 days)');
-      await sleep(500);
-      document.getElementById('plog5').textContent = 'Remission at day 90, reversal at 85%';
-      auditLog('Simulation complete: BASDAI 6.9 → 1.0, reversal 85%', 'ok');
-      s5.classList.remove('active'); s5.classList.add('done');
-
-      // ---- Complete ----
-      setStatus('Complete', '#4ade80');
       btn.disabled = false;
       btn.textContent = 'Run again →';
-      auditLog('Pipeline complete — all stages finished', 'ok');
-
-      // Update integrity badge (brain + cfdna missing)
-      document.getElementById('integrityText').textContent = '8/10 data sources';
     });
 
-    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-    // ============================================================
-    // Particle Network Background
-    // ============================================================
+    // Background particles
     (function() {
       const canvas = document.getElementById('app-bg-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      let W, H, DPR;
-      let particles = [];
-      const CONFIG = {
-        count: 50, maxLinkDist: 130,
-        colors: ['rgba(74,222,128,', 'rgba(167,243,208,', 'rgba(96,165,250,', 'rgba(52,211,153,'],
-        linkOpacity: 0.10, nodeOpacity: 0.4
-      };
+      let W, H, DPR, particles = [];
       function resize() {
         DPR = Math.min(window.devicePixelRatio || 1, 2);
         W = window.innerWidth; H = window.innerHeight;
@@ -1202,39 +566,29 @@
       }
       function rand(a, b) { return a + Math.random() * (b - a); }
       function makeParticle() {
-        const homeX = Math.random() * W, homeY = Math.random() * H;
-        return {
-          homeX, homeY, x: homeX, y: homeY,
-          ampX: rand(6, 20), ampY: rand(6, 20),
-          freqX: rand(0.0003, 0.001), freqY: rand(0.0003, 0.001),
-          t: Math.random() * 1000, r: rand(1.2, 2.5),
-          color: CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)],
-          phase: Math.random() * Math.PI * 2, pulseSpeed: rand(0.008, 0.02)
-        };
+        const hx = Math.random() * W, hy = Math.random() * H;
+        return { hx, hy, x: hx, y: hy, ampX: rand(6, 20), ampY: rand(6, 20), fx: rand(0.0003, 0.001), fy: rand(0.0003, 0.001), t: Math.random() * 1000, r: rand(1.2, 2.5), color: ['rgba(74,222,128,', 'rgba(96,165,250,'][Math.floor(Math.random()*2)], phase: Math.random() * Math.PI * 2 };
       }
-      function initParticles() {
+      function init() {
         particles = [];
-        const area = W * H;
-        const n = Math.max(25, Math.min(80, Math.round(CONFIG.count * (area / 600000))));
+        const n = Math.max(25, Math.min(80, Math.round(50 * (W*H/600000))));
         for (let i = 0; i < n; i++) particles.push(makeParticle());
       }
       function step() {
         ctx.clearRect(0, 0, W, H);
         for (const p of particles) {
           p.t += 1;
-          p.x = p.homeX + Math.sin(p.t * p.freqX) * p.ampX;
-          p.y = p.homeY + Math.cos(p.t * p.freqY) * p.ampY;
-          p.phase += p.pulseSpeed;
+          p.x = p.hx + Math.sin(p.t * p.fx) * p.ampX;
+          p.y = p.hy + Math.cos(p.t * p.fy) * p.ampY;
+          p.phase += 0.015;
         }
         for (let i = 0; i < particles.length; i++) {
-          const a = particles[i];
           for (let j = i + 1; j < particles.length; j++) {
-            const b = particles[j];
+            const a = particles[i], b = particles[j];
             const dx = a.x - b.x, dy = a.y - b.y;
-            const d2 = dx * dx + dy * dy;
-            if (d2 > CONFIG.maxLinkDist * CONFIG.maxLinkDist) continue;
-            const d = Math.sqrt(d2);
-            const alpha = (1 - d / CONFIG.maxLinkDist) * CONFIG.linkOpacity;
+            const d2 = dx*dx + dy*dy;
+            if (d2 > 140*140) continue;
+            const alpha = (1 - Math.sqrt(d2)/140) * 0.1;
             ctx.strokeStyle = 'rgba(74,222,128,' + alpha.toFixed(3) + ')';
             ctx.lineWidth = 0.5;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
@@ -1242,16 +596,13 @@
         }
         for (const p of particles) {
           const pulse = 0.85 + 0.35 * Math.sin(p.phase);
-          const r = p.r * pulse;
-          ctx.fillStyle = p.color + CONFIG.nodeOpacity + ')';
-          ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = p.color + '0.08)';
-          ctx.beginPath(); ctx.arc(p.x, p.y, r * 4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = p.color + '0.5)';
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * pulse, 0, Math.PI * 2); ctx.fill();
         }
         requestAnimationFrame(step);
       }
-      window.addEventListener('resize', () => { resize(); initParticles(); });
-      resize(); initParticles(); step();
+      window.addEventListener('resize', () => { resize(); init(); });
+      resize(); init(); step();
     })();
   </script>
 </body>
