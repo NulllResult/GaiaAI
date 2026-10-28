@@ -77,6 +77,38 @@
   <div class="panel active" id="human">
     <div class="loading" id="humanLoading">Loading AS drivers...</div>
     <div id="humanContent" style="display:none;">
+      
+<div class="card" id="patientFormCard">
+  <h3>Patient Profile</h3>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px;">
+    <div>
+      <label style="font-size:0.8rem; color:#8fa89c; display:block; margin-bottom:6px;">Age</label>
+      <input id="patientAge" type="number" value="45" min="18" max="90" style="width:100%; padding:8px; background:#0a1410; border:1px solid rgba(74,222,128,0.3); border-radius:6px; color:#e8f4ee;">
+    </div>
+    <div>
+      <label style="font-size:0.8rem; color:#8fa89c; display:block; margin-bottom:6px;">HLA-B27 Status</label>
+      <select id="patientHLA" style="width:100%; padding:8px; background:#0a1410; border:1px solid rgba(74,222,128,0.3); border-radius:6px; color:#e8f4ee;">
+        <option value="positive">Positive</option>
+        <option value="negative">Negative</option>
+        <option value="unknown">Unknown</option>
+      </select>
+    </div>
+    <div>
+      <label style="font-size:0.8rem; color:#8fa89c; display:block; margin-bottom:6px;">Baseline BASDAI</label>
+      <input id="patientBASDAI" type="number" value="6.9" min="0" max="10" step="0.1" style="width:100%; padding:8px; background:#0a1410; border:1px solid rgba(74,222,128,0.3); border-radius:6px; color:#e8f4ee;">
+    </div>
+    <div>
+      <label style="font-size:0.8rem; color:#8fa89c; display:block; margin-bottom:6px;">CYP2D6 Status</label>
+      <select id="patientCYP" style="width:100%; padding:8px; background:#0a1410; border:1px solid rgba(74,222,128,0.3); border-radius:6px; color:#e8f4ee;">
+        <option value="normal">Normal metabolizer</option>
+        <option value="poor">Poor metabolizer</option>
+        <option value="rapid">Rapid metabolizer</option>
+      </select>
+    </div>
+  </div>
+  <button id="updateProtocol" style="margin-top:16px; padding:12px 24px; background:#4ade80; color:#0a1410; border:none; border-radius:8px; font-weight:600; cursor:pointer; font-size:0.95rem;">Update My Protocol</button>
+</div>
+
       <div class="card">
         <h3>The AS Core — 4 Driver Genes</h3>
         <div id="drivers"></div>
@@ -191,6 +223,54 @@ document.querySelectorAll('.tab').forEach(function(tab) {
     if (tab.dataset.tab === 'scientist') loadScientist();
   });
 });
+
+document.getElementById('updateProtocol').addEventListener('click', function() {
+  var age = parseInt(document.getElementById('patientAge').value);
+  var hla = document.getElementById('patientHLA').value;
+  var basdai = parseFloat(document.getElementById('patientBASDAI').value);
+  var cyp = document.getElementById('patientCYP').value;
+
+  // Update the subtitle
+  var subtitle = document.querySelector('.subtitle');
+  subtitle.innerHTML = 'HLA-B27 ' + hla + ' · Age ' + age + ' · Baseline BASDAI ' + basdai.toFixed(1) + ' · ' + (cyp === 'normal' ? 'Normal' : cyp === 'poor' ? 'Poor' : 'Rapid') + ' CYP2D6 metabolizer';
+
+  // Dynamic projection: if poor metabolizer, compounds accumulate faster (better), if rapid, faster clearance (worse)
+  var cypFactor = cyp === 'poor' ? 1.15 : cyp === 'rapid' ? 0.85 : 1.0;
+  var projectedDay90 = Math.max(0.5, basdai * 0.23 / cypFactor);
+  var projectedDay365 = Math.max(0.3, basdai * 0.14 / cypFactor);
+
+  var table = document.querySelector('.card table');
+  var rows = table.querySelectorAll('tr');
+  if (rows.length > 1) {
+    rows[1].querySelectorAll('.mono')[2].textContent = projectedDay365.toFixed(1);
+    rows[1].querySelectorAll('.mono')[1].textContent = projectedDay90.toFixed(1);
+    rows[1].querySelectorAll('.mono')[0].textContent = basdai.toFixed(1);
+  }
+
+  // Highlight AS core differently if HLA-B27 negative
+  var drivers = document.getElementById('drivers');
+  if (hla === 'negative') {
+    drivers.innerHTML = '<div class="desc" style="color:#fbbf24;">HLA-B27 negative: AS risk is lower. Consider differential diagnosis (e.g., psoriatic arthritis, IBD-associated). The protocol still targets IL23R/IL17A/TNF, but discuss HLA-B27 status with your clinician.</div>';
+  } else {
+    loadHuman();
+  }
+
+  // If poor metabolizer, warn about CYP2D6
+  if (cyp === 'poor') {
+    var warning = document.createElement('div');
+    warning.className = 'desc';
+    warning.style.cssText = 'color:#fbbf24; margin-top:12px; padding:12px; background:rgba(251,191,36,0.1); border-radius:6px;';
+    warning.innerHTML = '<strong>⚠️ CYP2D6 Poor Metabolizer:</strong> You may accumulate certain compounds. Quercetin (CYP2D6 inhibitor) should be monitored. Discuss with your clinician before starting.';
+    if (!document.getElementById('cypWarning')) {
+      warning.id = 'cypWarning';
+      drivers.parentElement.appendChild(warning);
+    }
+  } else {
+    var existing = document.getElementById('cypWarning');
+    if (existing) existing.remove();
+  }
+});
+
 loadHuman();
 </script>
 </body>
