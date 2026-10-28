@@ -1,0 +1,27 @@
+Gene,DNA_Chaos,Transcriptomics,Proteomics,Pathways,Methylation,OTC_Compound,Mechanism,Biologic_Drugs,Drug_Count
+CD28,Yes,Yes,Yes,Yes,Yes,Curcumin (co-stimulation block),TNF / JAK-STAT inhibition,None,0
+JAK3,Yes,Yes,Yes,Yes,Yes,Curcumin (JAK-STAT inhibition),TNF / JAK-STAT inhibition,Tofacitinib|Ritlecitinib,2
+MTOR,Yes,Yes,Yes,Yes,Yes,Resveratrol (mTOR inhibition), EGCG,STAT / p53 / DNA repair activation,Everolimus|Temsirolimus|Sirolimus|Ridaforolimus,4
+IL17A,Yes,Yes,Yes,Yes,Yes,Berberine (Th17 suppression), Quercetin,Th17 / IL-23 pathway suppression,Secukinumab|Ixekizumab|Brodalumab|Bimekizumab,4
+UGT1A1,Yes,Yes,Yes,Yes,Yes,Curcumin (UGT1A1 induction),TNF / JAK-STAT inhibition,Irinotecan|Atazanavir|Belinostat,3
+STAT4,Yes,Yes,Yes,Yes,Yes,EGCG (STAT4 signaling block),STAT / p53 / DNA repair activation,None,0
+PDCD1,Yes,Yes,Yes,Yes,Yes,Resveratrol (PD-1 modulation),mTOR / SIRT1 / Treg induction,Pembrolizumab|Nivolumab|Cemiplimab|Dostarlimab,4
+CTLA4,Yes,Yes,Yes,Yes,Yes,Resveratrol (immune checkpoint upregulation),mTOR / SIRT1 / Treg induction,Ipilimumab|Tremelimumab|Abatacept|Belatacept,4
+FOXP3,Yes,Yes,Yes,Yes,Yes,Resveratrol (Treg induction), EGCG,STAT / p53 / DNA repair activation,None,0
+STAT3,Yes,Yes,Yes,Yes,Yes,EGCG (STAT3 phosphorylation block), Curcumin,TNF / JAK-STAT inhibition,None,0
+EGFR,Yes,Yes,Yes,Yes,Yes,Quercetin (EGFR inhibition), EGCG,STAT / p53 / DNA repair activation,Erlotinib|Gefitinib|Afatinib|Osimertinib|Dacomitinib|Cetuximab|Panitumumab|Necitumumab|Amivantamab|Mobocertinib,10
+STAT1,Yes,Yes,Yes,Yes,Yes,EGCG (STAT1 suppression),STAT / p53 / DNA repair activation,None,0
+IL23R,Yes,Yes,Yes,Yes,Yes,Berberine (Th17 suppression), Resveratrol,Th17 / IL-23 pathway suppression,Ustekinumab|Guselkumab|Risankizumab|Tildrakizumab,4
+JAK2,Yes,Yes,Yes,Yes,Yes,Curcumin (JAK-STAT inhibition), Resveratrol,TNF / JAK-STAT inhibition,Ruxolitinib|Fedratinib|Pacritinib|Baricitinib,4
+PTPN22,Yes,Yes,Yes,Yes,Yes,EGCG (PTPN22 phosphatase activity),STAT / p53 / DNA repair activation,None,0
+TP53,Yes,Yes,Yes,Yes,Yes,EGCG (p53 activation), Resveratrol,STAT / p53 / DNA repair activation,None,0
+CYP2D6,Yes,Yes,Yes,Yes,Yes,Quercetin (CYP2D6 inhibition),Senolytic / CYP inhibition,Codeine|Tamoxifen|Fluoxetine|Paroxetine|Tramadol|Metoprolol|Propafenone,7
+JAK1,Yes,Yes,Yes,Yes,Yes,Curcumin (JAK-STAT inhibition),TNF / JAK-STAT inhibition,Upadacitinib|Filgotinib|Baricitinib|Ruxolitinib|Tofacitinib|Abrocitinib,6
+CYP2C19,Yes,Yes,Yes,Yes,Yes,Fisetin (CYP2C19 inhibition),Senolytic / RAS pathway block,Clopidogrel|Omeprazole|Pantoprazole|Voriconazole|Diazepam,5
+TNF,Yes,Yes,Yes,Yes,Yes,Curcumin (TNF-alpha inhibition), EGCG,TNF / JAK-STAT inhibition,Adalimumab|Etanercept|Infliximab|Golimumab|Certolizumab|Thalidomide|Lenalidomide|Pomalidomide,8
+CD40,Yes,Yes,Yes,Yes,Yes,Curcumin (CD40-CD40L block),TNF / JAK-STAT inhibition,None,0
+CYP2C9,Yes,Yes,Yes,Yes,Yes,Quercetin (CYP2C9 inhibition),Senolytic / CYP inhibition,Warfarin|Phenytoin|Losartan|Tolbutamide,4
+DPYD,Yes,Yes,Yes,Yes,Yes,EGCG (DPYD modulation),STAT / p53 / DNA repair activation,5-Fluorouracil|Capecitabine|Tegafur,3
+HLA-B,Yes,Yes,Yes,Yes,Yes,Curcumin (MHC-I antigen presentation modulation),TNF / JAK-STAT inhibition,None,0
+KRAS,Yes,Yes,Yes,Yes,Yes,Fisetin (KRAS pathway modulation),Senolytic / RAS pathway block,None,0
+CYP3A4,Yes,Yes,Yes,Yes,Yes,Quercetin (CYP3A4 inhibition - slows drug metabolism),Senolytic / CYP inhibition,Simvastatin|Atorvastatin|Cyclosporine|Tacrolimus|Midazolam|Nifedipine,6
