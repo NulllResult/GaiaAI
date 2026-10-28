@@ -25,3 +25,4 @@ DPYD,Yes,Yes,Yes,Yes,Yes,EGCG (DPYD modulation),STAT / p53 / DNA repair activati
 HLA-B,Yes,Yes,Yes,Yes,Yes,Curcumin (MHC-I antigen presentation modulation),TNF / JAK-STAT inhibition,None,0
 KRAS,Yes,Yes,Yes,Yes,Yes,Fisetin (KRAS pathway modulation),Senolytic / RAS pathway block,None,0
 CYP3A4,Yes,Yes,Yes,Yes,Yes,Quercetin (CYP3A4 inhibition - slows drug metabolism),Senolytic / CYP inhibition,Simvastatin|Atorvastatin|Cyclosporine|Tacrolimus|Midazolam|Nifedipine,6
+ERAP1,No,No,No,No,No,EGCG (ERAP1 inhibition),ERAP1 antigen processing inhibition,None,0
