@@ -238,3 +238,30 @@ That's everything. If a new chat needs to know what GAIA is and where everything
 3. The one overlapping pair (Curcumin + Berberine) acts through different genes on the same pathway — this is rational synergy, not competition.
 4. This validates the core thesis: natural compounds can be rationally combined to target a disease network without competing for the same targets.
 
+
+---
+
+## 14. WEB-LEARNING PIPELINE (Complete, 2026-10-31)
+
+**Location:** `D:\Gaia\01_CORE\web_learning\`
+
+**The pipeline (runs daily via cron at 3 AM):**
+1. `pubmed_fetcher` — fetches 20 queries × 20 abstracts from PubMed E-utilities
+2. `gaia_parser` — whole-word matching, 140-gene multi-source whitelist, drug exclusion
+3. `gaia_integrator` — compares against 383 known pairs, confirms + queues
+4. `gaia_promote` — promotes pairs with 3+ evidence to pending/promote_to_map.txt
+5. `gaia_reporter` — writes weekly markdown report
+
+**Today's first run (2026-10-31):**
+- 345 abstracts fetched
+- 76 gene-disease pairs written
+- 13 confirmations (NOD2×9, ERAP1×1, IRGM×1)
+- 8 new candidates: TYK2|Crohns, IL10|SLE, FOXP3|SLE, IL33|RA, BDNF|AS, RB1|RA, GBA|Crohns (abbrev collision), APP|Psoriasis (abbrev collision)
+- 0 promoted (no pair has 3+ evidence yet)
+
+**Cron:** `0 3 * * * /mnt/d/Gaia/01_CORE/web_learning/gaia_daily_crawl.sh`
+
+**Retrain loop:** After 3 independent papers confirm a new pair, it promotes to `promote_to_map.txt`, and the next 5-layer merge includes it.
+
+**This is the self-learning loop the website claims. It's real. It runs daily. It feeds back into the gene map.**
+
