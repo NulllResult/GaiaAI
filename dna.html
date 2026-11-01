@@ -38,7 +38,7 @@
 </header>
 <div class="container">
   <h2>Chaos-Fractal DNA Evidence</h2>
-  <p class="subtitle">866,653 windows across 24 chromosomes, mapped to 40,834 genes. Showing window-level evidence for the 31 five-layer validated genes.</p>
+  <p class="subtitle">866,652 windows across 24 chromosomes, mapped to 40,834 genes. For each 5-layer gene: fractal dimension, Hurst, Lyapunov, GC content of its windows.</p>
 
   <div class="stats" id="stats"></div>
 
@@ -49,8 +49,8 @@
   </div>
 
   <div class="card">
-    <h3>All 5-layer genes with DNA evidence</h3>
-    <div id="geneTable"><div class="loading">Loading...</div></div>
+    <h3>5-Layer Genes — Chaos-Fractal Signatures</h3>
+    <div id="geneTable"><div class="loading">Loading DNA evidence (66 MB, may take a moment)...</div></div>
   </div>
 </div>
 
@@ -64,25 +64,25 @@ async function loadData() {
     var fiveLayerRes = await fetch('cross_validate_5layer_FINAL.csv');
     var fiveLayerText = await fiveLayerRes.text();
     var lines = fiveLayerText.trim().split(/\r?\n/);
-    var header = lines[0].split(',');
     for (var i = 1; i < lines.length; i++) {
       var cols = lines[i].split(',');
       if (cols[7] === 'Very High') fiveLayerGenes.push(cols[0]);
     }
     document.getElementById('stats').innerHTML =
       '<div class="stat"><div class="num">' + fiveLayerGenes.length + '</div><div class="label">5-Layer Genes</div></div>' +
-      '<div class="stat"><div class="num">866,653</div><div class="label">Window-Gene Pairs</div></div>' +
+      '<div class="stat"><div class="num">866,652</div><div class="label">Window-Gene Pairs</div></div>' +
       '<div class="stat"><div class="num">40,834</div><div class="label">DNA Layer Genes</div></div>' +
       '<div class="stat"><div class="num">24</div><div class="label">Chromosomes</div></div>';
 
-    // 2. Load DNA mapping (filter to 5-layer genes)
+    // 2. Load DNA features (filter to 5-layer genes)
     var dnaRes = await fetch('cross_mapping_genes_with_features.csv');
     var dnaText = await dnaRes.text();
     var dnaLines = dnaText.trim().split(/\r?\n/);
     var set = new Set(fiveLayerGenes);
+    // Format: window_chr,window_start,window_end,region_type,gene,overlap_bp,fractal_dim,hurst,lyapunov,gc_content
     for (var j = 1; j < dnaLines.length; j++) {
       var cols = dnaLines[j].split(',');
-      if (cols.length < 6) continue;
+      if (cols.length < 10) continue;
       var gene = cols[4];
       if (!set.has(gene)) continue;
       if (!dnaByGene[gene]) dnaByGene[gene] = [];
@@ -91,26 +91,39 @@ async function loadData() {
         start: cols[1],
         end: cols[2],
         region: cols[3],
-        overlap: cols[5]
+        overlap: cols[5],
+        fd: parseFloat(cols[6]),
+        hurst: parseFloat(cols[7]),
+        lyap: parseFloat(cols[8]),
+        gc: parseFloat(cols[9])
       });
     }
 
-    // 3. Render the gene table
-    var html = '<table><thead><tr><th>Gene</th><th>Windows</th><th>Chr</th><th>Avg Fractal</th><th>Avg Hurst</th><th>Avg GC</th></tr></thead><tbody>';
-    for (var g in dnaByGene) {
+    // 3. Render the gene table with averages
+    var html = '<table><thead><tr><th>Gene</th><th>Windows</th><th>Chr</th><th>Avg Fractal</th><th>Avg Hurst</th><th>Avg Lyap</th><th>Avg GC</th></tr></thead><tbody>';
+    var geneList = Object.keys(dnaByGene).sort();
+    for (var gi = 0; gi < geneList.length; gi++) {
+      var g = geneList[gi];
       var windows = dnaByGene[g];
       var chroms = new Set();
-      var regions = {};
+      var sumFD = 0, sumH = 0, sumLyap = 0, sumGC = 0, n = 0;
       for (var k = 0; k < windows.length; k++) {
-        chroms.add(windows[k].chr);
-        regions[windows[k].region] = (regions[windows[k].region] || 0) + 1;
+        var w = windows[k];
+        chroms.add(w.chr);
+        if (!isNaN(w.fd)) { sumFD += w.fd; sumH += w.hurst; sumLyap += w.lyap; sumGC += w.gc; n++; }
       }
-      var avgFD = 0, avgH = 0, avgGC = 0; for (var k = 0; k < windows.length; k++) { avgFD += parseFloat(windows[k].fractal_dim); avgH += parseFloat(windows[k].hurst); avgGC += parseFloat(windows[k].gc_content); } avgFD /= windows.length; avgH /= windows.length; avgGC /= windows.length;
+      var avgFD = n > 0 ? (sumFD/n).toFixed(3) : '—';
+      var avgH = n > 0 ? (sumH/n).toFixed(3) : '—';
+      var avgLyap = n > 0 ? (sumLyap/n).toFixed(3) : '—';
+      var avgGC = n > 0 ? (sumGC/n).toFixed(3) : '—';
       html += '<tr style="cursor:pointer;" onclick="showGene(\'' + g + '\')">' +
         '<td class="mono high">' + g + '</td>' +
         '<td class="mono">' + windows.length + '</td>' +
         '<td class="mono">' + Array.from(chroms).join(', ') + '</td>' +
-        '<td>' + regionStr + '</td>' +
+        '<td class="mono">' + avgFD + '</td>' +
+        '<td class="mono">' + avgH + '</td>' +
+        '<td class="mono">' + avgLyap + '</td>' +
+        '<td class="mono">' + avgGC + '</td>' +
         '</tr>';
     }
     html += '</tbody></table>';
@@ -123,14 +136,21 @@ async function loadData() {
 function showGene(gene) {
   var windows = dnaByGene[gene];
   if (!windows) return;
-  var html = '<h4 style="color:#4ade80; margin-bottom:12px;">' + gene + ' — ' + windows.length + ' windows</h4>';
-  html += '<table><thead><tr><th>Chr</th><th>Start</th><th>End</th><th>Region</th><th>Overlap (bp)</th></tr></thead><tbody>';
-  for (var i = 0; i < Math.min(20, windows.length); i++) {
+  var html = '<h4 style="color:#4ade80; margin-bottom:12px;">' + gene + ' — ' + windows.length + ' windows (showing 30)</h4>';
+  html += '<table><thead><tr><th>Chr</th><th>Start</th><th>End</th><th>Region</th><th>Fractal</th><th>Hurst</th><th>Lyap</th><th>GC</th></tr></thead><tbody>';
+  for (var i = 0; i < Math.min(30, windows.length); i++) {
     var w = windows[i];
-    html += '<tr><td class="mono">' + w.chr + '</td><td class="mono">' + w.start + '</td><td class="mono">' + w.end + '</td><td>' + w.region + '</td><td class="mono">' + w.overlap + '</td></tr>';
+    html += '<tr><td class="mono">' + w.chr + '</td>' +
+      '<td class="mono">' + w.start + '</td>' +
+      '<td class="mono">' + w.end + '</td>' +
+      '<td>' + w.region + '</td>' +
+      '<td class="mono">' + (isNaN(w.fd) ? '—' : w.fd.toFixed(3)) + '</td>' +
+      '<td class="mono">' + (isNaN(w.hurst) ? '—' : w.hurst.toFixed(3)) + '</td>' +
+      '<td class="mono">' + (isNaN(w.lyap) ? '—' : w.lyap.toFixed(3)) + '</td>' +
+      '<td class="mono">' + (isNaN(w.gc) ? '—' : w.gc.toFixed(3)) + '</td>' +
+      '</tr>';
   }
   html += '</tbody></table>';
-  if (windows.length > 20) html += '<p style="color:#8fa89c; margin-top:8px;">Showing 20 of ' + windows.length + '</p>';
   document.getElementById('searchResults').innerHTML = html;
 }
 
