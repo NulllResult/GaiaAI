@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIA — DNA Evidence</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0e0c; color: #e8f4ee; min-height: 100vh; }
+  header { padding: 24px 40px; border-bottom: 1px solid rgba(74,222,128,0.15); display: flex; justify-content: space-between; align-items: center; }
+  header h1 { font-size: 1.4rem; }
+  header h1 span { color: #4ade80; }
+  header a { color: #4ade80; text-decoration: none; font-size: 0.9rem; }
+  header a:hover { text-decoration: underline; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 40px; }
+  h2 { font-size: 1.8rem; margin-bottom: 8px; }
+  .subtitle { color: #8fa89c; margin-bottom: 32px; }
+  .card { background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.15); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .card h3 { font-family: ui-monospace, monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: #4ade80; margin-bottom: 16px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat { background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.15); border-radius: 8px; padding: 16px; }
+  .stat .num { font-size: 1.8rem; font-weight: 700; color: #4ade80; }
+  .stat .label { font-size: 0.75rem; color: #8fa89c; text-transform: uppercase; letter-spacing: 0.08em; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(74,222,128,0.06); font-size: 0.85rem; }
+  th { font-family: ui-monospace, monospace; font-size: 0.7rem; text-transform: uppercase; color: #8fa89c; font-weight: 500; }
+  td.mono { font-family: ui-monospace, monospace; color: #a7f3d0; }
+  td.high { color: #4ade80; font-weight: 600; }
+  input { width: 100%; padding: 10px 14px; background: rgba(14,26,20,0.8); border: 1px solid rgba(74,222,128,0.25); border-radius: 6px; color: #e8f4ee; font-size: 0.9rem; margin-bottom: 20px; }
+  .loading { text-align: center; padding: 60px; color: #8fa89c; }
+  .error { color: #f87171; }
+</style>
+</head>
+<body>
+<header>
+  <h1><span>GAIA</span> — DNA Evidence</h1>
+  <a href="app.html">← Back to Protocol</a>
+</header>
+<div class="container">
+  <h2>Chaos-Fractal DNA Evidence</h2>
+  <p class="subtitle">866,653 windows across 24 chromosomes, mapped to 40,834 genes. Showing window-level evidence for the 31 five-layer validated genes.</p>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="card">
+    <h3>Search by gene</h3>
+    <input type="text" id="searchInput" placeholder="Type a gene symbol (e.g., HLA-B, TNF, JAK2)">
+    <div id="searchResults"></div>
+  </div>
+
+  <div class="card">
+    <h3>All 5-layer genes with DNA evidence</h3>
+    <div id="geneTable"><div class="loading">Loading...</div></div>
+  </div>
+</div>
+
+<script>
+var fiveLayerGenes = [];
+var dnaByGene = {};
+
+async function loadData() {
+  try {
+    // 1. Load 5-layer genes
+    var fiveLayerRes = await fetch('cross_validate_5layer_FINAL.csv');
+    var fiveLayerText = await fiveLayerRes.text();
+    var lines = fiveLayerText.trim().split(/\r?\n/);
+    var header = lines[0].split(',');
+    for (var i = 1; i < lines.length; i++) {
+      var cols = lines[i].split(',');
+      if (cols[7] === 'Very High') fiveLayerGenes.push(cols[0]);
+    }
+    document.getElementById('stats').innerHTML =
+      '<div class="stat"><div class="num">' + fiveLayerGenes.length + '</div><div class="label">5-Layer Genes</div></div>' +
+      '<div class="stat"><div class="num">866,653</div><div class="label">Window-Gene Pairs</div></div>' +
+      '<div class="stat"><div class="num">40,834</div><div class="label">DNA Layer Genes</div></div>' +
+      '<div class="stat"><div class="num">24</div><div class="label">Chromosomes</div></div>';
+
+    // 2. Load DNA mapping (filter to 5-layer genes)
+    var dnaRes = await fetch('cross_mapping_genes_all.csv');
+    var dnaText = await dnaRes.text();
+    var dnaLines = dnaText.trim().split(/\r?\n/);
+    var set = new Set(fiveLayerGenes);
+    for (var j = 1; j < dnaLines.length; j++) {
+      var cols = dnaLines[j].split(',');
+      if (cols.length < 6) continue;
+      var gene = cols[4];
+      if (!set.has(gene)) continue;
+      if (!dnaByGene[gene]) dnaByGene[gene] = [];
+      dnaByGene[gene].push({
+        chr: cols[0],
+        start: cols[1],
+        end: cols[2],
+        region: cols[3],
+        overlap: cols[5]
+      });
+    }
+
+    // 3. Render the gene table
+    var html = '<table><thead><tr><th>Gene</th><th>Windows</th><th>Chromosomes</th><th>Region Types</th></tr></thead><tbody>';
+    for (var g in dnaByGene) {
+      var windows = dnaByGene[g];
+      var chroms = new Set();
+      var regions = {};
+      for (var k = 0; k < windows.length; k++) {
+        chroms.add(windows[k].chr);
+        regions[windows[k].region] = (regions[windows[k].region] || 0) + 1;
+      }
+      var regionStr = Object.keys(regions).map(function(r) { return r + ' (' + regions[r] + ')'; }).join(', ');
+      html += '<tr style="cursor:pointer;" onclick="showGene(\'' + g + '\')">' +
+        '<td class="mono high">' + g + '</td>' +
+        '<td class="mono">' + windows.length + '</td>' +
+        '<td class="mono">' + Array.from(chroms).join(', ') + '</td>' +
+        '<td>' + regionStr + '</td>' +
+        '</tr>';
+    }
+    html += '</tbody></table>';
+    document.getElementById('geneTable').innerHTML = html;
+  } catch (e) {
+    document.getElementById('geneTable').innerHTML = '<div class="error">Error: ' + e.message + '</div>';
+  }
+}
+
+function showGene(gene) {
+  var windows = dnaByGene[gene];
+  if (!windows) return;
+  var html = '<h4 style="color:#4ade80; margin-bottom:12px;">' + gene + ' — ' + windows.length + ' windows</h4>';
+  html += '<table><thead><tr><th>Chr</th><th>Start</th><th>End</th><th>Region</th><th>Overlap (bp)</th></tr></thead><tbody>';
+  for (var i = 0; i < Math.min(20, windows.length); i++) {
+    var w = windows[i];
+    html += '<tr><td class="mono">' + w.chr + '</td><td class="mono">' + w.start + '</td><td class="mono">' + w.end + '</td><td>' + w.region + '</td><td class="mono">' + w.overlap + '</td></tr>';
+  }
+  html += '</tbody></table>';
+  if (windows.length > 20) html += '<p style="color:#8fa89c; margin-top:8px;">Showing 20 of ' + windows.length + '</p>';
+  document.getElementById('searchResults').innerHTML = html;
+}
+
+document.getElementById('searchInput').addEventListener('input', function(e) {
+  var q = e.target.value.trim().toUpperCase();
+  if (!q) { document.getElementById('searchResults').innerHTML = ''; return; }
+  if (dnaByGene[q]) showGene(q);
+  else document.getElementById('searchResults').innerHTML = '<p style="color:#8fa89c;">No DNA evidence found for ' + q + '</p>';
+});
+
+loadData();
+</script>
+</body>
+</html>
