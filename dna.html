@@ -76,7 +76,7 @@ async function loadData() {
       '<div class="stat"><div class="num">24</div><div class="label">Chromosomes</div></div>';
 
     // 2. Load DNA mapping (filter to 5-layer genes)
-    var dnaRes = await fetch('cross_mapping_genes_all.csv');
+    var dnaRes = await fetch('cross_mapping_genes_with_features.csv');
     var dnaText = await dnaRes.text();
     var dnaLines = dnaText.trim().split(/\r?\n/);
     var set = new Set(fiveLayerGenes);
@@ -96,7 +96,7 @@ async function loadData() {
     }
 
     // 3. Render the gene table
-    var html = '<table><thead><tr><th>Gene</th><th>Windows</th><th>Chromosomes</th><th>Region Types</th></tr></thead><tbody>';
+    var html = '<table><thead><tr><th>Gene</th><th>Windows</th><th>Chr</th><th>Avg Fractal</th><th>Avg Hurst</th><th>Avg GC</th></tr></thead><tbody>';
     for (var g in dnaByGene) {
       var windows = dnaByGene[g];
       var chroms = new Set();
@@ -105,7 +105,7 @@ async function loadData() {
         chroms.add(windows[k].chr);
         regions[windows[k].region] = (regions[windows[k].region] || 0) + 1;
       }
-      var regionStr = Object.keys(regions).map(function(r) { return r + ' (' + regions[r] + ')'; }).join(', ');
+      var avgFD = 0, avgH = 0, avgGC = 0; for (var k = 0; k < windows.length; k++) { avgFD += parseFloat(windows[k].fractal_dim); avgH += parseFloat(windows[k].hurst); avgGC += parseFloat(windows[k].gc_content); } avgFD /= windows.length; avgH /= windows.length; avgGC /= windows.length;
       html += '<tr style="cursor:pointer;" onclick="showGene(\'' + g + '\')">' +
         '<td class="mono high">' + g + '</td>' +
         '<td class="mono">' + windows.length + '</td>' +
