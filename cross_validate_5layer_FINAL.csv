@@ -1,10 +1,17 @@
 Gene,DNA_Chaos,Transcriptomics,Proteomics,Pathways,Methylation,Layers_Hit,Confidence
+DTWD1P1,Yes,No,No,No,No,1,Low
+LINC03060,Yes,No,No,No,No,1,Low
+HMGB1P11,Yes,No,No,No,No,1,Low
+RPL12P7,Yes,No,No,No,No,1,Low
+RNU6-392P,Yes,No,No,No,No,1,Low
 LINC01810,Yes,No,No,No,No,1,Low
 BANCR,Yes,No,No,No,No,1,Low
 TAF9BP1,Yes,No,No,No,No,1,Low
 USP17L10,Yes,No,No,No,No,1,Low
 RNU1-68P,Yes,No,No,No,No,1,Low
 TREHP1,Yes,No,No,No,No,1,Low
+RN7SKP134,Yes,No,No,No,No,1,Low
+MTA1-DT,Yes,No,No,No,No,1,Low
 KIF18BP1,Yes,No,No,No,No,1,Low
 RNU6-897P,Yes,No,No,No,No,1,Low
 RPS27P23,Yes,No,No,No,No,1,Low
@@ -21,8 +28,9 @@ PLA2G10BP,Yes,No,No,No,No,1,Low
 SNRPGP18,Yes,No,No,No,No,1,Low
 LINC01787,Yes,No,No,No,No,1,Low
 UBE2V1P16,Yes,No,No,No,No,1,Low
-RNU6-84P,Yes,No,No,No,No,1,Low
-RN7SL104P,Yes,No,No,No,No,1,Low
+LINC02238,Yes,No,No,No,No,1,Low
+GJA6P,Yes,No,No,No,No,1,Low
+LINC02461,Yes,No,No,No,No,1,Low
 TUBAP9,Yes,No,No,No,No,1,Low
 RPS10P27,Yes,No,No,No,No,1,Low
 RNU6-246P,Yes,No,No,No,No,1,Low
@@ -50,7 +58,6 @@ RNA5SP165,Yes,No,No,No,No,1,Low
 RNA5SP345,Yes,No,No,No,No,1,Low
 TMLHEP1,Yes,No,No,No,No,1,Low
 RPL7P8,Yes,No,No,No,No,1,Low
-H3C13,Yes,No,No,No,No,1,Low
 CACNG2-DT,Yes,No,No,No,No,1,Low
 RNU6-316P,Yes,No,No,No,No,1,Low
 RNA5SP452,Yes,No,No,No,No,1,Low
@@ -80,6 +87,7 @@ RNY3P7,Yes,No,No,No,No,1,Low
 RN7SKP271,Yes,No,No,No,No,1,Low
 DCHS1-AS1,Yes,No,No,No,No,1,Low
 SPRING1P3,Yes,No,No,No,No,1,Low
+PPIAP38,Yes,No,No,No,No,1,Low
 RNU6-391P,Yes,No,No,No,No,1,Low
 LARP7P1,Yes,No,No,No,No,1,Low
 EVA1CP1,Yes,No,No,No,No,1,Low
@@ -89,6 +97,8 @@ LINC02037,Yes,No,No,No,No,1,Low
 OR52J1P,Yes,No,No,No,No,1,Low
 RNU6-876P,Yes,No,No,No,No,1,Low
 UFL1-AS1,Yes,No,No,No,No,1,Low
+RPS21P8,Yes,No,No,No,No,1,Low
+TEX50,Yes,No,No,No,No,1,Low
 TRGJP2,Yes,No,No,No,No,1,Low
 ACP7,Yes,No,No,No,No,1,Low
 NUDT19P5,Yes,No,No,No,No,1,Low
@@ -130,6 +140,7 @@ RNA5SP23,Yes,No,No,No,No,1,Low
 THRB-IT1,Yes,No,No,No,No,1,Low
 RN7SL774P,Yes,No,No,No,No,1,Low
 RPS26P34,Yes,No,No,No,No,1,Low
+CD63-AS1,Yes,No,No,No,No,1,Low
 ENPP7P8,Yes,No,No,No,No,1,Low
 LEMD1-DT,Yes,No,No,No,No,1,Low
 MIR4521,Yes,No,No,No,No,1,Low
@@ -183,7 +194,6 @@ RNU6-1107P,Yes,No,No,No,No,1,Low
 BMAL1,Yes,No,No,No,No,1,Low
 MYO5BP1,Yes,No,No,No,No,1,Low
 RN7SKP2,Yes,No,No,No,No,1,Low
-PKNOX2-DT,Yes,No,No,No,No,1,Low
 ABCF2P2,Yes,No,No,No,No,1,Low
 RPL7P44,Yes,No,No,No,No,1,Low
 RPL21P29,Yes,No,No,No,No,1,Low
@@ -192,8 +202,6 @@ VNN3P,Yes,No,No,No,No,1,Low
 DYNLL1P5,Yes,No,No,No,No,1,Low
 LINC01788,Yes,No,No,No,No,1,Low
 MTCO3P19,Yes,No,No,No,No,1,Low
-IGKV1OR22-5,Yes,No,No,No,No,1,Low
-RPS2P41,Yes,No,No,No,No,1,Low
 MTCH2P3,Yes,No,No,No,No,1,Low
 AP1M2P1,Yes,No,No,No,No,1,Low
 OR10AB1P,Yes,No,No,No,No,1,Low
@@ -203,8 +211,6 @@ RN7SKP77,Yes,No,No,No,No,1,Low
 ATXN2-AS,Yes,No,No,No,No,1,Low
 RN7SKP19,Yes,No,No,No,No,1,Low
 GOT2P5,Yes,No,No,No,No,1,Low
-OR4A49P,Yes,No,No,No,No,1,Low
-SPATA2P1,Yes,No,No,No,No,1,Low
 USP46-DT,Yes,No,No,No,No,1,Low
 LINC02870,Yes,No,No,No,No,1,Low
 HMGB1P39,Yes,No,No,No,No,1,Low
@@ -217,7 +223,6 @@ RNU7-8P,Yes,No,No,No,No,1,Low
 RNU6-788P,Yes,No,No,No,No,1,Low
 SUMO2P8,Yes,No,No,No,No,1,Low
 ARNT2-DT,Yes,No,No,No,No,1,Low
-RPL23AP47,Yes,No,No,No,No,1,Low
 RPS2P25,Yes,No,No,No,No,1,Low
 MIR5047,Yes,No,No,No,No,1,Low
 RPAP2P1,Yes,No,No,No,No,1,Low
@@ -291,6 +296,7 @@ LINC02636,Yes,No,No,No,No,1,Low
 NUCKS1P1,Yes,No,No,No,No,1,Low
 OR10AK1P,Yes,No,No,No,No,1,Low
 MIR4436B1,Yes,No,No,No,No,1,Low
+PKNOX2-DT,Yes,No,No,No,No,1,Low
 GAPDHP46,Yes,No,No,No,No,1,Low
 RNU6-1232P,Yes,No,No,No,No,1,Low
 THAP5P2,Yes,No,No,No,No,1,Low
@@ -298,6 +304,7 @@ ANAPC1P2,Yes,No,No,No,No,1,Low
 RNU6-970P,Yes,No,No,No,No,1,Low
 CCDC18-AS1,Yes,No,No,No,No,1,Low
 LINC02925,Yes,No,No,No,No,1,Low
+IRS4-AS1,Yes,No,No,No,No,1,Low
 RN7SL246P,Yes,No,No,No,No,1,Low
 MTCO2P21,Yes,No,No,No,No,1,Low
 MTCO1P21,Yes,No,No,No,No,1,Low
@@ -305,6 +312,7 @@ IGKV1D-39,Yes,No,No,No,No,1,Low
 CNN3-DT,Yes,No,No,No,No,1,Low
 TLCD4-RWDD3,Yes,No,No,No,No,1,Low
 TYRL,Yes,No,No,No,No,1,Low
+OR4C9P,Yes,No,No,No,No,1,Low
 RPL23AP38,Yes,No,No,No,No,1,Low
 RN7SL336P,Yes,No,No,No,No,1,Low
 NXT1P1,Yes,No,No,No,No,1,Low
@@ -353,6 +361,8 @@ RNU6-1177P,Yes,No,No,No,No,1,Low
 TRMT112P1,Yes,No,No,No,No,1,Low
 RNA5SP419,Yes,No,No,No,No,1,Low
 RPL7AP41,Yes,No,No,No,No,1,Low
+SNRPGP14,Yes,No,No,No,No,1,Low
+RNA5SP51,Yes,No,No,No,No,1,Low
 U2,Yes,No,No,No,No,1,Low
 RNU4-79P,Yes,No,No,No,No,1,Low
 OR10J8P,Yes,No,No,No,No,1,Low
@@ -372,7 +382,6 @@ RPL15P11,Yes,No,No,No,No,1,Low
 SNORA71,Yes,No,No,No,No,1,Low
 IATPR,Yes,No,No,No,No,1,Low
 H2AZ2P1,Yes,No,No,No,No,1,Low
-SLC25A1P1,Yes,No,No,No,No,1,Low
 NIFKP8,Yes,No,No,No,No,1,Low
 RPL12P37,Yes,No,No,No,No,1,Low
 OR4A4P,Yes,No,No,No,No,1,Low
@@ -398,12 +407,12 @@ RNU7-20P,Yes,No,No,No,No,1,Low
 COX7BP4,Yes,No,No,No,No,1,Low
 ARHGAP42P4,Yes,No,No,No,No,1,Low
 BIRC6-AS1,Yes,No,No,No,No,1,Low
-RPSAP28,Yes,No,No,No,No,1,Low
-REXO1L10P,Yes,No,No,No,No,1,Low
 OR9R1P,Yes,No,No,No,No,1,Low
 PA2G4P1,Yes,No,No,No,No,1,Low
 RPL21P24,Yes,No,No,No,No,1,Low
 RN7SL372P,Yes,No,No,No,No,1,Low
+MIR6873,Yes,No,No,No,No,1,Low
+MYB-AS1,Yes,No,No,No,No,1,Low
 LINC02637,Yes,No,No,No,No,1,Low
 NECAP1P1,Yes,No,No,No,No,1,Low
 ZNF861P,Yes,No,No,No,No,1,Low
@@ -417,6 +426,7 @@ RN7SL703P,Yes,No,No,No,No,1,Low
 CLEC20A,Yes,No,No,No,No,1,Low
 RNA5SP50,Yes,No,No,No,No,1,Low
 OR7E109P,Yes,No,No,No,No,1,Low
+RNY4P9,Yes,No,No,No,No,1,Low
 RPS3AP13,Yes,No,No,No,No,1,Low
 H2BC7,Yes,No,No,No,No,1,Low
 MARCHF11-DT,Yes,No,No,No,No,1,Low
@@ -433,7 +443,6 @@ SUGT1P2,Yes,No,No,No,No,1,Low
 RN7SL449P,Yes,No,No,No,No,1,Low
 RPSAP8,Yes,No,No,No,No,1,Low
 THAP12P3,Yes,No,No,No,No,1,Low
-RNU11-3P,Yes,No,No,No,No,1,Low
 CYP4F34P,Yes,No,No,No,No,1,Low
 LINC02114,Yes,No,No,No,No,1,Low
 MFSD1P1,Yes,No,No,No,No,1,Low
@@ -473,6 +482,7 @@ FTLP2,Yes,No,No,No,No,1,Low
 RNVU1-2,Yes,No,No,No,No,1,Low
 CENPN-AS1,Yes,No,No,No,No,1,Low
 CKS1BP2,Yes,No,No,No,No,1,Low
+RNU6-1171P,Yes,No,No,No,No,1,Low
 UBTFL3,Yes,No,No,No,No,1,Low
 DEFB108E,Yes,No,No,No,No,1,Low
 RPS3AP37,Yes,No,No,No,No,1,Low
@@ -483,6 +493,7 @@ MTND1P7,Yes,No,No,No,No,1,Low
 SEPTIN4,Yes,No,No,No,No,1,Low
 TRIM64DP,Yes,No,No,No,No,1,Low
 RN7SL483P,Yes,No,No,No,No,1,Low
+RNA5SP495,Yes,No,No,No,No,1,Low
 MTCO1P7,Yes,No,No,No,No,1,Low
 SEPTIN9-DT,Yes,No,No,No,No,1,Low
 RPL35AP27,Yes,No,No,No,No,1,Low
@@ -518,14 +529,11 @@ XKRYP7,Yes,No,No,No,No,1,Low
 RARRES2P6,Yes,No,No,No,No,1,Low
 LINC02910,Yes,No,No,No,No,1,Low
 OR5BK1P,Yes,No,No,No,No,1,Low
-RNA5SP495,Yes,No,No,No,No,1,Low
-CD63-AS1,Yes,No,No,No,No,1,Low
-SEPTIN14P12,Yes,No,No,No,No,1,Low
-RN7SL261P,Yes,No,No,No,No,1,Low
-AKR1C8,Yes,No,No,No,No,1,Low
-EIF4A1P13,Yes,No,No,No,No,1,Low
-RNU7-156P,Yes,No,No,No,No,1,Low
-RN7SL693P,Yes,No,No,No,No,1,Low
+IGLV6-57,Yes,No,No,No,No,1,Low
+RNU6-61P,Yes,No,No,No,No,1,Low
+SNORA75B,Yes,No,No,No,No,1,Low
+S100A7P1,Yes,No,No,No,No,1,Low
+ATP6V0CP3,Yes,No,No,No,No,1,Low
 TWNK,Yes,No,No,No,No,1,Low
 BRCC3P1,Yes,No,No,No,No,1,Low
 RNU4-17P,Yes,No,No,No,No,1,Low
@@ -538,7 +546,6 @@ SLIT3-AS1,Yes,No,No,No,No,1,Low
 RNU6-1031P,Yes,No,No,No,No,1,Low
 NRADDP,Yes,No,No,No,No,1,Low
 RNU7-62P,Yes,No,No,No,No,1,Low
-SNORD112,Yes,No,No,No,No,1,Low
 C10orf95-AS1,Yes,No,No,No,No,1,Low
 MFSD13A,Yes,No,No,No,No,1,Low
 RPL23AP58,Yes,No,No,No,No,1,Low
@@ -554,7 +561,6 @@ RNU6-955P,Yes,No,No,No,No,1,Low
 RPL21P16,Yes,No,No,No,No,1,Low
 STN1,Yes,No,No,No,No,1,Low
 TEX49,Yes,No,No,No,No,1,Low
-LINC02525,Yes,No,No,No,No,1,Low
 OR7E11P,Yes,No,No,No,No,1,Low
 CFAP58-DT,Yes,No,No,No,No,1,Low
 KRTAP5-14P,Yes,No,No,No,No,1,Low
@@ -623,6 +629,8 @@ HSPD1P16,Yes,No,No,No,No,1,Low
 U1,Yes,No,No,No,No,1,Low
 ACTG1P21,Yes,No,No,No,No,1,Low
 TFAP2A-AS2,Yes,No,No,No,No,1,Low
+MXRA7P1,Yes,No,No,No,No,1,Low
+RPS10P18,Yes,No,No,No,No,1,Low
 NPM1P31,Yes,No,No,No,No,1,Low
 TEKTIP1,Yes,No,No,No,No,1,Low
 MRPS21P6,Yes,No,No,No,No,1,Low
@@ -668,6 +676,7 @@ TESMIN,Yes,No,No,No,No,1,Low
 RNU2-66P,Yes,No,No,No,No,1,Low
 SNORA48B,Yes,No,No,No,No,1,Low
 HERC2P8,Yes,No,No,No,No,1,Low
+EOLA1,Yes,No,No,No,No,1,Low
 RNVU1-2A,Yes,No,No,No,No,1,Low
 KMT5B,Yes,No,No,No,No,1,Low
 TRGV5P,Yes,No,No,No,No,1,Low
@@ -724,6 +733,7 @@ HNRNPKP5,Yes,No,No,No,No,1,Low
 OR51F3P,Yes,No,No,No,No,1,Low
 OR7E85P,Yes,No,No,No,No,1,Low
 PRELID1P1,Yes,No,No,No,No,1,Low
+MCUR1P2,Yes,No,No,No,No,1,Low
 PIMREGP3,Yes,No,No,No,No,1,Low
 LINC02268,Yes,No,No,No,No,1,Low
 TANK-AS1,Yes,No,No,No,No,1,Low
@@ -754,8 +764,6 @@ RN7SL88P,Yes,No,No,No,No,1,Low
 RNU6-161P,Yes,No,No,No,No,1,Low
 KRT8P23,Yes,No,No,No,No,1,Low
 OR4F3,Yes,No,No,No,No,1,Low
-IGHV3-36,Yes,No,No,No,No,1,Low
-MIR4464,Yes,No,No,No,No,1,Low
 RPL26P31,Yes,No,No,No,No,1,Low
 RPL21P126,Yes,No,No,No,No,1,Low
 RNU6-609P,Yes,No,No,No,No,1,Low
@@ -842,9 +850,6 @@ MALLP1,Yes,No,No,No,No,1,Low
 CIR1P1,Yes,No,No,No,No,1,Low
 ATG10-AS1,Yes,No,No,No,No,1,Low
 NANOGP6,Yes,No,No,No,No,1,Low
-RNU1-149P,Yes,No,No,No,No,1,Low
-RPS10P4,Yes,No,No,No,No,1,Low
-RPL13P2,Yes,No,No,No,No,1,Low
 MMADHCP2,Yes,No,No,No,No,1,Low
 DDX39AP1,Yes,No,No,No,No,1,Low
 GPRC5D-AS1,Yes,No,No,No,No,1,Low
@@ -905,6 +910,7 @@ OR4A18P,Yes,No,No,No,No,1,Low
 GOLM2P1,Yes,No,No,No,No,1,Low
 RNU6-129P,Yes,No,No,No,No,1,Low
 OR4A19P,Yes,No,No,No,No,1,Low
+SUGCT-AS1,Yes,No,No,No,No,1,Low
 RN7SL630P,Yes,No,No,No,No,1,Low
 RNU6-544P,Yes,No,No,No,No,1,Low
 CHCHD2P11,Yes,No,No,No,No,1,Low
@@ -916,6 +922,7 @@ OR5D2P,Yes,No,No,No,No,1,Low
 OR5D15P,Yes,No,No,No,No,1,Low
 RPL34P10,Yes,No,No,No,No,1,Low
 ADGRD2,Yes,No,No,No,No,1,Low
+RNU11-3P,Yes,No,No,No,No,1,Low
 RN7SL715P,Yes,No,No,No,No,1,Low
 OR10AF1P,Yes,No,No,No,No,1,Low
 RN7SL568P,Yes,No,No,No,No,1,Low
@@ -935,8 +942,6 @@ RN7SL306P,Yes,No,No,No,No,1,Low
 GPAT2P1,Yes,No,No,No,No,1,Low
 BCLAF1P2,Yes,No,No,No,No,1,Low
 LINC01106,Yes,No,No,No,No,1,Low
-ADAM1B,Yes,No,No,No,No,1,Low
-OR8R1P,Yes,No,No,No,No,1,Low
 ANKRD17-DT,Yes,No,No,No,No,1,Low
 KRT8P27,Yes,No,No,No,No,1,Low
 OR8I1P,Yes,No,No,No,No,1,Low
@@ -946,6 +951,7 @@ UBBP1,Yes,No,No,No,No,1,Low
 RPS3AP41,Yes,No,No,No,No,1,Low
 OR5M12P,Yes,No,No,No,No,1,Low
 OR4C7P,Yes,No,No,No,No,1,Low
+RNU1-11P,Yes,No,No,No,No,1,Low
 BNIP3P36,Yes,No,No,No,No,1,Low
 OR9G2P,Yes,No,No,No,No,1,Low
 RPL29P20,Yes,No,No,No,No,1,Low
@@ -1026,6 +1032,9 @@ RPS27P13,Yes,No,No,No,No,1,Low
 NPM1P35,Yes,No,No,No,No,1,Low
 NRXN2-AS1,Yes,No,No,No,No,1,Low
 CDY6P,Yes,No,No,No,No,1,Low
+RNU6-44P,Yes,No,No,No,No,1,Low
+COX7CP1,Yes,No,No,No,No,1,Low
+GTF2IP12,Yes,No,No,No,No,1,Low
 RAP1BL,Yes,No,No,No,No,1,Low
 RNU6-781P,Yes,No,No,No,No,1,Low
 DPPA3P5,Yes,No,No,No,No,1,Low
@@ -1060,6 +1069,8 @@ H2AC8,Yes,No,No,No,No,1,Low
 RPS12P24,Yes,No,No,No,No,1,Low
 RNU6-717P,Yes,No,No,No,No,1,Low
 RN7SL616P,Yes,No,No,No,No,1,Low
+RPS20P10,Yes,No,No,No,No,1,Low
+EIF4A1P10,Yes,No,No,No,No,1,Low
 KCNIP4-IT1,Yes,No,No,No,No,1,Low
 NECTIN1,Yes,No,No,No,No,1,Low
 MIR4472-1,Yes,No,No,No,No,1,Low
@@ -1068,7 +1079,6 @@ VPS51P17,Yes,No,No,No,No,1,Low
 NIPBL-DT,Yes,No,No,No,No,1,Low
 MIR3920,Yes,No,No,No,No,1,Low
 NKAPD1,Yes,No,No,No,No,1,Low
-MTDHP1,Yes,No,No,No,No,1,Low
 CHCHD4P5,Yes,No,No,No,No,1,Low
 LINC02008,Yes,No,No,No,No,1,Low
 DNAJB6P5,Yes,No,No,No,No,1,Low
@@ -1137,7 +1147,6 @@ RHEBP2,Yes,No,No,No,No,1,Low
 LINC02711,Yes,No,No,No,No,1,Low
 AHCYP7,Yes,No,No,No,No,1,Low
 H2AC3P,Yes,No,No,No,No,1,Low
-UBTFL10,Yes,No,No,No,No,1,Low
 TRIM64,Yes,No,No,No,No,1,Low
 RPL10P12,Yes,No,No,No,No,1,Low
 BANF1P4,Yes,No,No,No,No,1,Low
@@ -1197,8 +1206,6 @@ POU2AF3,Yes,No,No,No,No,1,Low
 RPL35AP19,Yes,No,No,No,No,1,Low
 RN7SL45P,Yes,No,No,No,No,1,Low
 RPS29P17,Yes,No,No,No,No,1,Low
-LINC03073,Yes,No,No,No,No,1,Low
-RACK1P3,Yes,No,No,No,No,1,Low
 ITPK1P1,Yes,No,No,No,No,1,Low
 PIGAP1,Yes,No,No,No,No,1,Low
 KCTD9P4,Yes,No,No,No,No,1,Low
@@ -1239,7 +1246,6 @@ SERTM2,Yes,No,No,No,No,1,Low
 STK24P1,Yes,No,No,No,No,1,Low
 RNU6-1229P,Yes,No,No,No,No,1,Low
 ATP2B1-AS1,Yes,No,No,No,No,1,Low
-H2BP9,Yes,No,No,No,No,1,Low
 RAC1P3,Yes,No,No,No,No,1,Low
 OR10D4P,Yes,No,No,No,No,1,Low
 ACTBP2,Yes,No,No,No,No,1,Low
@@ -1280,7 +1286,6 @@ ERVW-1,Yes,No,No,No,No,1,Low
 MRPL50P1,Yes,No,No,No,No,1,Low
 LINC02371,Yes,No,No,No,No,1,Low
 RPS27AP8,Yes,No,No,No,No,1,Low
-RPL39P38,Yes,No,No,No,No,1,Low
 MIR3159,Yes,No,No,No,No,1,Low
 RNU6-1315P,Yes,No,No,No,No,1,Low
 FTH1P23,Yes,No,No,No,No,1,Low
@@ -1335,7 +1340,6 @@ RN7SKP162,Yes,No,No,No,No,1,Low
 DNAJB1P1,Yes,No,No,No,No,1,Low
 RNU6-420P,Yes,No,No,No,No,1,Low
 H2AJ,Yes,No,No,No,No,1,Low
-CCDC137P1,Yes,No,No,No,No,1,Low
 RNA5SP189,Yes,No,No,No,No,1,Low
 METTL8P1,Yes,No,No,No,No,1,Low
 DNAJC8P2,Yes,No,No,No,No,1,Low
@@ -1373,6 +1377,7 @@ HMGB1P49,Yes,No,No,No,No,1,Low
 RN7SL863P,Yes,No,No,No,No,1,Low
 RNU4-54P,Yes,No,No,No,No,1,Low
 RPL29P27,Yes,No,No,No,No,1,Low
+RN7SL23P,Yes,No,No,No,No,1,Low
 BORCS7-ASMT,Yes,No,No,No,No,1,Low
 RNU6-4P,Yes,No,No,No,No,1,Low
 RPL22P11,Yes,No,No,No,No,1,Low
@@ -1382,7 +1387,6 @@ PPIAP44,Yes,No,No,No,No,1,Low
 HTR3C2P,Yes,No,No,No,No,1,Low
 SINHCAF,Yes,No,No,No,No,1,Low
 LINC02377,Yes,No,No,No,No,1,Low
-RNU6-494P,Yes,No,No,No,No,1,Low
 LINC02472,Yes,No,No,No,No,1,Low
 ASS1P14,Yes,No,No,No,No,1,Low
 RAB5CP2,Yes,No,No,No,No,1,Low
@@ -1549,6 +1553,9 @@ RPL17P38,Yes,No,No,No,No,1,Low
 CICP23,Yes,No,No,No,No,1,Low
 PPP4R3C,Yes,No,No,No,No,1,Low
 RPL35AP11,Yes,No,No,No,No,1,Low
+RPL23AP47,Yes,No,No,No,No,1,Low
+IGKV1OR22-5,Yes,No,No,No,No,1,Low
+RPS2P41,Yes,No,No,No,No,1,Low
 RNA5SP372,Yes,No,No,No,No,1,Low
 RNU6-119P,Yes,No,No,No,No,1,Low
 RBISP3,Yes,No,No,No,No,1,Low
@@ -1606,6 +1613,7 @@ RPL35AP24,Yes,No,No,No,No,1,Low
 LINC02507,Yes,No,No,No,No,1,Low
 ATOX1-AS1,Yes,No,No,No,No,1,Low
 TIMM9P2,Yes,No,No,No,No,1,Low
+VAMP1-AS1,Yes,No,No,No,No,1,Low
 LINC02347,Yes,No,No,No,No,1,Low
 LINC02372,Yes,No,No,No,No,1,Low
 SMCO4P1,Yes,No,No,No,No,1,Low
@@ -1621,7 +1629,6 @@ MYL12BP2,Yes,No,No,No,No,1,Low
 RARRES2P2,Yes,No,No,No,No,1,Low
 HNRNPA3P8,Yes,No,No,No,No,1,Low
 RNU6-327P,Yes,No,No,No,No,1,Low
-IGHVIII-47-1,Yes,No,No,No,No,1,Low
 COX6CP6,Yes,No,No,No,No,1,Low
 LARP7P2,Yes,No,No,No,No,1,Low
 ATF7-NPFF,Yes,No,No,No,No,1,Low
@@ -1640,7 +1647,6 @@ MYLKP2,Yes,No,No,No,No,1,Low
 HMGN1P10,Yes,No,No,No,No,1,Low
 SLC35E1P1,Yes,No,No,No,No,1,Low
 RNU6-80P,Yes,No,No,No,No,1,Low
-SNORD3D,Yes,No,No,No,No,1,Low
 EEF1AKMT1,Yes,No,No,No,No,1,Low
 SUB1P4,Yes,No,No,No,No,1,Low
 CNOT4P1,Yes,No,No,No,No,1,Low
@@ -1684,6 +1690,8 @@ RNA5SP26,Yes,No,No,No,No,1,Low
 HSPD1P9,Yes,No,No,No,No,1,Low
 VN1R81P,Yes,No,No,No,No,1,Low
 RNU6-56P,Yes,No,No,No,No,1,Low
+RNU7-190P,Yes,No,No,No,No,1,Low
+RNY1P5,Yes,No,No,No,No,1,Low
 RGS17P1,Yes,No,No,No,No,1,Low
 IGKV1OR10-1,Yes,No,No,No,No,1,Low
 PHB1P18,Yes,No,No,No,No,1,Low
@@ -1693,20 +1701,17 @@ DGKZP1,Yes,No,No,No,No,1,Low
 CNN2P6,Yes,No,No,No,No,1,Low
 DHX33-DT,Yes,No,No,No,No,1,Low
 DNM1P38,Yes,No,No,No,No,1,Low
-RPL39P39,Yes,No,No,No,No,1,Low
 LINC02027,Yes,No,No,No,No,1,Low
 AKR1B1P4,Yes,No,No,No,No,1,Low
 RUBCNL,Yes,No,No,No,No,1,Low
 hsa-mir-1253,Yes,No,No,No,No,1,Low
 NAP1L4P3,Yes,No,No,No,No,1,Low
 GOLGA7B-DT,Yes,No,No,No,No,1,Low
-OR7E46P,Yes,No,No,No,No,1,Low
-OR7E62P,Yes,No,No,No,No,1,Low
-RPS20P10,Yes,No,No,No,No,1,Low
-EIF4A1P10,Yes,No,No,No,No,1,Low
-LERFS,Yes,No,No,No,No,1,Low
-PTCSC1,Yes,No,No,No,No,1,Low
-RNU1-11P,Yes,No,No,No,No,1,Low
+RNU1-149P,Yes,No,No,No,No,1,Low
+RPS10P4,Yes,No,No,No,No,1,Low
+RPL13P2,Yes,No,No,No,No,1,Low
+RNY3P2,Yes,No,No,No,No,1,Low
+RNU6-494P,Yes,No,No,No,No,1,Low
 MIR7161,Yes,No,No,No,No,1,Low
 OR10J4,Yes,No,No,No,No,1,Low
 PLCXD1,Yes,No,No,No,No,1,Low
@@ -1952,6 +1957,7 @@ MANEALP1,Yes,No,No,No,No,1,Low
 DARS1,Yes,No,No,No,No,1,Low
 DARS1-AS1,Yes,No,No,No,No,1,Low
 SMC4P1,Yes,No,No,No,No,1,Low
+RN7SL42P,Yes,No,No,No,No,1,Low
 YWHAEP5,Yes,No,No,No,No,1,Low
 FAM226B,Yes,No,No,No,No,1,Low
 AHCYP4,Yes,No,No,No,No,1,Low
@@ -2166,6 +2172,7 @@ PRSS59P,Yes,No,No,No,No,1,Low
 LINC01614,Yes,No,No,No,No,1,Low
 USP41,Yes,No,No,No,No,1,Low
 RN7SL503P,Yes,No,No,No,No,1,Low
+CLXN,Yes,No,No,No,No,1,Low
 LINC01963,Yes,No,No,No,No,1,Low
 CBX3P10,Yes,No,No,No,No,1,Low
 PSMB3P2,Yes,No,No,No,No,1,Low
@@ -2255,6 +2262,7 @@ LINC01238,Yes,No,No,No,No,1,Low
 HNRNPA1P21,Yes,No,No,No,No,1,Low
 CICP10,Yes,No,No,No,No,1,Low
 SEPTIN14P2,Yes,No,No,No,No,1,Low
+RNU6ATAC28P,Yes,No,No,No,No,1,Low
 RN7SL541P,Yes,No,No,No,No,1,Low
 EEF1E1P1,Yes,No,No,No,No,1,Low
 RPS10P5,Yes,No,No,No,No,1,Low
@@ -2265,8 +2273,6 @@ SIRPB3P,Yes,No,No,No,No,1,Low
 CKAP2LP1,Yes,No,No,No,No,1,Low
 LINC02143,Yes,No,No,No,No,1,Low
 RNA5SP511,Yes,No,No,No,No,1,Low
-RPS21P8,Yes,No,No,No,No,1,Low
-TEX50,Yes,No,No,No,No,1,Low
 RPL19P1,Yes,No,No,No,No,1,Low
 GMDS-DT,Yes,No,No,No,No,1,Low
 LINC00278,Yes,No,No,No,No,1,Low
@@ -2283,16 +2289,7 @@ RN7SL498P,Yes,No,No,No,No,1,Low
 VPS25P1,Yes,No,No,No,No,1,Low
 RN7SL547P,Yes,No,No,No,No,1,Low
 TRBV12-4,Yes,No,No,No,No,1,Low
-NIBAN2,Yes,No,No,No,No,1,Low
-MGC4859,Yes,No,No,No,No,1,Low
-RN7SL12P,Yes,No,No,No,No,1,Low
-PAK5,Yes,No,No,No,No,1,Low
-HIGD1AP15,Yes,No,No,No,No,1,Low
-CYCSP19,Yes,No,No,No,No,1,Low
-RN7SL216P,Yes,No,No,No,No,1,Low
-SDAD1P2,Yes,No,No,No,No,1,Low
-UFD1,Yes,No,No,No,No,1,Low
-RNU6-334P,Yes,No,No,No,No,1,Low
+RPL36AP32,Yes,No,No,No,No,1,Low
 BBIP1P1,Yes,No,No,No,No,1,Low
 OR5M5P,Yes,No,No,No,No,1,Low
 TDGF1P3,Yes,No,No,No,No,1,Low
@@ -2316,10 +2313,12 @@ XBP1P1,Yes,No,No,No,No,1,Low
 TRBV5-7,Yes,No,No,No,No,1,Low
 TRBV18,Yes,No,No,No,No,1,Low
 HSPE1P19,Yes,No,No,No,No,1,Low
+TICAM2-AS1,Yes,No,No,No,No,1,Low
 LINC02216,Yes,No,No,No,No,1,Low
 RNU6-300P,Yes,No,No,No,No,1,Low
 LINC01664,Yes,No,No,No,No,1,Low
 RNU6-400P,Yes,No,No,No,No,1,Low
+RNU6-211P,Yes,No,No,No,No,1,Low
 LINC01764,Yes,No,No,No,No,1,Low
 SGO2,Yes,No,No,No,No,1,Low
 GAPDHP57,Yes,No,No,No,No,1,Low
@@ -2361,7 +2360,6 @@ LINC01856,Yes,No,No,No,No,1,Low
 RPS4XP14,Yes,No,No,No,No,1,Low
 HIRAP1,Yes,No,No,No,No,1,Low
 H3P10,Yes,No,No,No,No,1,Low
-CFAP20DC-AS1,Yes,No,No,No,No,1,Low
 ANKHD1-DT,Yes,No,No,No,No,1,Low
 TRBV12-5,Yes,No,No,No,No,1,Low
 RNU6-710P,Yes,No,No,No,No,1,Low
@@ -2455,13 +2453,10 @@ LINC01811,Yes,No,No,No,No,1,Low
 RN7SL313P,Yes,No,No,No,No,1,Low
 HNRNPA1P15,Yes,No,No,No,No,1,Low
 BPY2DP,Yes,No,No,No,No,1,Low
-RUVBL2P1,Yes,No,No,No,No,1,Low
-FTLP13,Yes,No,No,No,No,1,Low
 GFOD1-AS1,Yes,No,No,No,No,1,Low
 MIR5706,Yes,No,No,No,No,1,Low
 OR52A4P,Yes,No,No,No,No,1,Low
 RPL6P17,Yes,No,No,No,No,1,Low
-RN7SL542P,Yes,No,No,No,No,1,Low
 RNU6-522P,Yes,No,No,No,No,1,Low
 RNU6-1114P,Yes,No,No,No,No,1,Low
 VN1R34P,Yes,No,No,No,No,1,Low
@@ -2481,43 +2476,6 @@ RNU6-987P,Yes,No,No,No,No,1,Low
 H2AC1,Yes,No,No,No,No,1,Low
 JARID2-DT,Yes,No,No,No,No,1,Low
 H2BC2P,Yes,No,No,No,No,1,Low
-H3P26,Yes,No,No,No,No,1,Low
-H2BC3,Yes,No,No,No,No,1,Low
-RPL7AP43,Yes,No,No,No,No,1,Low
-MIR3977,Yes,No,No,No,No,1,Low
-RN7SL456P,Yes,No,No,No,No,1,Low
-OR7E53P,Yes,No,No,No,No,1,Low
-FCF1P5,Yes,No,No,No,No,1,Low
-CNTNAP3C,Yes,No,No,No,No,1,Low
-H4C3,Yes,No,No,No,No,1,Low
-H2AC6,Yes,No,No,No,No,1,Low
-MIR4776-1,Yes,No,No,No,No,1,Low
-RNA5SP212,Yes,No,No,No,No,1,Low
-RNU6-934P,Yes,No,No,No,No,1,Low
-BTBD9-AS1,Yes,No,No,No,No,1,Low
-MIR6762,Yes,No,No,No,No,1,Low
-RNU6-502P,Yes,No,No,No,No,1,Low
-H2AC11,Yes,No,No,No,No,1,Low
-RPL10P2,Yes,No,No,No,No,1,Low
-RPL8P1,Yes,No,No,No,No,1,Low
-THRAP3P3,Yes,No,No,No,No,1,Low
-SNORD62,Yes,No,No,No,No,1,Low
-RPL32P8,Yes,No,No,No,No,1,Low
-RPLP2P1,Yes,No,No,No,No,1,Low
-MIR4476,Yes,No,No,No,No,1,Low
-DNM1P24,Yes,No,No,No,No,1,Low
-RPL38P1,Yes,No,No,No,No,1,Low
-NMNAT1P3,Yes,No,No,No,No,1,Low
-RPL31P32,Yes,No,No,No,No,1,Low
-COX11P1,Yes,No,No,No,No,1,Low
-LINC02010,Yes,No,No,No,No,1,Low
-KRT8P12,Yes,No,No,No,No,1,Low
-RPS24P1,Yes,No,No,No,No,1,Low
-OR2U2P,Yes,No,No,No,No,1,Low
-IGLV3-24,Yes,No,No,No,No,1,Low
-RPS6P3,Yes,No,No,No,No,1,Low
-MIR1295A,Yes,No,No,No,No,1,Low
-UBDP1,Yes,No,No,No,No,1,Low
 FOXN2,Yes,No,No,No,Yes,2,Low-Med
 LOC643711,No,No,No,No,Yes,1,Low
 LOC401093,No,No,No,No,Yes,1,Low
@@ -2630,6 +2588,8 @@ LOC101927822,No,No,No,No,Yes,1,Low
 MUC3A,Yes,No,No,No,Yes,2,Low-Med
 MRTFA,Yes,No,No,No,No,1,Low
 TGM4,Yes,No,No,No,Yes,2,Low-Med
+MIR3977,Yes,No,No,No,No,1,Low
+RPL7AP43,Yes,No,No,No,No,1,Low
 GALR1,Yes,No,No,No,Yes,2,Low-Med
 ENPP2,Yes,No,No,No,Yes,2,Low-Med
 MTCO1P20,Yes,No,No,No,No,1,Low
@@ -2828,7 +2788,6 @@ RPP21,Yes,No,No,No,Yes,2,Low-Med
 SMARCE1,Yes,No,No,No,Yes,2,Low-Med
 FAM47B,Yes,No,No,No,Yes,2,Low-Med
 KLHL17,Yes,No,No,No,Yes,2,Low-Med
-IRS4-AS1,Yes,No,No,No,No,1,Low
 HDAC4,Yes,No,No,No,Yes,2,Low-Med
 FARSB,Yes,No,No,No,Yes,2,Low-Med
 HOXA-AS3,Yes,No,No,No,Yes,2,Low-Med
@@ -2848,8 +2807,8 @@ UBXN1,Yes,No,No,No,Yes,2,Low-Med
 VCPIP1,Yes,No,No,No,Yes,2,Low-Med
 PLXNB3,Yes,No,No,No,Yes,2,Low-Med
 P3R3URF-PIK3R3,Yes,No,No,No,No,1,Low
-OGFOD1P1,Yes,No,No,No,No,1,Low
 SNX5P2,Yes,No,No,No,No,1,Low
+OGFOD1P1,Yes,No,No,No,No,1,Low
 SAMD15,Yes,No,No,No,Yes,2,Low-Med
 NCSTNP1,Yes,No,No,No,No,1,Low
 XG,Yes,No,No,No,Yes,2,Low-Med
@@ -2979,8 +2938,6 @@ CGNL1,Yes,No,No,No,Yes,2,Low-Med
 LINC01560,Yes,No,No,No,Yes,2,Low-Med
 MARK2P14,Yes,No,No,No,No,1,Low
 C9orf62,No,No,No,No,Yes,1,Low
-RPSAP42,Yes,No,No,No,No,1,Low
-LRRIQ3,Yes,No,No,No,Yes,2,Low-Med
 OR2AQ1P,Yes,No,No,No,No,1,Low
 RIMKLBP1,Yes,No,No,No,No,1,Low
 SYTL1,Yes,No,No,No,Yes,2,Low-Med
@@ -3424,7 +3381,6 @@ AOC3,Yes,No,No,No,Yes,2,Low-Med
 IRX6,Yes,No,No,No,Yes,2,Low-Med
 SNAR-A7,No,No,No,No,Yes,1,Low
 CYCSP41,Yes,No,No,No,No,1,Low
-H2BC12,Yes,No,No,No,No,1,Low
 MEF2C,Yes,No,No,No,Yes,2,Low-Med
 RALGAPA1,Yes,No,No,No,Yes,2,Low-Med
 RALGAPA1P,No,No,No,No,Yes,1,Low
@@ -3752,7 +3708,7 @@ RN7SKP76,Yes,No,No,No,No,1,Low
 HDAC10,Yes,No,No,No,Yes,2,Low-Med
 BNC1,Yes,No,No,No,Yes,2,Low-Med
 LINC00689,Yes,No,No,No,Yes,2,Low-Med
-MIR941-2,Yes,No,No,No,Yes,2,Low-Med
+MIR941-2,No,No,No,No,Yes,1,Low
 RIMS1,Yes,No,No,No,Yes,2,Low-Med
 RNU6-599P,Yes,No,No,No,No,1,Low
 NCRNA00092,No,No,No,No,Yes,1,Low
@@ -3806,8 +3762,6 @@ LINC00606,Yes,No,No,No,Yes,2,Low-Med
 OR8B4,Yes,No,No,No,Yes,2,Low-Med
 MIR548G,Yes,No,No,No,Yes,2,Low-Med
 STARD7-AS1,Yes,No,No,No,Yes,2,Low-Med
-CYP4A26P,Yes,No,No,No,No,1,Low
-PNCK,Yes,No,No,No,Yes,2,Low-Med
 CSTA,Yes,No,No,No,Yes,2,Low-Med
 LINC01018,Yes,No,No,No,Yes,2,Low-Med
 RRAD,Yes,No,No,No,Yes,2,Low-Med
@@ -3917,8 +3871,6 @@ OR52V1P,Yes,No,No,No,No,1,Low
 MIR6813,Yes,No,No,No,No,1,Low
 PRR15,Yes,No,No,No,Yes,2,Low-Med
 LOC653566,No,No,No,No,Yes,1,Low
-GUSBP2,Yes,No,No,No,No,1,Low
-LINC00955,Yes,No,No,No,Yes,2,Low-Med
 GIPC1,Yes,No,No,No,Yes,2,Low-Med
 DENND4C,Yes,No,No,No,Yes,2,Low-Med
 RPL7AP61,Yes,No,No,No,No,1,Low
@@ -4071,7 +4023,7 @@ SLC29A2,Yes,No,No,No,Yes,2,Low-Med
 JPH4,Yes,No,No,No,Yes,2,Low-Med
 IFT140,Yes,No,No,No,Yes,2,Low-Med
 TP53INP2,Yes,No,No,No,Yes,2,Low-Med
-MIR3197,Yes,No,No,No,Yes,2,Low-Med
+MIR3197,No,No,No,No,Yes,1,Low
 TBC1D19,Yes,No,No,No,Yes,2,Low-Med
 RNU6-816P,Yes,No,No,No,No,1,Low
 SPECC1L-ADORA2A,Yes,No,No,No,Yes,2,Low-Med
@@ -4236,7 +4188,7 @@ TNFRSF18,Yes,No,No,No,Yes,2,Low-Med
 GLDC,Yes,No,No,No,Yes,2,Low-Med
 PPIAP57,Yes,No,No,No,No,1,Low
 EVX1,Yes,No,No,No,Yes,2,Low-Med
-MIR941-1,Yes,No,No,No,Yes,2,Low-Med
+MIR941-1,No,No,No,No,Yes,1,Low
 GUSB,Yes,No,No,No,Yes,2,Low-Med
 CEP68,Yes,No,No,No,Yes,2,Low-Med
 ZNF142,Yes,No,No,No,Yes,2,Low-Med
@@ -4442,7 +4394,6 @@ TMEM100,Yes,No,No,No,Yes,2,Low-Med
 RAPGEF3,Yes,No,No,No,Yes,2,Low-Med
 STEAP3,Yes,No,No,No,Yes,2,Low-Med
 INPP5A,Yes,No,No,No,Yes,2,Low-Med
-ARL8BP1,Yes,No,No,No,No,1,Low
 AXL,Yes,No,No,No,Yes,2,Low-Med
 SSPOP,Yes,No,No,No,No,1,Low
 EFTUD1,No,No,No,No,Yes,1,Low
@@ -4566,6 +4517,7 @@ LRRC9,Yes,No,No,No,Yes,2,Low-Med
 TBC1D2B,Yes,No,No,No,Yes,2,Low-Med
 KRT18P27,Yes,No,No,No,No,1,Low
 PPARD,Yes,No,No,No,Yes,2,Low-Med
+LOC101927243,No,No,No,No,Yes,1,Low
 MIR3198-2,Yes,No,No,No,Yes,2,Low-Med
 LOC101928994,No,No,No,No,Yes,1,Low
 LINC01834,Yes,No,No,No,No,1,Low
@@ -4717,7 +4669,7 @@ HMGA2-AS1,Yes,No,No,No,No,1,Low
 TRIM47,Yes,No,No,No,Yes,2,Low-Med
 MIR4437,Yes,No,No,No,Yes,2,Low-Med
 CTBP2P2,Yes,No,No,No,No,1,Low
-MIR370,Yes,No,No,No,Yes,2,Low-Med
+MIR370,No,No,No,No,Yes,1,Low
 OR10G3,Yes,No,No,No,Yes,2,Low-Med
 NOSIP,Yes,No,No,No,Yes,2,Low-Med
 OR2H2,Yes,No,No,No,Yes,2,Low-Med
@@ -4763,8 +4715,6 @@ IRS3P,Yes,No,No,No,No,1,Low
 MIR4484,Yes,No,No,No,No,1,Low
 SDK2,Yes,No,No,No,Yes,2,Low-Med
 RINL,Yes,No,No,No,Yes,2,Low-Med
-OR2E1P,Yes,No,No,No,No,1,Low
-LOC150622,No,No,No,No,Yes,1,Low
 IFI16,Yes,No,No,No,Yes,2,Low-Med
 PEX12,Yes,No,No,No,Yes,2,Low-Med
 CASP14,Yes,No,No,No,Yes,2,Low-Med
@@ -5145,6 +5095,7 @@ CRABP2,Yes,No,No,No,Yes,2,Low-Med
 PRKCD,Yes,No,No,No,Yes,2,Low-Med
 MARK2P18,Yes,No,No,No,No,1,Low
 LOC100271722,No,No,No,No,Yes,1,Low
+RPL21P40,Yes,No,No,No,No,1,Low
 GRK7,Yes,No,No,No,Yes,2,Low-Med
 PHRF1,Yes,No,No,No,Yes,2,Low-Med
 C6orf48,No,No,No,No,Yes,1,Low
@@ -6029,7 +5980,7 @@ PDZD3,No,No,No,No,Yes,1,Low
 CYCSP27,Yes,No,No,No,No,1,Low
 MPHOSPH10P7,Yes,No,No,No,No,1,Low
 RPL7AP58,Yes,No,No,No,No,1,Low
-NRON,Yes,No,No,No,Yes,2,Low-Med
+NRON,No,No,No,No,Yes,1,Low
 GPRASP1,Yes,No,No,No,Yes,2,Low-Med
 LINC00619,No,No,No,No,Yes,1,Low
 C12orf66,No,No,No,No,Yes,1,Low
@@ -6238,7 +6189,6 @@ LOC101930452,No,No,No,No,Yes,1,Low
 LINC00880,Yes,No,No,No,Yes,2,Low-Med
 EBF3,Yes,No,No,No,Yes,2,Low-Med
 MIR4750,Yes,No,No,No,No,1,Low
-H2AC10P,Yes,No,No,No,No,1,Low
 U2SURP,Yes,No,No,No,Yes,2,Low-Med
 SOHLH2,Yes,No,No,No,Yes,2,Low-Med
 LOC387647,No,No,No,No,Yes,1,Low
@@ -6252,6 +6202,8 @@ SNX26,No,No,No,No,Yes,1,Low
 TTTY23B,Yes,No,No,No,No,1,Low
 LOC101928449,No,No,No,No,Yes,1,Low
 ZSWIM7,Yes,No,No,No,Yes,2,Low-Med
+YWHAQP7,Yes,No,No,No,No,1,Low
+TTC36,Yes,No,No,No,Yes,2,Low-Med
 XKRYP2,Yes,No,No,No,No,1,Low
 TJAP1P1,Yes,No,No,No,No,1,Low
 SLC4A11,Yes,No,No,No,Yes,2,Low-Med
@@ -6377,8 +6329,6 @@ MIR1244-1,Yes,No,No,No,Yes,2,Low-Med
 ALKAL2,Yes,No,No,No,No,1,Low
 RN7SL526P,Yes,No,No,No,No,1,Low
 ZNF519P4,Yes,No,No,No,No,1,Low
-RNU6-111P,Yes,No,No,No,No,1,Low
-NKAIN4,Yes,No,No,No,Yes,2,Low-Med
 LIG3,Yes,No,No,No,Yes,2,Low-Med
 C10orf10,No,No,No,No,Yes,1,Low
 OR7E39P,Yes,No,No,No,No,1,Low
@@ -6446,9 +6396,6 @@ RPS16P5,Yes,No,No,No,Yes,2,Low-Med
 TMEM201,Yes,No,No,No,Yes,2,Low-Med
 ACER3,Yes,No,No,No,Yes,2,Low-Med
 DEDD,Yes,No,No,No,Yes,2,Low-Med
-RPS10P18,Yes,No,No,No,No,1,Low
-MXRA7P1,Yes,No,No,No,No,1,Low
-IGLV6-57,Yes,No,No,No,No,1,Low
 MED26,Yes,No,No,No,Yes,2,Low-Med
 C2CD5,Yes,No,No,No,Yes,2,Low-Med
 MESTIT1,Yes,No,No,No,Yes,2,Low-Med
@@ -6556,8 +6503,6 @@ PTPRF,Yes,No,No,No,Yes,2,Low-Med
 ADARB2,Yes,No,No,No,Yes,2,Low-Med
 FAM178B,Yes,No,No,No,Yes,2,Low-Med
 YWHAQ,Yes,No,No,No,Yes,2,Low-Med
-MIR4518,Yes,No,No,No,No,1,Low
-TSKS,Yes,No,No,No,Yes,2,Low-Med
 ASCC2,Yes,No,No,No,Yes,2,Low-Med
 ZNF74,Yes,No,No,No,Yes,2,Low-Med
 CSRNP2,Yes,No,No,No,Yes,2,Low-Med
@@ -6654,6 +6599,8 @@ PRKCA-AS1,Yes,No,No,No,Yes,2,Low-Med
 OR6C66P,Yes,No,No,No,No,1,Low
 SORCS1,Yes,No,No,No,Yes,2,Low-Med
 WDR11,Yes,No,No,No,Yes,2,Low-Med
+MIR4464,Yes,No,No,No,No,1,Low
+IGHV3-36,Yes,No,No,No,No,1,Low
 RPS7P12,Yes,No,No,No,No,1,Low
 CORO1C,Yes,No,No,No,Yes,2,Low-Med
 TMEM196,Yes,No,No,No,Yes,2,Low-Med
@@ -6854,7 +6801,6 @@ LINC02585,Yes,No,No,No,No,1,Low
 GPC6,Yes,No,No,No,Yes,2,Low-Med
 LOC101927817,No,No,No,No,Yes,1,Low
 KLF10,Yes,No,No,No,Yes,2,Low-Med
-RNU6-211P,Yes,No,No,No,No,1,Low
 MIR3118-3,Yes,No,No,No,No,1,Low
 SUSD6,Yes,No,No,No,Yes,2,Low-Med
 SEC23A,Yes,No,No,No,Yes,2,Low-Med
@@ -6905,7 +6851,6 @@ UBE2E1-AS1,Yes,No,No,No,Yes,2,Low-Med
 FSBP,Yes,No,No,No,Yes,2,Low-Med
 MAPK1,Yes,No,Yes,Yes,Yes,4,High
 ATP6V1C2,Yes,No,No,No,Yes,2,Low-Med
-WBP1P2,Yes,No,No,No,No,1,Low
 MIR3133,Yes,No,No,No,No,1,Low
 BTBD11,No,No,No,No,Yes,1,Low
 FANCA,Yes,No,No,No,Yes,2,Low-Med
@@ -6954,6 +6899,8 @@ FUT7,Yes,No,No,No,Yes,2,Low-Med
 CHRDL2,Yes,No,No,No,Yes,2,Low-Med
 KLRK1,Yes,No,No,No,Yes,2,Low-Med
 PTBP1P,Yes,No,No,No,No,1,Low
+RNU6-874P,Yes,No,No,No,No,1,Low
+NUP153-AS1,Yes,No,No,No,No,1,Low
 FERP1,Yes,No,No,No,No,1,Low
 TPRKBP1,Yes,No,No,No,No,1,Low
 LOC100996437,No,No,No,No,Yes,1,Low
@@ -7167,6 +7114,8 @@ RDH10,Yes,No,No,No,Yes,2,Low-Med
 SUCLA2P3,Yes,No,No,No,No,1,Low
 EFCAB12,Yes,No,No,No,Yes,2,Low-Med
 C10orf35,No,No,No,No,Yes,1,Low
+RN7SL261P,Yes,No,No,No,No,1,Low
+AKR1C8,Yes,No,No,No,No,1,Low
 TAFA2,Yes,No,No,No,No,1,Low
 MIR1247,Yes,No,No,No,Yes,2,Low-Med
 HRAT13,No,No,No,No,Yes,1,Low
@@ -7437,8 +7386,6 @@ LINC01447,Yes,No,No,No,Yes,2,Low-Med
 NDUFA5P2,Yes,No,No,No,No,1,Low
 LANCL2,Yes,No,No,No,Yes,2,Low-Med
 GALC,Yes,No,No,No,Yes,2,Low-Med
-RN7SL648P,Yes,No,No,No,No,1,Low
-GALNT2,Yes,No,No,No,Yes,2,Low-Med
 GGA1,Yes,No,No,No,Yes,2,Low-Med
 LRRC8C,Yes,No,No,No,Yes,2,Low-Med
 GSG1,Yes,No,No,No,Yes,2,Low-Med
@@ -7535,6 +7482,7 @@ BIK,Yes,No,No,No,Yes,2,Low-Med
 RPLP0P9,Yes,No,No,No,No,1,Low
 ZC3H14,Yes,No,No,No,Yes,2,Low-Med
 HN1L,No,No,No,No,Yes,1,Low
+DNM1P24,Yes,No,No,No,No,1,Low
 HTR3C,Yes,No,No,No,Yes,2,Low-Med
 LOC101927666,No,No,No,No,Yes,1,Low
 PALMD,Yes,No,No,No,Yes,2,Low-Med
@@ -7563,8 +7511,6 @@ MATN1-AS1,Yes,No,No,No,Yes,2,Low-Med
 TRPC2,Yes,No,No,No,Yes,2,Low-Med
 LOC100506127,No,No,No,No,Yes,1,Low
 RNU7-38P,Yes,No,No,No,No,1,Low
-MTCO3P28,Yes,No,No,No,No,1,Low
-MIR5708,Yes,No,No,No,Yes,2,Low-Med
 LOC645961,No,No,No,No,Yes,1,Low
 RPL19P12,No,No,No,No,Yes,1,Low
 MTATP8P1,Yes,No,No,No,No,1,Low
@@ -7911,8 +7857,6 @@ SPDYE16,Yes,No,No,No,No,1,Low
 DIABLO,Yes,No,No,Yes,Yes,3,Medium
 TRAJ13,Yes,No,No,No,No,1,Low
 OR7E140P,Yes,No,No,No,No,1,Low
-H2BC11,Yes,No,No,No,No,1,Low
-ANKRD26P1,Yes,No,No,No,Yes,2,Low-Med
 C21orf66,No,No,No,No,Yes,1,Low
 GALNTL6,Yes,No,No,No,Yes,2,Low-Med
 LOC149684,No,No,No,No,Yes,1,Low
@@ -7923,8 +7867,6 @@ FAM111B,Yes,No,No,No,Yes,2,Low-Med
 ALX4,Yes,No,No,No,Yes,2,Low-Med
 TBC1D24,Yes,No,No,No,Yes,2,Low-Med
 ARHGEF7,Yes,No,No,No,Yes,2,Low-Med
-LINC02105,Yes,No,No,No,No,1,Low
-MIR608,Yes,No,No,No,Yes,2,Low-Med
 PGAM1P1,Yes,No,No,No,No,1,Low
 LRRC47,Yes,No,No,No,Yes,2,Low-Med
 TRIM8,Yes,No,No,No,Yes,2,Low-Med
@@ -8068,7 +8010,6 @@ RNU1-19P,Yes,No,No,No,No,1,Low
 LOC101928988,No,No,No,No,Yes,1,Low
 FBXO9,Yes,No,No,No,Yes,2,Low-Med
 LINC01539,Yes,No,No,No,Yes,2,Low-Med
-SCYGR10,Yes,No,No,No,No,1,Low
 FLJ31356,No,No,No,No,Yes,1,Low
 NKX6-2,Yes,No,No,No,Yes,2,Low-Med
 DNAJC2,Yes,No,No,No,Yes,2,Low-Med
@@ -8676,6 +8617,7 @@ TMEM151A,Yes,No,No,No,Yes,2,Low-Med
 CAPN11,Yes,No,No,No,Yes,2,Low-Med
 CSNK2A2,Yes,No,No,No,Yes,2,Low-Med
 C9orf119,No,No,No,No,Yes,1,Low
+LINC01471,Yes,No,No,No,Yes,2,Low-Med
 C19orf10,No,No,No,No,Yes,1,Low
 RAB5C,Yes,No,No,No,Yes,2,Low-Med
 FCRL2,Yes,No,No,No,Yes,2,Low-Med
@@ -8723,6 +8665,8 @@ RGPD2,Yes,No,No,No,Yes,2,Low-Med
 IQGAP2,Yes,No,No,No,Yes,2,Low-Med
 MAP4K1-AS1,Yes,No,No,No,No,1,Low
 SEMA4G,Yes,No,No,No,Yes,2,Low-Med
+FAM192BP,Yes,No,No,No,No,1,Low
+MTUS2,Yes,No,No,No,Yes,2,Low-Med
 MATN2,Yes,No,No,No,Yes,2,Low-Med
 COPG,No,No,No,No,Yes,1,Low
 FAM57A,No,No,No,No,Yes,1,Low
@@ -9040,6 +8984,9 @@ MRPL1,Yes,No,No,No,Yes,2,Low-Med
 TMEM140,Yes,No,No,No,Yes,2,Low-Med
 MTF2,Yes,No,No,No,Yes,2,Low-Med
 CATIP,Yes,No,No,No,Yes,2,Low-Med
+RNU6-1277P,Yes,No,No,No,No,1,Low
+PDGFRA,Yes,No,No,Yes,Yes,3,Medium
+CLEC16A,Yes,No,No,Yes,Yes,3,Medium
 LINC00838,Yes,No,No,No,Yes,2,Low-Med
 HCAR2,Yes,No,No,No,Yes,2,Low-Med
 MLLT10,Yes,No,No,No,Yes,2,Low-Med
@@ -9379,6 +9326,7 @@ TMEM158,Yes,No,No,No,Yes,2,Low-Med
 LINC01775,Yes,No,No,No,No,1,Low
 GBP2,Yes,No,No,No,Yes,2,Low-Med
 LOC101929680,No,No,No,No,Yes,1,Low
+KRBOX5P1,Yes,No,No,No,No,1,Low
 ADRA2A,Yes,No,No,No,Yes,2,Low-Med
 QSER1,Yes,No,No,No,Yes,2,Low-Med
 TPBG,Yes,No,No,No,Yes,2,Low-Med
@@ -9519,7 +9467,6 @@ LCLAT1,Yes,No,No,No,Yes,2,Low-Med
 NUP85,Yes,No,No,No,Yes,2,Low-Med
 LINC01991,Yes,No,No,No,No,1,Low
 RANBP9,Yes,No,No,No,Yes,2,Low-Med
-TMEM263-DT,Yes,No,No,No,No,1,Low
 ZNF155,Yes,No,No,No,Yes,2,Low-Med
 NDUFA1,Yes,No,No,Yes,Yes,3,Medium
 ANO6,Yes,No,No,No,Yes,2,Low-Med
@@ -10350,6 +10297,7 @@ LINC01405,Yes,No,No,No,Yes,2,Low-Med
 CSNK1G3,Yes,No,No,No,Yes,2,Low-Med
 LYAR,Yes,No,No,No,Yes,2,Low-Med
 SNORA22,Yes,No,No,No,Yes,2,Low-Med
+C10orf32,No,No,No,No,Yes,1,Low
 CORO2A,Yes,No,No,No,Yes,2,Low-Med
 ADAMTS1,Yes,No,No,No,Yes,2,Low-Med
 RPS25P3,Yes,No,No,No,No,1,Low
@@ -10478,8 +10426,6 @@ MIR1204,Yes,No,No,No,Yes,2,Low-Med
 KAL1,No,No,No,No,Yes,1,Low
 LOC101928002,No,No,No,No,Yes,1,Low
 OVOL1-AS1,Yes,No,No,No,Yes,2,Low-Med
-PPIAP86,Yes,No,No,No,No,1,Low
-NOL7,Yes,No,No,No,Yes,2,Low-Med
 MORN2,Yes,No,No,No,Yes,2,Low-Med
 OSGEP,Yes,No,No,No,Yes,2,Low-Med
 CCDC129,No,No,No,No,Yes,1,Low
@@ -10593,6 +10539,7 @@ MIR550A3,Yes,No,No,No,Yes,2,Low-Med
 USP7-AS1,Yes,No,No,No,No,1,Low
 SNORD115-25,Yes,No,No,No,Yes,2,Low-Med
 ACTR8,Yes,No,No,No,Yes,2,Low-Med
+EIF2B5,Yes,No,No,No,Yes,2,Low-Med
 PCBP2P1,Yes,No,No,No,No,1,Low
 ZNF581,Yes,No,No,No,Yes,2,Low-Med
 LOC102723344,No,No,No,No,Yes,1,Low
@@ -10600,9 +10547,6 @@ SNORD71,Yes,No,No,No,Yes,2,Low-Med
 SLC35B1,Yes,No,No,No,Yes,2,Low-Med
 ZNF254,Yes,No,No,No,Yes,2,Low-Med
 EHD1,Yes,No,No,No,Yes,2,Low-Med
-RN7SL455P,Yes,No,No,No,No,1,Low
-LINC00382,Yes,No,No,No,Yes,2,Low-Med
-PCOLCE-AS1,Yes,No,No,No,Yes,2,Low-Med
 EVA1C,Yes,No,No,No,Yes,2,Low-Med
 AQP7P4,Yes,No,No,No,No,1,Low
 LINC00111,Yes,No,No,No,Yes,2,Low-Med
@@ -10738,7 +10682,6 @@ RGS2,Yes,No,No,No,Yes,2,Low-Med
 UNC84B,No,No,No,No,Yes,1,Low
 LOC148709,No,No,No,No,Yes,1,Low
 TM2D3,Yes,No,No,No,Yes,2,Low-Med
-RNY3P2,Yes,No,No,No,No,1,Low
 TMCO7,No,No,No,No,Yes,1,Low
 LSAMP-AS1,Yes,No,No,No,Yes,2,Low-Med
 MTCO2P16,Yes,No,No,No,No,1,Low
@@ -10817,7 +10760,6 @@ RGS8,Yes,No,No,No,Yes,2,Low-Med
 GOLGA6L4,Yes,No,No,No,No,1,Low
 NANOGP1,Yes,No,No,No,No,1,Low
 CRLF1,Yes,No,No,No,Yes,2,Low-Med
-RNF152P1,Yes,No,No,No,No,1,Low
 DNAJC19P9,Yes,No,No,No,No,1,Low
 C1orf180,No,No,No,No,Yes,1,Low
 NUTM2G,Yes,No,No,No,Yes,2,Low-Med
@@ -10945,6 +10887,8 @@ CBLB,Yes,No,No,No,Yes,2,Low-Med
 LOC101929608,No,No,No,No,Yes,1,Low
 POM121L12,Yes,No,No,No,Yes,2,Low-Med
 GALNT15,Yes,No,No,No,Yes,2,Low-Med
+GRM5P1,Yes,No,No,No,No,1,Low
+RHOXF1-AS1,Yes,No,No,No,Yes,2,Low-Med
 SNAR-A8,No,No,No,No,Yes,1,Low
 TRA2A,Yes,No,No,No,Yes,2,Low-Med
 C11orf51,No,No,No,No,Yes,1,Low
@@ -11104,7 +11048,6 @@ SMARCA5-AS1,Yes,No,No,No,Yes,2,Low-Med
 LOC100126784,No,No,No,No,Yes,1,Low
 CHRND,Yes,No,No,No,Yes,2,Low-Med
 ERGIC2,Yes,No,No,No,Yes,2,Low-Med
-RN7SL23P,Yes,No,No,No,No,1,Low
 GRAP,Yes,No,No,No,Yes,2,Low-Med
 RNU6-1210P,Yes,No,No,No,No,1,Low
 RN7SL417P,Yes,No,No,No,No,1,Low
@@ -11313,10 +11256,12 @@ LINC00587,Yes,No,No,No,Yes,2,Low-Med
 RPL6P31,Yes,No,No,No,No,1,Low
 EIF4EBP1,Yes,No,No,No,Yes,2,Low-Med
 P2RX2,Yes,No,No,No,Yes,2,Low-Med
-RPS2P32,Yes,No,No,No,Yes,2,Low-Med
+RPS2P32,No,No,No,No,Yes,1,Low
 NGFR-AS1,Yes,No,No,No,No,1,Low
 EMC4,Yes,No,No,No,Yes,2,Low-Med
 TP53I3,Yes,No,No,Yes,Yes,3,Medium
+RACK1P3,Yes,No,No,No,No,1,Low
+LINC03073,Yes,No,No,No,No,1,Low
 MRGPRX3,Yes,No,No,No,Yes,2,Low-Med
 MTMR10,Yes,No,No,No,Yes,2,Low-Med
 GLIS2,Yes,No,No,No,Yes,2,Low-Med
@@ -11804,6 +11749,7 @@ LRRC37B2,No,No,No,No,Yes,1,Low
 ENC1,Yes,No,No,No,Yes,2,Low-Med
 FABP12P1,Yes,No,No,No,No,1,Low
 ASPDH,Yes,No,No,No,Yes,2,Low-Med
+RNU6-84P,Yes,No,No,No,No,1,Low
 PRR24,No,No,No,No,Yes,1,Low
 MIR4651,Yes,No,No,No,Yes,2,Low-Med
 RNU4-70P,Yes,No,No,No,No,1,Low
@@ -11853,6 +11799,8 @@ LINC01227,Yes,No,No,No,Yes,2,Low-Med
 FAM27C,Yes,No,No,No,Yes,2,Low-Med
 SLCO4C1,Yes,No,No,No,Yes,2,Low-Med
 LINC01591,Yes,No,No,No,Yes,2,Low-Med
+MIR5708,Yes,No,No,No,Yes,2,Low-Med
+MTCO3P28,Yes,No,No,No,No,1,Low
 SPRR2C,Yes,No,No,No,Yes,2,Low-Med
 LSM7,Yes,No,No,No,Yes,2,Low-Med
 LOC154822,No,No,No,No,Yes,1,Low
@@ -12137,7 +12085,7 @@ H1-7,Yes,No,No,No,No,1,Low
 MIR6759,Yes,No,No,No,No,1,Low
 NBPF18P,Yes,No,No,No,Yes,2,Low-Med
 KDM1A,Yes,No,No,No,Yes,2,Low-Med
-MIR196A2,Yes,No,No,No,Yes,2,Low-Med
+MIR196A2,No,No,No,No,Yes,1,Low
 ZNF462,Yes,No,No,No,Yes,2,Low-Med
 MTND4P20,Yes,No,No,No,No,1,Low
 ZKSCAN5,Yes,No,No,No,Yes,2,Low-Med
@@ -12346,8 +12294,6 @@ RASSF8-AS1,Yes,No,No,No,Yes,2,Low-Med
 FRMD3,Yes,No,No,No,Yes,2,Low-Med
 LINC01014,Yes,No,No,No,Yes,2,Low-Med
 ANKRD19,No,No,No,No,Yes,1,Low
-RNA5SP51,Yes,No,No,No,No,1,Low
-SNRPGP14,Yes,No,No,No,No,1,Low
 GOLPH3,Yes,No,No,No,Yes,2,Low-Med
 NOMO3,Yes,No,No,No,Yes,2,Low-Med
 RNU2-42P,Yes,No,No,No,No,1,Low
@@ -12408,6 +12354,9 @@ TEX43,Yes,No,No,No,Yes,2,Low-Med
 TARID,Yes,No,No,No,Yes,2,Low-Med
 AKR7A2P1,Yes,No,No,No,Yes,2,Low-Med
 LOC100996385,No,No,No,No,Yes,1,Low
+EI24P4,Yes,No,No,No,No,1,Low
+MED15P3,Yes,No,No,No,No,1,Low
+GSK3A,Yes,No,No,No,Yes,2,Low-Med
 MIR3677HG,Yes,No,No,No,No,1,Low
 ZDHHC9,Yes,No,No,No,Yes,2,Low-Med
 AGPHD1,No,No,No,No,Yes,1,Low
@@ -12454,6 +12403,7 @@ SEMA5B,Yes,No,No,No,Yes,2,Low-Med
 PBK,Yes,No,No,No,Yes,2,Low-Med
 CAMTA2-AS1,Yes,No,No,No,No,1,Low
 DHX30,Yes,No,No,No,Yes,2,Low-Med
+HENMT1,Yes,No,No,No,Yes,2,Low-Med
 HNRNPCL1,Yes,No,No,No,Yes,2,Low-Med
 MZT2A,Yes,No,No,No,Yes,2,Low-Med
 OR2M1P,Yes,No,No,No,Yes,2,Low-Med
@@ -12558,6 +12508,8 @@ RPL7P38,Yes,No,No,No,No,1,Low
 NAA20,Yes,No,No,No,Yes,2,Low-Med
 CRACR2B,Yes,No,No,No,Yes,2,Low-Med
 RANBP6,Yes,No,No,No,Yes,2,Low-Med
+CYCSP19,Yes,No,No,No,No,1,Low
+HIGD1AP15,Yes,No,No,No,No,1,Low
 PRNT,Yes,No,No,No,Yes,2,Low-Med
 S1PR4,Yes,No,No,No,Yes,2,Low-Med
 YBX2,Yes,No,No,No,Yes,2,Low-Med
@@ -12607,8 +12559,6 @@ IL7,Yes,No,No,No,Yes,2,Low-Med
 ZNF559,Yes,No,No,No,Yes,2,Low-Med
 GRPR,Yes,No,No,No,Yes,2,Low-Med
 CSNK2B,Yes,No,No,No,Yes,2,Low-Med
-TMA7B,Yes,No,No,No,No,1,Low
-LINC00378,Yes,No,No,No,Yes,2,Low-Med
 TIMM17A,Yes,No,No,No,Yes,2,Low-Med
 LINC01222,Yes,No,No,No,Yes,2,Low-Med
 LINC02336,Yes,No,No,No,No,1,Low
@@ -12630,8 +12580,6 @@ SNORD25,Yes,No,No,No,Yes,2,Low-Med
 SNAR-G2,No,No,No,No,Yes,1,Low
 LINC01413,Yes,No,No,No,Yes,2,Low-Med
 PI4KA,Yes,No,No,No,Yes,2,Low-Med
-RNY1P5,Yes,No,No,No,No,1,Low
-RNU7-190P,Yes,No,No,No,No,1,Low
 LINC01158,No,No,No,No,Yes,1,Low
 NUF2,Yes,No,No,No,Yes,2,Low-Med
 FAM136B,No,No,No,No,Yes,1,Low
@@ -12944,6 +12892,8 @@ LINC01096,Yes,No,No,No,Yes,2,Low-Med
 RN7SL33P,Yes,No,No,No,No,1,Low
 FAM98B,Yes,No,No,No,Yes,2,Low-Med
 LOC729987,No,No,No,No,Yes,1,Low
+MRPS35-DT,Yes,No,No,No,No,1,Low
+C2orf74-AS1,Yes,No,No,No,No,1,Low
 RPL6P7,Yes,No,No,No,No,1,Low
 LOC101927932,No,No,No,No,Yes,1,Low
 SH3GL3,Yes,No,No,No,Yes,2,Low-Med
@@ -13054,6 +13004,8 @@ MIR3973,Yes,No,No,No,Yes,2,Low-Med
 LOC100507468,No,No,No,No,Yes,1,Low
 EPHX3,Yes,No,No,No,Yes,2,Low-Med
 UBE2D3,Yes,No,No,Yes,Yes,3,Medium
+CSPG4P12,Yes,No,No,No,No,1,Low
+RAD51D,Yes,No,No,No,Yes,2,Low-Med
 MGC15885,Yes,No,No,No,Yes,2,Low-Med
 SERBP1,Yes,No,No,No,Yes,2,Low-Med
 USP17L25,Yes,No,No,No,Yes,2,Low-Med
@@ -13276,14 +13228,16 @@ RNU6-893P,Yes,No,No,No,No,1,Low
 LOC100129716,No,No,No,No,Yes,1,Low
 LINC01583,Yes,No,No,No,Yes,2,Low-Med
 CSAG4,Yes,No,No,No,Yes,2,Low-Med
-RNA5SP308,Yes,No,No,No,No,1,Low
 AKIRIN1,Yes,No,No,No,Yes,2,Low-Med
+RNA5SP308,Yes,No,No,No,No,1,Low
 OPN1MW,Yes,No,No,No,Yes,2,Low-Med
 SEPSECS,Yes,No,No,No,Yes,2,Low-Med
 CRYZP2,Yes,No,No,No,No,1,Low
 EXD2,Yes,No,No,No,Yes,2,Low-Med
 B3GNT2,Yes,No,No,No,Yes,2,Low-Med
 ACCN3,No,No,No,No,Yes,1,Low
+LRRIQ3,Yes,No,No,No,Yes,2,Low-Med
+RPSAP42,Yes,No,No,No,No,1,Low
 PSMC6,Yes,No,No,No,Yes,2,Low-Med
 ZNRF2P3,Yes,No,No,No,No,1,Low
 RN7SKP240,Yes,No,No,No,No,1,Low
@@ -13333,7 +13287,6 @@ RTRAFP1,Yes,No,No,No,No,1,Low
 CPN2,Yes,No,No,No,Yes,2,Low-Med
 MIR26A2,Yes,No,No,No,Yes,2,Low-Med
 PFDN6,Yes,No,No,No,Yes,2,Low-Med
-RPS2P6,Yes,No,No,No,No,1,Low
 EXOGP1,Yes,No,No,No,No,1,Low
 PCDHB9,Yes,No,No,No,Yes,2,Low-Med
 RAP2B,Yes,No,No,No,Yes,2,Low-Med
@@ -13376,7 +13329,6 @@ RNA5SP174,Yes,No,No,No,No,1,Low
 LOC101930071,No,No,No,No,Yes,1,Low
 LIMCH1,Yes,No,No,No,Yes,2,Low-Med
 LOC101928992,No,No,No,No,Yes,1,Low
-TICAM2-AS1,Yes,No,No,No,No,1,Low
 SNTG1,Yes,No,No,No,Yes,2,Low-Med
 COX7B,Yes,No,No,No,Yes,2,Low-Med
 LOC102723883,No,No,No,No,Yes,1,Low
@@ -13445,8 +13397,6 @@ MAU2,Yes,No,No,No,Yes,2,Low-Med
 SNRPD1,Yes,No,No,Yes,Yes,3,Medium
 NDUFAF4P4,Yes,No,No,No,No,1,Low
 BCAS2,Yes,No,No,No,Yes,2,Low-Med
-MIR6873,Yes,No,No,No,No,1,Low
-MYB-AS1,Yes,No,No,No,No,1,Low
 HIST1H3B,No,No,No,No,Yes,1,Low
 MGMT,Yes,No,No,No,Yes,2,Low-Med
 RNF14,Yes,No,No,No,Yes,2,Low-Med
@@ -13577,7 +13527,6 @@ C2orf64,No,No,No,No,Yes,1,Low
 RN7SKP107,Yes,No,No,No,No,1,Low
 BIN3-IT1,No,No,No,No,Yes,1,Low
 MIR484,Yes,No,No,No,Yes,2,Low-Med
-SNRPGP17,Yes,No,No,No,No,1,Low
 RPL23,Yes,No,No,No,Yes,2,Low-Med
 TSL,No,No,No,No,Yes,1,Low
 FAR2P2,Yes,No,No,No,Yes,2,Low-Med
@@ -13734,8 +13683,6 @@ SRPR,No,No,No,No,Yes,1,Low
 RN7SL738P,Yes,No,No,No,No,1,Low
 C4orf52,No,No,No,No,Yes,1,Low
 ZNF488,Yes,No,No,No,Yes,2,Low-Med
-RNU2-39P,Yes,No,No,No,No,1,Low
-SNORD116-2,Yes,No,No,No,Yes,2,Low-Med
 MIR1184-3,Yes,No,No,No,Yes,2,Low-Med
 C20orf199,No,No,No,No,Yes,1,Low
 MIR4645,Yes,No,No,No,No,1,Low
@@ -13954,8 +13901,6 @@ MAPRE3,Yes,No,No,No,Yes,2,Low-Med
 ZNF106,Yes,No,No,No,Yes,2,Low-Med
 ELOCP23,Yes,No,No,No,No,1,Low
 ABI1,Yes,No,No,No,Yes,2,Low-Med
-C10orf32,No,No,No,No,Yes,1,Low
-TPM4P1,Yes,No,No,No,No,1,Low
 ZMYND10-AS1,Yes,No,No,No,No,1,Low
 MIR6895,Yes,No,No,No,Yes,2,Low-Med
 LINC01385,Yes,No,No,No,No,1,Low
@@ -13967,7 +13912,6 @@ C1orf97,No,No,No,No,Yes,1,Low
 LOC101927159,No,No,No,No,Yes,1,Low
 OR2T33,Yes,No,No,No,Yes,2,Low-Med
 C22orf32,No,No,No,No,Yes,1,Low
-H3C1,Yes,No,No,No,No,1,Low
 LIMS1-AS1,Yes,No,No,No,No,1,Low
 C1RL,Yes,No,No,No,Yes,2,Low-Med
 PHYHD1,Yes,No,No,No,Yes,2,Low-Med
@@ -14025,6 +13969,7 @@ MTATP6P24,Yes,No,No,No,No,1,Low
 BIRC6,Yes,No,No,No,Yes,2,Low-Med
 GCAT,Yes,No,No,No,Yes,2,Low-Med
 FAM134B,No,No,No,No,Yes,1,Low
+SEPTIN14P12,Yes,No,No,No,No,1,Low
 MIR1306,Yes,No,No,No,Yes,2,Low-Med
 ITGA6,Yes,No,No,No,Yes,2,Low-Med
 PTK2B,Yes,No,No,No,Yes,2,Low-Med
@@ -14142,7 +14087,7 @@ LINC00488,Yes,No,No,No,Yes,2,Low-Med
 OR52P2P,Yes,No,No,No,No,1,Low
 MTND6P16,Yes,No,No,No,No,1,Low
 SPACDR,Yes,No,No,No,No,1,Low
-RPPH1,Yes,No,No,No,Yes,2,Low-Med
+RPPH1,No,No,No,No,Yes,1,Low
 TRIM45,Yes,No,No,No,Yes,2,Low-Med
 RNU6ATAC35P,Yes,No,No,No,No,1,Low
 THNSL2,Yes,No,No,No,Yes,2,Low-Med
@@ -14411,7 +14356,6 @@ CCDC38,Yes,No,No,No,Yes,2,Low-Med
 TSPAN4,Yes,No,No,No,Yes,2,Low-Med
 ARHGAP21,Yes,No,No,No,Yes,2,Low-Med
 ADAMTS19-AS1,Yes,No,No,No,Yes,2,Low-Med
-RNY4P9,Yes,No,No,No,No,1,Low
 MIR3911,Yes,No,No,No,Yes,2,Low-Med
 FABP2,Yes,No,No,No,Yes,2,Low-Med
 MIR33A,Yes,No,No,No,Yes,2,Low-Med
@@ -14505,6 +14449,10 @@ LOC100101121,No,No,No,No,Yes,1,Low
 MIR6500,Yes,No,No,No,Yes,2,Low-Med
 GSTM3P2,Yes,No,No,No,No,1,Low
 HK3,Yes,No,No,Yes,Yes,3,Medium
+SDAD1P2,Yes,No,No,No,No,1,Low
+RN7SL216P,Yes,No,No,No,No,1,Low
+UFD1,Yes,No,No,No,No,1,Low
+RNU6-334P,Yes,No,No,No,No,1,Low
 LOC100506123,No,No,No,No,Yes,1,Low
 LINC02125,Yes,No,No,No,No,1,Low
 DYRK1B,Yes,No,No,No,Yes,2,Low-Med
@@ -14577,6 +14525,8 @@ LINC02994,Yes,No,No,No,No,1,Low
 TRIM6,Yes,No,No,No,Yes,2,Low-Med
 PKM2,No,No,No,No,Yes,1,Low
 ALDH7A1,Yes,No,No,Yes,Yes,3,Medium
+RNU6-60P,Yes,No,No,No,No,1,Low
+MIR631,Yes,No,No,No,Yes,2,Low-Med
 RNA5SP203,Yes,No,No,No,No,1,Low
 C14orf118,No,No,No,No,Yes,1,Low
 CCDC28A,Yes,No,No,No,Yes,2,Low-Med
@@ -14670,9 +14620,10 @@ DENND2B,Yes,No,No,No,No,1,Low
 ABLIM3,Yes,No,No,No,Yes,2,Low-Med
 GEMIN4,Yes,No,No,No,Yes,2,Low-Med
 LINC01572,Yes,No,No,No,Yes,2,Low-Med
-MIR4482,Yes,No,No,No,Yes,2,Low-Med
+MIR4482,No,No,No,No,Yes,1,Low
 VENTXP5,Yes,No,No,No,No,1,Low
 ODZ1,No,No,No,No,Yes,1,Low
+LINC02525,Yes,No,No,No,No,1,Low
 USP32P2,Yes,No,No,No,No,1,Low
 KHDC1L,Yes,No,No,No,Yes,2,Low-Med
 GDI1,Yes,No,No,No,Yes,2,Low-Med
@@ -14830,7 +14781,7 @@ ACRBP,Yes,No,No,No,Yes,2,Low-Med
 CDH13-AS1,Yes,No,No,No,No,1,Low
 CYP2A7,Yes,No,No,Yes,Yes,3,Medium
 MIF4GD-DT,Yes,No,No,No,No,1,Low
-CORT,Yes,No,No,No,Yes,2,Low-Med
+CORT,No,No,No,No,Yes,1,Low
 SNORD111B,Yes,No,No,No,Yes,2,Low-Med
 TSC22D4,Yes,No,No,No,Yes,2,Low-Med
 FAM161B,Yes,No,No,No,Yes,2,Low-Med
@@ -14858,6 +14809,7 @@ KRT5,Yes,No,No,No,Yes,2,Low-Med
 FAS,Yes,No,No,Yes,Yes,3,Medium
 TF,Yes,No,No,No,Yes,2,Low-Med
 LOC285847,No,No,No,No,Yes,1,Low
+LINC02549,Yes,No,No,No,No,1,Low
 IQCK,Yes,No,No,No,Yes,2,Low-Med
 BSG,Yes,No,No,No,Yes,2,Low-Med
 MTATP6P8,Yes,No,No,No,No,1,Low
@@ -14932,8 +14884,6 @@ MFSD5,Yes,No,No,No,Yes,2,Low-Med
 SNORD88B,Yes,No,No,No,Yes,2,Low-Med
 AMER1,Yes,No,No,No,Yes,2,Low-Med
 PKLR,Yes,No,No,Yes,Yes,3,Medium
-H2AC13,Yes,No,No,No,No,1,Low
-FAM66E,Yes,No,No,No,Yes,2,Low-Med
 EPOR,Yes,No,No,Yes,Yes,3,Medium
 LOC646813,No,No,No,No,Yes,1,Low
 RNU6-467P,Yes,No,No,No,No,1,Low
@@ -15116,6 +15066,8 @@ OR5AW1P,Yes,No,No,No,No,1,Low
 RBM38-AS1,Yes,No,No,No,No,1,Low
 LOC101928769,No,No,No,No,Yes,1,Low
 TAS2R19,Yes,No,No,No,Yes,2,Low-Med
+KRT8P49,Yes,No,No,No,No,1,Low
+LOC100507462,No,No,No,No,Yes,1,Low
 ATP5MC2P3,Yes,No,No,No,No,1,Low
 CCDC107,Yes,No,No,No,Yes,2,Low-Med
 LINC02293,Yes,No,No,No,No,1,Low
@@ -15130,8 +15082,6 @@ FOXL2NB,Yes,No,No,No,Yes,2,Low-Med
 MPL,Yes,No,No,No,Yes,2,Low-Med
 HNF4A-AS1,Yes,No,No,No,Yes,2,Low-Med
 TMEM252-DT,Yes,No,No,No,No,1,Low
-ELOCP20,Yes,No,No,No,No,1,Low
-FAM71E1,No,No,No,No,Yes,1,Low
 HOXB-AS4,Yes,No,No,No,No,1,Low
 NCRNA00161,No,No,No,No,Yes,1,Low
 NR4A2,Yes,No,No,No,Yes,2,Low-Med
@@ -15590,8 +15540,6 @@ ANKFN1,Yes,No,No,No,Yes,2,Low-Med
 RPP25L,Yes,No,No,No,Yes,2,Low-Med
 CUTC,Yes,No,No,No,Yes,2,Low-Med
 MIR5693,Yes,No,No,No,No,1,Low
-RNU6-285P,Yes,No,No,No,No,1,Low
-LOC388965,No,No,No,No,Yes,1,Low
 MAP3K7IP2,No,No,No,No,Yes,1,Low
 ARL6IP6,Yes,No,No,No,Yes,2,Low-Med
 FAM48B1,No,No,No,No,Yes,1,Low
@@ -15755,7 +15703,6 @@ NUDT19P6,Yes,No,No,No,No,1,Low
 FSTL4,Yes,No,No,No,Yes,2,Low-Med
 BCAR4,Yes,No,No,No,Yes,2,Low-Med
 YIPF3,Yes,No,No,No,Yes,2,Low-Med
-H2BW3P,Yes,No,No,No,No,1,Low
 RN7SL664P,Yes,No,No,No,No,1,Low
 XXYLT1-AS2,Yes,No,No,No,Yes,2,Low-Med
 DTX2,Yes,No,No,No,Yes,2,Low-Med
@@ -15799,7 +15746,6 @@ MT1P3,Yes,No,No,No,No,1,Low
 SPRR2D,Yes,No,No,No,Yes,2,Low-Med
 CWC22,Yes,No,No,No,Yes,2,Low-Med
 HIST1H3I,No,No,No,No,Yes,1,Low
-RPL21P120,Yes,No,No,No,No,1,Low
 TRPC5OS,Yes,No,No,No,Yes,2,Low-Med
 JUN,Yes,No,No,Yes,Yes,3,Medium
 RPF2,Yes,No,No,No,Yes,2,Low-Med
@@ -15913,7 +15859,7 @@ ADAMTSL4-AS2,Yes,No,No,No,No,1,Low
 RNU6-123P,Yes,No,No,No,No,1,Low
 LINC00412,Yes,No,No,No,Yes,2,Low-Med
 HSP90B1,Yes,No,No,Yes,Yes,3,Medium
-GAS8-AS1,Yes,No,No,No,Yes,2,Low-Med
+GAS8-AS1,No,No,No,No,Yes,1,Low
 SFI1,Yes,No,No,No,Yes,2,Low-Med
 TSR1,Yes,No,No,No,Yes,2,Low-Med
 SPNS2,Yes,No,No,No,Yes,2,Low-Med
@@ -15936,7 +15882,6 @@ RNU6-575P,Yes,No,No,No,No,1,Low
 LOC102577426,No,No,No,No,Yes,1,Low
 SYNJ2,Yes,No,No,No,Yes,2,Low-Med
 LINC01058,Yes,No,No,No,Yes,2,Low-Med
-H1-1,Yes,No,No,No,No,1,Low
 ZFHX2,Yes,No,No,No,Yes,2,Low-Med
 MRPL41,Yes,No,No,No,Yes,2,Low-Med
 VDAC1P7,Yes,No,No,No,No,1,Low
@@ -16099,7 +16044,6 @@ RBM18,Yes,No,No,No,Yes,2,Low-Med
 MIR23B,Yes,No,No,No,Yes,2,Low-Med
 KRTAP9-10P,Yes,No,No,No,No,1,Low
 RASL11A,Yes,No,No,No,Yes,2,Low-Med
-RN7SKP127,Yes,No,No,No,No,1,Low
 ANKRD24,Yes,No,No,No,Yes,2,Low-Med
 TDRD6,Yes,No,No,No,Yes,2,Low-Med
 MVB12B,Yes,No,No,No,Yes,2,Low-Med
@@ -16118,7 +16062,6 @@ MIR6715B,Yes,No,No,No,Yes,2,Low-Med
 LOC100131626,No,No,No,No,Yes,1,Low
 YAF2,Yes,No,No,No,Yes,2,Low-Med
 UBE3D,Yes,No,No,No,Yes,2,Low-Med
-GJA6P,Yes,No,No,No,No,1,Low
 RNF207-AS1,Yes,No,No,No,No,1,Low
 LOC440173,No,No,No,No,Yes,1,Low
 UBE2V2,Yes,No,No,Yes,Yes,3,Medium
@@ -16430,6 +16373,7 @@ NTSR2,Yes,No,No,No,Yes,2,Low-Med
 ARL6IP5,Yes,No,No,No,Yes,2,Low-Med
 ZNF436,Yes,No,No,No,Yes,2,Low-Med
 DDX56,Yes,No,No,No,Yes,2,Low-Med
+RN7SL456P,Yes,No,No,No,No,1,Low
 SPANXC,Yes,No,No,No,Yes,2,Low-Med
 CYP11B1,Yes,No,No,Yes,Yes,3,Medium
 ACVR2B-AS1,Yes,No,No,No,Yes,2,Low-Med
@@ -16506,8 +16450,6 @@ LINC01091,Yes,No,No,No,Yes,2,Low-Med
 MIR4299,Yes,No,No,No,Yes,2,Low-Med
 PRMT7,Yes,No,No,No,Yes,2,Low-Med
 TMEM200B,Yes,No,No,No,Yes,2,Low-Med
-RPL7AP40,Yes,No,No,No,No,1,Low
-MTND6P29,Yes,No,No,No,No,1,Low
 SNHG3,Yes,No,No,No,Yes,2,Low-Med
 C19orf62,No,No,No,No,Yes,1,Low
 ZSCAN5B,Yes,No,No,No,Yes,2,Low-Med
@@ -16862,8 +16804,6 @@ IBA57-AS1,No,No,No,No,Yes,1,Low
 KLF14,Yes,No,No,No,Yes,2,Low-Med
 CDK5R2,Yes,No,No,No,Yes,2,Low-Med
 LOC105274304,No,No,No,No,Yes,1,Low
-ACTBP16,Yes,No,No,No,No,1,Low
-FSD1,Yes,No,No,No,Yes,2,Low-Med
 MIR7854,Yes,No,No,No,Yes,2,Low-Med
 CAD,Yes,No,No,Yes,Yes,3,Medium
 IGKC,Yes,No,No,No,No,1,Low
@@ -17130,6 +17070,7 @@ SDAD1P1,Yes,No,No,No,No,1,Low
 ST7-OT3,No,No,No,No,Yes,1,Low
 MIR4769,Yes,No,No,No,Yes,2,Low-Med
 MIR764,Yes,No,No,No,Yes,2,Low-Med
+LINC02010,Yes,No,No,No,No,1,Low
 GPX6,Yes,No,No,No,Yes,2,Low-Med
 TSC22D3,Yes,No,No,No,Yes,2,Low-Med
 HK1,Yes,No,No,Yes,Yes,3,Medium
@@ -17143,7 +17084,6 @@ TTC5,Yes,No,No,No,Yes,2,Low-Med
 C15orf32,Yes,No,No,No,Yes,2,Low-Med
 KCND3,Yes,No,No,No,Yes,2,Low-Med
 RPS29P33,Yes,No,No,No,No,1,Low
-CNN2P2,Yes,No,No,No,No,1,Low
 MIR6845,Yes,No,No,No,Yes,2,Low-Med
 C2orf74,Yes,No,No,No,Yes,2,Low-Med
 C1orf128,No,No,No,No,Yes,1,Low
@@ -17152,6 +17092,7 @@ CHCHD2P1,Yes,No,No,No,No,1,Low
 SUMO1P4,Yes,No,No,No,No,1,Low
 B3GALT5,Yes,No,No,No,Yes,2,Low-Med
 LOC101927406,No,No,No,No,Yes,1,Low
+KRT8P12,Yes,No,No,No,No,1,Low
 PWWP2B,Yes,No,No,No,Yes,2,Low-Med
 C5orf35,No,No,No,No,Yes,1,Low
 RNU6-677P,Yes,No,No,No,No,1,Low
@@ -17408,6 +17349,10 @@ CDC23,Yes,No,No,No,Yes,2,Low-Med
 TLR10,Yes,No,No,No,Yes,2,Low-Med
 CMAH,No,No,No,No,Yes,1,Low
 C19orf6,No,No,No,No,Yes,1,Low
+LINC00382,Yes,No,No,No,Yes,2,Low-Med
+PCOLCE-AS1,Yes,No,No,No,Yes,2,Low-Med
+RN7SL455P,Yes,No,No,No,No,1,Low
+RNU7-156P,Yes,No,No,No,No,1,Low
 SEC22B4P,Yes,No,No,No,No,1,Low
 EGR1,Yes,No,No,No,Yes,2,Low-Med
 NUTF2,Yes,No,No,No,Yes,2,Low-Med
@@ -17809,6 +17754,7 @@ UBE2V1P1,Yes,No,No,No,No,1,Low
 RNASEH2A,Yes,No,No,No,Yes,2,Low-Med
 MAPK12,Yes,No,No,No,Yes,2,Low-Med
 CACNA1B,Yes,No,No,No,Yes,2,Low-Med
+FCF1P5,Yes,No,No,No,No,1,Low
 LSMEM2,Yes,No,No,No,Yes,2,Low-Med
 MRPL40,Yes,No,No,No,Yes,2,Low-Med
 CALCOCO1,Yes,No,No,No,Yes,2,Low-Med
@@ -18016,6 +17962,7 @@ MMP11,Yes,No,No,No,Yes,2,Low-Med
 CSTP2,Yes,No,No,No,No,1,Low
 CCDC137P2,Yes,No,No,No,No,1,Low
 PRADC1,Yes,No,No,No,Yes,2,Low-Med
+LERFS,Yes,No,No,No,No,1,Low
 ZCWPW2,Yes,No,No,No,Yes,2,Low-Med
 EIF4EBP2,Yes,No,No,No,Yes,2,Low-Med
 RNU6-755P,Yes,No,No,No,No,1,Low
@@ -18050,7 +17997,7 @@ FAM194B,No,No,No,No,Yes,1,Low
 MIR4267,Yes,No,No,No,No,1,Low
 NCKAP5,Yes,No,No,No,Yes,2,Low-Med
 TONSL-AS1,Yes,No,No,No,Yes,2,Low-Med
-SIX3-AS1,Yes,No,No,No,Yes,2,Low-Med
+SIX3-AS1,No,No,No,No,Yes,1,Low
 JMY,Yes,No,No,No,Yes,2,Low-Med
 CREB3L2,Yes,No,No,No,Yes,2,Low-Med
 N4BP1,Yes,No,No,No,Yes,2,Low-Med
@@ -18306,7 +18253,6 @@ LOC401127,No,No,No,No,Yes,1,Low
 KIAA1632,No,No,No,No,Yes,1,Low
 LOC100129520,No,No,No,No,Yes,1,Low
 CEL,Yes,No,No,No,Yes,2,Low-Med
-OAZ1P1,Yes,No,No,No,No,1,Low
 NOX4,Yes,No,No,No,Yes,2,Low-Med
 OR7E156P,Yes,No,No,No,Yes,2,Low-Med
 DCLRE1B,Yes,No,No,No,Yes,2,Low-Med
@@ -18349,7 +18295,7 @@ HAPSTR1,Yes,No,No,No,No,1,Low
 MIR639,Yes,No,No,No,Yes,2,Low-Med
 TTTY2B,Yes,No,No,No,No,1,Low
 SNORD30,Yes,No,No,No,Yes,2,Low-Med
-SNORD55,Yes,No,No,No,Yes,2,Low-Med
+SNORD55,No,No,No,No,Yes,1,Low
 TIMM23B,Yes,No,No,No,Yes,2,Low-Med
 MTND6P11,Yes,No,No,No,No,1,Low
 LINC01571,Yes,No,No,No,Yes,2,Low-Med
@@ -18975,9 +18921,6 @@ MIR659,Yes,No,No,No,Yes,2,Low-Med
 WDYHV1,No,No,No,No,Yes,1,Low
 NPHS1,Yes,No,No,No,Yes,2,Low-Med
 MED18,Yes,No,No,No,Yes,2,Low-Med
-H2AC15,Yes,No,No,No,No,1,Low
-SERPINA13P,Yes,No,No,No,Yes,2,Low-Med
-SPATA5,Yes,No,No,No,Yes,2,Low-Med
 PXYLP1,Yes,No,No,No,Yes,2,Low-Med
 TRIM51,Yes,No,No,No,Yes,2,Low-Med
 RNU6-2,Yes,No,No,No,Yes,2,Low-Med
@@ -19299,6 +19242,8 @@ C14orf50,No,No,No,No,Yes,1,Low
 RPL23AP87,Yes,No,No,No,No,1,Low
 GGCTP3,Yes,No,No,No,No,1,Low
 CSTF1,Yes,No,No,Yes,Yes,3,Medium
+MIR608,Yes,No,No,No,Yes,2,Low-Med
+LINC02105,Yes,No,No,No,No,1,Low
 RNU6-1326P,Yes,No,No,No,No,1,Low
 TRAV22,Yes,No,No,No,No,1,Low
 PUSL1,Yes,No,No,No,Yes,2,Low-Med
@@ -19756,8 +19701,6 @@ ADAMTSL3,Yes,No,No,No,Yes,2,Low-Med
 OR3B1P,Yes,No,No,No,No,1,Low
 A1CF,Yes,No,No,No,Yes,2,Low-Med
 CHGA,Yes,No,No,No,Yes,2,Low-Med
-HMGB1P11,Yes,No,No,No,No,1,Low
-LINC03060,Yes,No,No,No,No,1,Low
 CDK9,Yes,No,No,No,Yes,2,Low-Med
 C12orf73,No,No,No,No,Yes,1,Low
 RNU6-649P,Yes,No,No,No,No,1,Low
@@ -20750,7 +20693,6 @@ C8orf41,No,No,No,No,Yes,1,Low
 OR10J1,Yes,No,No,No,Yes,2,Low-Med
 LINC02122,Yes,No,No,No,No,1,Low
 ZNF114,Yes,No,No,No,Yes,2,Low-Med
-TAF11L13,Yes,No,No,No,No,1,Low
 ALKBH8,Yes,No,No,No,Yes,2,Low-Med
 LINC00987,Yes,No,No,No,Yes,2,Low-Med
 LINC02339,Yes,No,No,No,No,1,Low
@@ -21754,14 +21696,13 @@ MIR6718,Yes,No,No,No,Yes,2,Low-Med
 MAPK6P5,Yes,No,No,No,No,1,Low
 CEP135,Yes,No,No,No,Yes,2,Low-Med
 TTTY19,Yes,No,No,No,Yes,2,Low-Med
+RPL8P1,Yes,No,No,No,No,1,Low
 EMB,Yes,No,No,No,Yes,2,Low-Med
 MGC12982,No,No,No,No,Yes,1,Low
 MIR5188,Yes,No,No,No,Yes,2,Low-Med
 BMP3,Yes,No,No,No,Yes,2,Low-Med
 R3HDM4,Yes,No,No,No,Yes,2,Low-Med
 RANBP1P1,Yes,No,No,No,No,1,Low
-ELOCP28,Yes,No,No,No,No,1,Low
-IL1B,Yes,No,Yes,Yes,Yes,4,High
 GHET1,Yes,No,No,No,Yes,2,Low-Med
 TTC34,Yes,No,No,No,Yes,2,Low-Med
 IGSF9,Yes,No,No,No,Yes,2,Low-Med
@@ -21940,7 +21881,6 @@ SIDT1,Yes,No,No,No,Yes,2,Low-Med
 DCSTAMP,Yes,No,No,No,Yes,2,Low-Med
 C2orf83,Yes,No,No,No,Yes,2,Low-Med
 H2AFY2,No,No,No,No,Yes,1,Low
-RNU6-44P,Yes,No,No,No,No,1,Low
 MMP21,Yes,No,No,No,Yes,2,Low-Med
 ZNF641,Yes,No,No,No,Yes,2,Low-Med
 GLTP,Yes,No,No,No,Yes,2,Low-Med
@@ -22124,6 +22064,7 @@ SBNO2,Yes,No,No,No,Yes,2,Low-Med
 TIPINP1,Yes,No,No,No,No,1,Low
 CHCHD7,Yes,No,No,No,Yes,2,Low-Med
 CCT7,Yes,No,No,No,Yes,2,Low-Med
+PTCSC1,Yes,No,No,No,No,1,Low
 ARL11,Yes,No,No,No,Yes,2,Low-Med
 RNU6-175P,Yes,No,No,No,No,1,Low
 LINC01861,Yes,No,No,No,No,1,Low
@@ -22545,6 +22486,8 @@ CREBL2,Yes,No,No,No,Yes,2,Low-Med
 LOC100505715,No,No,No,No,Yes,1,Low
 BIVM-ERCC5,Yes,No,No,No,Yes,2,Low-Med
 DHX29,Yes,No,No,No,Yes,2,Low-Med
+SPATA2P1,Yes,No,No,No,No,1,Low
+OR4A49P,Yes,No,No,No,No,1,Low
 DAB1,Yes,No,No,No,Yes,2,Low-Med
 TOMM40P2,Yes,No,No,No,No,1,Low
 LINC00709,Yes,No,No,No,Yes,2,Low-Med
@@ -22640,7 +22583,6 @@ MIR9-1,Yes,No,No,No,Yes,2,Low-Med
 UBE3A,Yes,No,No,No,Yes,2,Low-Med
 SEC11B,Yes,No,No,No,No,1,Low
 IL5,Yes,No,No,Yes,Yes,3,Medium
-CLIC4P3,Yes,No,No,No,No,1,Low
 PGM1,Yes,No,No,No,Yes,2,Low-Med
 LINC00347,Yes,No,No,No,Yes,2,Low-Med
 LINC00307,Yes,No,No,No,Yes,2,Low-Med
@@ -23164,8 +23106,6 @@ VTA1,Yes,No,No,No,Yes,2,Low-Med
 LOC101929646,No,No,No,No,Yes,1,Low
 MIR1203,Yes,No,No,No,Yes,2,Low-Med
 SAPS3,No,No,No,No,Yes,1,Low
-OR2B7P,Yes,No,No,No,No,1,Low
-SHANK1,Yes,No,No,No,Yes,2,Low-Med
 RPL12P40,Yes,No,No,No,No,1,Low
 KCNJ12,Yes,No,No,No,Yes,2,Low-Med
 LINC01176,Yes,No,No,No,Yes,2,Low-Med
@@ -23276,7 +23216,7 @@ RNF123,Yes,No,No,No,Yes,2,Low-Med
 FCAMR,Yes,No,No,No,Yes,2,Low-Med
 PRPF18,Yes,No,No,No,Yes,2,Low-Med
 ZNRF2P2,Yes,No,No,No,No,1,Low
-RNF5P1,Yes,No,No,No,Yes,2,Low-Med
+RNF5P1,No,No,No,No,Yes,1,Low
 LOC285733,No,No,No,No,Yes,1,Low
 C9orf9,No,No,No,No,Yes,1,Low
 DPPA3P1,Yes,No,No,No,No,1,Low
@@ -23548,6 +23488,7 @@ TUSC7,Yes,No,No,No,Yes,2,Low-Med
 RNU6-21P,Yes,No,No,No,No,1,Low
 C8orf49,No,No,No,No,Yes,1,Low
 MANSC1,Yes,No,No,No,Yes,2,Low-Med
+CFAP20DC-AS1,Yes,No,No,No,No,1,Low
 LOC101928909,No,No,No,No,Yes,1,Low
 MIR205,Yes,No,No,No,Yes,2,Low-Med
 LOC100996654,No,No,No,No,Yes,1,Low
@@ -23710,6 +23651,7 @@ RPL21P131,Yes,No,No,No,No,1,Low
 ATP9A,Yes,No,No,No,Yes,2,Low-Med
 PPIAP2,Yes,No,No,No,No,1,Low
 CYCSP5,Yes,No,No,No,No,1,Low
+UBDP1,Yes,No,No,No,No,1,Low
 P4HA3,Yes,No,No,No,Yes,2,Low-Med
 C17orf47,No,No,No,No,Yes,1,Low
 CA6,Yes,No,No,No,Yes,2,Low-Med
@@ -23748,9 +23690,9 @@ ABITRAM,Yes,No,No,No,No,1,Low
 LOC643406,No,No,No,No,Yes,1,Low
 SRCIN1,Yes,No,No,No,Yes,2,Low-Med
 SCUBE1,Yes,No,No,No,Yes,2,Low-Med
-RNU6-122P,Yes,No,No,No,No,1,Low
 KRTAP23-1,Yes,No,No,No,Yes,2,Low-Med
 LMCD1,Yes,No,No,No,Yes,2,Low-Med
+RNU6-122P,Yes,No,No,No,No,1,Low
 YBX3P1,Yes,No,No,No,No,1,Low
 FBXO34,Yes,No,No,No,Yes,2,Low-Med
 MIR553,Yes,No,No,No,Yes,2,Low-Med
@@ -24040,9 +23982,6 @@ SNHG29,Yes,No,No,No,No,1,Low
 TMEM270,Yes,No,No,No,No,1,Low
 SLPI,Yes,No,No,No,Yes,2,Low-Med
 OR5AC1,Yes,No,No,No,No,1,Low
-H4C5,Yes,No,No,No,No,1,Low
-FGF11,Yes,No,No,No,Yes,2,Low-Med
-PUS7,Yes,No,No,No,Yes,2,Low-Med
 WDR64,Yes,No,No,No,Yes,2,Low-Med
 TIFAB,Yes,No,No,No,Yes,2,Low-Med
 LOC101928280,No,No,No,No,Yes,1,Low
@@ -24344,7 +24283,6 @@ SLC6A21P,Yes,No,No,No,No,1,Low
 PCBP2,Yes,No,No,No,Yes,2,Low-Med
 KRT8P40,Yes,No,No,No,No,1,Low
 PPFIA4,Yes,No,No,No,Yes,2,Low-Med
-OR4C9P,Yes,No,No,No,No,1,Low
 GPR89B,Yes,No,No,No,Yes,2,Low-Med
 LOC389033,No,No,No,No,Yes,1,Low
 BAMBI,Yes,No,No,No,Yes,2,Low-Med
@@ -24376,9 +24314,7 @@ C20orf7,No,No,No,No,Yes,1,Low
 KIAA1671,Yes,No,No,No,Yes,2,Low-Med
 PDCL3,Yes,No,No,No,Yes,2,Low-Med
 RNU6-769P,Yes,No,No,No,No,1,Low
-VENTXP3,Yes,No,No,No,No,1,Low
 MLIP,Yes,No,No,No,Yes,2,Low-Med
-MIR941-4,Yes,No,No,No,No,1,Low
 LONP2,Yes,No,No,No,Yes,2,Low-Med
 FOXN4,Yes,No,No,No,Yes,2,Low-Med
 RN7SL583P,Yes,No,No,No,No,1,Low
@@ -24408,7 +24344,7 @@ BEST1,Yes,No,No,No,Yes,2,Low-Med
 LOC100996351,No,No,No,No,Yes,1,Low
 MAGIX,Yes,No,No,No,Yes,2,Low-Med
 NT5C2,Yes,No,No,Yes,Yes,3,Medium
-SNORA24,Yes,No,No,No,Yes,2,Low-Med
+SNORA24,No,No,No,No,Yes,1,Low
 TTC37,No,No,No,No,Yes,1,Low
 HMGB1P44,Yes,No,No,No,No,1,Low
 HEATR2,No,No,No,No,Yes,1,Low
@@ -24471,7 +24407,6 @@ C21orf91-OT1,Yes,No,No,No,Yes,2,Low-Med
 CES7,No,No,No,No,Yes,1,Low
 LRRCC1,Yes,No,No,No,Yes,2,Low-Med
 NPPB,Yes,No,No,No,Yes,2,Low-Med
-DTWD1P1,Yes,No,No,No,No,1,Low
 CCDC54,Yes,No,No,No,Yes,2,Low-Med
 H3P27,Yes,No,No,No,No,1,Low
 PHF5AP3,Yes,No,No,No,No,1,Low
@@ -24751,7 +24686,6 @@ MRPL28,Yes,No,No,No,Yes,2,Low-Med
 MTMR4,Yes,No,No,No,Yes,2,Low-Med
 KIAA0415,No,No,No,No,Yes,1,Low
 MIR4761,Yes,No,No,No,Yes,2,Low-Med
-IDH3B-DT,Yes,No,No,No,No,1,Low
 LINC01398,Yes,No,No,No,Yes,2,Low-Med
 USP17L1,Yes,No,No,No,Yes,2,Low-Med
 LOC102467655,No,No,No,No,Yes,1,Low
@@ -24764,6 +24698,7 @@ ENPP7P15,Yes,No,No,No,No,1,Low
 MBOAT2,Yes,No,No,No,Yes,2,Low-Med
 VN1R31P,Yes,No,No,No,No,1,Low
 MIR30D,Yes,No,No,No,Yes,2,Low-Med
+H4C3,Yes,No,No,No,No,1,Low
 ESPL1,Yes,No,No,No,Yes,2,Low-Med
 FLJ20184,No,No,No,No,Yes,1,Low
 SAMD14,Yes,No,No,No,Yes,2,Low-Med
@@ -24927,6 +24862,7 @@ EFNA4-EFNA3,Yes,No,No,No,No,1,Low
 MAPK8IP3,Yes,No,No,No,Yes,2,Low-Med
 KIAA1456,No,No,No,No,Yes,1,Low
 BAP1,Yes,No,No,No,Yes,2,Low-Med
+PAK5,Yes,No,No,No,No,1,Low
 BICD1,Yes,No,No,No,Yes,2,Low-Med
 PRAM1,Yes,No,No,No,Yes,2,Low-Med
 HMGN1P4,Yes,No,No,No,No,1,Low
@@ -24984,6 +24920,8 @@ PCDH9-AS3,Yes,No,No,No,Yes,2,Low-Med
 PSAPL1,Yes,No,No,No,Yes,2,Low-Med
 FAM184B,Yes,No,No,No,Yes,2,Low-Med
 NRXN2,Yes,No,No,No,Yes,2,Low-Med
+RPSAP28,Yes,No,No,No,No,1,Low
+REXO1L10P,Yes,No,No,No,No,1,Low
 PPP1R3F,Yes,No,No,No,Yes,2,Low-Med
 ISM1,Yes,No,No,No,Yes,2,Low-Med
 LOC643770,No,No,No,No,Yes,1,Low
@@ -25270,9 +25208,6 @@ UPF3A,Yes,No,No,No,Yes,2,Low-Med
 OR4R2P,Yes,No,No,No,No,1,Low
 NCEH1,Yes,No,No,No,Yes,2,Low-Med
 RCC2P3,Yes,No,No,No,No,1,Low
-RNU6ATAC6P,Yes,No,No,No,No,1,Low
-TOLLIP-AS1,No,No,No,No,Yes,1,Low
-BRSK2,Yes,No,No,No,Yes,2,Low-Med
 RNU6-1110P,Yes,No,No,No,No,1,Low
 RN7SL481P,Yes,No,No,No,No,1,Low
 DTNA,Yes,No,No,No,Yes,2,Low-Med
@@ -25283,6 +25218,7 @@ DYX1C1,No,No,No,No,Yes,1,Low
 NRG1,Yes,No,No,No,Yes,2,Low-Med
 GPR110,No,No,No,No,Yes,1,Low
 MCEE,Yes,No,No,No,Yes,2,Low-Med
+RN7SL542P,Yes,No,No,No,No,1,Low
 OTUB1,Yes,No,No,No,Yes,2,Low-Med
 POU5F1B,Yes,No,No,No,Yes,2,Low-Med
 PAFAH1B2,Yes,No,No,No,Yes,2,Low-Med
@@ -25612,6 +25548,7 @@ ZNF454-DT,Yes,No,No,No,No,1,Low
 APOE,Yes,Yes,Yes,No,Yes,4,High
 LOC647121,No,No,No,No,Yes,1,Low
 SRGAP2B,Yes,No,No,No,Yes,2,Low-Med
+SCYGR5,Yes,No,No,No,No,1,Low
 AZIN1,Yes,No,No,No,Yes,2,Low-Med
 GPR119,Yes,No,No,No,Yes,2,Low-Med
 LOC101927766,No,No,No,No,Yes,1,Low
@@ -25702,8 +25639,6 @@ DIRAS2,Yes,No,No,No,Yes,2,Low-Med
 RPS4XP3,Yes,No,No,No,No,1,Low
 PDE7A-DT,Yes,No,No,No,No,1,Low
 TNKS1BP1,Yes,No,No,No,Yes,2,Low-Med
-H2BC13,Yes,No,No,No,No,1,Low
-PSMB11,Yes,No,No,No,Yes,2,Low-Med
 ZNF625-ZNF20,Yes,No,No,No,Yes,2,Low-Med
 GNG7,Yes,No,No,No,Yes,2,Low-Med
 CTC1,Yes,No,No,No,Yes,2,Low-Med
@@ -26118,6 +26053,7 @@ KHDC3L,Yes,No,No,No,Yes,2,Low-Med
 LINC02305,Yes,No,No,No,No,1,Low
 RN7SKP185,Yes,No,No,No,No,1,Low
 C8orf77,No,No,No,No,Yes,1,Low
+PPIAP52,Yes,No,No,No,No,1,Low
 RICH2,No,No,No,No,Yes,1,Low
 OLFM2,Yes,No,No,No,Yes,2,Low-Med
 OSBPL1A,Yes,No,No,No,Yes,2,Low-Med
@@ -26381,6 +26317,7 @@ CROCCL2,No,No,No,No,Yes,1,Low
 SFR1P2,Yes,No,No,No,No,1,Low
 SLC25A18P1,Yes,No,No,No,No,1,Low
 UNC93B1,Yes,No,No,No,Yes,2,Low-Med
+LCE2D,Yes,No,No,No,Yes,2,Low-Med
 PRLH,Yes,No,No,No,Yes,2,Low-Med
 LOC101927502,No,No,No,No,Yes,1,Low
 CT47A6,Yes,No,No,No,Yes,2,Low-Med
@@ -26622,7 +26559,6 @@ NLRC4,Yes,No,No,No,Yes,2,Low-Med
 LOC647979,No,No,No,No,Yes,1,Low
 GANAB,Yes,No,No,No,Yes,2,Low-Med
 OR6C72P,Yes,No,No,No,No,1,Low
-RNU6-244P,Yes,No,No,No,No,1,Low
 TMC4,Yes,No,No,No,Yes,2,Low-Med
 KRTAP10-8,Yes,No,No,No,Yes,2,Low-Med
 LOC101929337,No,No,No,No,Yes,1,Low
@@ -26883,8 +26819,6 @@ C2orf92,Yes,No,No,No,No,1,Low
 MOB2,Yes,No,No,No,Yes,2,Low-Med
 CSRNP1,Yes,No,No,No,Yes,2,Low-Med
 SUSD2,Yes,No,No,No,Yes,2,Low-Med
-TRBJ1-1,Yes,No,No,No,No,1,Low
-LINC01363,Yes,No,No,No,Yes,2,Low-Med
 RPL36AP19,Yes,No,No,No,No,1,Low
 VPS37B,Yes,No,No,No,Yes,2,Low-Med
 SMIM18,Yes,No,No,No,Yes,2,Low-Med
@@ -27001,7 +26935,6 @@ PHKB,Yes,No,No,No,Yes,2,Low-Med
 MTHFD2L,Yes,No,No,No,Yes,2,Low-Med
 LCP2,Yes,No,No,No,Yes,2,Low-Med
 DCAF4L2,Yes,No,No,No,Yes,2,Low-Med
-ATP6V0CP3,Yes,No,No,No,No,1,Low
 RNU6-785P,Yes,No,No,No,No,1,Low
 MIR874,Yes,No,No,No,Yes,2,Low-Med
 ST8SIA6-AS1,Yes,No,No,No,Yes,2,Low-Med
@@ -27198,7 +27131,6 @@ RNU6-1133P,Yes,No,No,No,No,1,Low
 GPSM2,Yes,No,No,No,Yes,2,Low-Med
 C9orf69,No,No,No,No,Yes,1,Low
 MYOD1,Yes,No,No,No,Yes,2,Low-Med
-CCNQP2,Yes,No,No,No,No,1,Low
 OR8K5,Yes,No,No,No,Yes,2,Low-Med
 UNC5CL,Yes,No,No,No,Yes,2,Low-Med
 BAG6,Yes,No,No,No,Yes,2,Low-Med
@@ -27591,7 +27523,7 @@ TTTY8,Yes,No,No,No,Yes,2,Low-Med
 MIR767,Yes,No,No,No,Yes,2,Low-Med
 NUDT15,Yes,No,No,No,Yes,2,Low-Med
 CHODL,Yes,No,No,No,Yes,2,Low-Med
-KRTAP2-1,Yes,No,No,No,Yes,2,Low-Med
+KRTAP2-1,No,No,No,No,Yes,1,Low
 C4orf45,Yes,No,No,No,Yes,2,Low-Med
 TSPAN14-AS1,Yes,No,No,No,No,1,Low
 ATXN3,Yes,No,No,No,Yes,2,Low-Med
@@ -27775,6 +27707,7 @@ RIMBP3C,Yes,No,No,No,Yes,2,Low-Med
 SHPRH,Yes,No,No,No,Yes,2,Low-Med
 KCNG3,Yes,No,No,No,Yes,2,Low-Med
 SCGBL,No,No,No,No,Yes,1,Low
+RHOXF2B,Yes,No,No,No,Yes,2,Low-Med
 KRTAP1-3,Yes,No,No,No,Yes,2,Low-Med
 KIAA1462,No,No,No,No,Yes,1,Low
 HDGF,Yes,No,No,No,Yes,2,Low-Med
@@ -28731,9 +28664,6 @@ HAND2,Yes,No,No,No,Yes,2,Low-Med
 BMP2,Yes,No,No,No,Yes,2,Low-Med
 STRADB,Yes,No,No,No,Yes,2,Low-Med
 ST6GALNAC4,Yes,No,No,No,Yes,2,Low-Med
-TFDP1P3,Yes,No,No,No,No,1,Low
-CCNQP3,Yes,No,No,No,No,1,Low
-HKR1,No,No,No,No,Yes,1,Low
 SNORD114-6,Yes,No,No,No,Yes,2,Low-Med
 NAA60,Yes,No,No,No,Yes,2,Low-Med
 SNORA13,Yes,No,No,No,Yes,2,Low-Med
@@ -28783,8 +28713,6 @@ LINC00113,Yes,No,No,No,Yes,2,Low-Med
 INF2,Yes,No,No,No,Yes,2,Low-Med
 JDP2-AS1,Yes,No,No,No,No,1,Low
 OOEP,Yes,No,No,No,Yes,2,Low-Med
-LOC100507462,No,No,No,No,Yes,1,Low
-KRT8P49,Yes,No,No,No,No,1,Low
 PREX2,Yes,No,No,No,Yes,2,Low-Med
 GUCY1A2,Yes,No,No,No,Yes,2,Low-Med
 MIR5095,No,No,No,No,Yes,1,Low
@@ -29317,6 +29245,9 @@ USP48,Yes,No,No,No,Yes,2,Low-Med
 LINC02410,Yes,No,No,No,No,1,Low
 C10orf122,No,No,No,No,Yes,1,Low
 RXRB,Yes,No,No,No,Yes,2,Low-Med
+OR7E53P,Yes,No,No,No,No,1,Low
+MTND6P29,Yes,No,No,No,No,1,Low
+RPL7AP40,Yes,No,No,No,No,1,Low
 RXRG,Yes,No,No,No,Yes,2,Low-Med
 MED20,Yes,No,No,No,Yes,2,Low-Med
 LOC101928517,No,No,No,No,Yes,1,Low
@@ -29360,8 +29291,6 @@ SPANXD,Yes,No,No,No,Yes,2,Low-Med
 MIR5583-2,Yes,No,No,No,No,1,Low
 KCTD21-AS1,Yes,No,No,No,Yes,2,Low-Med
 BRCAT107,No,No,No,No,Yes,1,Low
-MTUS2,Yes,No,No,No,Yes,2,Low-Med
-FAM192BP,Yes,No,No,No,No,1,Low
 JAKMIP2,Yes,No,No,No,Yes,2,Low-Med
 VAC14,Yes,No,No,No,Yes,2,Low-Med
 CLCN5,Yes,No,No,No,Yes,2,Low-Med
@@ -29954,7 +29883,7 @@ PRPF39-DT,Yes,No,No,No,No,1,Low
 TMEM165,Yes,No,No,No,Yes,2,Low-Med
 OR2AP1,Yes,No,No,No,Yes,2,Low-Med
 IGFBPL1,Yes,No,No,No,Yes,2,Low-Med
-MIR6165,Yes,No,No,No,Yes,2,Low-Med
+MIR6165,No,No,No,No,Yes,1,Low
 ANO9,Yes,No,No,No,Yes,2,Low-Med
 HNRNPA0,Yes,No,No,No,Yes,2,Low-Med
 NEURL1B,Yes,No,No,No,Yes,2,Low-Med
@@ -30493,6 +30422,8 @@ RN7SL587P,Yes,No,No,No,No,1,Low
 SERPINA13,No,No,No,No,Yes,1,Low
 C8orf48,Yes,No,No,No,Yes,2,Low-Med
 GAREM1,Yes,No,No,No,No,1,Low
+RNA5SP533,Yes,No,No,No,No,1,Low
+SLC2A4RG,Yes,No,No,No,Yes,2,Low-Med
 1-Sep,No,No,No,No,Yes,1,Low
 PELI3,Yes,No,No,No,Yes,2,Low-Med
 OR2W5,No,No,No,No,Yes,1,Low
@@ -30878,7 +30809,6 @@ NDUFB1,Yes,No,No,Yes,Yes,3,Medium
 PSG7,Yes,No,No,No,Yes,2,Low-Med
 TTC4,Yes,No,No,No,Yes,2,Low-Med
 RN7SL606P,Yes,No,No,No,No,1,Low
-H2AC14,Yes,No,No,No,No,1,Low
 TMSB15B-AS1,Yes,No,No,No,No,1,Low
 CAMP,Yes,No,No,No,Yes,2,Low-Med
 ZNF595,Yes,No,No,No,Yes,2,Low-Med
@@ -30967,6 +30897,7 @@ TIMMDC1,Yes,No,No,No,Yes,2,Low-Med
 KCNE1L,No,No,No,No,Yes,1,Low
 RIPPLY1,Yes,No,No,No,Yes,2,Low-Med
 RPL21P6,Yes,No,No,No,No,1,Low
+EIF4A1P13,Yes,No,No,No,No,1,Low
 EPPK1,Yes,No,No,No,Yes,2,Low-Med
 PTPRS-AS1,Yes,No,No,No,No,1,Low
 PYCRL,No,No,No,No,Yes,1,Low
@@ -31157,7 +31088,6 @@ NAPRT,Yes,No,No,No,Yes,2,Low-Med
 LCMT1-AS2,Yes,No,No,No,Yes,2,Low-Med
 KLRC2,Yes,No,No,No,Yes,2,Low-Med
 C12orf61,No,No,No,No,Yes,1,Low
-MIR941-5,Yes,No,No,No,No,1,Low
 LINC00320,Yes,No,No,No,Yes,2,Low-Med
 PTENP1-AS,Yes,No,No,No,Yes,2,Low-Med
 NPY2R,Yes,No,No,No,Yes,2,Low-Med
@@ -31586,7 +31516,6 @@ B4GALNT3,Yes,No,No,No,Yes,2,Low-Med
 HSD17B2,Yes,No,No,No,Yes,2,Low-Med
 NUDT13,Yes,No,No,No,Yes,2,Low-Med
 TYMP,Yes,No,No,No,Yes,2,Low-Med
-RNU6-510P,Yes,No,No,No,No,1,Low
 DEFB123,Yes,No,No,No,Yes,2,Low-Med
 SGCZ,Yes,No,No,No,Yes,2,Low-Med
 LOC100287592,No,No,No,No,Yes,1,Low
@@ -31679,7 +31608,7 @@ CHMP1B2P,Yes,No,No,No,Yes,2,Low-Med
 GOLGA8T,Yes,No,No,No,No,1,Low
 SPEM1,Yes,No,No,No,Yes,2,Low-Med
 MIR3155A,Yes,No,No,No,Yes,2,Low-Med
-RNU5E-1,Yes,No,No,No,Yes,2,Low-Med
+RNU5E-1,No,No,No,No,Yes,1,Low
 MIR520G,Yes,No,No,No,Yes,2,Low-Med
 SLC35E2B,Yes,No,No,No,Yes,2,Low-Med
 SNORD115-11,Yes,No,No,No,Yes,2,Low-Med
@@ -31990,8 +31919,6 @@ IGLV5-52,Yes,No,No,No,No,1,Low
 AGGF1,Yes,No,No,No,Yes,2,Low-Med
 RPEL1,Yes,No,No,No,Yes,2,Low-Med
 LOC101929057,No,No,No,No,Yes,1,Low
-SCYGR5,Yes,No,No,No,No,1,Low
-DUX4L47,Yes,No,No,No,No,1,Low
 LOC155060,No,No,No,No,Yes,1,Low
 LINC02765,Yes,No,No,No,No,1,Low
 ACADSB,Yes,No,No,No,Yes,2,Low-Med
@@ -32073,8 +32000,6 @@ ATP6V1B2,Yes,No,No,No,Yes,2,Low-Med
 GTPBP8,Yes,No,No,No,Yes,2,Low-Med
 RAB29,Yes,No,No,No,Yes,2,Low-Med
 RAD23A,Yes,No,No,No,Yes,2,Low-Med
-H2AC2P,Yes,No,No,No,No,1,Low
-PLD2,Yes,No,No,No,Yes,2,Low-Med
 SNRNP70,Yes,No,No,Yes,Yes,3,Medium
 SAT1,Yes,No,No,No,Yes,2,Low-Med
 RPL36AP1,Yes,No,No,No,No,1,Low
@@ -32191,10 +32116,11 @@ LOC401557,No,No,No,No,Yes,1,Low
 CRYGS,Yes,No,No,No,Yes,2,Low-Med
 IL1F7,No,No,No,No,Yes,1,Low
 ZBED5,Yes,No,No,No,Yes,2,Low-Med
-MIR941-3,Yes,No,No,No,Yes,2,Low-Med
+MIR941-3,No,No,No,No,Yes,1,Low
 LOC101929633,No,No,No,No,Yes,1,Low
 LRGUK,Yes,No,No,No,Yes,2,Low-Med
 ARF1,Yes,No,No,No,Yes,2,Low-Med
+RNU6-502P,Yes,No,No,No,No,1,Low
 LINC02944,Yes,No,No,No,No,1,Low
 VPREB1,Yes,No,No,No,Yes,2,Low-Med
 RPL39,Yes,No,No,No,Yes,2,Low-Med
@@ -32212,6 +32138,7 @@ STUB1,Yes,No,No,No,Yes,2,Low-Med
 4-Mar,No,No,No,No,Yes,1,Low
 LOC101926898,No,No,No,No,Yes,1,Low
 PRR23A,Yes,No,No,No,Yes,2,Low-Med
+RPL31P32,Yes,No,No,No,No,1,Low
 HEPN1,Yes,No,No,No,Yes,2,Low-Med
 RNU7-30P,Yes,No,No,No,No,1,Low
 GPR149,Yes,No,No,No,Yes,2,Low-Med
@@ -32486,7 +32413,6 @@ CYP4A22-AS1,Yes,No,No,No,No,1,Low
 VENTXP7,Yes,No,No,No,Yes,2,Low-Med
 ANKRD7,Yes,No,No,No,Yes,2,Low-Med
 USP32P3,Yes,No,No,No,No,1,Low
-RNY3,Yes,No,No,No,No,1,Low
 SYBU,Yes,No,No,No,Yes,2,Low-Med
 MIR200A,Yes,No,No,No,Yes,2,Low-Med
 FN1,Yes,No,No,No,Yes,2,Low-Med
@@ -32670,6 +32596,7 @@ TMEM63A,Yes,No,No,No,Yes,2,Low-Med
 NKAPL,Yes,No,No,No,Yes,2,Low-Med
 PTMAP6,Yes,No,No,No,No,1,Low
 ZKSCAN4,Yes,No,No,No,Yes,2,Low-Med
+MIR4476,Yes,No,No,No,No,1,Low
 CXCR2,Yes,No,No,No,Yes,2,Low-Med
 FAM153C,No,No,No,No,Yes,1,Low
 LINC01581,Yes,No,No,No,Yes,2,Low-Med
@@ -33020,7 +32947,7 @@ LOC101927056,No,No,No,No,Yes,1,Low
 MYCNOS,Yes,No,No,No,Yes,2,Low-Med
 ZNF79,Yes,No,No,No,Yes,2,Low-Med
 ZNF680P1,Yes,No,No,No,No,1,Low
-MIR4795,Yes,No,No,No,Yes,2,Low-Med
+MIR4795,No,No,No,No,Yes,1,Low
 C6orf146,No,No,No,No,Yes,1,Low
 GAPDHP36,Yes,No,No,No,No,1,Low
 C10orf120,Yes,No,No,No,Yes,2,Low-Med
@@ -33183,8 +33110,6 @@ RNU6-621P,Yes,No,No,No,No,1,Low
 INO80B,Yes,No,No,No,Yes,2,Low-Med
 MIR4276,Yes,No,No,No,Yes,2,Low-Med
 CBWD1,No,No,No,No,Yes,1,Low
-NPY4R2,Yes,No,No,No,No,1,Low
-ZNF584,Yes,No,No,No,Yes,2,Low-Med
 ATP6V0D1,Yes,No,No,No,Yes,2,Low-Med
 OR10AG1,Yes,No,No,No,Yes,2,Low-Med
 AKR1C4,Yes,No,No,No,Yes,2,Low-Med
@@ -33250,7 +33175,7 @@ LOC102725079,No,No,No,No,Yes,1,Low
 LINC02778,Yes,No,No,No,No,1,Low
 ATL2,Yes,No,No,No,Yes,2,Low-Med
 TTBK2-AS1,Yes,No,No,No,No,1,Low
-RPL13AP5,Yes,No,No,No,Yes,2,Low-Med
+RPL13AP5,No,No,No,No,Yes,1,Low
 LOC100129461,No,No,No,No,Yes,1,Low
 LYZL6,Yes,No,No,No,Yes,2,Low-Med
 TTK,Yes,No,No,No,Yes,2,Low-Med
@@ -33411,6 +33336,8 @@ MPHOSPH9,Yes,No,No,No,Yes,2,Low-Med
 TMEM230P1,Yes,No,No,No,No,1,Low
 RNF186,Yes,No,No,No,Yes,2,Low-Med
 LAMP5-AS1,Yes,No,No,No,Yes,2,Low-Med
+NIBAN2,Yes,No,No,No,No,1,Low
+MGC4859,Yes,No,No,No,No,1,Low
 DUSP5P1,Yes,No,No,No,Yes,2,Low-Med
 LOC100128554,No,No,No,No,Yes,1,Low
 COIL,Yes,No,No,No,Yes,2,Low-Med
@@ -33911,7 +33838,6 @@ LOC100289561,No,No,No,No,Yes,1,Low
 OGG1,Yes,No,No,No,Yes,2,Low-Med
 DSCAM-AS1,Yes,No,No,No,Yes,2,Low-Med
 TMDD1,Yes,No,No,No,No,1,Low
-SRSF8CP,Yes,No,No,No,No,1,Low
 MSANTD5,Yes,No,No,No,No,1,Low
 CAMK1,Yes,No,No,No,Yes,2,Low-Med
 C12orf62,No,No,No,No,Yes,1,Low
@@ -34687,7 +34613,6 @@ GNB2L1,No,No,No,No,Yes,1,Low
 RBP7,Yes,No,No,No,Yes,2,Low-Med
 NTAN1P2,Yes,No,No,No,No,1,Low
 C11orf73,No,No,No,No,Yes,1,Low
-TPTE2P7,Yes,No,No,No,No,1,Low
 RNU1-15P,Yes,No,No,No,No,1,Low
 LINC01216,Yes,No,No,No,Yes,2,Low-Med
 IGHV3-53,Yes,No,No,No,No,1,Low
@@ -34764,6 +34689,8 @@ DOCK4-AS1,Yes,No,No,No,Yes,2,Low-Med
 CCL27,Yes,No,No,No,Yes,2,Low-Med
 RBP1,Yes,No,No,No,Yes,2,Low-Med
 RG9MTD1,No,No,No,No,Yes,1,Low
+TMEM121B,Yes,No,No,No,No,1,Low
+MIR203,No,No,No,No,Yes,1,Low
 LENG8,Yes,No,No,No,Yes,2,Low-Med
 MAT2A,Yes,No,No,No,Yes,2,Low-Med
 MIR548H1,Yes,No,No,No,Yes,2,Low-Med
@@ -34935,7 +34862,6 @@ ACBD5,Yes,No,No,No,Yes,2,Low-Med
 SCAND2P,Yes,No,No,No,Yes,2,Low-Med
 LOC158435,No,No,No,No,Yes,1,Low
 TEX33,Yes,No,No,No,Yes,2,Low-Med
-MCUR1P2,Yes,No,No,No,No,1,Low
 SMTNL1,Yes,No,No,No,Yes,2,Low-Med
 STX18-IT1,Yes,No,No,No,Yes,2,Low-Med
 LINC00929,Yes,No,No,No,Yes,2,Low-Med
@@ -34947,8 +34873,6 @@ NUDT18,Yes,No,No,No,Yes,2,Low-Med
 SORCS2,Yes,No,No,No,Yes,2,Low-Med
 ZNF528,Yes,No,No,No,Yes,2,Low-Med
 LOC100130093,No,No,No,No,Yes,1,Low
-HENMT1,Yes,No,No,No,Yes,2,Low-Med
-HSPE1P22,Yes,No,No,No,No,1,Low
 MAP2K6,Yes,No,No,No,Yes,2,Low-Med
 YIPF2,Yes,No,No,No,Yes,2,Low-Med
 MPC1,Yes,No,No,No,Yes,2,Low-Med
@@ -35028,6 +34952,11 @@ LOC100130451,No,No,No,No,Yes,1,Low
 MYO5A,Yes,No,No,No,Yes,2,Low-Med
 TFAP2C,Yes,No,No,No,Yes,2,Low-Med
 PCSK1N,Yes,No,No,No,Yes,2,Low-Med
+RNU6-105P,Yes,No,No,No,No,1,Low
+OR7E62P,Yes,No,No,No,No,1,Low
+RN7SL160P,Yes,No,No,No,No,1,Low
+HEPH,Yes,No,No,No,Yes,2,Low-Med
+VPS11-DT,Yes,No,No,No,No,1,Low
 ELOCP21,Yes,No,No,No,No,1,Low
 OR7E15P,Yes,No,No,No,No,1,Low
 MIR1236,Yes,No,No,No,Yes,2,Low-Med
@@ -35214,7 +35143,6 @@ OCSTAMP,Yes,No,No,No,Yes,2,Low-Med
 PLEKHG1,Yes,No,No,No,Yes,2,Low-Med
 MIR1974,No,No,No,No,Yes,1,Low
 MTCO3P7,Yes,No,No,No,No,1,Low
-H2BC14,Yes,No,No,No,No,1,Low
 ARPC1AP2,Yes,No,No,No,No,1,Low
 DPPA5P1,Yes,No,No,No,No,1,Low
 LINC02671,Yes,No,No,No,No,1,Low
@@ -35304,9 +35232,6 @@ MIR138-1,Yes,No,No,No,Yes,2,Low-Med
 IFNL2,Yes,No,No,No,No,1,Low
 GPRIN2,Yes,No,No,No,Yes,2,Low-Med
 TRBV17,Yes,No,No,No,No,1,Low
-MSRB1P1,Yes,No,No,No,No,1,Low
-ZNF664-FAM101A,No,No,No,No,Yes,1,Low
-SDAD1-AS1,Yes,No,No,No,No,1,Low
 RNU6-140P,Yes,No,No,No,No,1,Low
 SELENOKP1,Yes,No,No,No,No,1,Low
 IGHV3-29,Yes,No,No,No,No,1,Low
@@ -35345,6 +35270,7 @@ KLHL12,Yes,No,No,No,Yes,2,Low-Med
 VN1R92P,Yes,No,No,No,No,1,Low
 BNIP3P8,Yes,No,No,No,No,1,Low
 VN1R90P,Yes,No,No,No,No,1,Low
+ZNF724,Yes,No,No,No,No,1,Low
 RN7SKP193,Yes,No,No,No,No,1,Low
 CACYBPP2,Yes,No,No,No,No,1,Low
 SNX6P1,Yes,No,No,No,No,1,Low
@@ -35489,6 +35415,8 @@ LINC01896,Yes,No,No,No,No,1,Low
 ACTG1P11,Yes,No,No,No,No,1,Low
 RPL21P95,Yes,No,No,No,No,1,Low
 ZNF516-DT,Yes,No,No,No,No,1,Low
+RDH10-AS1,Yes,No,No,No,Yes,2,Low-Med
+RNA5SP97,Yes,No,No,No,No,1,Low
 LINC01922,Yes,No,No,No,No,1,Low
 FAUP1,Yes,No,No,No,No,1,Low
 C21orf84,No,No,No,No,Yes,1,Low
@@ -35551,6 +35479,10 @@ LINC02837,Yes,No,No,No,No,1,Low
 SNX9-AS1,Yes,No,No,No,No,1,Low
 FAM123C,No,No,No,No,Yes,1,Low
 SRP72P1,Yes,No,No,No,No,1,Low
+DYM-AS1,Yes,No,No,No,No,1,Low
+SYT4,Yes,No,No,No,Yes,2,Low-Med
+HIST2H2BA,No,No,No,No,Yes,1,Low
+ASS1P11,Yes,No,No,No,No,1,Low
 PLA2G12AP2,Yes,No,No,No,No,1,Low
 C9orf92,No,No,No,No,Yes,1,Low
 RNA5SP456,Yes,No,No,No,No,1,Low
@@ -35945,6 +35877,7 @@ ARHGAP24,Yes,No,No,No,Yes,2,Low-Med
 KRT17P2,Yes,No,No,No,No,1,Low
 LINC02076,Yes,No,No,No,No,1,Low
 RPL21P121,Yes,No,No,No,No,1,Low
+ALMS1P1,Yes,No,No,No,No,1,Low
 RNU6-611P,Yes,No,No,No,No,1,Low
 ERVK3-1,Yes,No,No,No,No,1,Low
 DRC3,Yes,No,No,No,No,1,Low
@@ -36090,9 +36023,6 @@ HCCAT5,Yes,No,No,No,No,1,Low
 C9orf47,No,No,No,No,Yes,1,Low
 C11orf80,Yes,No,No,No,Yes,2,Low-Med
 KRT18P18,Yes,No,No,No,No,1,Low
-RPS2P5,Yes,No,No,No,No,1,Low
-MTERF2,Yes,No,No,No,Yes,2,Low-Med
-RNU6-801P,Yes,No,No,No,No,1,Low
 INSIG1,Yes,No,No,No,Yes,2,Low-Med
 NBDY,Yes,No,No,No,No,1,Low
 NDUFB8P2,Yes,No,No,No,No,1,Low
@@ -36634,6 +36564,9 @@ MIR7849,Yes,No,No,No,No,1,Low
 RNU6-1014P,Yes,No,No,No,No,1,Low
 IGKV1D-22,Yes,No,No,No,No,1,Low
 DPPA5P2,Yes,No,No,No,No,1,Low
+RPS15AP13,Yes,No,No,No,No,1,Low
+FAM170B-AS1,Yes,No,No,No,Yes,2,Low-Med
+LDHAL6CP,Yes,No,No,No,No,1,Low
 RALGPS2-AS1,Yes,No,No,No,No,1,Low
 RNU6-1332P,Yes,No,No,No,No,1,Low
 ZNF222-DT,Yes,No,No,No,No,1,Low
@@ -36816,10 +36749,6 @@ IGHD5OR15-5A,Yes,No,No,No,No,1,Low
 PABPC1P3,Yes,No,No,No,No,1,Low
 R3HDM2-DT,Yes,No,No,No,No,1,Low
 SLC20A1P3,Yes,No,No,No,No,1,Low
-IGHV4-80,Yes,No,No,No,No,1,Low
-ASH2L,Yes,No,No,No,Yes,2,Low-Med
-FBXW7-AS1,Yes,No,No,No,No,1,Low
-NPM1P38,Yes,No,No,No,No,1,Low
 IGHV3-79,Yes,No,No,No,No,1,Low
 TACSTD2,Yes,No,No,No,Yes,2,Low-Med
 DNM1P50,Yes,No,No,No,No,1,Low
@@ -36910,12 +36839,6 @@ MIR3937,Yes,No,No,No,No,1,Low
 UNC93B3,Yes,No,No,No,No,1,Low
 IGHV1-14,Yes,No,No,No,No,1,Low
 IGHVIII-13-1,Yes,No,No,No,No,1,Low
-IGHV3-7,Yes,No,No,No,No,1,Low
-TTC36,Yes,No,No,No,Yes,2,Low-Med
-YWHAQP7,Yes,No,No,No,No,1,Low
-MED15P3,Yes,No,No,No,No,1,Low
-GSK3A,Yes,No,No,No,Yes,2,Low-Med
-EI24P4,Yes,No,No,No,No,1,Low
 TRDJ3,Yes,No,No,No,No,1,Low
 IGHV3-6,Yes,No,No,No,No,1,Low
 CD2AP,Yes,No,No,No,Yes,2,Low-Med
@@ -37089,8 +37012,6 @@ RN7SL530P,Yes,No,No,No,No,1,Low
 RN7SL771P,Yes,No,No,No,No,1,Low
 GLRX3,Yes,No,No,No,Yes,2,Low-Med
 BBOF1,Yes,No,No,No,No,1,Low
-PPIAP52,Yes,No,No,No,No,1,Low
-NT5CP2,Yes,No,No,No,No,1,Low
 RNU6-419P,Yes,No,No,No,No,1,Low
 LINC02534,Yes,No,No,No,No,1,Low
 COMMD3,Yes,No,No,No,Yes,2,Low-Med
@@ -37602,13 +37523,10 @@ OR7E33P,Yes,No,No,No,No,1,Low
 BRD7P4,Yes,No,No,No,No,1,Low
 RPSAP53,Yes,No,No,No,No,1,Low
 MIR548X2,Yes,No,No,No,No,1,Low
-RN7SL521P,Yes,No,No,No,No,1,Low
 AKR1B1,Yes,No,No,No,Yes,2,Low-Med
 NFYAP1,Yes,No,No,No,No,1,Low
 ZHX1,Yes,No,No,No,Yes,2,Low-Med
 SOD1P3,Yes,No,No,No,No,1,Low
-RPS7P9,Yes,No,No,No,No,1,Low
-LINC00355,Yes,No,No,No,No,1,Low
 PPP1R2P10,Yes,No,No,No,No,1,Low
 EEF1A1P22,Yes,No,No,No,No,1,Low
 ST13P10,Yes,No,No,No,No,1,Low
@@ -37664,13 +37582,12 @@ DST-AS1,Yes,No,No,No,No,1,Low
 RPL34P26,Yes,No,No,No,No,1,Low
 USP9YP8,Yes,No,No,No,No,1,Low
 PIN1-DT,Yes,No,No,No,No,1,Low
-MIR631,Yes,No,No,No,Yes,2,Low-Med
-RNU6-60P,Yes,No,No,No,No,1,Low
-SUGCT-AS1,Yes,No,No,No,No,1,Low
+FTLP13,Yes,No,No,No,No,1,Low
+RUVBL2P1,Yes,No,No,No,No,1,Low
+GPAA1,Yes,No,No,No,Yes,2,Low-Med
+PHB1P9,Yes,No,No,No,No,1,Low
 BTNL3,Yes,No,No,No,Yes,2,Low-Med
 SPCS2P2,Yes,No,No,No,No,1,Low
-LOC101927243,No,No,No,No,Yes,1,Low
-RPS28P4,Yes,No,No,No,No,1,Low
 LINC02301,Yes,No,No,No,No,1,Low
 FABP5P11,Yes,No,No,No,No,1,Low
 CDC20-DT,Yes,No,No,No,No,1,Low
@@ -37722,12 +37639,16 @@ LINC02690,Yes,No,No,No,No,1,Low
 RNU6-642P,Yes,No,No,No,No,1,Low
 GAPDHP21,Yes,No,No,No,No,1,Low
 RPL23AP43,Yes,No,No,No,No,1,Low
+WAPL-DT,Yes,No,No,No,No,1,Low
 IGHV3OR16-8,Yes,No,No,No,No,1,Low
 LINC02647,Yes,No,No,No,No,1,Low
 FARSBP1,Yes,No,No,No,No,1,Low
 LINC02397,Yes,No,No,No,No,1,Low
 ETV6,Yes,No,No,No,Yes,2,Low-Med
 ZNF519P1,Yes,No,No,No,No,1,Low
+MTERF2,Yes,No,No,No,Yes,2,Low-Med
+RNU6-801P,Yes,No,No,No,No,1,Low
+RPS2P5,Yes,No,No,No,No,1,Low
 C1DP2,Yes,No,No,No,No,1,Low
 LINC02924,Yes,No,No,No,No,1,Low
 SAG,Yes,No,No,No,Yes,2,Low-Med
@@ -37807,6 +37728,8 @@ RPL13AP19,Yes,No,No,No,No,1,Low
 MED14P1,Yes,No,No,No,No,1,Low
 ELK2AP,Yes,No,No,No,No,1,Low
 COX7BP6,Yes,No,No,No,No,1,Low
+ZNF584,Yes,No,No,No,Yes,2,Low-Med
+NPY4R2,Yes,No,No,No,No,1,Low
 SYT15B,Yes,No,No,No,No,1,Low
 RN7SL248P,Yes,No,No,No,No,1,Low
 HSPE1P5,Yes,No,No,No,No,1,Low
@@ -37893,6 +37816,11 @@ LCIIAR,Yes,No,No,No,No,1,Low
 RN7SL398P,Yes,No,No,No,No,1,Low
 RN7SL825P,Yes,No,No,No,No,1,Low
 UQCRBP2,Yes,No,No,No,No,1,Low
+CCNQP3,Yes,No,No,No,No,1,Low
+HKR1,No,No,No,No,Yes,1,Low
+TFDP1P3,Yes,No,No,No,No,1,Low
+FSD1,Yes,No,No,No,Yes,2,Low-Med
+ACTBP16,Yes,No,No,No,No,1,Low
 SPTLC1P1,Yes,No,No,No,No,1,Low
 MIR6761,Yes,No,No,No,No,1,Low
 CCND3P1,Yes,No,No,No,No,1,Low
@@ -37909,9 +37837,6 @@ MIR503HG,Yes,No,No,No,Yes,2,Low-Med
 RPL31P49,Yes,No,No,No,No,1,Low
 RAB40AL,Yes,No,No,No,Yes,2,Low-Med
 RN7SKP116,Yes,No,No,No,No,1,Low
-FAM170B-AS1,Yes,No,No,No,Yes,2,Low-Med
-LDHAL6CP,Yes,No,No,No,No,1,Low
-RPS15AP13,Yes,No,No,No,No,1,Low
 FBN3,Yes,No,No,No,Yes,2,Low-Med
 EEF1A1P39,Yes,No,No,No,No,1,Low
 SIGLEC18P,Yes,No,No,No,No,1,Low
@@ -38175,15 +38100,7 @@ ARGFXP1,Yes,No,No,No,No,1,Low
 RNY4P16,Yes,No,No,No,No,1,Low
 KRT19,Yes,No,No,No,Yes,2,Low-Med
 ARID3BP1,Yes,No,No,No,No,1,Low
-GRM5P1,Yes,No,No,No,No,1,Low
-RHOXF1-AS1,Yes,No,No,No,Yes,2,Low-Med
-RPS15P4,Yes,No,No,No,No,1,Low
 IFNWP5,Yes,No,No,No,No,1,Low
-RAD51D,Yes,No,No,No,Yes,2,Low-Med
-CSPG4P12,Yes,No,No,No,No,1,Low
-HEPH,Yes,No,No,No,Yes,2,Low-Med
-VPS11-DT,Yes,No,No,No,No,1,Low
-RN7SL160P,Yes,No,No,No,No,1,Low
 DYRK3-AS1,Yes,No,No,No,No,1,Low
 LDHBP3,Yes,No,No,No,No,1,Low
 LINC02584,Yes,No,No,No,No,1,Low
@@ -38301,6 +38218,8 @@ MIR4489,Yes,No,No,No,No,1,Low
 RPL13AP10,Yes,No,No,No,No,1,Low
 NPLP1,Yes,No,No,No,No,1,Low
 RNA5SP76,Yes,No,No,No,No,1,Low
+NKAIN4,Yes,No,No,No,Yes,2,Low-Med
+RNU6-111P,Yes,No,No,No,No,1,Low
 NXNP1,Yes,No,No,No,No,1,Low
 LOC100129027,No,No,No,No,Yes,1,Low
 CCN1,Yes,No,No,No,No,1,Low
@@ -38523,6 +38442,9 @@ EML4-AS1,Yes,No,No,No,No,1,Low
 APOL3,Yes,No,No,No,Yes,2,Low-Med
 SLC12A5-AS1,Yes,No,No,No,No,1,Low
 RNU6-152P,Yes,No,No,No,No,1,Low
+RPL29P22,Yes,No,No,No,No,1,Low
+XPO7,Yes,No,No,No,Yes,2,Low-Med
+FAM193B-DT,Yes,No,No,No,No,1,Low
 LINC01699,Yes,No,No,No,No,1,Low
 ABHD17AP1,Yes,No,No,No,No,1,Low
 UBE2L4,Yes,No,No,No,No,1,Low
@@ -38643,11 +38565,6 @@ RNU6-1118P,Yes,No,No,No,No,1,Low
 RNU6-208P,Yes,No,No,No,No,1,Low
 FAM210CP,Yes,No,No,No,No,1,Low
 LINC02826,Yes,No,No,No,No,1,Low
-RPL29P22,Yes,No,No,No,No,1,Low
-XPO7,Yes,No,No,No,Yes,2,Low-Med
-FAM193B-DT,Yes,No,No,No,No,1,Low
-LCE2D,Yes,No,No,No,Yes,2,Low-Med
-CNN2P10,Yes,No,No,No,No,1,Low
 LOC646762,No,No,No,No,Yes,1,Low
 LINC01675,Yes,No,No,No,No,1,Low
 FMO7P,Yes,No,No,No,No,1,Low
@@ -38825,6 +38742,7 @@ SLC6A9,Yes,No,No,No,Yes,2,Low-Med
 RPL10AP3,Yes,No,No,No,No,1,Low
 CES3,Yes,No,No,No,Yes,2,Low-Med
 LINC01381,Yes,No,No,No,No,1,Low
+OR7E46P,Yes,No,No,No,No,1,Low
 DUX4L27,Yes,No,No,No,No,1,Low
 LINC02959,Yes,No,No,No,No,1,Low
 DSP-AS1,Yes,No,No,No,No,1,Low
@@ -38887,12 +38805,17 @@ ERICH6-AS1,Yes,No,No,No,Yes,2,Low-Med
 TMEM268,Yes,No,No,No,No,1,Low
 MPP7-DT,Yes,No,No,No,No,1,Low
 KCNH1-IT1,Yes,No,No,No,No,1,Low
-RNU6-61P,Yes,No,No,No,No,1,Low
-SNORA75B,Yes,No,No,No,No,1,Low
-S100A7P1,Yes,No,No,No,No,1,Low
-MPTX1,Yes,No,No,No,No,1,Low
-SNX2P1,Yes,No,No,No,No,1,Low
-HMGB1P50,Yes,No,No,No,No,1,Low
+AIFM1P1,Yes,No,No,No,No,1,Low
+LINC02817,Yes,No,No,No,No,1,Low
+TPST2P1,Yes,No,No,No,No,1,Low
+LINC00355,Yes,No,No,No,No,1,Low
+RPS7P9,Yes,No,No,No,No,1,Low
+TOLLIP-AS1,No,No,No,No,Yes,1,Low
+BRSK2,Yes,No,No,No,Yes,2,Low-Med
+RNU6ATAC6P,Yes,No,No,No,No,1,Low
+RN7SL284P,Yes,No,No,No,No,1,Low
+MRPS18BP2,Yes,No,No,No,No,1,Low
+SNORA74,Yes,No,No,No,No,1,Low
 ZNF652,Yes,No,No,No,Yes,2,Low-Med
 DDX19A-DT,Yes,No,No,No,No,1,Low
 PGGT1BP1,Yes,No,No,No,No,1,Low
@@ -38965,6 +38888,8 @@ HAS3,Yes,No,No,No,Yes,2,Low-Med
 TRAV40,Yes,No,No,No,No,1,Low
 FCGR1CP,Yes,No,No,No,No,1,Low
 PARP4P2,Yes,No,No,No,No,1,Low
+MIR4424,Yes,No,No,No,No,1,Low
+UFM1P3,Yes,No,No,No,No,1,Low
 FAM247B,Yes,No,No,No,No,1,Low
 HNRNPA1P16,Yes,No,No,No,No,1,Low
 HYI-AS1,Yes,No,No,No,No,1,Low
@@ -38984,7 +38909,11 @@ KYAT3,Yes,No,No,No,No,1,Low
 LINC02675,Yes,No,No,No,No,1,Low
 TRAV8-2,Yes,No,No,No,No,1,Low
 MUC5B-AS1,Yes,No,No,No,No,1,Low
-WAPL-DT,Yes,No,No,No,No,1,Low
+RN7SL693P,Yes,No,No,No,No,1,Low
+IL1B,Yes,No,Yes,Yes,Yes,4,High
+ELOCP28,Yes,No,No,No,No,1,Low
+OR8R1P,Yes,No,No,No,No,1,Low
+ADAM1B,Yes,No,No,No,No,1,Low
 TCEAL4P1,Yes,No,No,No,No,1,Low
 LINC01897,Yes,No,No,No,No,1,Low
 MAP2K5,Yes,No,No,No,Yes,2,Low-Med
@@ -38993,9 +38922,6 @@ RPS12P21,Yes,No,No,No,No,1,Low
 NR2F2-AS1,Yes,No,No,No,Yes,2,Low-Med
 IPPKP1,Yes,No,No,No,No,1,Low
 BMS1P2,Yes,No,No,No,No,1,Low
-OR51H2P,Yes,No,No,No,No,1,Low
-NUP153-AS1,Yes,No,No,No,No,1,Low
-RNU6-874P,Yes,No,No,No,No,1,Low
 TEX11,Yes,No,No,No,Yes,2,Low-Med
 FAM238C,Yes,No,No,No,No,1,Low
 TMCO1-AS1,Yes,No,No,No,No,1,Low
@@ -39082,6 +39008,8 @@ RNA5SP350,Yes,No,No,No,No,1,Low
 HDAC2-AS2,Yes,No,No,No,No,1,Low
 RPL36AP40,Yes,No,No,No,No,1,Low
 YWHAZP10,Yes,No,No,No,No,1,Low
+LOC101928823,No,No,No,No,Yes,1,Low
+NPIPA7,Yes,No,No,No,No,1,Low
 NUPR1L,No,No,No,No,Yes,1,Low
 PATJ-DT,Yes,No,No,No,No,1,Low
 RPL23AP90,Yes,No,No,No,No,1,Low
@@ -39110,7 +39038,6 @@ RN7SL510P,Yes,No,No,No,No,1,Low
 TPRKB,Yes,No,No,No,Yes,2,Low-Med
 MACO1,Yes,No,No,No,No,1,Low
 LINC02773,Yes,No,No,No,No,1,Low
-RPL36AP36,Yes,No,No,No,No,1,Low
 LOC101928580,No,No,No,No,Yes,1,Low
 MIR8059,Yes,No,No,No,No,1,Low
 MIR548A2,Yes,No,No,No,Yes,2,Low-Med
@@ -39181,8 +39108,9 @@ SH3TC1,Yes,No,No,No,Yes,2,Low-Med
 LINC02277,Yes,No,No,No,No,1,Low
 TRPM2,Yes,No,No,No,Yes,2,Low-Med
 LARGE2,Yes,No,No,No,No,1,Low
-MIR4424,Yes,No,No,No,No,1,Low
-UFM1P3,Yes,No,No,No,No,1,Low
+RNU1-7P,Yes,No,No,No,No,1,Low
+DNAJB7,Yes,No,No,No,Yes,2,Low-Med
+LINC02799,Yes,No,No,No,No,1,Low
 CCDC127,Yes,No,No,No,Yes,2,Low-Med
 RPL23AP54,Yes,No,No,No,No,1,Low
 SNORD115,Yes,No,No,No,No,1,Low
@@ -39228,7 +39156,6 @@ ZNF382,Yes,No,No,No,Yes,2,Low-Med
 KCTD9P5,Yes,No,No,No,No,1,Low
 C2orf69P1,Yes,No,No,No,No,1,Low
 SUPT4H1P2,Yes,No,No,No,No,1,Low
-RNU5E-4P,Yes,No,No,No,No,1,Low
 RNA5SP46,Yes,No,No,No,No,1,Low
 ZNF778-DT,Yes,No,No,No,No,1,Low
 HIST1H2AB,No,No,No,No,Yes,1,Low
@@ -39251,6 +39178,7 @@ CEACAMP2,Yes,No,No,No,No,1,Low
 PPM1K-DT,Yes,No,No,No,No,1,Low
 LENG9,Yes,No,No,No,Yes,2,Low-Med
 HNRNPA1P63,Yes,No,No,No,No,1,Low
+OR4C14P,Yes,No,No,No,No,1,Low
 DUXAP11,Yes,No,No,No,No,1,Low
 LINC01707,Yes,No,No,No,No,1,Low
 NCAM1-AS1,Yes,No,No,No,Yes,2,Low-Med
@@ -39333,9 +39261,6 @@ OR4A50P,Yes,No,No,No,No,1,Low
 GRHL3-AS1,Yes,No,No,No,No,1,Low
 VN1R71P,Yes,No,No,No,No,1,Low
 IGLVIV-66-1,Yes,No,No,No,No,1,Low
-SLC2A4RG,Yes,No,No,No,Yes,2,Low-Med
-RNA5SP533,Yes,No,No,No,No,1,Low
-EOLA1,Yes,No,No,No,No,1,Low
 MIR3681HG,Yes,No,No,No,No,1,Low
 PLA2G10FP,Yes,No,No,No,No,1,Low
 SRSF3P1,Yes,No,No,No,No,1,Low
@@ -39376,18 +39301,12 @@ LOC389765,No,No,No,No,Yes,1,Low
 GAPDHP51,Yes,No,No,No,No,1,Low
 SUCLG2P2,Yes,No,No,No,No,1,Low
 NDUFS5P6,Yes,No,No,No,No,1,Low
-RNU6ATAC28P,Yes,No,No,No,No,1,Low
 ZNF281,Yes,No,No,No,Yes,2,Low-Med
 FAM133EP,Yes,No,No,No,No,1,Low
 RPL7AP81,Yes,No,No,No,No,1,Low
 MTCH2P4,Yes,No,No,No,No,1,Low
 FHAD1-AS1,Yes,No,No,No,No,1,Low
-RNU1-7P,Yes,No,No,No,No,1,Low
-DNAJB7,Yes,No,No,No,Yes,2,Low-Med
-LINC02799,Yes,No,No,No,No,1,Low
 PPIAP20,Yes,No,No,No,No,1,Low
-CLXN,Yes,No,No,No,No,1,Low
-BRWD1P1,Yes,No,No,No,No,1,Low
 OR4H6P,Yes,No,No,No,No,1,Low
 RNU6-823P,Yes,No,No,No,No,1,Low
 RNU6-57P,Yes,No,No,No,No,1,Low
@@ -39411,7 +39330,6 @@ RPL29P25,Yes,No,No,No,No,1,Low
 LNCTAM34A,Yes,No,No,No,No,1,Low
 GATSL1,No,No,No,No,Yes,1,Low
 BCAR3-AS1,Yes,No,No,No,No,1,Low
-OR4C14P,Yes,No,No,No,No,1,Low
 RN7SL833P,Yes,No,No,No,No,1,Low
 LOC100506142,No,No,No,No,Yes,1,Low
 EEF1A1P7,Yes,No,No,No,No,1,Low
@@ -39422,6 +39340,18 @@ CENPS-CORT,Yes,No,No,No,No,1,Low
 SNORD14A,Yes,No,No,No,No,1,Low
 USP17L11,Yes,No,No,No,No,1,Low
 DUX4L10,Yes,No,No,No,No,1,Low
+EIF1P7,Yes,No,No,No,No,1,Low
+PRKCZ-DT,Yes,No,No,No,No,1,Low
+MGAT4FP,Yes,No,No,No,No,1,Low
+RNU2-51P,Yes,No,No,No,No,1,Low
+RNU6-818P,Yes,No,No,No,No,1,Low
+RNA5SP44,Yes,No,No,No,No,1,Low
+EMILIN2,Yes,No,No,No,Yes,2,Low-Med
+KTELC1,No,No,No,No,Yes,1,Low
+RPL12P14,Yes,No,No,No,No,1,Low
+RNU6-886P,Yes,No,No,No,No,1,Low
+PPIAP17,Yes,No,No,No,No,1,Low
+ST6GALNAC4P1,Yes,No,No,No,No,1,Low
 HNRNPA1P44,Yes,No,No,No,No,1,Low
 OR51A6P,Yes,No,No,No,No,1,Low
 RPL13AP9,Yes,No,No,No,No,1,Low
@@ -39433,8 +39363,6 @@ CYP39A1,Yes,No,No,Yes,Yes,3,Medium
 LCEP1,Yes,No,No,No,No,1,Low
 PSMC1P8,Yes,No,No,No,No,1,Low
 RNU6-187P,Yes,No,No,No,No,1,Low
-RNU2-51P,Yes,No,No,No,No,1,Low
-RNU6-818P,Yes,No,No,No,No,1,Low
 MTND1P37,Yes,No,No,No,No,1,Low
 LINC02853,Yes,No,No,No,No,1,Low
 RNU6-792P,Yes,No,No,No,No,1,Low
@@ -39502,19 +39430,10 @@ LINC01783,Yes,No,No,No,No,1,Low
 RNU5F-1,Yes,No,No,No,Yes,2,Low-Med
 RNU7-49P,Yes,No,No,No,No,1,Low
 NAP1L4P1,Yes,No,No,No,No,1,Low
-RNA5SP44,Yes,No,No,No,No,1,Low
-EMILIN2,Yes,No,No,No,Yes,2,Low-Med
-KTELC1,No,No,No,No,Yes,1,Low
-RPL12P14,Yes,No,No,No,No,1,Low
-RNU6-886P,Yes,No,No,No,No,1,Low
-PPIAP17,Yes,No,No,No,No,1,Low
-ST6GALNAC4P1,Yes,No,No,No,No,1,Low
 DNPH1,Yes,No,No,No,Yes,2,Low-Med
 TP73-AS2,Yes,No,No,No,No,1,Low
 ZFP14,Yes,No,No,No,Yes,2,Low-Med
 KLRK1-AS1,Yes,No,No,No,No,1,Low
-VAMP1-AS1,Yes,No,No,No,No,1,Low
-CKAP2-DT,Yes,No,No,No,No,1,Low
 IFT25,Yes,No,No,No,No,1,Low
 PPP2R2B,Yes,No,No,No,Yes,2,Low-Med
 BMS1P3,Yes,No,No,No,No,1,Low
@@ -39526,9 +39445,6 @@ RNU6-148P,Yes,No,No,No,No,1,Low
 LINC02667,Yes,No,No,No,No,1,Low
 HDAC4-AS1,Yes,No,No,No,No,1,Low
 OR6C7P,Yes,No,No,No,No,1,Low
-RN7SL284P,Yes,No,No,No,No,1,Low
-MRPS18BP2,Yes,No,No,No,No,1,Low
-SNORA74,Yes,No,No,No,No,1,Low
 MIDEAS-AS1,Yes,No,No,No,No,1,Low
 RNU4ATAC3P,Yes,No,No,No,No,1,Low
 SUCO,Yes,No,No,No,Yes,2,Low-Med
@@ -39599,6 +39515,7 @@ CCDC37,No,No,No,No,Yes,1,Low
 MIR5697,Yes,No,No,No,No,1,Low
 SLC2A3P2,Yes,No,No,No,No,1,Low
 ARHGAP42-AS1,Yes,No,No,No,No,1,Low
+TRAJ6,Yes,No,No,No,No,1,Low
 TMOD3,Yes,No,No,No,Yes,2,Low-Med
 AKR1B10P1,Yes,No,No,No,No,1,Low
 MIR1260B,Yes,No,No,No,No,1,Low
@@ -39640,9 +39557,6 @@ HMGN2P36,Yes,No,No,No,No,1,Low
 SLC25A5,Yes,No,No,No,Yes,2,Low-Med
 PLA2G10CP,Yes,No,No,No,No,1,Low
 HIGD1AP3,Yes,No,No,No,No,1,Low
-EIF1P7,Yes,No,No,No,No,1,Low
-PRKCZ-DT,Yes,No,No,No,No,1,Low
-MGAT4FP,Yes,No,No,No,No,1,Low
 DIP2C-AS1,Yes,No,No,No,No,1,Low
 FAM131C2P,Yes,No,No,No,No,1,Low
 RNU6-1059P,Yes,No,No,No,No,1,Low
@@ -39665,13 +39579,6 @@ RN7SL229P,Yes,No,No,No,No,1,Low
 HSPC072,No,No,No,No,Yes,1,Low
 LINC02101,Yes,No,No,No,No,1,Low
 MIR3123,Yes,No,No,No,No,1,Low
-UBE2D2,Yes,No,No,Yes,Yes,3,Medium
-RNU6-470P,Yes,No,No,No,No,1,Low
-PRELID3A,Yes,No,No,No,No,1,Low
-C17orf74,No,No,No,No,Yes,1,Low
-NPM1P50,Yes,No,No,No,No,1,Low
-IFIT6P,Yes,No,No,No,No,1,Low
-ADGRL1-AS1,Yes,No,No,No,No,1,Low
 IFI44L,Yes,No,No,No,Yes,2,Low-Med
 LINC01146,No,No,No,No,Yes,1,Low
 ZC3H11B,Yes,No,No,No,No,1,Low
@@ -39698,6 +39605,7 @@ BLVRA,Yes,No,No,No,Yes,2,Low-Med
 RNA5SP343,Yes,No,No,No,No,1,Low
 RNU1-150P,Yes,No,No,No,No,1,Low
 RPS28P1,Yes,No,No,No,No,1,Low
+OR51A10P,Yes,No,No,No,No,1,Low
 FRG1B,No,No,No,No,Yes,1,Low
 MPHOSPH10P4,Yes,No,No,No,No,1,Low
 PSME2P2,Yes,No,No,No,No,1,Low
@@ -39762,6 +39670,9 @@ OR4G4P,Yes,No,No,No,No,1,Low
 C1orf21,Yes,No,No,No,Yes,2,Low-Med
 RN7SL834P,Yes,No,No,No,No,1,Low
 HNRNPA1P26,Yes,No,No,No,No,1,Low
+SNX2P1,Yes,No,No,No,No,1,Low
+HMGB1P50,Yes,No,No,No,No,1,Low
+MPTX1,Yes,No,No,No,No,1,Low
 SETP4,Yes,No,No,No,No,1,Low
 LINC02552,Yes,No,No,No,No,1,Low
 HNRNPA3P12,Yes,No,No,No,No,1,Low
@@ -39771,6 +39682,9 @@ RN7SL515P,Yes,No,No,No,No,1,Low
 SYT17,Yes,No,No,No,Yes,2,Low-Med
 ADAMTSL5,Yes,No,No,No,Yes,2,Low-Med
 RN7SL704P,Yes,No,No,No,No,1,Low
+PNCK,Yes,No,No,No,Yes,2,Low-Med
+CYP4A26P,Yes,No,No,No,No,1,Low
+RN7SL104P,Yes,No,No,No,No,1,Low
 MIR4252,Yes,No,No,No,No,1,Low
 RCN1P2,Yes,No,No,No,No,1,Low
 ZNF736P8Y,Yes,No,No,No,No,1,Low
@@ -39813,6 +39727,10 @@ SMU1P1,Yes,No,No,No,No,1,Low
 OR6N2,Yes,No,No,No,Yes,2,Low-Med
 MTCO1P53,Yes,No,No,No,No,1,Low
 BNIP3P33,Yes,No,No,No,No,1,Low
+IFIT6P,Yes,No,No,No,No,1,Low
+ADGRL1-AS1,Yes,No,No,No,No,1,Low
+C17orf74,No,No,No,No,Yes,1,Low
+NPM1P50,Yes,No,No,No,No,1,Low
 LINC00384,Yes,No,No,No,No,1,Low
 RBM44,Yes,No,No,No,Yes,2,Low-Med
 ZNRF2P1,Yes,No,No,No,Yes,2,Low-Med
@@ -39827,11 +39745,6 @@ SLC35E2A,Yes,No,No,No,No,1,Low
 CNIH3-AS2,Yes,No,No,No,No,1,Low
 LINC02554,Yes,No,No,No,No,1,Low
 NRBF2P2,Yes,No,No,No,No,1,Low
-AIFM1P1,Yes,No,No,No,No,1,Low
-LINC02817,Yes,No,No,No,No,1,Low
-TPST2P1,Yes,No,No,No,No,1,Low
-BRI3P1,Yes,No,No,No,No,1,Low
-PPIAP38,Yes,No,No,No,No,1,Low
 PRDX3P2,Yes,No,No,No,No,1,Low
 DGAT2L7P,Yes,No,No,No,No,1,Low
 NSRP1P1,Yes,No,No,No,No,1,Low
@@ -39849,9 +39762,6 @@ LINC01767,Yes,No,No,No,No,1,Low
 FAM91A3P,Yes,No,No,No,No,1,Low
 CHCHD2P5,Yes,No,No,No,No,1,Low
 FMNL1-AS1,Yes,No,No,No,No,1,Low
-OR51A10P,Yes,No,No,No,No,1,Low
-MTA1-DT,Yes,No,No,No,No,1,Low
-RN7SKP134,Yes,No,No,No,No,1,Low
 TMEM275,Yes,No,No,No,No,1,Low
 PARAL1,Yes,No,No,No,No,1,Low
 SERPINE4P,Yes,No,No,No,No,1,Low
@@ -39901,8 +39811,6 @@ PGBD4P6,Yes,No,No,No,No,1,Low
 DIRAS1,Yes,No,No,No,Yes,2,Low-Med
 ZFRP1,Yes,No,No,No,No,1,Low
 RN7SL165P,Yes,No,No,No,No,1,Low
-H2BP2,Yes,No,No,No,No,1,Low
-COX6CP8,Yes,No,No,No,No,1,Low
 PKD1L2,Yes,No,No,No,Yes,2,Low-Med
 MIR4310,Yes,No,No,No,No,1,Low
 SZT2-AS1,Yes,No,No,No,No,1,Low
@@ -39917,19 +39825,12 @@ RNA5SP40,Yes,No,No,No,No,1,Low
 H2AC19,Yes,No,No,No,No,1,Low
 LINC01362,Yes,No,No,No,No,1,Low
 ELOCP33,Yes,No,No,No,No,1,Low
-LINC02238,Yes,No,No,No,No,1,Low
-MIR203,No,No,No,No,Yes,1,Low
-TMEM121B,Yes,No,No,No,No,1,Low
 RNU4-21P,Yes,No,No,No,No,1,Low
 PEG3-AS1,No,No,No,No,Yes,1,Low
 TSEN15P2,Yes,No,No,No,No,1,Low
 RNU5B-4P,Yes,No,No,No,No,1,Low
 LINC02735,Yes,No,No,No,No,1,Low
 RNU6-371P,Yes,No,No,No,No,1,Low
-PDGFRA,Yes,No,No,Yes,Yes,3,Medium
-CLEC16A,Yes,No,No,Yes,Yes,3,Medium
-RNU6-1277P,Yes,No,No,No,No,1,Low
-LINC02461,Yes,No,No,No,No,1,Low
 LINC02918,Yes,No,No,No,No,1,Low
 LINC02531,Yes,No,No,No,No,1,Low
 GOLGA2P8,Yes,No,No,No,No,1,Low
@@ -39987,8 +39888,6 @@ RNU6-597P,Yes,No,No,No,No,1,Low
 RN7SL431P,Yes,No,No,No,No,1,Low
 LINC02176,Yes,No,No,No,No,1,Low
 MRGPRX9P,Yes,No,No,No,No,1,Low
-GNAZ,Yes,No,No,No,Yes,2,Low-Med
-RPS27P8,Yes,No,No,No,No,1,Low
 CRYBG2,Yes,No,No,No,No,1,Low
 IGKV3OR2-268,Yes,No,No,No,No,1,Low
 SPON1-AS1,Yes,No,No,No,No,1,Low
@@ -40026,6 +39925,8 @@ CDRT15P4,Yes,No,No,No,No,1,Low
 TSPOAP1,Yes,No,No,No,No,1,Low
 RNU6-871P,Yes,No,No,No,No,1,Low
 RNU6-695P,Yes,No,No,No,No,1,Low
+SNORD116-2,Yes,No,No,No,Yes,2,Low-Med
+RNU2-39P,Yes,No,No,No,No,1,Low
 POLGARF,Yes,No,No,No,No,1,Low
 LINC01761,Yes,No,No,No,No,1,Low
 RNA5-8SP7,Yes,No,No,No,No,1,Low
@@ -40048,7 +39949,6 @@ CCR7,Yes,No,No,No,Yes,2,Low-Med
 H2AC17,Yes,No,No,No,No,1,Low
 UBE2D3P3,Yes,No,No,No,No,1,Low
 LINC01786,Yes,No,No,No,No,1,Low
-SIGLEC27P,Yes,No,No,No,No,1,Low
 POLR2F,Yes,No,No,Yes,Yes,3,Medium
 CHORDC1P5,Yes,No,No,No,No,1,Low
 LINC02655,Yes,No,No,No,No,1,Low
@@ -40056,8 +39956,6 @@ RNU1-61P,Yes,No,No,No,No,1,Low
 RPEP3,Yes,No,No,No,No,1,Low
 HSPE1P27,Yes,No,No,No,No,1,Low
 RO60,Yes,No,No,No,No,1,Low
-COX7CP1,Yes,No,No,No,No,1,Low
-GTF2IP12,Yes,No,No,No,No,1,Low
 GLYATL1B,Yes,No,No,No,No,1,Low
 MGAT1,Yes,No,No,No,Yes,2,Low-Med
 MARCHF8,Yes,No,No,No,No,1,Low
@@ -40108,12 +40006,13 @@ DYNLL1P3,Yes,No,No,No,No,1,Low
 RNU6-1099P,Yes,No,No,No,No,1,Low
 IGHV3-54,Yes,No,No,No,No,1,Low
 NDUFAF2P2,Yes,No,No,No,No,1,Low
-RN7SL1,Yes,No,No,No,No,1,Low
-RPL12P7,Yes,No,No,No,No,1,Low
-RNU6-392P,Yes,No,No,No,No,1,Low
-H2BP1,Yes,No,No,No,No,1,Low
-C2orf74-AS1,Yes,No,No,No,No,1,Low
-MRPS35-DT,Yes,No,No,No,No,1,Low
+RN7SL12P,Yes,No,No,No,No,1,Low
+ECHS1,Yes,No,No,No,Yes,2,Low-Med
+LINC02777,Yes,No,No,No,No,1,Low
+RN7SL776P,Yes,No,No,No,No,1,Low
+RPL7AP79,Yes,No,No,No,No,1,Low
+NR2C2AP,Yes,No,No,No,Yes,2,Low-Med
+MOB1AP2,Yes,No,No,No,No,1,Low
 RPS11P1,Yes,No,No,No,No,1,Low
 MIR6795,Yes,No,No,No,No,1,Low
 HNRNPA1P13,Yes,No,No,No,No,1,Low
@@ -40164,8 +40063,6 @@ IGLV2-28,Yes,No,No,No,No,1,Low
 PRSS40A,Yes,No,No,No,No,1,Low
 RNU7-4P,Yes,No,No,No,No,1,Low
 HMGN2P39,Yes,No,No,No,No,1,Low
-RPL21P40,Yes,No,No,No,No,1,Low
-RPS2P1,Yes,No,No,No,No,1,Low
 MIR499B,Yes,No,No,No,No,1,Low
 CPSF7,Yes,No,No,No,Yes,2,Low-Med
 ALDH1A3-AS1,Yes,No,No,No,No,1,Low
@@ -40176,8 +40073,6 @@ NORAD,Yes,No,No,No,No,1,Low
 CTAGE8,Yes,No,No,No,No,1,Low
 ENO1P3,Yes,No,No,No,No,1,Low
 MRPL49P1,Yes,No,No,No,No,1,Low
-LINC02549,Yes,No,No,No,No,1,Low
-HNRNPA3P2,Yes,No,No,No,No,1,Low
 RPS27AP3,Yes,No,No,No,No,1,Low
 TMPRSS11CP,Yes,No,No,No,No,1,Low
 ENPP7P7,Yes,No,No,No,No,1,Low
@@ -40222,6 +40117,7 @@ PSMD10P1,Yes,No,No,No,No,1,Low
 RNU7-196P,Yes,No,No,No,No,1,Low
 PIGFP1,Yes,No,No,No,No,1,Low
 MIR3194,Yes,No,No,No,No,1,Low
+BRIX1P1,Yes,No,No,No,No,1,Low
 MRPS33P4,Yes,No,No,No,No,1,Low
 ZNF439,Yes,No,No,No,Yes,2,Low-Med
 PPIAP10,Yes,No,No,No,No,1,Low
@@ -40235,6 +40131,8 @@ DGAT1,Yes,No,No,No,Yes,2,Low-Med
 LINC01716,Yes,No,No,No,No,1,Low
 WDR17,Yes,No,No,No,Yes,2,Low-Med
 ACSL3P1,Yes,No,No,No,No,1,Low
+LINC00423,Yes,No,No,No,Yes,2,Low-Med
+RNA5SP319,Yes,No,No,No,No,1,Low
 LINC00548,No,No,No,No,Yes,1,Low
 COX6CP10,Yes,No,No,No,No,1,Low
 YBX1P4,Yes,No,No,No,No,1,Low
@@ -40282,10 +40180,6 @@ BPY2B,Yes,No,No,No,No,1,Low
 TMEM276,Yes,No,No,No,No,1,Low
 CTBP2P10,Yes,No,No,No,No,1,Low
 RNU6-867P,Yes,No,No,No,No,1,Low
-KRT18P46,Yes,No,No,No,No,1,Low
-PBX4,Yes,No,No,No,Yes,2,Low-Med
-ZNF181,Yes,No,No,No,Yes,2,Low-Med
-RNU6-709P,Yes,No,No,No,No,1,Low
 SOWAHCP2,Yes,No,No,No,No,1,Low
 KRTAP4-5,Yes,No,No,No,Yes,2,Low-Med
 PSMG3P2,Yes,No,No,No,No,1,Low
@@ -40319,6 +40213,7 @@ SALL4,Yes,No,No,No,Yes,2,Low-Med
 LINC02225,Yes,No,No,No,No,1,Low
 RNF213,Yes,No,No,No,Yes,2,Low-Med
 C1QBPP1,Yes,No,No,No,No,1,Low
+UBTFL10,Yes,No,No,No,No,1,Low
 LINC01945,Yes,No,No,No,No,1,Low
 LINC01683,Yes,No,No,No,No,1,Low
 MRPL42P2,Yes,No,No,No,No,1,Low
@@ -40338,8 +40233,6 @@ RNA5SP161,Yes,No,No,No,No,1,Low
 POM121L15P,Yes,No,No,No,No,1,Low
 FCER2,Yes,No,No,No,Yes,2,Low-Med
 BACH1-IT3,Yes,No,No,No,No,1,Low
-RHOXF2B,Yes,No,No,No,Yes,2,Low-Med
-PEBP1P2,Yes,No,No,No,No,1,Low
 KRTAP19-11P,Yes,No,No,No,No,1,Low
 LINC00520,Yes,No,No,No,Yes,2,Low-Med
 RARRES2P4,Yes,No,No,No,No,1,Low
@@ -40396,10 +40289,6 @@ OR10AE3P,Yes,No,No,No,No,1,Low
 OR11H1,Yes,No,No,No,No,1,Low
 OSBPL2,Yes,No,No,No,Yes,2,Low-Med
 KRT8P7,Yes,No,No,No,No,1,Low
-RN7SL286P,Yes,No,No,No,No,1,Low
-ARF4P2,Yes,No,No,No,No,1,Low
-MIR5092,Yes,No,No,No,No,1,Low
-MED15P7,Yes,No,No,No,No,1,Low
 STPG3-AS1,Yes,No,No,No,No,1,Low
 GPM6BP3,Yes,No,No,No,No,1,Low
 RPL31P62,Yes,No,No,No,No,1,Low
@@ -40635,7 +40524,6 @@ MRPS18CP6,Yes,No,No,No,No,1,Low
 KLHL10,Yes,No,No,No,Yes,2,Low-Med
 ANP32BP2,Yes,No,No,No,No,1,Low
 RPL6P28,Yes,No,No,No,No,1,Low
-RNU6-105P,Yes,No,No,No,No,1,Low
 MECOM-AS1,Yes,No,No,No,No,1,Low
 STK16,Yes,No,No,No,Yes,2,Low-Med
 TBC1D22A-DT,Yes,No,No,No,No,1,Low
@@ -40688,8 +40576,6 @@ SNAP25,Yes,No,No,No,Yes,2,Low-Med
 PP1P,Yes,No,No,No,No,1,Low
 LINC02018,Yes,No,No,No,No,1,Low
 PEX12P1,Yes,No,No,No,No,1,Low
-RDH10-AS1,Yes,No,No,No,Yes,2,Low-Med
-RNA5SP97,Yes,No,No,No,No,1,Low
 ARHGAP42P2,Yes,No,No,No,No,1,Low
 RNU6-138P,Yes,No,No,No,No,1,Low
 RPL7P19,Yes,No,No,No,No,1,Low
@@ -40844,7 +40730,6 @@ RNA5SP135,Yes,No,No,No,No,1,Low
 MIR3648-2,Yes,No,No,No,No,1,Low
 HNRNPA1P4,Yes,No,No,No,No,1,Low
 PRY,Yes,No,No,No,No,1,Low
-PCNPP2,Yes,No,No,No,No,1,Low
 RNA5SP133,Yes,No,No,No,No,1,Low
 RPL19P2,Yes,No,No,No,No,1,Low
 ST13P20,Yes,No,No,No,No,1,Low
@@ -41219,12 +41104,9 @@ PEX5L-AS1,Yes,No,No,No,No,1,Low
 IER3,Yes,No,No,No,Yes,2,Low-Med
 OR1D3P,Yes,No,No,No,No,1,Low
 CICP17,Yes,No,No,No,No,1,Low
+RNA5SP149,Yes,No,No,No,No,1,Low
 RNU6-486P,Yes,No,No,No,No,1,Low
 VCY,Yes,No,No,No,No,1,Low
-ECHS1,Yes,No,No,No,Yes,2,Low-Med
-LINC02777,Yes,No,No,No,No,1,Low
-RN7SL776P,Yes,No,No,No,No,1,Low
-RPL7AP79,Yes,No,No,No,No,1,Low
 CCDC39-AS1,Yes,No,No,No,No,1,Low
 RANP4,Yes,No,No,No,No,1,Low
 FAUP2,Yes,No,No,No,No,1,Low
@@ -41413,8 +41295,8 @@ ATP5MGP3,Yes,No,No,No,No,1,Low
 CYP4A22,Yes,No,No,Yes,Yes,3,Medium
 SNORA17B,Yes,No,No,No,No,1,Low
 MIR3200,Yes,No,No,No,No,1,Low
+OR51H2P,Yes,No,No,No,No,1,Low
 MTCO3P44,Yes,No,No,No,No,1,Low
-MTND3P5,Yes,No,No,No,No,1,Low
 STIM2-AS1,Yes,No,No,No,No,1,Low
 MSR1,Yes,No,No,No,Yes,2,Low-Med
 SNORD113-8,Yes,No,No,No,No,1,Low
@@ -41521,6 +41403,12 @@ CSKMT,Yes,No,No,No,No,1,Low
 BMP6P1,Yes,No,No,No,No,1,Low
 C10orf27,No,No,No,No,Yes,1,Low
 AKIRIN1P2,Yes,No,No,No,No,1,Low
+RN7SL286P,Yes,No,No,No,No,1,Low
+ARF4P2,Yes,No,No,No,No,1,Low
+MIR5092,Yes,No,No,No,No,1,Low
+MED15P7,Yes,No,No,No,No,1,Low
+ZNF664-FAM101A,No,No,No,No,Yes,1,Low
+SDAD1-AS1,Yes,No,No,No,No,1,Low
 RHOQP2,Yes,No,No,No,No,1,Low
 HAUS3,Yes,No,No,No,Yes,2,Low-Med
 LINC02536,Yes,No,No,No,No,1,Low
@@ -41651,7 +41539,6 @@ CEP55,Yes,No,No,No,Yes,2,Low-Med
 MIR4266,Yes,No,No,No,No,1,Low
 PSME2P1,Yes,No,No,No,No,1,Low
 TUBB8P3,Yes,No,No,No,No,1,Low
-H2AC12,Yes,No,No,No,No,1,Low
 RTEL1P1,Yes,No,No,No,No,1,Low
 RNU4ATAC17P,Yes,No,No,No,No,1,Low
 LINC01024,No,No,No,No,Yes,1,Low
@@ -41765,11 +41652,15 @@ MIR552,Yes,No,No,No,Yes,2,Low-Med
 MIR450A2,Yes,No,No,No,Yes,2,Low-Med
 LINC03074,Yes,No,No,No,No,1,Low
 LINC02273,Yes,No,No,No,No,1,Low
+FAM71E1,No,No,No,No,Yes,1,Low
+ELOCP20,Yes,No,No,No,No,1,Low
 TRBV20-1,Yes,No,No,No,No,1,Low
 RPL29P6,Yes,No,No,No,No,1,Low
 RPS3AP18,Yes,No,No,No,No,1,Low
 DPYSL2,Yes,No,No,No,Yes,2,Low-Med
 RN7SL419P,Yes,No,No,No,No,1,Low
+GNAZ,Yes,No,No,No,Yes,2,Low-Med
+RPS27P8,Yes,No,No,No,No,1,Low
 MTND2P31,Yes,No,No,No,No,1,Low
 RNU2-44P,Yes,No,No,No,No,1,Low
 MTND4P8,Yes,No,No,No,No,1,Low
@@ -41784,7 +41675,6 @@ GAPDHP25,Yes,No,No,No,No,1,Low
 RNU6-188P,Yes,No,No,No,No,1,Low
 OTOAP1,Yes,No,No,No,No,1,Low
 MRPL42P5,No,No,No,No,Yes,1,Low
-RPS15AP36,Yes,No,No,No,No,1,Low
 EIF4EP3,Yes,No,No,No,No,1,Low
 LINC02283,Yes,No,No,No,No,1,Low
 RPL31P22,Yes,No,No,No,No,1,Low
@@ -41924,7 +41814,6 @@ RBMXP3,Yes,No,No,No,No,1,Low
 DCAF1,Yes,No,No,No,No,1,Low
 SIM1-AS1,Yes,No,No,No,No,1,Low
 ANP32BP1,Yes,No,No,No,No,1,Low
-PYY3,Yes,No,No,No,No,1,Low
 RN7SL659P,Yes,No,No,No,No,1,Low
 SNHG15,Yes,No,No,No,Yes,2,Low-Med
 MIR6131,Yes,No,No,No,No,1,Low
@@ -42196,6 +42085,7 @@ C6orf47-AS1,Yes,No,No,No,No,1,Low
 ACCN4,No,No,No,No,Yes,1,Low
 THBS4-AS1,Yes,No,No,No,No,1,Low
 ZFAND6P1,Yes,No,No,No,No,1,Low
+REXO1L12P,Yes,No,No,No,No,1,Low
 LOC285780,No,No,No,No,Yes,1,Low
 RNU6-295P,Yes,No,No,No,No,1,Low
 ZFY-AS1,Yes,No,No,No,No,1,Low
@@ -42319,15 +42209,10 @@ MIR6833,Yes,No,No,No,No,1,Low
 DERA,Yes,No,No,No,Yes,2,Low-Med
 LOC284100,No,No,No,No,Yes,1,Low
 RPL5P22,Yes,No,No,No,No,1,Low
-SMARCA1,Yes,No,No,No,Yes,2,Low-Med
-TMEM55A,No,No,No,No,Yes,1,Low
-FAM151B-DT,Yes,No,No,No,No,1,Low
-RPL36AP32,Yes,No,No,No,No,1,Low
 PPBPP1,Yes,No,No,No,No,1,Low
 NUP107-DT,Yes,No,No,No,No,1,Low
 CCNJP1,Yes,No,No,No,No,1,Low
 LINC02948,Yes,No,No,No,No,1,Low
-RNU6-1171P,Yes,No,No,No,No,1,Low
 RNA5SP178,Yes,No,No,No,No,1,Low
 TBCB,Yes,No,No,No,Yes,2,Low-Med
 BTD,Yes,No,No,No,Yes,2,Low-Med
@@ -42344,8 +42229,6 @@ GOLGA6L2,Yes,No,No,No,Yes,2,Low-Med
 RPS3AP14,Yes,No,No,No,No,1,Low
 RN7SL621P,Yes,No,No,No,No,1,Low
 LINC02720,Yes,No,No,No,No,1,Low
-EIF2B5,Yes,No,No,No,Yes,2,Low-Med
-KRT18P12,Yes,No,No,No,No,1,Low
 UBBP2,Yes,No,No,No,No,1,Low
 RNU6-533P,Yes,No,No,No,No,1,Low
 LINC01181,Yes,No,No,No,No,1,Low
@@ -42378,7 +42261,6 @@ LNCPRESS1,Yes,No,No,No,No,1,Low
 MTCYBP44,Yes,No,No,No,No,1,Low
 LINC02804,Yes,No,No,No,No,1,Low
 TPT1P5,Yes,No,No,No,No,1,Low
-BRIX1P1,Yes,No,No,No,No,1,Low
 CIR1P2,Yes,No,No,No,No,1,Low
 APPL2,Yes,No,No,No,Yes,2,Low-Med
 FAM196A,No,No,No,No,Yes,1,Low
@@ -42489,7 +42371,6 @@ RPL7AP80,Yes,No,No,No,No,1,Low
 NIPA2P4,Yes,No,No,No,No,1,Low
 MED28P3,Yes,No,No,No,No,1,Low
 LINC02865,Yes,No,No,No,No,1,Low
-REXO1L12P,Yes,No,No,No,No,1,Low
 MTCO2P15,Yes,No,No,No,No,1,Low
 PHB1P15,Yes,No,No,No,No,1,Low
 REXO1L4P,Yes,No,No,No,No,1,Low
@@ -42616,6 +42497,10 @@ MIR4458HG,Yes,No,No,No,Yes,2,Low-Med
 HSPD1P5,Yes,No,No,No,No,1,Low
 PLA2R1,Yes,No,No,No,Yes,2,Low-Med
 NGRNP3,Yes,No,No,No,No,1,Low
+PBX4,Yes,No,No,No,Yes,2,Low-Med
+ZNF181,Yes,No,No,No,Yes,2,Low-Med
+RNU6-709P,Yes,No,No,No,No,1,Low
+KRT18P46,Yes,No,No,No,No,1,Low
 OR4P1P,Yes,No,No,No,No,1,Low
 MIR5194,Yes,No,No,No,No,1,Low
 BNIP3P11,Yes,No,No,No,No,1,Low
@@ -42720,12 +42605,7 @@ PPIAP68,Yes,No,No,No,No,1,Low
 TRBV27,Yes,No,No,No,No,1,Low
 RN7SL809P,Yes,No,No,No,No,1,Low
 RNU6-1135P,Yes,No,No,No,No,1,Low
-BNC2-AS1,Yes,No,No,No,No,1,Low
-SLC10A1,Yes,No,No,No,Yes,2,Low-Med
-BPIFB9P,Yes,No,No,No,No,1,Low
 PABPC1P11,Yes,No,No,No,No,1,Low
-ZNF724,Yes,No,No,No,No,1,Low
-DNAH8-DT,Yes,No,No,No,No,1,Low
 TMEM262,Yes,No,No,No,Yes,2,Low-Med
 LINC00407,Yes,No,No,No,No,1,Low
 GFUS,Yes,No,No,No,No,1,Low
@@ -42743,6 +42623,8 @@ WDR97,Yes,No,No,No,No,1,Low
 SKIC2,Yes,No,No,No,No,1,Low
 VPS51P12,Yes,No,No,No,No,1,Low
 DENND10P1,Yes,No,No,No,No,1,Low
+KIAA0040,Yes,No,No,No,Yes,2,Low-Med
+RN7SL508P,Yes,No,No,No,No,1,Low
 TNRC18P1,Yes,No,No,No,No,1,Low
 REXO1L8P,Yes,No,No,No,No,1,Low
 BTF3P12,Yes,No,No,No,No,1,Low
@@ -42867,8 +42749,6 @@ ADGRF5P1,Yes,No,No,No,No,1,Low
 ABHD12,Yes,No,No,No,Yes,2,Low-Med
 CDC123,Yes,No,No,No,Yes,2,Low-Med
 GPR79,Yes,No,No,No,No,1,Low
-LINC01471,Yes,No,No,No,Yes,2,Low-Med
-RN7SK,Yes,No,No,No,No,1,Low
 APLNR,Yes,No,No,No,Yes,2,Low-Med
 FLJ43315,Yes,No,No,No,No,1,Low
 EDC4,Yes,No,No,No,Yes,2,Low-Med
@@ -42892,9 +42772,6 @@ SAP30P1,Yes,No,No,No,No,1,Low
 BMS1P12,Yes,No,No,No,No,1,Low
 IQUB,Yes,No,No,No,Yes,2,Low-Med
 GAPDHP30,Yes,No,No,No,No,1,Low
-RNA5SP149,Yes,No,No,No,No,1,Low
-KRBOX5P1,Yes,No,No,No,No,1,Low
-PIMREGP2,Yes,No,No,No,No,1,Low
 VIPR2,Yes,No,No,No,Yes,2,Low-Med
 SNORD19C,Yes,No,No,No,No,1,Low
 LINC02337,Yes,No,No,No,No,1,Low
@@ -42933,6 +42810,14 @@ C3orf19,No,No,No,No,Yes,1,Low
 RBM22P5,Yes,No,No,No,No,1,Low
 PARK7P2,Yes,No,No,No,No,1,Low
 MIGA2,Yes,No,No,No,No,1,Low
+LINC02048,Yes,No,No,No,No,1,Low
+KCNIP1-AS1,Yes,No,No,No,No,1,Low
+ECM1P1,Yes,No,No,No,No,1,Low
+TFDP1P2,Yes,No,No,No,No,1,Low
+KRT8P21,Yes,No,No,No,No,1,Low
+ATAD3B,Yes,No,No,No,Yes,2,Low-Med
+MIR193B,Yes,No,No,No,Yes,2,Low-Med
+TRAJ49,Yes,No,No,No,No,1,Low
 CASC4,No,No,No,No,Yes,1,Low
 VENTX,Yes,No,No,No,Yes,2,Low-Med
 SMIM14-DT,Yes,No,No,No,No,1,Low
@@ -42976,14 +42861,6 @@ PRC1-AS1,Yes,No,No,No,Yes,2,Low-Med
 MTND4P32,Yes,No,No,No,No,1,Low
 TRPC4,Yes,No,No,No,Yes,2,Low-Med
 CDRT15P6,Yes,No,No,No,No,1,Low
-LINC02048,Yes,No,No,No,No,1,Low
-KCNIP1-AS1,Yes,No,No,No,No,1,Low
-ECM1P1,Yes,No,No,No,No,1,Low
-TFDP1P2,Yes,No,No,No,No,1,Low
-KRT8P21,Yes,No,No,No,No,1,Low
-ATAD3B,Yes,No,No,No,Yes,2,Low-Med
-MIR193B,Yes,No,No,No,Yes,2,Low-Med
-TRAJ49,Yes,No,No,No,No,1,Low
 LINC01639,Yes,No,No,No,No,1,Low
 HNRNPDP1,Yes,No,No,No,No,1,Low
 SCGB1D1,Yes,No,No,No,Yes,2,Low-Med
@@ -43084,7 +42961,6 @@ LDB1,Yes,No,No,No,Yes,2,Low-Med
 RNU6-891P,Yes,No,No,No,No,1,Low
 ARL2BPP7,Yes,No,No,No,No,1,Low
 IGBP1P4,Yes,No,No,No,No,1,Low
-BAK1P1,Yes,No,No,No,No,1,Low
 RNA5SP477,Yes,No,No,No,No,1,Low
 ELAVL4,Yes,No,No,No,Yes,2,Low-Med
 SMC2-DT,Yes,No,No,No,No,1,Low
@@ -43127,11 +43003,13 @@ LINC01698,Yes,No,No,No,No,1,Low
 RNU6-220P,Yes,No,No,No,No,1,Low
 ATP5MC3,Yes,No,No,No,No,1,Low
 RPL7P28,Yes,No,No,No,No,1,Low
-TMEM123-DT,Yes,No,No,No,No,1,Low
-ITGB8-AS1,Yes,No,No,No,No,1,Low
+RNU1-76P,Yes,No,No,No,No,1,Low
+YWHAZP5,Yes,No,No,No,No,1,Low
+FAM53A,Yes,No,No,No,Yes,2,Low-Med
+RNU6-639P,Yes,No,No,No,No,1,Low
+RN7SL822P,Yes,No,No,No,No,1,Low
+RNU6-519P,Yes,No,No,No,No,1,Low
 RPS7P14,Yes,No,No,No,No,1,Low
-RN7SL42P,Yes,No,No,No,No,1,Low
-PKMP4,Yes,No,No,No,No,1,Low
 GLIS3-AS2,Yes,No,No,No,No,1,Low
 CHKA,Yes,No,No,No,Yes,2,Low-Med
 RNU6-669P,Yes,No,No,No,No,1,Low
@@ -43201,6 +43079,7 @@ MTND3P20,Yes,No,No,No,No,1,Low
 SND1-IT1,Yes,No,No,No,No,1,Low
 PRDX2P3,Yes,No,No,No,No,1,Low
 RNA5SP287,Yes,No,No,No,No,1,Low
+RN7SL569P,Yes,No,No,No,No,1,Low
 RPS18P6,Yes,No,No,No,No,1,Low
 MIGA1,Yes,No,No,No,No,1,Low
 TRPC6P1,Yes,No,No,No,No,1,Low
@@ -43243,8 +43122,9 @@ GPR113,No,No,No,No,Yes,1,Low
 PNMA6B,Yes,No,No,No,No,1,Low
 MIR6735,Yes,No,No,No,Yes,2,Low-Med
 MRPS17P9,Yes,No,No,No,No,1,Low
-TRAJ6,Yes,No,No,No,No,1,Low
-PTMAP12,Yes,No,No,No,No,1,Low
+CYP4F26P,Yes,No,No,No,No,1,Low
+RPS6P26,Yes,No,No,No,No,1,Low
+RPL17P23,Yes,No,No,No,No,1,Low
 CEP44,Yes,No,No,No,Yes,2,Low-Med
 TMEM97P2,Yes,No,No,No,No,1,Low
 USH2A-AS1,Yes,No,No,No,No,1,Low
@@ -43374,7 +43254,7 @@ GPR20,Yes,No,No,No,Yes,2,Low-Med
 MTND4LP22,Yes,No,No,No,No,1,Low
 GNAQ,Yes,No,No,No,Yes,2,Low-Med
 ADGRF5-AS1,Yes,No,No,No,No,1,Low
-MIR3143,Yes,No,No,No,Yes,2,Low-Med
+MIR3143,No,No,No,No,Yes,1,Low
 RNA5SP517,Yes,No,No,No,No,1,Low
 XIAP-AS1,Yes,No,No,No,No,1,Low
 MICALL2-DT,Yes,No,No,No,No,1,Low
@@ -43515,12 +43395,6 @@ MEOX1,Yes,No,No,No,Yes,2,Low-Med
 CELF3,Yes,No,No,No,Yes,2,Low-Med
 RNU6-842P,Yes,No,No,No,No,1,Low
 RNU2-47P,Yes,No,No,No,No,1,Low
-LINC01456,Yes,No,No,No,No,1,Low
-OR5A2,Yes,No,No,No,Yes,2,Low-Med
-GNG10P1,Yes,No,No,No,No,1,Low
-EARS2,Yes,No,No,No,Yes,2,Low-Med
-IL10RB-AS1,No,No,No,No,Yes,1,Low
-OFCC1,Yes,No,No,No,No,1,Low
 PPP3R2,Yes,No,No,No,Yes,2,Low-Med
 BTF3P3,Yes,No,No,No,No,1,Low
 RNU1-41P,Yes,No,No,No,No,1,Low
@@ -43640,12 +43514,12 @@ MIR6760,Yes,No,No,No,No,1,Low
 RNA5SP523,Yes,No,No,No,No,1,Low
 STX8P1,Yes,No,No,No,No,1,Low
 BRD7P6,Yes,No,No,No,No,1,Low
+TMEM123-DT,Yes,No,No,No,No,1,Low
+ITGB8-AS1,Yes,No,No,No,No,1,Low
 RFX7,Yes,No,No,No,Yes,2,Low-Med
 LINC02976,Yes,No,No,No,No,1,Low
 MXRA5Y,Yes,No,No,No,No,1,Low
 RNU6-838P,Yes,No,No,No,No,1,Low
-LDB2,Yes,No,No,No,Yes,2,Low-Med
-ZBTB24-DT,Yes,No,No,No,No,1,Low
 RIPOR3,Yes,No,No,No,No,1,Low
 LINC00957,Yes,No,No,No,Yes,2,Low-Med
 OR9P1P,Yes,No,No,No,No,1,Low
@@ -43667,7 +43541,6 @@ XGY2,Yes,No,No,No,No,1,Low
 H2AC16,Yes,No,No,No,No,1,Low
 FSIP2LP,Yes,No,No,No,No,1,Low
 DUSP8P1,Yes,No,No,No,No,1,Low
-RNU6-519P,Yes,No,No,No,No,1,Low
 PSMC1P5,Yes,No,No,No,No,1,Low
 CNN2P1,Yes,No,No,No,No,1,Low
 H2AL1MP,Yes,No,No,No,No,1,Low
@@ -43712,7 +43585,6 @@ RNU6-520P,Yes,No,No,No,No,1,Low
 PKIA-AS1,Yes,No,No,No,Yes,2,Low-Med
 CYP4F10P,Yes,No,No,No,No,1,Low
 RAB9AP1,Yes,No,No,No,No,1,Low
-CD24P4,Yes,No,No,No,No,1,Low
 MIR184,Yes,No,No,No,Yes,2,Low-Med
 RNU6-894P,Yes,No,No,No,No,1,Low
 PPIHP2,Yes,No,No,No,No,1,Low
@@ -43816,7 +43688,6 @@ CCDC28A-AS1,Yes,No,No,No,No,1,Low
 ARRDC3-AS1,Yes,No,No,No,Yes,2,Low-Med
 DNAI3,Yes,No,No,No,No,1,Low
 VPS51P15,Yes,No,No,No,No,1,Low
-H2BC10,Yes,No,No,No,No,1,Low
 LINC02698,Yes,No,No,No,No,1,Low
 CSGALNACT2P2,Yes,No,No,No,No,1,Low
 IGHV3-16,Yes,No,No,No,No,1,Low
@@ -43952,7 +43823,6 @@ LINC02194,Yes,No,No,No,No,1,Low
 MEP1AP1,Yes,No,No,No,No,1,Low
 SEC16B,Yes,No,No,No,Yes,2,Low-Med
 DUX4L13,Yes,No,No,No,No,1,Low
-RPS27AP20,Yes,No,No,No,No,1,Low
 USP9YP22,Yes,No,No,No,No,1,Low
 CD33,Yes,No,No,No,Yes,2,Low-Med
 ELOCP19,Yes,No,No,No,No,1,Low
@@ -44076,11 +43946,6 @@ TMBIM7P,Yes,No,No,No,No,1,Low
 NECTIN4,Yes,No,No,No,No,1,Low
 CSAG3,Yes,No,No,No,No,1,Low
 RNU6-761P,Yes,No,No,No,No,1,Low
-RNU1-76P,Yes,No,No,No,No,1,Low
-YWHAZP5,Yes,No,No,No,No,1,Low
-FAM53A,Yes,No,No,No,Yes,2,Low-Med
-RNU6-639P,Yes,No,No,No,No,1,Low
-RN7SL822P,Yes,No,No,No,No,1,Low
 IGFL1,Yes,No,No,No,Yes,2,Low-Med
 SGCEP1,Yes,No,No,No,No,1,Low
 OR13I1P,Yes,No,No,No,No,1,Low
@@ -44153,6 +44018,12 @@ DUX4L15,Yes,No,No,No,No,1,Low
 IARS1,Yes,No,No,No,No,1,Low
 ZP4,Yes,No,No,No,Yes,2,Low-Med
 ELOCP9,Yes,No,No,No,No,1,Low
+LINC01456,Yes,No,No,No,No,1,Low
+OR5A2,Yes,No,No,No,Yes,2,Low-Med
+GNG10P1,Yes,No,No,No,No,1,Low
+EARS2,Yes,No,No,No,Yes,2,Low-Med
+IL10RB-AS1,No,No,No,No,Yes,1,Low
+OFCC1,Yes,No,No,No,No,1,Low
 TEX101P1,Yes,No,No,No,No,1,Low
 EFCAB10,Yes,No,No,No,Yes,2,Low-Med
 RN7SL654P,Yes,No,No,No,No,1,Low
@@ -44162,8 +44033,6 @@ SNORD38C,Yes,No,No,No,No,1,Low
 AARSD1,Yes,No,No,No,Yes,2,Low-Med
 COX4I2,Yes,No,No,No,Yes,2,Low-Med
 TAB3-AS2,Yes,No,No,No,No,1,Low
-LINC00423,Yes,No,No,No,Yes,2,Low-Med
-RNA5SP319,Yes,No,No,No,No,1,Low
 KIF4CP,Yes,No,No,No,No,1,Low
 FRG1HP,Yes,No,No,No,No,1,Low
 PORCN-DT,Yes,No,No,No,No,1,Low
@@ -44181,12 +44050,9 @@ RNU7-104P,Yes,No,No,No,No,1,Low
 GAPDHP40,Yes,No,No,No,No,1,Low
 TCERG1L-AS1,Yes,No,No,No,Yes,2,Low-Med
 CFTRP2,Yes,No,No,No,No,1,Low
-CST7,Yes,No,No,No,Yes,2,Low-Med
 VTA1P2,Yes,No,No,No,No,1,Low
+CST7,Yes,No,No,No,Yes,2,Low-Med
 ALG1L12P,Yes,No,No,No,No,1,Low
-CYP4F26P,Yes,No,No,No,No,1,Low
-RPS6P26,Yes,No,No,No,No,1,Low
-RPL17P23,Yes,No,No,No,No,1,Low
 ELOCP7,Yes,No,No,No,No,1,Low
 MTCO1P19,Yes,No,No,No,No,1,Low
 LOC100129034,No,No,No,No,Yes,1,Low
@@ -44215,8 +44081,6 @@ IL6RP1,Yes,No,No,No,No,1,Low
 SYNE1-AS1,Yes,No,No,No,Yes,2,Low-Med
 EMSLR,Yes,No,No,No,No,1,Low
 SLC25A6P1,Yes,No,No,No,No,1,Low
-GPAA1,Yes,No,No,No,Yes,2,Low-Med
-PHB1P9,Yes,No,No,No,No,1,Low
 SMIM12P1,Yes,No,No,No,No,1,Low
 UBE2V1P4,Yes,No,No,No,No,1,Low
 LINC02790,Yes,No,No,No,No,1,Low
@@ -44267,8 +44131,6 @@ RPL7AP49,Yes,No,No,No,No,1,Low
 ZFTA,Yes,No,No,No,No,1,Low
 LINC01703,Yes,No,No,No,No,1,Low
 FAM90A11P,Yes,No,No,No,No,1,Low
-LOC101928823,No,No,No,No,Yes,1,Low
-NPIPA7,Yes,No,No,No,No,1,Low
 RNU6-764P,Yes,No,No,No,No,1,Low
 HMGA1P1,Yes,No,No,No,No,1,Low
 LPAR1,Yes,No,No,No,Yes,2,Low-Med
@@ -44289,10 +44151,6 @@ DENND1B,Yes,No,No,No,Yes,2,Low-Med
 MTND2P2,Yes,No,No,No,No,1,Low
 RNU6-394P,Yes,No,No,No,No,1,Low
 MTFR1P1,Yes,No,No,No,No,1,Low
-DYM-AS1,Yes,No,No,No,No,1,Low
-SYT4,Yes,No,No,No,Yes,2,Low-Med
-HIST2H2BA,No,No,No,No,Yes,1,Low
-ASS1P11,Yes,No,No,No,No,1,Low
 EIF4BP3,Yes,No,No,No,No,1,Low
 TMEM14DP,Yes,No,No,No,No,1,Low
 MCCC1-AS1,Yes,No,No,No,No,1,Low
@@ -44497,8 +44355,6 @@ ENTREP1,Yes,No,No,No,No,1,Low
 SMARCB1,Yes,No,No,No,Yes,2,Low-Med
 GUSBP9,Yes,No,No,No,No,1,Low
 LINC03023,Yes,No,No,No,No,1,Low
-ALG1L10P,Yes,No,No,No,No,1,Low
-RNA5SP485,Yes,No,No,No,No,1,Low
 USP17L18,Yes,No,No,No,No,1,Low
 FMR1-IT1,Yes,No,No,No,No,1,Low
 RNU6-591P,Yes,No,No,No,No,1,Low
@@ -44706,8 +44562,6 @@ STOML1,Yes,No,No,No,Yes,2,Low-Med
 HMGN1P37,Yes,No,No,No,No,1,Low
 ATP13A4,Yes,No,No,No,Yes,2,Low-Med
 EEF1A1P20,Yes,No,No,No,No,1,Low
-KIAA0040,Yes,No,No,No,Yes,2,Low-Med
-RN7SL508P,Yes,No,No,No,No,1,Low
 MIR4460,Yes,No,No,No,No,1,Low
 RNU2-6P,Yes,No,No,No,No,1,Low
 RNU7-141P,Yes,No,No,No,No,1,Low
@@ -44727,8 +44581,6 @@ RN7SL845P,Yes,No,No,No,No,1,Low
 LINC02872,Yes,No,No,No,No,1,Low
 ACTBP6,Yes,No,No,No,No,1,Low
 GTF2IP23,Yes,No,No,No,No,1,Low
-H4C8,Yes,No,No,No,No,1,Low
-RNU2-64P,Yes,No,No,No,No,1,Low
 RPL32P4,Yes,No,No,No,No,1,Low
 ALOX15P2,Yes,No,No,No,No,1,Low
 OR7E86P,Yes,No,No,No,No,1,Low
@@ -44837,6 +44689,8 @@ AK6P1,Yes,No,No,No,No,1,Low
 RN7SKP74,Yes,No,No,No,No,1,Low
 AQP7P3,Yes,No,No,No,No,1,Low
 SORBS2-AS1,Yes,No,No,No,No,1,Low
+SLC10A1,Yes,No,No,No,Yes,2,Low-Med
+BPIFB9P,Yes,No,No,No,No,1,Low
 KRTAP19-7,Yes,No,No,No,Yes,2,Low-Med
 RAD23BP2,Yes,No,No,No,No,1,Low
 MTCYBP20,Yes,No,No,No,No,1,Low
@@ -44868,7 +44722,8 @@ LRRC53,Yes,No,No,No,No,1,Low
 MTND5P41,Yes,No,No,No,No,1,Low
 C6orf7,No,No,No,No,Yes,1,Low
 ASH2LP3,Yes,No,No,No,No,1,Low
-RN7SL569P,Yes,No,No,No,No,1,Low
+LDB2,Yes,No,No,No,Yes,2,Low-Med
+ZBTB24-DT,Yes,No,No,No,No,1,Low
 ACPP,No,No,No,No,Yes,1,Low
 TSPY21P,Yes,No,No,No,No,1,Low
 LINC02836,Yes,No,No,No,No,1,Low
@@ -44928,7 +44783,6 @@ OR4F21,Yes,No,No,No,No,1,Low
 THAP12P5,Yes,No,No,No,No,1,Low
 RNVU1-4,Yes,No,No,No,No,1,Low
 PRXL2AP1,Yes,No,No,No,No,1,Low
-RPL7AP76,Yes,No,No,No,No,1,Low
 WBP1LP1,Yes,No,No,No,No,1,Low
 CNN2P3,Yes,No,No,No,No,1,Low
 SPEN-AS1,Yes,No,No,No,No,1,Low
@@ -44972,8 +44826,6 @@ TRBV5-3,Yes,No,No,No,No,1,Low
 POTEG,Yes,No,No,No,Yes,2,Low-Med
 TRBV8-2,Yes,No,No,No,No,1,Low
 TRBV6-1,Yes,No,No,No,No,1,Low
-TUBB3P2,Yes,No,No,No,No,1,Low
-OR13C1P,Yes,No,No,No,No,1,Low
 MTRNR2L2,No,No,No,No,Yes,1,Low
 LINC01621,Yes,No,No,No,No,1,Low
 PRSS3P3,Yes,No,No,No,No,1,Low
@@ -45049,8 +44901,8 @@ BCL2L2,Yes,No,No,No,Yes,2,Low-Med
 RN7SL81P,Yes,No,No,No,No,1,Low
 CTBP2P4,Yes,No,No,No,No,1,Low
 TBCAP3,Yes,No,No,No,No,1,Low
-DYRK4,Yes,No,No,No,Yes,2,Low-Med
 RNF186-AS1,Yes,No,No,No,No,1,Low
+DYRK4,Yes,No,No,No,Yes,2,Low-Med
 RFPL4AP5,Yes,No,No,No,No,1,Low
 PSMC1P11,Yes,No,No,No,No,1,Low
 RN7SL5P,Yes,No,No,No,No,1,Low
@@ -45289,6 +45141,9 @@ RPS3AP54,Yes,No,No,No,No,1,Low
 HPS4,Yes,No,No,No,Yes,2,Low-Med
 MAGI2-AS1,Yes,No,No,No,No,1,Low
 GCNT1P5,Yes,No,No,No,No,1,Low
+SMARCA1,Yes,No,No,No,Yes,2,Low-Med
+TMEM55A,No,No,No,No,Yes,1,Low
+FAM151B-DT,Yes,No,No,No,No,1,Low
 PMS2P11,Yes,No,No,No,No,1,Low
 UPK3BP1,Yes,No,No,No,No,1,Low
 ASL,Yes,No,No,No,Yes,2,Low-Med
@@ -45527,6 +45382,7 @@ RNU6-236P,Yes,No,No,No,No,1,Low
 TRGC2,Yes,No,No,No,No,1,Low
 HSPB1P2,Yes,No,No,No,No,1,Low
 LINC01626,Yes,No,No,No,No,1,Low
+RPS27AP20,Yes,No,No,No,No,1,Low
 RNU6-360P,Yes,No,No,No,No,1,Low
 RN7SL251P,Yes,No,No,No,No,1,Low
 EPHB1,Yes,No,No,No,Yes,2,Low-Med
@@ -45544,7 +45400,6 @@ PLPBP,Yes,No,No,No,No,1,Low
 CLUHP6,Yes,No,No,No,No,1,Low
 RNU6-388P,Yes,No,No,No,No,1,Low
 ITPRID1,Yes,No,No,No,No,1,Low
-ALMS1P1,Yes,No,No,No,No,1,Low
 LRRC74A,Yes,No,No,No,Yes,2,Low-Med
 EEF1A1P42,Yes,No,No,No,No,1,Low
 RPL32P1,Yes,No,No,No,No,1,Low
@@ -45606,6 +45461,7 @@ DSCAML1,Yes,No,No,No,Yes,2,Low-Med
 EEF1A1P6,Yes,No,No,No,No,1,Low
 RPL6P1,Yes,No,No,No,No,1,Low
 RNA5SP227,Yes,No,No,No,No,1,Low
+MTND3P5,Yes,No,No,No,No,1,Low
 RPL5P2,Yes,No,No,No,No,1,Low
 AKR7A2P2,Yes,No,No,No,No,1,Low
 CT69,Yes,No,No,No,No,1,Low
@@ -45709,8 +45565,6 @@ DYNLT2,Yes,No,No,No,No,1,Low
 HMGN1P2,Yes,No,No,No,No,1,Low
 TSPY15P,Yes,No,No,No,No,1,Low
 DNM1P48,Yes,No,No,No,No,1,Low
-NR2C2AP,Yes,No,No,No,Yes,2,Low-Med
-MOB1AP2,Yes,No,No,No,No,1,Low
 LINC01615,Yes,No,No,No,No,1,Low
 H2ACP1,Yes,No,No,No,No,1,Low
 LINC01880,Yes,No,No,No,No,1,Low
@@ -45721,6 +45575,9 @@ RPS3AP25,Yes,No,No,No,No,1,Low
 RNU4-2,Yes,No,No,No,No,1,Low
 RPL31P24,Yes,No,No,No,No,1,Low
 PFDN1P1,Yes,No,No,No,No,1,Low
+UBE2D2,Yes,No,No,Yes,Yes,3,Medium
+RNU6-470P,Yes,No,No,No,No,1,Low
+PRELID3A,Yes,No,No,No,No,1,Low
 CLUHP1,Yes,No,No,No,No,1,Low
 RNU6-730P,Yes,No,No,No,No,1,Low
 RPL29P1,Yes,No,No,No,No,1,Low
@@ -45731,6 +45588,7 @@ OR2B8P,Yes,No,No,No,No,1,Low
 RN7SL255P,Yes,No,No,No,No,1,Low
 RPS27AP16,Yes,No,No,No,No,1,Low
 LINC02529,Yes,No,No,No,No,1,Low
+COX6CP8,Yes,No,No,No,No,1,Low
 SNORD28B,Yes,No,No,No,No,1,Low
 RNU6-824P,Yes,No,No,No,No,1,Low
 C9orf89,No,No,No,No,Yes,1,Low
@@ -45936,6 +45794,7 @@ PNN-AS1,Yes,No,No,No,No,1,Low
 ARHGAP20,Yes,No,No,No,Yes,2,Low-Med
 THY1-AS1,Yes,No,No,No,No,1,Low
 FAM197Y9,Yes,No,No,No,No,1,Low
+H2BP1,Yes,No,No,No,No,1,Low
 CBX3P1,Yes,No,No,No,No,1,Low
 C9orf144B,No,No,No,No,Yes,1,Low
 RNA5SP119,Yes,No,No,No,No,1,Low
@@ -46074,6 +45933,9 @@ LOC100130933,No,No,No,No,Yes,1,Low
 GSTA12P,Yes,No,No,No,No,1,Low
 XNDC1CP,Yes,No,No,No,No,1,Low
 RPL32P15,Yes,No,No,No,No,1,Low
+NPM1P38,Yes,No,No,No,No,1,Low
+ASH2L,Yes,No,No,No,Yes,2,Low-Med
+FBXW7-AS1,Yes,No,No,No,No,1,Low
 FOXN3P2,Yes,No,No,No,No,1,Low
 RBMXP1,Yes,No,No,No,No,1,Low
 LINC00294,Yes,No,No,No,No,1,Low
@@ -46176,6 +46038,7 @@ NAPGP2,Yes,No,No,No,No,1,Low
 KRT19P1,Yes,No,No,No,No,1,Low
 LOC100499194,No,No,No,No,Yes,1,Low
 RPL36AP24,Yes,No,No,No,No,1,Low
+RN7SL1,Yes,No,No,No,No,1,Low
 RN7SL353P,Yes,No,No,No,No,1,Low
 HNRNPRP2,Yes,No,No,No,No,1,Low
 SELENOKP3,Yes,No,No,No,No,1,Low
@@ -46207,3 +46070,62 @@ MIR3142HG,Yes,No,No,No,No,1,Low
 LINC01625,Yes,No,No,No,No,1,Low
 GUK1,Yes,No,No,No,Yes,2,Low-Med
 LINC02829,Yes,No,No,No,No,1,Low
+MIR1295A,Yes,No,No,No,No,1,Low
+RPS6P3,Yes,No,No,No,No,1,Low
+IGLV3-24,Yes,No,No,No,No,1,Low
+GALNT2,Yes,No,No,No,Yes,2,Low-Med
+RN7SL648P,Yes,No,No,No,No,1,Low
+OR2U2P,Yes,No,No,No,No,1,Low
+RPS24P1,Yes,No,No,No,No,1,Low
+LOC150622,No,No,No,No,Yes,1,Low
+OR2E1P,Yes,No,No,No,No,1,Low
+COX11P1,Yes,No,No,No,No,1,Low
+NMNAT1P3,Yes,No,No,No,No,1,Low
+OR13C1P,Yes,No,No,No,No,1,Low
+TUBB3P2,Yes,No,No,No,No,1,Low
+RPL38P1,Yes,No,No,No,No,1,Low
+SHANK1,Yes,No,No,No,Yes,2,Low-Med
+OR2B7P,Yes,No,No,No,No,1,Low
+RNA5SP485,Yes,No,No,No,No,1,Low
+ALG1L10P,Yes,No,No,No,No,1,Low
+RPLP2P1,Yes,No,No,No,No,1,Low
+RPL32P8,Yes,No,No,No,No,1,Low
+NOL7,Yes,No,No,No,Yes,2,Low-Med
+PPIAP86,Yes,No,No,No,No,1,Low
+SNORD62,Yes,No,No,No,No,1,Low
+TSKS,Yes,No,No,No,Yes,2,Low-Med
+MIR4518,Yes,No,No,No,No,1,Low
+SERPINA13P,Yes,No,No,No,Yes,2,Low-Med
+SPATA5,Yes,No,No,No,Yes,2,Low-Med
+H2AC15,Yes,No,No,No,No,1,Low
+THRAP3P3,Yes,No,No,No,No,1,Low
+FAM66E,Yes,No,No,No,Yes,2,Low-Med
+H2AC13,Yes,No,No,No,No,1,Low
+PSMB11,Yes,No,No,No,Yes,2,Low-Med
+H2BC13,Yes,No,No,No,No,1,Low
+RPL10P2,Yes,No,No,No,No,1,Low
+ANKRD26P1,Yes,No,No,No,Yes,2,Low-Med
+H2BC11,Yes,No,No,No,No,1,Low
+LINC00955,Yes,No,No,No,Yes,2,Low-Med
+GUSBP2,Yes,No,No,No,No,1,Low
+MIR6762,Yes,No,No,No,No,1,Low
+BTBD9-AS1,Yes,No,No,No,No,1,Low
+LOC388965,No,No,No,No,Yes,1,Low
+RNU6-285P,Yes,No,No,No,No,1,Low
+RNU2-64P,Yes,No,No,No,No,1,Low
+H4C8,Yes,No,No,No,No,1,Low
+LINC01363,Yes,No,No,No,Yes,2,Low-Med
+TRBJ1-1,Yes,No,No,No,No,1,Low
+RNU6-934P,Yes,No,No,No,No,1,Low
+RNA5SP212,Yes,No,No,No,No,1,Low
+MIR4776-1,Yes,No,No,No,No,1,Low
+FGF11,Yes,No,No,No,Yes,2,Low-Med
+PUS7,Yes,No,No,No,Yes,2,Low-Med
+H4C5,Yes,No,No,No,No,1,Low
+LINC00378,Yes,No,No,No,Yes,2,Low-Med
+TMA7B,Yes,No,No,No,No,1,Low
+H2AC6,Yes,No,No,No,No,1,Low
+CNTNAP3C,Yes,No,No,No,No,1,Low
+H2BC3,Yes,No,No,No,No,1,Low
+PLD2,Yes,No,No,No,Yes,2,Low-Med
+H2AC2P,Yes,No,No,No,No,1,Low

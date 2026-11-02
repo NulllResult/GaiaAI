@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIA — Research Interface</title>
+<link rel="stylesheet" href="assets/style.css?v=300">
+<style>
+/* ============================================================
+   GAIA APP — Interface Layout
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+    width: 100%; min-height: 100vh;
+    background: #06120c; color: #e8f4ee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Ambient background */
+.app-bg {
+    position: fixed; inset: 0; z-index: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(74,222,128,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(96,165,250,0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Header */
+.app-header {
+    position: relative; z-index: 10;
+    padding: 20px 40px; border-bottom: 1px solid rgba(74,222,128,0.15);
+    display: flex; justify-content: space-between; align-items: center;
+}
+.app-header h1 { font-size: 1.4rem; letter-spacing: -0.02em; }
+.app-header h1 span { color: #4ade80; }
+.app-header .status {
+    font-family: ui-monospace, monospace; font-size: 0.75rem;
+    color: #4ade80; display: flex; align-items: center; gap: 8px;
+}
+.status-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+    animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%,100% { opacity: 1; box-shadow: 0 0 8px #4ade80; }
+    50% { opacity: 0.5; box-shadow: 0 0 16px #4ade80; }
+}
+
+/* Main grid */
+.app-grid {
+    position: relative; z-index: 10;
+    display: grid; grid-template-columns: 320px 1fr;
+    gap: 0; min-height: calc(100vh - 80px);
+}
+
+/* Left panel — Input */
+.input-panel {
+    border-right: 1px solid rgba(74,222,128,0.15);
+    padding: 32px 24px; background: rgba(6,18,12,0.6);
+    overflow-y: auto;
+}
+.input-panel h2 {
+    font-size: 0.72rem; font-family: ui-monospace, monospace;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #4ade80; margin-bottom: 24px;
+}
+.field { margin-bottom: 20px; }
+.field label {
+    display: block; font-size: 0.78rem; color: #8fa89c;
+    margin-bottom: 6px; font-weight: 500;
+}
+.field input, .field select {
+    width: 100%; padding: 10px 14px;
+    background: rgba(14,26,20,0.8); border: 1px solid rgba(74,222,128,0.25);
+    border-radius: 6px; color: #fff; font-family: inherit; font-size: 0.9rem;
+    outline: none; transition: border-color 0.2s;
+}
+.field input:focus, .field select:focus { border-color: #4ade80; }
+.upload-zone {
+    border: 2px dashed rgba(74,222,128,0.3); border-radius: 8px;
+    padding: 24px 16px; text-align: center; cursor: pointer;
+    transition: all 0.2s; margin-bottom: 20px;
+}
+.upload-zone:hover { border-color: #4ade80; background: rgba(74,222,128,0.04); }
+.upload-zone .icon { font-size: 1.5rem; margin-bottom: 8px; opacity: 0.6; }
+.upload-zone .text { font-size: 0.8rem; color: #8fa89c; }
+.upload-zone .hint { font-size: 0.7rem; color: #566b60; margin-top: 4px; }
+
+.run-btn {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #4ade80, #34d399);
+    border: none; border-radius: 8px; color: #0a1410;
+    font-weight: 600; font-size: 1rem; cursor: pointer;
+    margin-top: 8px; transition: transform 0.15s, box-shadow 0.2s;
+}
+.run-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(74,222,128,0.3);
+}
+.run-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Right panel — Results */
+.results-panel { padding: 32px 40px; overflow-y: auto; }
+.results-panel h2 { font-size: 1.8rem; margin-bottom: 8px; letter-spacing: -0.02em; }
+.results-panel .subtitle {
+    color: #8fa89c; font-size: 0.95rem; margin-bottom: 32px;
+}
+
+/* Tab switcher */
+.tab-bar {
+    display: flex; gap: 4px; margin-bottom: 32px;
+    border-bottom: 1px solid rgba(74,222,128,0.15);
+}
+.tab {
+    padding: 12px 24px; background: transparent; border: none;
+    color: #8fa89c; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all 0.2s; font-family: inherit;
+}
+.tab:hover { color: #e8f4ee; }
+.tab.active { color: #4ade80; border-bottom-color: #4ade80; }
+
+/* Human view content */
+.human-view { display: none; }
+.human-view.active { display: block; }
+
+.result-card {
+    background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.15);
+    border-radius: 12px; padding: 28px; margin-bottom: 20px;
+}
+.result-card h3 {
+    font-size: 0.72rem; font-family: ui-monospace, monospace;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #4ade80; margin-bottom: 12px;
+}
+.result-card .value { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
+.result-card .value.green { color: #4ade80; }
+.result-card .desc { font-size: 0.9rem; color: #8fa89c; margin-top: 8px; line-height: 1.6; }
+
+.protocol-timeline {
+    margin-top: 24px;
+}
+.timeline-row {
+    display: grid; grid-template-columns: 140px 1fr 60px;
+    align-items: center; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid rgba(74,222,128,0.08);
+}
+.timeline-row .metric { font-size: 0.85rem; color: #8fa89c; }
+.timeline-row .bar-track {
+    height: 6px; background: rgba(74,222,128,0.1); border-radius: 3px;
+    position: relative; overflow: hidden;
+}
+.timeline-row .bar-fill {
+    height: 100%; background: linear-gradient(90deg, #4ade80, #34d399);
+    border-radius: 3px; transition: width 0.8s ease-out;
+}
+.timeline-row .val { font-family: ui-monospace, monospace; font-size: 0.85rem; text-align: right; }
+
+/* Scientist view content */
+.scientist-view { display: none; }
+.scientist-view.active { display: block; }
+
+.sci-card {
+    background: rgba(14,26,20,0.6); border: 1px solid rgba(74,222,128,0.15);
+    border-radius: 12px; margin-bottom: 20px; overflow: hidden;
+}
+.sci-card-header {
+    padding: 16px 20px; background: rgba(74,222,128,0.04);
+    border-bottom: 1px solid rgba(74,222,128,0.15);
+    font-family: ui-monospace, monospace; font-size: 0.8rem;
+    color: #4ade80; letter-spacing: 0.1em;
+}
+.sci-card table { width: 100%; border-collapse: collapse; }
+.sci-card table th, .sci-card table td {
+    padding: 10px 20px; text-align: left;
+    font-size: 0.85rem; border-bottom: 1px solid rgba(74,222,128,0.06);
+}
+.sci-card table th {
+    font-family: ui-monospace, monospace; font-size: 0.72rem;
+    color: #8fa89c; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.sci-card table td.mono { font-family: ui-monospace, monospace; color: #a7f3d0; }
+.sci-card table td.high { color: #4ade80; }
+.sci-card table td.med { color: #fbbf24; }
+
+/* Empty state */
+.empty-state {
+    text-align: center; padding: 80px 40px; color: #566b60;
+}
+.empty-state .icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.3; }
+.empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: #8fa89c; }
+.empty-state p { font-size: 0.9rem; max-width: 400px; margin: 0 auto; line-height: 1.6; }
+
+/* Pipeline progress (during run) */
+.pipeline-progress {
+    display: none; flex-direction: column; gap: 16px;
+}
+.pipeline-progress.active { display: flex; }
+.pipeline-stage {
+    display: grid; grid-template-columns: 40px 1fr;
+    gap: 16px; align-items: center;
+    padding: 16px; border-radius: 8px;
+    background: rgba(14,26,20,0.6);
+    border: 1px solid rgba(74,222,128,0.08);
+    transition: all 0.3s;
+}
+.pipeline-stage.active {
+    border-color: rgba(74,222,128,0.4);
+    background: rgba(74,222,128,0.04);
+}
+.pipeline-stage.done {
+    border-color: rgba(74,222,128,0.2);
+}
+.stage-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(74,222,128,0.1); color: #4ade80;
+    display: flex; align-items: center; justify-content: center;
+    font-family: ui-monospace, monospace; font-size: 0.9rem; font-weight: 600;
+}
+.pipeline-stage.active .stage-num {
+    background: #4ade80; color: #0a1410;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+.pipeline-stage.done .stage-num { background: #4ade80; color: #0a1410; }
+.stage-info .title { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
+.stage-info .desc { font-size: 0.8rem; color: #8fa89c; }
+.stage-info .log {
+    font-family: ui-monospace, monospace; font-size: 0.72rem;
+    color: #4ade80; margin-top: 6px; opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<div class="app-bg"></div>
+
+<header class="app-header">
+    <h1><span>GAIA</span> Research Interface</h1>
+    <div class="status"><span class="status-dot"></span> Ready</div>
+</header>
+
+<div class="app-grid">
+
+    <!-- LEFT: Input -->
+    <aside class="input-panel">
+        <h2>Query</h2>
+
+        <div class="field">
+            <label>Disease or Condition</label>
+            <input type="text" placeholder="e.g., Ankylosing Spondylitis">
+        </div>
+
+        <div class="field">
+            <label>Gene or Target (optional)</label>
+            <input type="text" placeholder="e.g., HLA-B27">
+        </div>
+
+        <div class="field">
+            <label>Patient Profile</label>
+            <select>
+                <option>Adult · Male · 45</option>
+                <option>Adult · Female · 52</option>
+                <option>Adult · Male · 38</option>
+                <option>Custom profile...</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Data Upload</label>
+            <div class="upload-zone">
+                <div class="icon">📁</div>
+                <div class="text">Drop VCF, PDB, or SDF</div>
+                <div class="hint">or click to browse</div>
+            </div>
+        </div>
+
+        <button class="run-btn" id="runBtn">Run GAIA Pipeline →</button>
+    </aside>
+
+    <!-- RIGHT: Results -->
+    <main class="results-panel">
+
+        <!-- Empty state (shown before run) -->
+        <div class="empty-state" id="emptyState">
+            <div class="icon">🌱</div>
+            <h3>Ready to analyze</h3>
+            <p>Enter a disease, gene, or upload patient data on the left, then run the pipeline.</p>
+        </div>
+
+        <!-- Pipeline progress (shown during run) -->
+        <div class="pipeline-progress" id="pipelineProgress">
+            <div class="pipeline-stage" id="stage1">
+                <div class="stage-num">1</div>
+                <div class="stage-info">
+                    <div class="title">Reading the genome</div>
+                    <div class="desc">Scanning structural signatures across chromosomes</div>
+                    <div class="log" id="log1"></div>
+                </div>
+            </div>
+            <div class="pipeline-stage" id="stage2">
+                <div class="stage-num">2</div>
+                <div class="stage-info">
+                    <div class="title">Mapping variants</div>
+                    <div class="desc">Placing population variation in gene context</div>
+                    <div class="log" id="log2"></div>
+                </div>
+            </div>
+            <div class="pipeline-stage" id="stage3">
+                <div class="stage-num">3</div>
+                <div class="stage-info">
+                    <div class="title">Screening compounds</div>
+                    <div class="desc">Ranking 25M+ candidates by binding potential</div>
+                    <div class="log" id="log3"></div>
+                </div>
+            </div>
+            <div class="pipeline-stage" id="stage4">
+                <div class="stage-num">4</div>
+                <div class="stage-info">
+                    <div class="title">Scoring interactions</div>
+                    <div class="desc">Physics + ML combined ranking</div>
+                    <div class="log" id="log4"></div>
+                </div>
+            </div>
+            <div class="pipeline-stage" id="stage5">
+                <div class="stage-num">5</div>
+                <div class="stage-info">
+                    <div class="title">Designing protocol</div>
+                    <div class="desc">Multi-compound treatment plan with timeline</div>
+                    <div class="log" id="log5"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results (shown after run) -->
+        <div class="results-view" id="resultsView" style="display: none;">
+            <h2>Results</h2>
+            <p class="subtitle">Ankylosing Spondylitis · HLA-B27 positive · 45M</p>
+
+            <!-- Tab bar -->
+            <div class="tab-bar">
+                <button class="tab active" data-tab="human">Human View</button>
+                <button class="tab" data-tab="scientist">Scientist View</button>
+            </div>
+
+            <!-- HUMAN VIEW -->
+            <div class="human-view active" id="humanView">
+                <div class="result-card">
+                    <h3>Predicted outcome</h3>
+                    <div class="value green">85% damage reversal</div>
+                    <div class="desc">In simulation, the full pipeline took BASDAI from 6.9 to 1.0 over 12 months. Clinical remission achieved by day 60–90.</div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Your protocol</h3>
+                    <div class="desc" style="font-size: 1rem; color: #e8f4ee; line-height: 1.8;">
+                        <strong>EGCG</strong> 400mg · Morning<br>
+                        <strong>Quercetin</strong> 500mg · Morning<br>
+                        <strong>Fisetin</strong> 300mg · Afternoon<br>
+                        <strong>MSM</strong> 3000mg · Afternoon<br>
+                        <strong>Resveratrol</strong> 500mg · Evening<br>
+                        <strong>Curcumin</strong> 500mg · Evening<br>
+                        <strong>Berberine</strong> 500mg · With food
+                    </div>
+                    <div class="desc" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(74,222,128,0.1);">
+                        Estimated monthly cost: <strong style="color: #4ade80;">$165/mo</strong><br>
+                        Time to remission: <strong style="color: #4ade80;">60–90 days</strong>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Damage reversal over 12 months</h3>
+                    <div class="protocol-timeline">
+                        <div class="timeline-row">
+                            <div class="metric">Inflammation</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
+                            <div class="val">8.5 → 0.4</div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="metric">Joint function</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
+                            <div class="val">4.0 → 8.8</div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="metric">DNA repair</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 77%;"></div></div>
+                            <div class="val">3.0 → 7.7</div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="metric">Senescent cells</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
+                            <div class="val">7.0 → 0.6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCIENTIST VIEW -->
+            <div class="scientist-view" id="scientistView">
+                <div class="sci-card">
+                    <div class="sci-card-header">GENOMIC TARGETS</div>
+                    <table>
+                        <tr><th>Gene</th><th>Variant</th><th>Pathway</th><th>Evidence</th></tr>
+                        <tr><td>HLA-B27</td><td class="mono">rs691919</td><td>Antigen presentation</td><td class="high">high</td></tr>
+                        <tr><td>ERAP1</td><td class="mono">rs27044</td><td>Peptide trimming</td><td class="high">high</td></tr>
+                        <tr><td>IL23R</td><td class="mono">rs11209026</td><td>IL-23 signaling</td><td class="high">high</td></tr>
+                        <tr><td>RUNX3</td><td class="mono">rs6600247</td><td>Th17 differentiation</td><td class="med">medium</td></tr>
+                    </table>
+                </div>
+
+                <div class="sci-card">
+                    <div class="sci-card-header">COMPOUND RANKING</div>
+                    <table>
+                        <tr><th>Rank</th><th>Compound</th><th>Binding (kcal/mol)</th><th>ML R²</th><th>Evidence</th><th>Confidence</th></tr>
+                        <tr><td>1</td><td>resveratrol</td><td class="mono">−8.72</td><td class="mono">0.40</td><td class="mono">in silico · in vitro · in vivo</td><td class="high">high</td></tr>
+                        <tr><td>2</td><td>curcumin</td><td class="mono">−7.91</td><td class="mono">0.40</td><td class="mono">in silico · in vitro</td><td class="high">high</td></tr>
+                        <tr><td>3</td><td>fisetin</td><td class="mono">−7.45</td><td class="mono">0.40</td><td class="mono">in silico · in vitro · in vivo</td><td class="high">high</td></tr>
+                        <tr><td>4</td><td>berberine</td><td class="mono">−6.83</td><td class="mono">0.40</td><td class="mono">in silico · in vitro</td><td class="med">medium</td></tr>
+                        <tr><td>5</td><td>quercetin</td><td class="mono">−6.52</td><td class="mono">0.40</td><td class="mono">in silico only</td><td class="med">medium</td></tr>
+                    </table>
+                </div>
+
+                <div class="sci-card">
+                    <div class="sci-card-header">DAMAGE METRICS (12-MONTH SIMULATION)</div>
+                    <table>
+                        <tr><th>Metric</th><th>Day 0</th><th>Day 30</th><th>Day 90</th><th>Day 180</th><th>Day 365</th></tr>
+                        <tr><td>Inflammation</td><td class="mono">8.5</td><td class="mono">5.2</td><td class="mono">2.1</td><td class="mono">0.9</td><td class="mono">0.4</td></tr>
+                        <tr><td>Synovial hyperplasia</td><td class="mono">7.5</td><td class="mono">4.8</td><td class="mono">2.0</td><td class="mono">1.1</td><td class="mono">0.7</td></tr>
+                        <tr><td>Cartilage damage</td><td class="mono">6.0</td><td class="mono">3.9</td><td class="mono">1.9</td><td class="mono">1.6</td><td class="mono">1.6</td></tr>
+                        <tr><td>Bone erosion</td><td class="mono">5.5</td><td class="mono">3.6</td><td class="mono">1.8</td><td class="mono">2.6</td><td class="mono">2.8</td></tr>
+                        <tr><td>Enthesitis</td><td class="mono">8.0</td><td class="mono">4.9</td><td class="mono">1.7</td><td class="mono">0.7</td><td class="mono">0.5</td></tr>
+                        <tr><td>DNA repair</td><td class="mono">3.0</td><td class="mono">3.2</td><td class="mono">3.4</td><td class="mono">5.9</td><td class="mono">7.7</td></tr>
+                        <tr><td>Joint function</td><td class="mono">4.0</td><td class="mono">3.5</td><td class="mono">3.6</td><td class="mono">6.6</td><td class="mono">8.8</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+// Tab switcher
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.dataset.tab;
+        document.getElementById('humanView').classList.toggle('active', target === 'human');
+        document.getElementById('scientistView').classList.toggle('active', target === 'scientist');
+    });
+});
+
+// Simulated pipeline run
+document.getElementById('runBtn').addEventListener('click', async () => {
+    const btn = document.getElementById('runBtn');
+    btn.disabled = true;
+    btn.textContent = 'Running...';
+    document.getElementById('emptyState').style.display = 'none';
+    document.getElementById('resultsView').style.display = 'none';
+    document.getElementById('pipelineProgress').classList.add('active');
+
+    const stages = [
+        { id: 'stage1', log: 'log1', msgs: ['Scanning chr1...', 'chr6: 3,124 coding regions', 'HLA-B27 region flagged'] },
+        { id: 'stage2', log: 'log2', msgs: ['Loading 1000 Genomes...', '2,847 variants in HLA region', '4 high-confidence targets'] },
+        { id: 'stage3', log: 'log3', msgs: ['Loading ZINC22...', '25,000,000 candidates', 'Top 100 ranked'] },
+        { id: 'stage4', log: 'log4', msgs: ['Physics scoring...', 'ML scoring (R²=0.40)...', 'Combined ranking'] },
+        { id: 'stage5', log: 'log5', msgs: ['Designing 7-compound protocol', 'Simulating 365 days...', 'Remission at day 90'] }
+    ];
+
+    for (const stage of stages) {
+        const el = document.getElementById(stage.id);
+        el.classList.add('active');
+        const log = document.getElementById(stage.log);
+        for (const msg of stage.msgs) {
+            log.textContent = msg;
+            await new Promise(r => setTimeout(r, 600));
+        }
+        el.classList.remove('active');
+        el.classList.add('done');
+    }
+
+    document.getElementById('pipelineProgress').classList.remove('active');
+    document.getElementById('resultsView').style.display = 'block';
+
+    btn.disabled = false;
+    btn.textContent = 'Run again →';
+});
+</script>
+
+</body>
+</html>
